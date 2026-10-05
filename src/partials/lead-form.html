@@ -1,0 +1,22 @@
+<section class="zm-section" id="zm-form">
+  <div class="zm-container">
+    <div class="zm-lead-form">
+      <div class="zm-lead-form__img"><img src="{{img:form-building}}" alt="ЖК «Московский»" loading="lazy"></div>
+      <div class="zm-lead-form__box">
+        <h2 class="zm-h2">{{title}}</h2>
+        <p class="zm-lead-form__sub">Менеджер перезвонит в течение 15–30 минут и ответит на все вопросы</p>
+        <form class="zm-form" data-zm-form data-form-name="{{name}}" data-tilda-form="{{tildaForm}}" data-webhook="{{webhook}}" data-redirect="">
+          <div class="zm-form__grid">
+            <label class="zm-field"><input type="text" name="Name" placeholder="Как к вам обратиться?" autocomplete="name"><span class="zm-field__err">Укажите имя</span></label>
+            <label class="zm-field zm-field--phone"><input type="tel" name="Phone" placeholder="(000) 000-00-00" autocomplete="tel-national" inputmode="tel" data-zm-phone><span class="zm-field__err">Введите номер полностью</span></label>
+            {{> form-{{fields}}}}
+            <div class="zm-form__submit"><button class="zm-btn" type="submit">{{button}}</button></div>
+            <label class="zm-check"><input type="checkbox" name="Agree"><span>Я подтверждаю ознакомление с <a href="{{policy}}" target="_blank" rel="noopener">политикой обработки персональных данных</a> и даю согласие на обработку персональных данных в порядке и на условиях, указанных в политике</span></label>
+          </div>
+          <div class="zm-form__done"><strong>Спасибо! Заявка отправлена</strong>Менеджер перезвонит вам в течение 15–30 минут.</div>
+        </form>
+        {{note}}
+      </div>
+    </div>
+  </div>
+</section>

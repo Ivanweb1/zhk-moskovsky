@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Условия покупки — ЖК «Московский» (превью)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Poiret+One&display=swap">
+<style>
+  /* Только для превью: имитация шапки и подвала Tilda. В Tilda остаются ваши шапка и подвал. */
+  html, body { margin: 0; background: #f3f3f7; }
+  .pv-head { position: sticky; top: 0; z-index: 50; padding: 10px 16px; background: #f3f3f7; }
+  .pv-head__in { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; gap: 28px; padding: 10px 20px; border-radius: 10px; background: #e5e7f2; font: 500 13px/1.2 Manrope, Arial, sans-serif; color: #132640; overflow-x: auto; white-space: nowrap; }
+  .pv-head a { color: inherit; text-decoration: none; }
+  .pv-head a:hover { color: #1f3d6b; }
+  .pv-logo { font-weight: 600; letter-spacing: .04em; color: #b08d4f !important; margin-right: auto; }
+  .pv-foot { margin-top: 40px; padding: 48px 20px; background: #132640; color: #fff; font: 13px/1.6 Manrope, Arial, sans-serif; }
+  .pv-foot__in { max-width: 1200px; margin: 0 auto; }
+  .pv-foot b { display: block; font: 400 40px/1 'Poiret One', serif; text-transform: uppercase; margin-bottom: 16px; }
+</style>
+<script>window.ZM_PREVIEW_ROOT = '../../preview/';</script>
+</head>
+<body>
+<header class="pv-head"><nav class="pv-head__in">
+  <a class="pv-logo" href="../../preview/../index.html">ЖК МОСКОВСКИЙ</a>
+  <a href="../../preview/o-proekte/">О проекте</a>
+  <a href="../../preview/hod-stroitelstva/">Ход строительства</a>
+  <a href="../../preview/usloviya-pokupki/">Условия покупки</a>
+  <a href="../../preview/raschet-ipoteki/">Расчёт ипотеки</a>
+  <a href="../../preview/dokumenty/">Документы</a>
+  <a href="../../preview/novosti/">Новости</a>
+  <a href="tel:+79788355353">+7 978 835-53-53</a>
+</nav></header>
+<style>
+/* ===== ЖК «Московский» — общие стили блоков (всё внутри .zm, чтобы не конфликтовать с Tilda) ===== */
+
+.zm {
+  /* Шрифты берутся из настроек сайта Tilda (--t-headline-font / --t-text-font); вне Tilda — запасные */
+  --zm-head: var(--t-headline-font, 'Poiret One'), Arial, sans-serif;
+  --zm-text: var(--t-text-font, 'Manrope'), Arial, sans-serif;
+  /* Цвета — как на текущем сайте */
+  --zm-navy: #132640;
+  --zm-navy-2: #1f3d6b;
+  --zm-bg: #f3f3f7;
+  --zm-card: #e5e7f2;
+  --zm-white: #ffffff;
+  --zm-ink: #132640;
+  --zm-muted: #7b8194;
+  --zm-line: #c9ccd8;
+  --zm-error: #d64545;
+  --zm-radius: 12px;
+  --zm-radius-lg: 20px;
+  --zm-gap: 12px;
+
+  box-sizing: border-box;
+  font-family: var(--zm-text);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--zm-ink);
+  background: var(--zm-bg);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+.zm :where(*, *::before, *::after) { box-sizing: border-box; }
+.zm :where(img) { display: block; max-width: 100%; }
+.zm :where(a) { color: inherit; text-decoration: none; }
+.zm :where(button) { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
+.zm :where(h1, h2, h3, h4, p, ul, ol) { margin: 0; padding: 0; }
+.zm :where(ul) { list-style: none; }
+
+.zm-container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+.zm-section { padding: 56px 0; }
+.zm-section--tight { padding: 32px 0; }
+
+/* ---------- Заголовки ---------- */
+.zm-h1, .zm-h2 {
+  font-family: var(--zm-head);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: .95;
+  letter-spacing: -.01em;
+  color: var(--zm-navy);
+}
+.zm-h1 { font-size: clamp(48px, 9.5vw, 132px); }
+.zm-h2 { font-size: clamp(40px, 7vw, 100px); }
+.zm-h3 { font-size: clamp(20px, 2vw, 26px); font-weight: 500; line-height: 1.2; }
+.zm-lead { font-size: 13px; line-height: 1.45; max-width: 300px; }
+.zm-text { font-size: 13px; line-height: 1.55; }
+.zm-text p + p { margin-top: .8em; }
+.zm-muted { color: var(--zm-muted); }
+
+.zm-head-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; margin-bottom: 32px; }
+.zm-head-row > .zm-h1, .zm-head-row > .zm-h2 { min-width: 0; overflow-wrap: anywhere; }
+.zm-head-row .zm-lead { flex: 0 1 300px; margin-bottom: 8px; }
+
+/* ---------- Хлебные крошки ---------- */
+.zm-crumbs { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; padding: 18px 0 14px; }
+.zm-crumbs a, .zm-crumbs span { position: relative; padding-left: 9px; }
+.zm-crumbs a::before, .zm-crumbs span::before {
+  content: ''; position: absolute; left: 0; top: 50%; width: 4px; height: 4px; margin-top: -2px;
+  border-radius: 50%; background: currentColor;
+}
+.zm-crumbs a { color: var(--zm-muted); transition: color .2s; }
+.zm-crumbs a:hover { color: var(--zm-navy); }
+.zm-crumbs--light, .zm-crumbs--light a { color: rgba(255,255,255,.75); }
+.zm-crumbs--light span { color: #fff; }
+
+/* ---------- Кнопки ---------- */
+.zm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 12px 32px; border-radius: 6px;
+  background: var(--zm-navy); color: #fff !important; font-size: 14px; font-weight: 500;
+  transition: background .2s, transform .2s, opacity .2s;
+}
+.zm-btn:hover { background: var(--zm-navy-2); }
+.zm-btn:active { transform: translateY(1px); }
+.zm-btn--light { background: var(--zm-bg); color: var(--zm-navy) !important; }
+.zm-btn--light:hover { background: #fff; }
+.zm-btn--block { width: 100%; }
+.zm-btn[disabled] { opacity: .6; pointer-events: none; }
+
+.zm-arrows { display: flex; gap: 6px; }
+.zm-arrow {
+  width: 44px; height: 44px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--zm-navy); color: #fff; transition: background .2s, opacity .2s;
+}
+.zm-arrow:hover { background: var(--zm-navy-2); }
+.zm-arrow[disabled] { background: #bfc4cf; cursor: default; }
+.zm-arrow svg { width: 16px; height: 16px; }
+
+/* ---------- Плашки ---------- */
+.zm-pill { display: inline-flex; align-items: center; height: 32px; padding: 0 16px; border-radius: 20px; font-size: 13px; font-weight: 500; background: #fff; color: var(--zm-navy); white-space: nowrap; }
+.zm-pill--blue { background: var(--zm-navy-2); color: #fff; }
+.zm-pill--gray { background: var(--zm-card); color: var(--zm-muted); height: 26px; padding: 0 12px; font-size: 12px; font-weight: 400; }
+
+/* ---------- Селект (фильтры) ---------- */
+.zm-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.zm-select { position: relative; width: 240px; max-width: 100%; }
+.zm-select select {
+  width: 100%; height: 44px; padding: 0 40px 0 16px; border: 0; border-radius: 8px;
+  background: var(--zm-card); color: var(--zm-ink); font: inherit; font-size: 13px;
+  -webkit-appearance: none; appearance: none; cursor: pointer;
+}
+.zm-select::after {
+  content: ''; position: absolute; right: 18px; top: 50%; width: 7px; height: 7px; margin-top: -5px;
+  border: solid var(--zm-navy); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); pointer-events: none;
+}
+
+/* ---------- Табы ---------- */
+.zm-tabs { display: inline-flex; padding: 4px; border-radius: 40px; background: var(--zm-card); gap: 2px; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.zm-tabs::-webkit-scrollbar { display: none; }
+.zm-tab { height: 48px; padding: 0 28px; border-radius: 40px; font-size: 15px; font-weight: 500; white-space: nowrap; transition: background .2s, color .2s; }
+.zm-tab.is-active { background: var(--zm-navy); color: #fff; }
+
+/* ---------- Цифры-преимущества (hero) ---------- */
+.zm-stats { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.zm-stats li { font-family: var(--zm-head); text-transform: uppercase; font-size: clamp(28px, 4vw, 52px); line-height: 1.15; color: #fff; text-align: right; }
+
+/* ---------- Аккордеон FAQ ---------- */
+.zm-faq { display: flex; flex-direction: column; gap: 6px; margin-top: 40px; }
+.zm-faq__item { background: var(--zm-card); border-radius: 6px; }
+.zm-faq__q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 22px 28px; text-align: left; font-size: 14px; font-weight: 500;
+}
+.zm-faq__icon { position: relative; flex: none; width: 22px; height: 22px; }
+.zm-faq__icon::before, .zm-faq__icon::after {
+  content: ''; position: absolute; left: 0; top: 50%; width: 100%; height: 1.5px; margin-top: -.75px;
+  background: var(--zm-navy); transition: transform .3s;
+}
+.zm-faq__icon::after { transform: rotate(90deg); }
+.zm-faq__item.is-open .zm-faq__icon::after { transform: rotate(0); }
+.zm-faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
+.zm-faq__item.is-open .zm-faq__a { grid-template-rows: 1fr; }
+.zm-faq__a > div { overflow: hidden; }
+.zm-faq__a .zm-text { padding: 0 28px 24px; max-width: 900px; }
+
+/* ---------- Форма обратной связи ---------- */
+.zm-lead-form { display: grid; grid-template-columns: 1fr 2.1fr; gap: 6px; }
+.zm-lead-form__img { border-radius: var(--zm-radius); overflow: hidden; min-height: 260px; }
+.zm-lead-form__img img { width: 100%; height: 100%; object-fit: cover; }
+.zm-lead-form__box { background: var(--zm-navy); color: #fff; border-radius: var(--zm-radius); padding: 28px; }
+.zm-lead-form__box .zm-h2 { color: #fff; font-size: clamp(34px, 5vw, 72px); }
+.zm-lead-form__sub { font-size: 13px; margin: 28px 0 14px; opacity: .9; }
+.zm-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.zm-field { position: relative; display: block; }
+.zm-field input, .zm-field textarea {
+  width: 100%; height: 44px; padding: 0 16px; border: 1.5px solid transparent; border-radius: 6px;
+  background: #d9dbe4; color: var(--zm-ink); font: inherit; font-size: 13px; outline: none; transition: border-color .2s, background .2s;
+}
+.zm-field input::placeholder { color: #7f8597; }
+.zm-field input:focus { background: #fff; border-color: var(--zm-navy-2); }
+.zm-field.is-error input { border-color: var(--zm-error); background: #fbeaea; }
+.zm-field__err { display: none; font-size: 11px; color: #ffb4b4; margin-top: 4px; }
+.zm-field.is-error .zm-field__err { display: block; }
+.zm-field--phone input { padding-left: 74px; }
+.zm-field--phone::before {
+  content: ''; position: absolute; left: 14px; top: 16px; width: 16px; height: 11px; border-radius: 2px;
+  background: linear-gradient(#fff 0 33%, #1c57c9 33% 66%, #d52b1e 66%); box-shadow: 0 0 0 1px rgba(0,0,0,.08);
+}
+.zm-field--phone::after { content: '+7'; position: absolute; left: 44px; top: 12px; font-size: 13px; color: var(--zm-ink); }
+.zm-form__submit { grid-column: 1 / -1; margin-top: 2px; }
+.zm-form__submit .zm-btn { width: 100%; background: var(--zm-bg); color: var(--zm-navy) !important; }
+.zm-form__submit .zm-btn:hover { background: #fff; }
+.zm-check { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; font-size: 11px; line-height: 1.35; cursor: pointer; }
+.zm-check input { flex: none; width: 16px; height: 16px; margin: 1px 0 0; accent-color: var(--zm-navy-2); cursor: pointer; }
+.zm-check a { text-decoration: underline; }
+.zm-check.is-error { color: #ffb4b4; }
+.zm-form__done { display: none; padding: 26px 0 6px; }
+.zm-form__done strong { display: block; font-size: 20px; font-weight: 500; margin-bottom: 6px; }
+.zm-form.is-sent .zm-form__grid { display: none; }
+.zm-form.is-sent .zm-form__done { display: block; }
+
+/* ---------- Слайдер (горизонтальная лента со scroll-snap) ---------- */
+.zm-slider { position: relative; }
+.zm-slider__track {
+  display: flex; gap: var(--zm-gap); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.zm-slider__track::-webkit-scrollbar { display: none; }
+.zm-slider__track > * { scroll-snap-align: start; flex: none; }
+
+/* ---------- Карточка новости ---------- */
+.zm-news-card { display: flex; flex-direction: column; border-radius: var(--zm-radius); overflow: hidden; background: var(--zm-card); transition: background .25s, color .25s; }
+.zm-news-card__img { position: relative; aspect-ratio: 16 / 10.5; overflow: hidden; }
+.zm-news-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.zm-news-card__tags { position: absolute; left: 14px; top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+.zm-news-card__body { flex: 1; padding: 18px 16px 20px; border-radius: var(--zm-radius) var(--zm-radius) 0 0; margin-top: -10px; position: relative; background: inherit; }
+.zm-news-card__date { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--zm-muted); transition: color .25s; }
+.zm-news-card__date svg { width: 13px; height: 13px; }
+.zm-news-card__title { font-size: 20px; font-weight: 500; line-height: 1.25; margin: 12px 0 8px; }
+.zm-news-card__text { font-size: 12.5px; line-height: 1.5; color: #4b5266; transition: color .25s;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.zm-news-card:hover { background: var(--zm-navy); color: #fff; }
+.zm-news-card:hover .zm-news-card__text, .zm-news-card:hover .zm-news-card__date { color: rgba(255,255,255,.75); }
+.zm-news-card:hover .zm-news-card__img img { transform: scale(1.03); }
+
+/* ---------- Банки-партнёры ---------- */
+.zm-banks { display: flex; flex-wrap: wrap; gap: var(--zm-gap); margin-top: 28px; }
+.zm-bank { flex: 1 1 200px; display: flex; align-items: center; gap: 14px; height: 88px; padding: 0 22px; border-radius: var(--zm-radius); background: #fff; font-size: 18px; font-weight: 500; }
+.zm-bank img { max-height: 44px; max-width: 120px; object-fit: contain; }
+.zm-bank i { flex: none; width: 48px; height: 48px; border-radius: 10px; background: var(--zm-bg); display: flex; align-items: center; justify-content: center; font-style: normal; font-size: 14px; font-weight: 600; color: var(--zm-navy-2); }
+
+/* ---------- Lightbox ---------- */
+.zm-lb { position: fixed; inset: 0; z-index: 99999; display: none; flex-direction: column; background: var(--zm-bg); color: var(--zm-ink); font-family: var(--zm-text); }
+.zm-lb.is-open { display: flex; }
+.zm-lb__bar { position: relative; display: flex; align-items: center; justify-content: center; height: 56px; border-bottom: 1px solid var(--zm-line); flex: none; }
+.zm-lb__back { position: absolute; left: 12px; top: 8px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
+.zm-lb__back:hover { background: var(--zm-card); }
+.zm-lb__back svg { width: 20px; height: 20px; }
+.zm-lb__bar-title { font-family: var(--zm-head); text-transform: uppercase; font-size: 18px; }
+.zm-lb__title { font-family: var(--zm-head); text-transform: uppercase; font-size: clamp(24px, 3vw, 36px); padding: 18px 20px 0; flex: none; }
+.zm-lb__stage { position: relative; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 18px 72px 24px; touch-action: pan-y; }
+.zm-lb__img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; user-select: none; -webkit-user-drag: none; }
+.zm-lb__nav { position: absolute; top: 50%; margin-top: -22px; width: 44px; height: 44px; border-radius: 6px; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(19,38,64,.08); }
+.zm-lb__nav svg { width: 16px; height: 16px; }
+.zm-lb__nav--prev { left: 16px; }
+.zm-lb__nav--next { right: 16px; }
+.zm-lb__count { position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); padding: 4px 14px; border-radius: 20px; background: rgba(255,255,255,.9); font-size: 12px; }
+.zm-lock { overflow: hidden !important; }
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 980px) {
+  .zm-section { padding: 44px 0; }
+  .zm-lead-form { grid-template-columns: 1fr; }
+  .zm-lead-form__img { display: none; }
+}
+@media (max-width: 640px) {
+  .zm { font-size: 14px; }
+  .zm-container { padding: 0 16px; }
+  .zm-section { padding: 36px 0; }
+  .zm-head-row { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+  .zm-form__grid { grid-template-columns: 1fr; }
+  .zm-lead-form__box { padding: 22px 16px; }
+  .zm-faq__q { padding: 18px 16px; }
+  .zm-faq__a .zm-text { padding: 0 16px 20px; }
+  .zm-select { width: calc(50% - 5px); }
+  .zm-tab { height: 42px; padding: 0 18px; font-size: 14px; }
+  .zm-lb__stage { padding: 12px 8px 20px; }
+  .zm-lb__nav { display: none; }
+  .zm-lb__count { bottom: 30px; }
+}
+
+</style>
+<style>
+.zm-buy-hero { position: relative; padding-bottom: 0; }
+.zm-buy-hero h1 { font-size: clamp(40px, 7.6vw, 108px); }
+.zm-buy-hero h1 span { display: block; }
+.zm-buy-hero__l2 { position: relative; z-index: 2; color: #fff; padding-top: 22px; }
+.zm-buy-hero__media { position: relative; margin-top: calc(-0.95 * clamp(40px, 7.6vw, 108px) - 22px); min-height: 600px; color: #fff; }
+.zm-buy-hero__media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-buy-hero__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,18,32,.35), rgba(10,18,32,.15) 50%, rgba(10,18,32,.45)); }
+.zm-buy-hero__in { position: relative; z-index: 1; min-height: 600px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; padding-top: calc(0.95 * clamp(40px, 7.6vw, 108px) + 46px); padding-bottom: 40px; }
+.zm-buy-hero__in .zm-lead { color: #fff; max-width: 320px; }
+
+.zm-cond { background: var(--zm-card); }
+.zm-cond__list { display: flex; flex-direction: column; gap: var(--zm-gap); }
+.zm-cond__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--zm-gap); }
+.zm-cond__row:nth-child(even) .zm-cond__img { order: 2; }
+.zm-cond__img { border-radius: var(--zm-radius); overflow: hidden; min-height: 320px; }
+.zm-cond__img img { width: 100%; height: 100%; object-fit: cover; }
+.zm-cond__card { display: flex; flex-direction: column; justify-content: center; padding: 32px 26px; border-radius: var(--zm-radius); background: #fff; }
+.zm-cond__card h2 { font-size: clamp(28px, 2.8vw, 36px); font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
+.zm-cond__lead { font-size: 13.5px; font-weight: 500; margin-bottom: 8px; }
+.zm-cond__card ul { margin: 0 0 12px 18px; list-style: disc; font-size: 13.5px; font-weight: 500; }
+.zm-cond__card ul li { padding: 2px 0; }
+.zm-cond__card .zm-btn { align-self: flex-start; margin-top: 24px; }
+
+
+@media (max-width: 980px) {
+  .zm-buy-hero__media, .zm-buy-hero__in { min-height: 480px; }
+}
+@media (max-width: 640px) {
+  .zm-buy-hero__l2 { color: var(--zm-navy); padding-top: 0; }
+  .zm-buy-hero__media { margin-top: 20px; }
+  .zm-buy-hero__media, .zm-buy-hero__in { min-height: 420px; }
+  .zm-buy-hero__in { padding-top: 24px; padding-bottom: 24px; }
+  .zm-cond__row { grid-template-columns: 1fr; }
+  .zm-cond__row .zm-cond__img { order: 0 !important; min-height: 0; aspect-ratio: 16 / 10; }
+  .zm-cond__card { padding: 24px 18px; }
+  .zm-cond__card .zm-btn { align-self: stretch; }
+}
+</style>
+
+<div class="zm">
+  <!-- Hero -->
+  <section class="zm-buy-hero">
+    <div class="zm-container">
+      <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Условия покупки</span></nav>
+      <h1 class="zm-h1"><span>Условия покупки квартиры</span> <span class="zm-buy-hero__l2">в ЖК «Московский»</span></h1>
+    </div>
+    <div class="zm-buy-hero__media">
+      <img src="../../assets/img/buy-hero.jpg" alt="Покупка квартиры в ЖК «Московский»">
+      <div class="zm-container zm-buy-hero__in">
+        <p class="zm-lead">Мы предлагаем несколько вариантов приобретения квартиры — выберите тот, который подойдёт именно вам. Все сделки проходят в соответствии с Федеральным законом № 214 и с использованием эскроу-счетов, что гарантирует безопасность ваших средств.</p>
+        <!-- Цифры-преимущества: текст можно менять -->
+        <ul class="zm-stats"><li>Ипотека от 6%</li><li>Рассрочка без %</li><li>Эскроу-счета</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Способы покупки -->
+  <section class="zm-section zm-cond">
+    <div class="zm-container">
+      <div class="zm-cond__list">
+        <div class="zm-cond__row" id="ipoteka">
+          <div class="zm-cond__img"><img src="../../assets/img/buy-mortgage.jpg" alt="Ипотека" loading="lazy"></div>
+          <div class="zm-cond__card">
+            <h2>Ипотека</h2>
+            <p class="zm-cond__lead">Подберём банк, рассчитаем платёж и оформим ипотеку под минимальную ставку.</p>
+            <ul><li>Ставка от 6%</li><li>Взнос от 30%</li><li>Семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul>
+            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <a class="zm-btn" href="/raschet-ipoteki">Рассчитать ипотеку</a>
+          </div>
+        </div>
+        <div class="zm-cond__row" id="rassrochka">
+          <div class="zm-cond__img"><img src="../../assets/img/buy-installment.jpg" alt="Рассрочка" loading="lazy"></div>
+          <div class="zm-cond__card">
+            <h2>Рассрочка</h2>
+            <p class="zm-cond__lead">Удобный способ оплаты напрямую от застройщика — без переплат и комиссий.</p>
+            <ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До ввода дома в эксплуатацию</li></ul>
+            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+          </div>
+        </div>
+        <div class="zm-cond__row" id="100-oplata">
+          <div class="zm-cond__img"><img src="../../assets/img/tower-sunset.jpg" alt="Единовременная оплата" loading="lazy"></div>
+          <div class="zm-cond__card">
+            <h2>Выгода при единовременной оплате</h2>
+            <p class="zm-cond__lead">Получите специальную цену и приоритет при выборе квартиры.</p>
+            <ul><li>Дополнительная скидка</li><li>Быстрое оформление</li><li>Минимум документов</li></ul>
+            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+          </div>
+        </div>
+        <div class="zm-cond__row" id="sertifikaty">
+          <div class="zm-cond__img"><img src="../../assets/img/concept-2.jpg" alt="Сертификаты" loading="lazy"></div>
+          <div class="zm-cond__card">
+            <h2>Сертификаты</h2>
+            <p class="zm-cond__lead">Оплатите часть стоимости квартиры жилищным сертификатом.</p>
+            <ul><li>Жилищные сертификаты</li><li>Военная ипотека</li><li>Региональные программы</li></ul>
+            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+          </div>
+        </div>
+        <div class="zm-cond__row" id="matkapital">
+          <div class="zm-cond__img"><img src="../../assets/img/concept-1.jpg" alt="Материнский капитал" loading="lazy"></div>
+          <div class="zm-cond__card">
+            <h2>Материнский капитал</h2>
+            <p class="zm-cond__lead">Используйте государственные программы: оплатите часть стоимости квартиры маткапиталом.</p>
+            <ul><li>Первоначальный взнос по ипотеке</li><li>Погашение части стоимости</li><li>Помощь с оформлением документов</li></ul>
+            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+          </div>
+        </div>
+        <div class="zm-cond__row" id="214-fz">
+          <div class="zm-cond__img"><img src="../../assets/img/buy-building.jpg" alt="Договор долевого участия" loading="lazy"></div>
+          <div class="zm-cond__card">
+            <h2>Покупка по договору долевого участия (214-ФЗ)</h2>
+            <p class="zm-cond__lead">Вы заключаете официальный договор ДДУ — застройщик несёт ответственность по обязательствам. Деньги хранятся на эскроу-счёте и перечисляются застройщику только после сдачи дома.</p>
+            <ul><li>Прозрачная сделка</li><li>Юридическая защита</li><li>Государственный контроль</li><li>Банковская гарантия</li></ul>
+            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Банки-партнёры: замените названия/добавьте логотипы (<img> вместо <i>) -->
+      <div class="zm-banks">
+        <div class="zm-bank"><i>Г</i>Генбанк</div>
+        <div class="zm-bank"><i>Р</i>РНКБ</div>
+        <div class="zm-bank"><i>В</i>ВТБ</div>
+        <div class="zm-bank"><i>Б</i>Банк-партнёр</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="zm-section">
+  <div class="zm-container">
+    <h2 class="zm-h2">Вопросы и ответы</h2>
+    <div class="zm-faq">
+      <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>01. Какой минимальный первоначальный взнос по ипотеке?</span><i class="zm-faq__icon"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+      <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>02. Можно ли использовать материнский капитал?</span><i class="zm-faq__icon"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+      <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>03. Есть ли рассрочка от застройщика и на каких условиях?</span><i class="zm-faq__icon"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+      <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>04. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+      <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>05. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+      <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>06. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <section class="zm-section" id="zm-form">
+  <div class="zm-container">
+    <div class="zm-lead-form">
+      <div class="zm-lead-form__img"><img src="../../assets/img/form-building.jpg" alt="ЖК «Московский»" loading="lazy"></div>
+      <div class="zm-lead-form__box">
+        <h2 class="zm-h2">Получите персональную консультацию по условиям покупки</h2>
+        <p class="zm-lead-form__sub">Менеджер перезвонит в течение 15–30 минут и ответит на все вопросы</p>
+        <form class="zm-form" data-zm-form data-form-name="Условия покупки — консультация" data-tilda-form="" data-webhook="" data-redirect="">
+          <div class="zm-form__grid">
+            <label class="zm-field"><input type="text" name="Name" placeholder="Как к вам обратиться?" autocomplete="name"><span class="zm-field__err">Укажите имя</span></label>
+            <label class="zm-field zm-field--phone"><input type="tel" name="Phone" placeholder="(000) 000-00-00" autocomplete="tel-national" inputmode="tel" data-zm-phone><span class="zm-field__err">Введите номер полностью</span></label>
+            <label class="zm-field"><input type="text" name="Time" placeholder="Удобное время звонка"></label>
+            <label class="zm-field"><input type="text" name="Comment" placeholder="Комментарий"></label>
+
+            <div class="zm-form__submit"><button class="zm-btn" type="submit">Получить подборку квартир</button></div>
+            <label class="zm-check"><input type="checkbox" name="Agree"><span>Я подтверждаю ознакомление с <a href="/politica" target="_blank" rel="noopener">политикой обработки персональных данных</a> и даю согласие на обработку персональных данных в порядке и на условиях, указанных в политике</span></label>
+          </div>
+          <div class="zm-form__done"><strong>Спасибо! Заявка отправлена</strong>Менеджер перезвонит вам в течение 15–30 минут.</div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+<script>
+/* ===== ЖК «Московский» — общий JS блоков: аккордеон, слайдеры, формы, lightbox ===== */
+(function () {
+  if (window.ZM) { window.ZM.init(); return; }
+
+  var ICON = {
+    prev: '<svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    next: '<svg viewBox="0 0 16 16" fill="none"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    cal: '<svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="currentColor"/><path d="M1.5 5.5h11M4.5 1v3M9.5 1v3M4 8h1M6.5 8h1M9 8h1M4 10.5h1M6.5 10.5h1" stroke="currentColor"/></svg>'
+  };
+
+  function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function fmt(n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+
+  /* ---------- Аккордеон ---------- */
+  function initFaq(root) {
+    $all('.zm-faq__item', root).forEach(function (item) {
+      if (item.__zm) return; item.__zm = 1;
+      var q = item.querySelector('.zm-faq__q');
+      q.setAttribute('aria-expanded', 'false');
+      q.addEventListener('click', function () {
+        var open = item.classList.toggle('is-open');
+        q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+  }
+
+  /* ---------- Слайдер: [data-zm-slider] > .zm-slider__track + [data-zm-prev]/[data-zm-next] ---------- */
+  function initSlider(el) {
+    if (el.__zm) return; el.__zm = 1;
+    var track = el.querySelector('.zm-slider__track');
+    var prev = el.querySelector('[data-zm-prev]');
+    var next = el.querySelector('[data-zm-next]');
+    var count = el.querySelector('[data-zm-count]');
+    if (!track) return;
+    function step() {
+      var first = track.children[0];
+      if (!first) return track.clientWidth;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return first.getBoundingClientRect().width + gap;
+    }
+    function update() {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= max;
+      if (count) {
+        var i = Math.round(track.scrollLeft / step()) + 1;
+        count.textContent = Math.min(i, track.children.length) + '/' + track.children.length;
+      }
+    }
+    if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    el.__zmUpdate = update;
+    update();
+  }
+
+  /* ---------- Телефон: маска +7 (000) 000-00-00 ---------- */
+  function phoneDigits(v) {
+    var d = String(v).replace(/\D/g, '');
+    if (d.length > 10 && (d[0] === '7' || d[0] === '8')) d = d.slice(1);
+    return d.slice(0, 10);
+  }
+  function phoneMask(input) {
+    input.addEventListener('input', function () {
+      var d = phoneDigits(input.value), out = '';
+      if (d.length) out = '(' + d.slice(0, 3);
+      if (d.length >= 3) out += ') ' + d.slice(3, 6);
+      if (d.length >= 6) out += '-' + d.slice(6, 8);
+      if (d.length >= 8) out += '-' + d.slice(8, 10);
+      input.value = out;
+    });
+  }
+
+  /* ---------- Формы ----------
+     Куда отправлять заявку — атрибуты на <form>:
+       data-tilda-form="rec123456789"  — id блока со штатной формой Tilda на этой же странице (рекомендуется:
+                                          Tilda сама отправит заявку в подключённые CRM / почту / Telegram);
+       data-webhook="https://..."      — или свой обработчик (POST, FormData);
+       data-redirect="/spasibo"        — страница «Спасибо» после отправки (необязательно).                   */
+  function sendToTilda(recId, data) {
+    var rec = document.getElementById(String(recId).replace(/^#/, ''));
+    var form = rec && rec.querySelector('form');
+    if (!form) return false;
+    Object.keys(data).forEach(function (key) {
+      var input = form.querySelector('[name="' + key + '"]');
+      if (input) {
+        input.value = data[key];
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+    var btn = form.querySelector('[type="submit"], .t-submit');
+    if (btn) btn.click(); else if (form.requestSubmit) form.requestSubmit(); else form.submit();
+    return true;
+  }
+
+  function initForm(form) {
+    if (form.__zm) return; form.__zm = 1;
+    form.setAttribute('novalidate', '');
+    $all('input[data-zm-phone]', form).forEach(phoneMask);
+
+    function setErr(field, on) { if (field) field.classList.toggle('is-error', !!on); }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ok = true;
+      var name = form.querySelector('[name="Name"]');
+      var phone = form.querySelector('[name="Phone"]');
+      var agree = form.querySelector('[name="Agree"]');
+      if (name) { var bad = name.value.trim().length < 2; setErr(name.closest('.zm-field'), bad); ok = ok && !bad; }
+      if (phone) { var badP = phoneDigits(phone.value).length !== 10; setErr(phone.closest('.zm-field'), badP); ok = ok && !badP; }
+      if (agree) { setErr(agree.closest('.zm-check'), !agree.checked); ok = ok && agree.checked; }
+      if (!ok) { var first = form.querySelector('.is-error input'); if (first) first.focus(); return; }
+
+      var data = {};
+      $all('input, textarea, select', form).forEach(function (i) {
+        if (!i.name || i.name === 'Agree') return;
+        data[i.name] = i.name === 'Phone' ? '+7 ' + i.value : i.value;
+      });
+      data.Form = form.getAttribute('data-form-name') || document.title;
+      data.Page = location.href;
+
+      var btn = form.querySelector('[type="submit"]');
+      if (btn) btn.disabled = true;
+      function done() {
+        var redirect = form.getAttribute('data-redirect');
+        if (redirect) { location.href = redirect; return; }
+        form.classList.add('is-sent');
+        if (btn) btn.disabled = false;
+      }
+
+      var rec = form.getAttribute('data-tilda-form');
+      var hook = form.getAttribute('data-webhook');
+      if (rec && sendToTilda(rec, data)) return done();
+      if (hook) {
+        var fd = new FormData();
+        Object.keys(data).forEach(function (k) { fd.append(k, data[k]); });
+        fetch(hook, { method: 'POST', body: fd, mode: 'no-cors' }).then(done, function () {
+          if (btn) btn.disabled = false;
+          alert('Не удалось отправить заявку. Пожалуйста, позвоните нам.');
+        });
+        return;
+      }
+      if (window.console) console.info('[ZM] Заявка (получатель не настроен):', data);
+      done();
+    });
+
+    $all('input', form).forEach(function (i) {
+      i.addEventListener('input', function () {
+        setErr(i.closest('.zm-field'), false);
+        if (i.name === 'Agree') setErr(i.closest('.zm-check'), false);
+      });
+      i.addEventListener('change', function () { if (i.name === 'Agree') setErr(i.closest('.zm-check'), false); });
+    });
+  }
+
+  /* ---------- Lightbox ---------- */
+  var lb = null, lbState = { images: [], index: 0 };
+  function buildLightbox() {
+    lb = document.createElement('div');
+    lb.className = 'zm zm-lb';
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+    lb.innerHTML =
+      '<div class="zm-lb__bar"><button class="zm-lb__back" type="button" aria-label="Закрыть">' +
+      '<svg viewBox="0 0 20 20" fill="none"><path d="M12.5 4 6.5 10l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '</button><div class="zm-lb__bar-title"></div></div>' +
+      '<div class="zm-lb__title"></div>' +
+      '<div class="zm-lb__stage"><img class="zm-lb__img" alt="">' +
+      '<button class="zm-lb__nav zm-lb__nav--prev" type="button" aria-label="Назад">' + ICON.prev + '</button>' +
+      '<button class="zm-lb__nav zm-lb__nav--next" type="button" aria-label="Вперёд">' + ICON.next + '</button>' +
+      '<div class="zm-lb__count"></div></div>';
+    document.body.appendChild(lb);
+    lb.querySelector('.zm-lb__back').addEventListener('click', closeLightbox);
+    lb.querySelector('.zm-lb__nav--prev').addEventListener('click', function () { showLb(lbState.index - 1); });
+    lb.querySelector('.zm-lb__nav--next').addEventListener('click', function () { showLb(lbState.index + 1); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showLb(lbState.index - 1);
+      if (e.key === 'ArrowRight') showLb(lbState.index + 1);
+    });
+    var stage = lb.querySelector('.zm-lb__stage'), x0 = null;
+    stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) showLb(lbState.index + (dx < 0 ? 1 : -1));
+    });
+  }
+  function showLb(i) {
+    var n = lbState.images.length;
+    lbState.index = (i + n) % n;
+    lb.querySelector('.zm-lb__img').src = lbState.images[lbState.index];
+    lb.querySelector('.zm-lb__count').textContent = (lbState.index + 1) + '/' + n;
+    var single = n < 2;
+    lb.querySelector('.zm-lb__nav--prev').style.display = single ? 'none' : '';
+    lb.querySelector('.zm-lb__nav--next').style.display = single ? 'none' : '';
+  }
+  function openLightbox(opts) {
+    if (!lb) buildLightbox();
+    lbState.images = opts.images || [];
+    if (!lbState.images.length) return;
+    lb.querySelector('.zm-lb__bar-title').textContent = opts.barTitle || '';
+    lb.querySelector('.zm-lb__title').textContent = opts.title || '';
+    lb.querySelector('.zm-lb__title').style.display = opts.title ? '' : 'none';
+    showLb(opts.index || 0);
+    lb.classList.add('is-open');
+    document.documentElement.classList.add('zm-lock');
+    document.body.classList.add('zm-lock');
+    lb.querySelector('.zm-lb__back').focus();
+  }
+  function closeLightbox() {
+    lb.classList.remove('is-open');
+    document.documentElement.classList.remove('zm-lock');
+    document.body.classList.remove('zm-lock');
+  }
+
+  /* ---------- Карточка новости (общая разметка для списка, «Читайте также») ---------- */
+  var TYPE = { news: 'Новость', promo: 'Акция', article: 'Статья' };
+  function newsCard(n) {
+    var tags = '<span class="zm-pill">' + esc(TYPE[n.type] || n.type) + '</span>';
+    if (n.type === 'promo' && n.until) tags += '<span class="zm-pill zm-pill--blue">До ' + esc(n.until) + '</span>';
+    return '<a class="zm-news-card" href="' + esc(n.url) + '">' +
+      '<div class="zm-news-card__img"><img src="' + esc(n.img) + '" alt="' + esc(n.title) + '" loading="lazy">' +
+      '<div class="zm-news-card__tags">' + tags + '</div></div>' +
+      '<div class="zm-news-card__body"><div class="zm-news-card__date">' + ICON.cal + esc(n.date) + '</div>' +
+      '<h3 class="zm-news-card__title">' + esc(n.title) + '</h3>' +
+      '<p class="zm-news-card__text">' + esc(n.text) + '</p></div></a>';
+  }
+
+  /* Список новостей хранится в одном месте — в блоке страницы /novosti (<script id="zm-news-data">).
+     Другие страницы подтягивают его оттуда, а при ошибке используют свой запасной список. */
+  function loadNews(url, fallback) {
+    var local = document.getElementById('zm-news-data');
+    if (local) { try { return Promise.resolve(JSON.parse(local.textContent)); } catch (e) {} }
+    return fetch(url, { credentials: 'same-origin' })
+      .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+      .then(function (html) {
+        var m = html.match(/<script[^>]+id="zm-news-data"[^>]*>([\s\S]*?)<\/script>/);
+        if (!m) throw 0;
+        var base = new URL(url, location.href);
+        return JSON.parse(m[1]).map(function (n) {
+          if (n.img) n.img = new URL(n.img, base).href; // относительные ссылки — от страницы, откуда взят список
+          return n;
+        });
+      })
+      .catch(function () { return fallback || []; });
+  }
+
+  function init(scope) {
+    var roots = scope ? [scope] : $all('.zm');
+    roots.forEach(function (root) {
+      initFaq(root);
+      $all('[data-zm-slider]', root).forEach(initSlider);
+      $all('form[data-zm-form]', root).forEach(initForm);
+    });
+  }
+
+  window.ZM = { init: init, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); });
+  else init();
+})();
+
+</script>
+
+
+<footer class="pv-foot"><div class="pv-foot__in"><b>Свяжитесь с нами</b>Республика Крым, г. Симферополь, проспект Победы, офис продаж ЖК «Московский» · +7 (978) 835-53-53<br><small>Подвал — заглушка превью, на сайте остаётся подвал Tilda.</small></div></footer>
+<script>
+  /* Превью: ссылки вида /novosti/... ведут на страницы внутри папки preview */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="/"]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    e.preventDefault();
+    if (href === '/') { location.href = '../../preview/../index.html'; return; }
+    if (href.indexOf('/politica') === 0) { alert('Здесь откроется страница политики на сайте'); return; }
+    location.href = '../../preview/' + href.replace(/^\//, '').replace(/\/?$/, '/');
+  });
+</script>
+</body>
+</html>

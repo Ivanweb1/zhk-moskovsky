@@ -1,0 +1,144 @@
+<!--meta
+title: Новости
+url: /novosti
+-->
+<style>
+.zm-news-tabs { margin-bottom: 24px; }
+.zm-news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--zm-gap); }
+.zm-news-empty { grid-column: 1 / -1; padding: 40px 0; color: var(--zm-muted); }
+.zm-pager { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; }
+.zm-pager__pages { display: flex; gap: 6px; }
+.zm-pager__num { min-width: 44px; height: 44px; padding: 0 6px; border-radius: 6px; border: 1px solid #c3c7d3; font-size: 13px; color: var(--zm-muted); display: inline-flex; align-items: center; justify-content: center; transition: background .2s, color .2s, border-color .2s; }
+.zm-pager__num:hover { border-color: var(--zm-navy); color: var(--zm-navy); }
+.zm-pager__num.is-active { background: var(--zm-navy); border-color: var(--zm-navy); color: #fff; }
+.zm-pager__dots { border-color: #c3c7d3; pointer-events: none; }
+.zm-pager [hidden] { display: none !important; }
+@media (max-width: 980px) { .zm-news-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) {
+  .zm-news-grid { grid-template-columns: 1fr; }
+  .zm-news-tabs { display: flex; }
+  .zm-pager { flex-direction: column; align-items: stretch; }
+  .zm-pager .zm-btn { width: 100%; }
+  .zm-pager__pages { justify-content: center; flex-wrap: wrap; }
+  .zm-pager__num { min-width: 40px; height: 40px; }
+}
+</style>
+
+<div class="zm" id="zm-news-page">
+  <section class="zm-section zm-section--tight">
+    <div class="zm-container">
+      <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Новости</span></nav>
+      <div class="zm-head-row">
+        <h1 class="zm-h1">Новости</h1>
+        <p class="zm-lead">Актуальные новости, акции и полезные статьи о ЖК&nbsp;«Московский»</p>
+      </div>
+      <div class="zm-tabs zm-news-tabs" role="tablist">
+        <button class="zm-tab is-active" type="button" data-type="">Все</button>
+        <button class="zm-tab" type="button" data-type="news">Новости</button>
+        <button class="zm-tab" type="button" data-type="promo">Акции</button>
+        <button class="zm-tab" type="button" data-type="article">Статьи</button>
+      </div>
+      <div class="zm-news-grid" data-grid></div>
+      <div class="zm-pager">
+        <button class="zm-btn" type="button" data-more>Показать ещё</button>
+        <div class="zm-pager__pages" data-pages></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ======== СПИСОК НОВОСТЕЙ (единственное место, где он хранится) ========
+     Новые новости добавляйте В НАЧАЛО списка. Поля:
+       slug  — адрес страницы новости: /novosti/<slug> (латиница, через дефис)
+       type  — news (новость) | promo (акция) | article (статья)
+       until — для акции: до какой даты действует (ДД.ММ.ГГ)
+       date  — дата публикации (ДД.ММ.ГГ, можно с временем)
+       img   — ссылка на картинку
+     Главная и «Читайте также» на страницах новостей подтягивают этот список отсюда. -->
+<script type="application/json" id="zm-news-data">
+[
+  { "slug": "nazvanie-novosti", "type": "promo", "until": "01.01.27", "date": "01.10.26 16:15", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:news-building}}" },
+  { "slug": "novost-2", "type": "news", "date": "25.09.26 12:00", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:tower-sunset}}" },
+  { "slug": "statya-3", "type": "article", "date": "18.09.26 10:30", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:buy-mortgage}}" },
+  { "slug": "novost-4", "type": "news", "date": "10.09.26 09:00", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:build-1}}" },
+  { "slug": "akciya-5", "type": "promo", "until": "31.12.26", "date": "01.09.26 16:15", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:arch-2}}" },
+  { "slug": "statya-6", "type": "article", "date": "20.08.26 11:00", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:concept-2}}" },
+  { "slug": "novost-7", "type": "news", "date": "05.08.26 15:40", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:build-2}}" },
+  { "slug": "novost-8", "type": "news", "date": "22.07.26 13:20", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:tower}}" },
+  { "slug": "statya-9", "type": "article", "date": "10.07.26 10:00", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:buy-installment}}" },
+  { "slug": "akciya-10", "type": "promo", "until": "01.09.26", "date": "01.07.26 09:00", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:arch-1}}" },
+  { "slug": "novost-11", "type": "news", "date": "15.06.26 12:00", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:build-3}}" },
+  { "slug": "statya-12", "type": "article", "date": "01.06.26 10:00", "title": "Lorem ipsum dolor sit amet consectetur", "text": "Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.", "img": "{{img:concept-4}}" }
+]
+</script>
+
+<script>
+(function () {
+  var PER_PAGE = 9; // карточек на странице
+
+  var root = document.getElementById('zm-news-page');
+  if (!root || root.__news) return; root.__news = 1;
+  var all = [];
+  try { all = JSON.parse(document.getElementById('zm-news-data').textContent); } catch (e) {}
+  all.forEach(function (n) { n.url = '/novosti/' + n.slug; });
+
+  var grid = root.querySelector('[data-grid]');
+  var pages = root.querySelector('[data-pages]');
+  var more = root.querySelector('[data-more]');
+  var state = { type: '', page: 1, shown: 1 }; // shown — сколько страниц подгружено «Показать ещё»
+
+  function filtered() { return all.filter(function (n) { return !state.type || n.type === state.type; }); }
+
+  function pageList(cur, total) {
+    if (total <= 5) return Array.from({ length: total }, function (_, i) { return i + 1; });
+    var out = [1];
+    var from = Math.max(2, cur - 1), to = Math.min(total - 1, cur + 1);
+    if (cur <= 3) { from = 2; to = 3; }
+    if (cur >= total - 2) { from = total - 2; to = total - 1; }
+    if (from > 2) out.push('…');
+    for (var i = from; i <= to; i++) out.push(i);
+    if (to < total - 1) out.push('…');
+    out.push(total);
+    return out;
+  }
+
+  function render(scrollTop) {
+    var list = filtered();
+    var total = Math.max(1, Math.ceil(list.length / PER_PAGE));
+    var start = (state.page - 1) * PER_PAGE;
+    var end = (state.page - 1 + state.shown) * PER_PAGE;
+    var slice = list.slice(start, end);
+    grid.innerHTML = slice.length ? slice.map(window.ZM.newsCard).join('') : '<p class="zm-news-empty">В этой категории пока нет публикаций.</p>';
+
+    var last = state.page + state.shown - 1;
+    more.hidden = last >= total;
+    var prevIcon = window.ZM.icon.prev, nextIcon = window.ZM.icon.next;
+    pages.hidden = total < 2;
+    pages.innerHTML =
+      '<button class="zm-arrow" type="button" data-go="' + (state.page - 1) + '" aria-label="Предыдущая страница"' + (state.page <= 1 ? ' disabled' : '') + '>' + prevIcon + '</button>' +
+      pageList(last, total).map(function (p) {
+        if (p === '…') return '<span class="zm-pager__num zm-pager__dots">…</span>';
+        var active = p >= state.page && p <= last;
+        return '<button class="zm-pager__num' + (active ? ' is-active' : '') + '" type="button" data-go="' + p + '">' + p + '</button>';
+      }).join('') +
+      '<button class="zm-arrow" type="button" data-go="' + (last + 1) + '" aria-label="Следующая страница"' + (last >= total ? ' disabled' : '') + '>' + nextIcon + '</button>';
+    if (scrollTop) root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  pages.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-go]');
+    if (!b || b.disabled) return;
+    state.page = +b.getAttribute('data-go'); state.shown = 1;
+    render(true);
+  });
+  more.addEventListener('click', function () { state.shown++; render(false); });
+  root.querySelectorAll('[data-type]').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      root.querySelectorAll('[data-type]').forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+      state.type = tab.getAttribute('data-type'); state.page = 1; state.shown = 1;
+      render(false);
+    });
+  });
+  render(false);
+})();
+</script>

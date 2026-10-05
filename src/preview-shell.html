@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}} — ЖК «Московский» (превью)</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Poiret+One&display=swap">
+<style>
+  /* Только для превью: имитация шапки и подвала Tilda. В Tilda остаются ваши шапка и подвал. */
+  html, body { margin: 0; background: #f3f3f7; }
+  .pv-head { position: sticky; top: 0; z-index: 50; padding: 10px 16px; background: #f3f3f7; }
+  .pv-head__in { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; gap: 28px; padding: 10px 20px; border-radius: 10px; background: #e5e7f2; font: 500 13px/1.2 Manrope, Arial, sans-serif; color: #132640; overflow-x: auto; white-space: nowrap; }
+  .pv-head a { color: inherit; text-decoration: none; }
+  .pv-head a:hover { color: #1f3d6b; }
+  .pv-logo { font-weight: 600; letter-spacing: .04em; color: #b08d4f !important; margin-right: auto; }
+  .pv-foot { margin-top: 40px; padding: 48px 20px; background: #132640; color: #fff; font: 13px/1.6 Manrope, Arial, sans-serif; }
+  .pv-foot__in { max-width: 1200px; margin: 0 auto; }
+  .pv-foot b { display: block; font: 400 40px/1 'Poiret One', serif; text-transform: uppercase; margin-bottom: 16px; }
+</style>
+<script>window.ZM_PREVIEW_ROOT = '{{root}}';</script>
+</head>
+<body>
+<header class="pv-head"><nav class="pv-head__in">
+  <a class="pv-logo" href="{{root}}../index.html">ЖК МОСКОВСКИЙ</a>
+  <a href="{{root}}o-proekte/">О проекте</a>
+  <a href="{{root}}hod-stroitelstva/">Ход строительства</a>
+  <a href="{{root}}usloviya-pokupki/">Условия покупки</a>
+  <a href="{{root}}raschet-ipoteki/">Расчёт ипотеки</a>
+  <a href="{{root}}dokumenty/">Документы</a>
+  <a href="{{root}}novosti/">Новости</a>
+  <a href="tel:+79788355353">+7 978 835-53-53</a>
+</nav></header>
+{{content}}
+<footer class="pv-foot"><div class="pv-foot__in"><b>Свяжитесь с нами</b>Республика Крым, г. Симферополь, проспект Победы, офис продаж ЖК «Московский» · +7 (978) 835-53-53<br><small>Подвал — заглушка превью, на сайте остаётся подвал Tilda.</small></div></footer>
+<script>
+  /* Превью: ссылки вида /novosti/... ведут на страницы внутри папки preview */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="/"]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    e.preventDefault();
+    if (href === '/') { location.href = '{{root}}../index.html'; return; }
+    if (href.indexOf('/politica') === 0) { alert('Здесь откроется страница политики на сайте'); return; }
+    location.href = '{{root}}' + href.replace(/^\//, '').replace(/\/?$/, '/');
+  });
+</script>
+</body>
+</html>

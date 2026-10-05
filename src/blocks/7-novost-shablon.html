@@ -1,0 +1,165 @@
+<!--meta
+title: Шаблон новости
+url: /novosti/nazvanie-novosti
+-->
+<style>
+.zm-post-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 12px; border-radius: var(--zm-radius-lg); background: var(--zm-navy); color: #fff; }
+.zm-post-hero__img { border-radius: var(--zm-radius); overflow: hidden; aspect-ratio: 4 / 3; }
+.zm-post-hero__img img { width: 100%; height: 100%; object-fit: cover; }
+.zm-post-hero__body { display: flex; flex-direction: column; padding: 4px 4px 10px 0; }
+.zm-post-back { align-self: flex-end; display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 22px; border-radius: 6px; background: #fff; color: var(--zm-navy) !important; font-size: 13px; transition: background .2s; }
+.zm-post-back:hover { background: var(--zm-bg); }
+.zm-post-back svg { width: 14px; height: 14px; }
+.zm-post-hero__tags { display: flex; gap: 8px; margin: auto 0 22px; padding-top: 40px; }
+.zm-post-hero h1 { font-size: clamp(30px, 3.6vw, 48px); font-weight: 500; line-height: 1.1; margin-bottom: 14px; }
+.zm-post-hero__sub { font-size: 14px; line-height: 1.5; opacity: .9; }
+.zm-post-hero__date { display: flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 12px; opacity: .7; }
+.zm-post-hero__date svg { width: 13px; height: 13px; }
+
+.zm-post { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.zm-post__text { font-size: 14px; line-height: 1.55; }
+.zm-post__text h2 { font-size: clamp(24px, 2.6vw, 34px); font-weight: 500; line-height: 1.15; margin: 36px 0 16px; }
+.zm-post__text h2:first-child { margin-top: 0; }
+.zm-post__text p { margin: 0 0 12px; }
+.zm-post__text ul, .zm-post__text ol { margin: 0 0 14px 20px; }
+.zm-post__text ul { list-style: disc; }
+.zm-post__text li { margin-bottom: 6px; }
+.zm-post__text b, .zm-post__text strong { font-weight: 600; }
+.zm-post__text a { text-decoration: underline; }
+.zm-post__note { padding: 18px 20px; border-radius: var(--zm-radius); background: var(--zm-card); margin: 0 0 12px; }
+.zm-post__note b { display: block; font-family: var(--zm-head); font-weight: 400; font-size: 34px; line-height: 1; margin-bottom: 10px; }
+.zm-post__gal { position: sticky; top: 90px; }
+.zm-post__gal .zm-slider__track > * { width: 100%; }
+.zm-post__gal figure { margin: 0; border-radius: var(--zm-radius); overflow: hidden; aspect-ratio: 4 / 3; cursor: zoom-in; }
+.zm-post__gal figure img { width: 100%; height: 100%; object-fit: cover; }
+.zm-post__gal .zm-arrow { position: absolute; top: 50%; margin-top: -22px; }
+.zm-post__gal [data-zm-prev] { left: 14px; }
+.zm-post__gal [data-zm-next] { right: 14px; }
+.zm-post__gal [data-zm-count] { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); padding: 4px 14px; border-radius: 20px; background: rgba(255,255,255,.9); font-size: 12px; }
+
+.zm-more { display: grid; grid-template-columns: 1fr 2fr; gap: 28px; }
+.zm-more__head { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+.zm-more .zm-slider__track > * { width: calc((100% - var(--zm-gap)) / 2); }
+
+@media (max-width: 980px) {
+  .zm-post-hero, .zm-post { grid-template-columns: 1fr; }
+  .zm-post__gal { position: relative; top: 0; order: -1; }
+  .zm-more { grid-template-columns: 1fr; }
+  .zm-more__head { flex-direction: row; align-items: flex-end; }
+}
+@media (max-width: 640px) {
+  .zm-post-hero { padding: 8px; gap: 16px; }
+  .zm-post-hero__body { padding: 0 8px 12px; }
+  .zm-post-back { align-self: flex-start; order: -1; }
+  .zm-post-hero__tags { padding-top: 20px; margin-top: 0; }
+  .zm-more .zm-slider__track > * { width: 86%; }
+  .zm-more__head .zm-h2 { font-size: 40px; }
+}
+</style>
+
+<div class="zm" id="zm-post-page">
+  <section class="zm-section zm-section--tight">
+    <div class="zm-container">
+      <!-- ===== ШАПКА НОВОСТИ: заменяйте заголовок, подзаголовок, дату, категорию, картинку ===== -->
+      <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><a href="/novosti">Новости</a><span>Lorem ipsum dolor sit amet consectetur</span></nav>
+      <article>
+        <header class="zm-post-hero">
+          <div class="zm-post-hero__img"><img src="{{img:news-building}}" alt="Lorem ipsum dolor sit amet consectetur"></div>
+          <div class="zm-post-hero__body">
+            <a class="zm-post-back" href="/novosti"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Назад к новостям</a>
+            <div class="zm-post-hero__tags">
+              <span class="zm-pill">Акция</span>
+              <span class="zm-pill zm-pill--blue">До 01.01.27</span> <!-- только для акций, для новостей и статей удалите строку -->
+            </div>
+            <h1>Lorem ipsum dolor sit amet consectetur</h1>
+            <p class="zm-post-hero__sub">Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non. Condimentum odio dolor odio gravida pharetra ultricies tempus. Dictumst feugiat.</p>
+            <time class="zm-post-hero__date" datetime="2026-10-01"><svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="currentColor"/><path d="M1.5 5.5h11M4.5 1v3M9.5 1v3" stroke="currentColor"/></svg>01.10.26</time>
+          </div>
+        </header>
+
+        <div class="zm-post" style="margin-top:28px">
+          <!-- ===== ТЕКСТ НОВОСТИ: абзацы <p>, подзаголовки <h2>, списки <ul>/<ol>, <b>жирный</b>, <i>курсив</i> ===== -->
+          <div class="zm-post__text">
+            <h2>Lorem ipsum dolor sit amet consectetur</h2>
+            <p>Lorem ipsum dolor sit amet consectetur. Augue interdum nibh aliquet dolor sed in quam et iaculis. A est aliquet senectus diam. Justo metus nibh nam accumsan egestas. Fringilla interdum maecenas bibendum purus duis proin elementum convallis. Sapien vivamus convallis facilisis nunc cras morbi arcu proin rhoncus.</p>
+            <p>Lorem ipsum dolor sit amet consectetur. Augue interdum nibh aliquet dolor sed in quam et iaculis. A est aliquet senectus diam. <b>Justo metus nibh nam accumsan egestas.</b> Fringilla interdum maecenas bibendum purus duis proin elementum convallis. In sapien ut faucibus ridiculus quis.</p>
+            <h2>Lorem ipsum dolor sit amet consectetur</h2>
+            <ul>
+              <li>Lorem ipsum dolor sit amet consectetur. Augue interdum nibh aliquet dolor sed in quam et iaculis.</li>
+              <li>A est aliquet senectus diam. Justo metus nibh nam accumsan egestas. Fringilla interdum maecenas.</li>
+              <li>Lorem ipsum dolor sit amet consectetur. Augue interdum nibh aliquet dolor sed in quam et iaculis.</li>
+              <li>A est aliquet senectus diam. Justo metus nibh nam accumsan egestas. Fringilla interdum maecenas.</li>
+            </ul>
+            <h2>Lorem ipsum dolor sit amet consectetur</h2>
+            <div class="zm-post__note"><b>01</b>Lorem ipsum dolor sit amet consectetur. Augue interdum nibh aliquet dolor sed in quam et iaculis. A est aliquet senectus diam. Justo metus nibh nam accumsan egestas.</div>
+            <div class="zm-post__note"><b>02</b>Lorem ipsum dolor sit amet consectetur. Augue interdum nibh aliquet dolor sed in quam et iaculis. A est aliquet senectus diam. Justo metus nibh nam accumsan egestas.</div>
+            <p><i>Lorem ipsum dolor sit amet consectetur. Sapien vivamus convallis facilisis nunc cras morbi arcu proin rhoncus.</i></p>
+          </div>
+
+          <!-- ===== ФОТО НОВОСТИ: добавьте/удалите <figure>; клик открывает фото на весь экран ===== -->
+          <div class="zm-post__gal zm-slider" data-zm-slider>
+            <div class="zm-slider__track">
+              <figure><img src="{{img:news-building}}" alt="" loading="lazy"></figure>
+              <figure><img src="{{img:tower-sunset}}" alt="" loading="lazy"></figure>
+              <figure><img src="{{img:arch-2}}" alt="" loading="lazy"></figure>
+              <figure><img src="{{img:buy-building}}" alt="" loading="lazy"></figure>
+            </div>
+            <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 16 16" fill="none"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <span data-zm-count></span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Читайте также: карточки подтягиваются из списка на странице /novosti -->
+  <section class="zm-section">
+    <div class="zm-container">
+      <div class="zm-more zm-slider" data-zm-slider data-more>
+        <div class="zm-more__head">
+          <h2 class="zm-h2">Читайте<br>также</h2>
+          <div class="zm-arrows">
+            <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 16 16" fill="none"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="zm-slider__track" data-more-track></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var NEWS_PAGE = '/novosti'; // откуда брать список новостей для «Читайте также»
+  var COUNT = 6;              // сколько карточек в слайдере
+
+  var root = document.getElementById('zm-post-page');
+  if (!root || root.__post) return; root.__post = 1;
+
+  // клик по фото — полноэкранный просмотр
+  var figs = root.querySelectorAll('.zm-post__gal figure img');
+  var srcs = Array.prototype.map.call(figs, function (i) { return i.currentSrc || i.src; });
+  Array.prototype.forEach.call(figs, function (img, i) {
+    img.parentNode.addEventListener('click', function () {
+      window.ZM.lightbox({ barTitle: 'Новости', images: srcs, index: i });
+    });
+  });
+
+  var slug = location.pathname.replace(/\/+$/, '').split('/').pop();
+  var url = window.ZM_PREVIEW_ROOT ? window.ZM_PREVIEW_ROOT + 'novosti/' : NEWS_PAGE;
+  var fallback = [
+    { slug: 'novost-2', type: 'news', date: '25.09.26 12:00', title: 'Lorem ipsum dolor sit amet consectetur', text: 'Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non.', img: '{{img:tower-sunset}}' },
+    { slug: 'statya-3', type: 'article', date: '18.09.26 10:30', title: 'Lorem ipsum dolor sit amet consectetur', text: 'Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non.', img: '{{img:buy-mortgage}}' }
+  ];
+  var holder = root.querySelector('[data-more]');
+  window.ZM.loadNews(url, fallback).then(function (list) {
+    list = list.filter(function (n) { return n.slug !== slug; }).slice(0, COUNT);
+    if (!list.length) { holder.closest('.zm-section').hidden = true; return; }
+    list.forEach(function (n) { n.url = '/novosti/' + n.slug; });
+    root.querySelector('[data-more-track]').innerHTML = list.map(window.ZM.newsCard).join('');
+    if (holder.__zmUpdate) holder.__zmUpdate();
+  });
+})();
+</script>

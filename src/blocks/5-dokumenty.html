@@ -1,0 +1,88 @@
+<!--meta
+title: Документы
+url: /dokumenty
+-->
+<style>
+.zm-docs-sub { font-size: 13px; margin: 18px 0 28px; }
+.zm-docs { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--zm-gap); }
+.zm-doc { display: flex; flex-direction: column; gap: 10px; padding: 8px 10px 12px 8px; border-radius: var(--zm-radius); background: #fff; transition: box-shadow .2s; }
+.zm-doc:hover { box-shadow: 0 6px 22px rgba(19,38,64,.08); }
+.zm-doc .zm-pill { align-self: flex-start; }
+.zm-doc__row { display: grid; grid-template-columns: 34px 1fr 44px; gap: 12px; align-items: center; padding-left: 4px; }
+.zm-doc__ico { position: relative; width: 34px; height: 42px; border-radius: 4px 12px 4px 4px; background: var(--zm-navy); color: #fff; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; font-size: 9.5px; letter-spacing: .02em; }
+.zm-doc__ico::after { content: ''; position: absolute; right: 0; top: 0; width: 11px; height: 11px; background: #fff; border-radius: 0 0 0 4px; box-shadow: -2px 2px 0 var(--zm-navy); }
+.zm-doc__title { font-size: 18px; font-weight: 500; line-height: 1.2; }
+.zm-doc__meta { font-size: 11px; color: var(--zm-muted); margin-top: 2px; }
+.zm-doc__dl { width: 44px; height: 44px; border-radius: 8px; background: var(--zm-bg); display: flex; align-items: center; justify-content: center; transition: background .2s, color .2s; }
+.zm-doc__dl svg { width: 16px; height: 16px; }
+.zm-doc a.zm-doc__dl:hover { background: var(--zm-navy); color: #fff; }
+.zm-doc__dl.is-off { opacity: .4; }
+.zm-docs__empty { grid-column: 1 / -1; padding: 40px 0; color: var(--zm-muted); }
+@media (max-width: 980px) { .zm-docs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) {
+  .zm-docs { grid-template-columns: 1fr; }
+  .zm-doc__title { font-size: 16px; }
+}
+</style>
+
+<div class="zm" id="zm-docs-page">
+  <section class="zm-section zm-section--tight">
+    <div class="zm-container">
+      <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Документы</span></nav>
+      <h1 class="zm-h1">Документы</h1>
+      <p class="zm-docs-sub">Официальные документы ЖК «Московский»</p>
+      <div class="zm-filters">
+        <div class="zm-select"><select data-f="kind" aria-label="Вид документа"><option value="">Вид документа</option></select></div>
+        <div class="zm-select"><select data-f="ext" aria-label="Тип файла"><option value="">Тип файла</option></select></div>
+      </div>
+      <div class="zm-docs" data-list></div>
+    </div>
+  </section>
+
+  {{> faq q1="Где можно посмотреть разрешение на строительство?" q2="Как проверить проектную декларацию?" q3="По какому договору проходит покупка квартиры?" q4="Lorem ipsum dolor sit amet consectetur?" q5="Lorem ipsum dolor sit amet consectetur?" q6="Lorem ipsum dolor sit amet consectetur?"}}
+</div>
+
+<script>
+(function () {
+  /* ======== СПИСОК ДОКУМЕНТОВ ========
+     kind — вид (для фильтра и плашки), ext — тип файла, size и date — необязательно, url — прямая ссылка на файл.
+     Чтобы добавить документ: загрузите файл (Tilda → Настройки сайта → Файлы, или Яндекс Диск) и добавьте строку. */
+  var DOCS = [
+    { kind: 'Разрешение', title: 'Разрешение на строительство',        ext: 'PDF', size: '', date: '', url: 'https://disk.yandex.ru/i/eopIXOHN13qHHA' },
+    { kind: 'Экспертиза', title: 'Заключение экспертизы',               ext: 'PDF', size: '', date: '', url: 'https://disk.yandex.ru/i/gTl0k5tzhB5Zhg' },
+    { kind: 'Другое',     title: 'Договор аренды земельного участка',   ext: 'PDF', size: '', date: '', url: 'https://disk.yandex.ru/i/RZvDdBFLVRS4vw' },
+    { kind: 'Декларация', title: 'Проектная декларация',                ext: 'PDF', size: '', date: '', url: '' }
+  ];
+  /* =================================== */
+
+  var root = document.getElementById('zm-docs-page');
+  if (!root || root.__docs) return; root.__docs = 1;
+  var esc = window.ZM.esc;
+  var list = root.querySelector('[data-list]');
+  var selK = root.querySelector('[data-f="kind"]');
+  var selE = root.querySelector('[data-f="ext"]');
+  var DL = '<svg viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0 3-3m-3 3L5 7M3 12.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function uniq(key) { var a = []; DOCS.forEach(function (d) { if (d[key] && a.indexOf(d[key]) < 0) a.push(d[key]); }); return a; }
+  selK.innerHTML = '<option value="">Все документы</option>' + uniq('kind').map(function (k) { return '<option>' + esc(k) + '</option>'; }).join('');
+  selE.innerHTML = '<option value="">Все типы файлов</option>' + uniq('ext').map(function (k) { return '<option>' + esc(k) + '</option>'; }).join('');
+
+  function render() {
+    var k = selK.value, e = selE.value;
+    var docs = DOCS.filter(function (d) { return (!k || d.kind === k) && (!e || d.ext === e); });
+    list.innerHTML = docs.length ? docs.map(function (d) {
+      var meta = [d.size, d.date].filter(Boolean).join(' / ');
+      var btn = d.url
+        ? '<a class="zm-doc__dl" href="' + esc(d.url) + '" target="_blank" rel="noopener" aria-label="Открыть: ' + esc(d.title) + '">' + DL + '</a>'
+        : '<span class="zm-doc__dl is-off" title="Документ скоро появится">' + DL + '</span>';
+      return '<div class="zm-doc"><span class="zm-pill zm-pill--gray">' + esc(d.kind) + '</span>' +
+        '<div class="zm-doc__row"><span class="zm-doc__ico">' + esc(d.ext) + '</span>' +
+        '<div><div class="zm-doc__title">' + (d.url ? '<a href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(d.title) + '</a>' : esc(d.title)) + '</div>' +
+        (meta ? '<div class="zm-doc__meta">' + esc(meta) + '</div>' : '') + '</div>' + btn + '</div></div>';
+    }).join('') : '<p class="zm-docs__empty">Документов с такими параметрами нет.</p>';
+  }
+  selK.addEventListener('change', render);
+  selE.addEventListener('change', render);
+  render();
+})();
+</script>
