@@ -3,107 +3,149 @@ title: О проекте
 url: /o-proekte
 -->
 <style>
-.zm-about-hero { position: relative; min-height: 640px; display: flex; flex-direction: column; justify-content: space-between; padding: 0 0 40px; color: #fff; overflow: hidden; }
-.zm-about-hero__bg { position: absolute; inset: 0; }
-.zm-about-hero__bg img { width: 100%; height: 100%; object-fit: cover; }
-.zm-about-hero__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,18,32,.55) 0%, rgba(10,18,32,.25) 45%, rgba(10,18,32,.55) 100%); }
-.zm-about-hero > .zm-container { position: relative; }
-.zm-about-hero .zm-h1 { color: #fff; }
-.zm-about-hero__bottom { display: flex; justify-content: flex-end; }
+/* Первый экран: 1440×735, затемнение 32% */
+.zm-ab-hero { position: relative; height: 735px; display: flex; flex-direction: column; justify-content: space-between; padding: 29px 0 48px; color: #fff; overflow: hidden; }
+.zm-ab-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-ab-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.32); }
+.zm-ab-hero > .zm-container { position: relative; z-index: 1; }
+.zm-ab-hero .zm-h1 { color: #fff; margin-top: 35px; }
+.zm-ab-hero__stats { display: flex; justify-content: flex-end; }
 
-.zm-concept { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--zm-gap); margin-top: 40px; }
-.zm-concept__text { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 260px; padding: 18px; border-radius: var(--zm-radius); background: #fff; }
-.zm-concept__text h3 { font-family: var(--zm-head); font-weight: 400; text-transform: uppercase; font-size: clamp(26px, 2.6vw, 36px); line-height: 1; }
-.zm-concept__img { border-radius: var(--zm-radius); overflow: hidden; min-height: 260px; }
-.zm-concept__img img { width: 100%; height: 100%; object-fit: cover; }
+/* Концепция: 4 колонки 361/321, высота рядов 315 и 388 */
+.zm-concept { background: var(--zm-card); padding: var(--zm-section) 0; }
+.zm-concept__grid { display: flex; flex-direction: column; gap: 20px; margin-top: 48px; }
+.zm-concept__row { display: grid; gap: 12px; }
+.zm-concept__row--a { grid-template-columns: 361fr 321fr 361fr 321fr; min-height: 315px; }
+.zm-concept__row--b { grid-template-columns: 321fr 361fr 321fr 361fr; min-height: 388px; }
+.zm-concept__text { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 20px; border-radius: 24px; background: #fff; }
+.zm-concept__text h3 { font-family: var(--zm-head); font-weight: 400; font-size: 54px; line-height: 1; letter-spacing: 1px; text-transform: uppercase; -webkit-text-stroke: .5px var(--zm-navy); }
+.zm-concept__img { position: relative; border-radius: 24px; overflow: hidden; min-height: 240px; }
+.zm-concept__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-.zm-adv { margin-top: 32px; padding: 12px; border-radius: var(--zm-radius-lg); background: var(--zm-card); }
+/* Преимущества: панель r40, фото 660×661 r20, видна одна карточка */
+.zm-adv { margin-top: 20px; padding: 20px; border-radius: 40px; background: var(--zm-card); }
 .zm-adv .zm-slider__track > * { width: 100%; }
-.zm-adv__slide { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.zm-adv__img { border-radius: var(--zm-radius); overflow: hidden; aspect-ratio: 4 / 3; }
+.zm-adv__slide { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.zm-adv__img { border-radius: 20px; overflow: hidden; aspect-ratio: 660 / 661; }
 .zm-adv__img img { width: 100%; height: 100%; object-fit: cover; }
-.zm-adv__body { display: flex; flex-direction: column; padding: 0 8px 70px 0; }
-.zm-adv__icon { width: 72px; height: 72px; border-radius: var(--zm-radius); background: var(--zm-bg); display: flex; align-items: center; justify-content: center; margin-bottom: auto; }
-.zm-adv__icon svg { width: 26px; height: 26px; }
-.zm-adv__body h3 { margin: 40px 0 14px; }
-.zm-adv .zm-arrows { position: absolute; right: 12px; bottom: 12px; }
+.zm-adv__body { display: flex; flex-direction: column; gap: 88px; padding-bottom: 68px; }
+.zm-adv__icon { width: 100px; height: 100px; border-radius: 24px; background: var(--zm-bg); display: flex; align-items: center; justify-content: center; }
+.zm-adv__icon img, .zm-adv__icon svg { width: 40px; height: 40px; }
+.zm-adv__body h3 { font-size: 30px; line-height: 41px; font-weight: 500; margin-bottom: 24px; }
+.zm-adv .zm-arrows { position: absolute; right: 20px; bottom: 20px; --zm-arrow: 48px; }
 
-.zm-loc { display: grid; grid-template-columns: 1fr 1.75fr; gap: var(--zm-gap); }
-.zm-loc__list { display: flex; flex-direction: column; gap: var(--zm-gap); }
-.zm-loc__item { flex: 1; padding: 16px; border-radius: var(--zm-radius); background: var(--zm-card); display: flex; flex-direction: column; }
-.zm-loc__icon { width: 44px; height: 44px; border-radius: 10px; background: var(--zm-bg); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
-.zm-loc__icon svg { width: 20px; height: 20px; }
-.zm-loc__item h3 { font-size: 20px; font-weight: 500; margin: auto 0 6px; }
-.zm-loc__map { border-radius: var(--zm-radius); overflow: hidden; min-height: 520px; background: var(--zm-card); }
-.zm-loc__map iframe { display: block; width: 100%; height: 100%; min-height: 520px; border: 0; }
+/* Локация: карточки 360×270, карта 1020×1140 */
+.zm-loc__head { display: flex; align-items: center; justify-content: space-between; gap: 10px 40px; margin-bottom: 50px; }
+.zm-loc__head p { flex: 0 1 300px; font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-loc { display: grid; grid-template-columns: 360fr 1020fr; gap: 20px; }
+.zm-loc__list { display: flex; flex-direction: column; gap: 20px; }
+.zm-loc__item { flex: 1; min-height: 270px; display: flex; flex-direction: column; justify-content: space-between; gap: 42px; padding: 20px; border-radius: 10px; background: var(--zm-card); }
+.zm-loc__icon { width: 60px; height: 60px; border-radius: 8px; background: var(--zm-bg); display: flex; align-items: center; justify-content: center; }
+.zm-loc__icon img { width: 32px; height: 32px; object-fit: contain; }
+.zm-loc__item h3 { font-size: 24px; line-height: 32px; font-weight: 500; margin-bottom: 20px; }
+.zm-loc__item p { font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-loc__map { position: relative; min-height: 1140px; border-radius: 10px; overflow: hidden; background: var(--zm-card); }
+.zm-loc__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-.zm-arch__lead { max-width: 1000px; margin: 18px 0 32px; }
-.zm-arch .zm-slider__track > * { width: calc((100% - 2 * var(--zm-gap)) / 2.6); }
-.zm-arch__card { padding: 12px 12px 24px; border-radius: var(--zm-radius); background: var(--zm-card); }
-.zm-arch__img { border-radius: 8px; overflow: hidden; aspect-ratio: 3 / 2; }
+/* Архитектура: карточки 535×532, фото 495×340 */
+.zm-arch__lead { margin-top: 0; max-width: 1400px; }
+.zm-arch .zm-slider { margin-top: 38px; --zm-gap: 20px; }
+.zm-arch .zm-slider__track > * { width: 535px; }
+.zm-arch__card { display: flex; flex-direction: column; gap: 30px; padding: 20px; border-radius: 10px; background: var(--zm-card); }
+.zm-arch__img { height: 340px; border-radius: 8px; overflow: hidden; background: var(--zm-bg); }
 .zm-arch__img img { width: 100%; height: 100%; object-fit: cover; }
-.zm-arch__row { display: grid; grid-template-columns: 42px 1fr; gap: 0 4px; margin-top: 22px; }
-.zm-arch__row b { font-size: 20px; font-weight: 400; }
-.zm-arch__row h3 { font-size: 20px; font-weight: 500; line-height: 1.3; margin-bottom: 14px; }
-.zm-arch__row p { grid-column: 2; font-size: 12.5px; }
-.zm-arch .zm-arrows { justify-content: flex-end; margin-top: 24px; }
+.zm-arch__row { display: flex; gap: 40px; }
+.zm-arch__row b { flex: none; width: 28px; font-size: 24px; line-height: 32px; font-weight: 500; }
+.zm-arch__row h3 { font-size: 24px; line-height: 32px; font-weight: 500; margin-bottom: 20px; }
+.zm-arch__row p { font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-arch .zm-arrows { justify-content: flex-end; margin-top: 30px; }
 
+@media (min-width: 1441px) {
+  .zm-ab-hero { height: 51vw; }
+  .zm-loc__map { min-height: 79vw; }
+}
+@media (max-width: 1240px) {
+  .zm-ab-hero { height: 620px; }
+  .zm-concept__row--a, .zm-concept__row--b { grid-template-columns: 1fr 1fr; min-height: 0; }
+  .zm-concept__row--b > :nth-child(1) { order: 2; } .zm-concept__row--b > :nth-child(3) { order: 4; }
+  .zm-concept__text { min-height: 300px; }
+  .zm-concept__text h3 { font-size: 48px; }
+  .zm-adv__body h3 { font-size: 24px; }
+  .zm-loc { grid-template-columns: 1fr 1.6fr; }
+  .zm-loc__map { min-height: 900px; }
+}
 @media (max-width: 980px) {
-  .zm-concept { grid-template-columns: 1fr 1fr; }
+  .zm-loc__head { flex-direction: column; align-items: flex-start; margin-bottom: 32px; }
+  .zm-loc__head p { flex: none; max-width: 520px; }
   .zm-loc { grid-template-columns: 1fr; }
-  .zm-loc__list { display: grid; grid-template-columns: 1fr 1fr; }
-  .zm-loc__map, .zm-loc__map iframe { min-height: 400px; }
-  .zm-arch .zm-slider__track > * { width: calc((100% - var(--zm-gap)) / 1.6); }
+  .zm-loc__list { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * var(--zm-pad)); padding: 0 var(--zm-pad); }
+  .zm-loc__list::-webkit-scrollbar { display: none; }
+  .zm-loc__item { flex: none; width: 295px; min-height: 325px; scroll-snap-align: start; }
+  .zm-loc__map { min-height: 655px; }
+  .zm-adv__slide { grid-template-columns: 1fr; gap: 24px; }
+  .zm-adv__img { aspect-ratio: 311 / 274; }
+  .zm-adv__body { gap: 24px; }
 }
 @media (max-width: 640px) {
-  .zm-about-hero { min-height: 520px; padding-bottom: 28px; }
-  .zm-concept { grid-template-columns: 1fr; }
-  .zm-concept > :nth-child(5) { order: 6; } .zm-concept > :nth-child(6) { order: 5; }
-  .zm-concept > :nth-child(7) { order: 8; } .zm-concept > :nth-child(8) { order: 7; }
-  .zm-concept > :nth-child(-n+4) { order: 0; }
-  .zm-concept__text { min-height: 0; }
-  .zm-concept__img { min-height: 0; aspect-ratio: 4 / 3; }
-  .zm-adv__slide { grid-template-columns: 1fr; gap: 16px; }
-  .zm-adv__body { padding: 0 4px 64px; }
-  .zm-adv__icon { width: 56px; height: 56px; margin-bottom: 0; }
-  .zm-adv__body h3 { margin-top: 20px; }
-  .zm-loc__list { grid-template-columns: 1fr; }
-  .zm-loc__icon { margin-bottom: 16px; }
-  .zm-arch .zm-slider__track > * { width: 86%; }
+  .zm-ab-hero { height: 389px; padding: 20px 0 20px; }
+  .zm-ab-hero .zm-h1 { margin-top: 35px; }
+  .zm-concept { padding: 40px 0; }
+  .zm-concept__grid { margin-top: 24px; gap: 12px; }
+  .zm-concept__row--a, .zm-concept__row--b { grid-template-columns: 1fr; gap: 12px; }
+  .zm-concept__row--a > :nth-child(1) { order: 1; } .zm-concept__row--a > :nth-child(2) { order: 2; }
+  .zm-concept__row--a > :nth-child(3) { order: 3; } .zm-concept__row--a > :nth-child(4) { order: 4; }
+  .zm-concept__text { min-height: 0; gap: 24px; }
+  .zm-concept__text h3 { font-size: 40px; }
+  .zm-concept__img { aspect-ratio: 1; min-height: 0; }
+  .zm-adv { padding: 20px; }
+  .zm-adv__icon { width: 64px; height: 64px; border-radius: 16px; }
+  .zm-adv__icon img { width: 28px; height: 28px; }
+  .zm-adv__body h3 { font-size: 24px; line-height: 41px; margin-bottom: 16px; }
+  .zm-adv .zm-arrows { --zm-arrow: 48px; }
+  .zm-loc__item h3 { font-size: 18px; line-height: 24px; }
+  .zm-arch .zm-slider { margin-top: 24px; }
+  .zm-arch .zm-slider__track > * { width: calc(100vw - 2 * var(--zm-pad)); }
+  .zm-arch__img { height: 335px; }
+  .zm-arch__row { gap: 23px; }
+  .zm-arch__row b, .zm-arch__row h3 { font-size: 18px; line-height: 24px; }
 }
 </style>
 
 <div class="zm">
-  <!-- Hero -->
-  <section class="zm-about-hero">
-    <div class="zm-about-hero__bg"><img src="{{img:hero-facade}}" alt="ЖК «Московский»"></div>
+  <!-- Первый экран -->
+  <section class="zm-ab-hero">
+    <img src="{{img:about-hero}}" alt="ЖК «Московский»">
     <div class="zm-container">
       <nav class="zm-crumbs zm-crumbs--light" aria-label="Хлебные крошки"><a href="/">Главная</a><span>О проекте</span></nav>
       <h1 class="zm-h1">О проекте</h1>
     </div>
-    <div class="zm-container zm-about-hero__bottom">
+    <div class="zm-container zm-ab-hero__stats">
       <ul class="zm-stats"><li>Ипотека от 6%</li><li>Рассрочка без %</li><li>Эскроу-счета</li></ul>
     </div>
   </section>
 
   <!-- Концепция -->
-  <section class="zm-section">
+  <section class="zm-concept">
     <div class="zm-container">
       <h2 class="zm-h2">Концепция</h2>
-      <div class="zm-concept">
-        <div class="zm-concept__text"><h3>Комфорт</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p></div>
-        <div class="zm-concept__img"><img src="{{img:concept-1}}" alt="" loading="lazy"></div>
-        <div class="zm-concept__text"><h3>Практичность</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p></div>
-        <div class="zm-concept__img"><img src="{{img:concept-2}}" alt="" loading="lazy"></div>
-        <div class="zm-concept__img"><img src="{{img:concept-3}}" alt="" loading="lazy"></div>
-        <div class="zm-concept__text"><h3>Городская инфраструктура</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p></div>
-        <div class="zm-concept__img"><img src="{{img:concept-4}}" alt="" loading="lazy"></div>
-        <div class="zm-concept__text"><h3>Спокойная атмосфера</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p></div>
+      <div class="zm-concept__grid">
+        <div class="zm-concept__row zm-concept__row--a">
+          <div class="zm-concept__text"><h3>Комфорт</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum.</p></div>
+          <div class="zm-concept__img"><img src="{{img:concept-1}}" alt="" loading="lazy"></div>
+          <div class="zm-concept__text"><h3>Практичность</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum.</p></div>
+          <div class="zm-concept__img"><img src="{{img:concept-2}}" alt="" loading="lazy"></div>
+        </div>
+        <div class="zm-concept__row zm-concept__row--b">
+          <div class="zm-concept__img"><img src="{{img:concept-3}}" alt="" loading="lazy"></div>
+          <div class="zm-concept__text"><h3>Городская инфраструктура</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum.</p></div>
+          <div class="zm-concept__img"><img src="{{img:concept-4}}" alt="" loading="lazy"></div>
+          <div class="zm-concept__text"><h3>Спокойная атмосфера</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Преимущества комплекса (слайдер, видна одна карточка) -->
+  <!-- Преимущества комплекса: слайдер, видна одна карточка -->
   <section class="zm-section">
     <div class="zm-container">
       <h2 class="zm-h2">Преимущества<br>комплекса</h2>
@@ -112,31 +154,37 @@ url: /o-proekte
           <article class="zm-adv__slide">
             <div class="zm-adv__img"><img src="{{img:adv-security}}" alt="Безопасность" loading="lazy"></div>
             <div class="zm-adv__body">
-              <div class="zm-adv__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8.5Z"/><path d="M10 20v-5h4v5"/></svg></div>
-              <h3 class="zm-h3">Безопасность</h3>
-              <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p><p>Dui aliquam netus odio tristique. Pharetra viverra augue magnis at pellentesque a vitae vel commodo. Sed bibendum purus pharetra sed vitae convallis ipsum a mattis.</p></div>
+              <div class="zm-adv__icon"><img src="{{asset:icon/adv-home.svg}}" alt=""></div>
+              <div>
+                <h3>Безопасность</h3>
+                <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque. Id pulvinar velit in sit diam nunc. Sed feugiat vitae elit ut elit non ut. Integer massa ut risus consectetur potenti elementum eleifend tempus.</p><p>Dui aliquam netus odio tristique. Pharetra viverra augue magnis at pellentesque a vitae vel commodo. Sed bibendum purus pharetra sed vitae convallis ipsum a mattis. Purus lacus tellus egestas morbi condimentum aliquet congue quam in. Euismod etiam ac sit quisque turpis.</p></div>
+              </div>
             </div>
           </article>
           <article class="zm-adv__slide">
             <div class="zm-adv__img"><img src="{{img:arch-2}}" alt="Благоустроенный двор" loading="lazy"></div>
             <div class="zm-adv__body">
-              <div class="zm-adv__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 20v-6M8 20h8"/><path d="M12 14c-3.5 0-6-2.3-6-5.3C6 5.6 8.7 3 12 3s6 2.6 6 5.7c0 3-2.5 5.3-6 5.3Z"/></svg></div>
-              <h3 class="zm-h3">Благоустроенный двор</h3>
-              <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div>
+              <div class="zm-adv__icon"><img src="{{asset:icon/loc-walk.svg}}" alt=""></div>
+              <div>
+                <h3>Благоустроенный двор</h3>
+                <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div>
+              </div>
             </div>
           </article>
           <article class="zm-adv__slide">
             <div class="zm-adv__img"><img src="{{img:concept-3}}" alt="Коммерция на первых этажах" loading="lazy"></div>
             <div class="zm-adv__body">
-              <div class="zm-adv__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></div>
-              <h3 class="zm-h3">Коммерция на первых этажах</h3>
-              <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div>
+              <div class="zm-adv__icon"><img src="{{asset:icon/loc-shop.svg}}" alt=""></div>
+              <div>
+                <h3>Коммерция на первых этажах</h3>
+                <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div>
+              </div>
             </div>
           </article>
         </div>
         <div class="zm-arrows">
-          <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 16 16" fill="none"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 8 14" fill="none"><path d="M7 1 1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 8 14" fill="none"><path d="m1 1 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
     </div>
@@ -145,19 +193,19 @@ url: /o-proekte
   <!-- Локация и инфраструктура -->
   <section class="zm-section">
     <div class="zm-container">
-      <div class="zm-head-row">
-        <h2 class="zm-h2">Локация<br>для вашего<br>ритма жизни</h2>
-        <p class="zm-lead">Проект расположен в сформированном районе Симферополя с готовой городской инфраструктурой. В пешей доступности находятся школы, магазины, медицинские учреждения и парк для прогулок — всё, что нужно для повседневной жизни без лишних поездок по городу.</p>
+      <div class="zm-loc__head">
+        <h2 class="zm-h2">Локация для вашего<br>ритма жизни</h2>
+        <p>Проект расположен в сформированном районе Симферополя с готовой городской инфраструктурой. В пешей доступности находятся школы, магазины, медицинские учреждения и парк для прогулок — всё, что нужно для повседневной жизни без лишних поездок по городу.</p>
       </div>
       <div class="zm-loc">
         <div class="zm-loc__list">
-          <div class="zm-loc__item"><div class="zm-loc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12h3M18 12h3M6 9v6M18 9v6M8 12h8"/></svg></div><h3>Для активного образа жизни</h3><p class="zm-text">Рядом с домом расположены спортивные клубы, фитнес-центры и пространства для тренировок.</p></div>
-          <div class="zm-loc__item"><div class="zm-loc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8.5Z"/><path d="M10 20v-5h4v5"/></svg></div><h3>Всё для семьи</h3><p class="zm-text">В районе есть образовательные учреждения и пространства для развития детей.</p></div>
-          <div class="zm-loc__item"><div class="zm-loc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></div><h3>Магазины и сервисы</h3><p class="zm-text">Повседневные покупки, бытовые услуги и полезные сервисы доступны рядом с домом.</p></div>
-          <div class="zm-loc__item"><div class="zm-loc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></svg></div><h3>Прогулки и отдых</h3><p class="zm-text">Зелёные зоны, прогулочные маршруты и места для отдыха создают приятную атмосферу для прогулок, спорта и спокойного досуга на свежем воздухе.</p></div>
+          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="{{asset:icon/loc-sport.svg}}" alt=""></div><div><h3>Для активного образа жизни</h3><p>Рядом с домом расположены спортивные клубы, фитнес-центры и пространства для тренировок.</p></div></div>
+          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="{{asset:icon/loc-home.svg}}" alt=""></div><div><h3>Всё для семьи</h3><p>В районе есть образовательные учреждения и пространства для развития детей.</p></div></div>
+          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="{{asset:icon/loc-shop.svg}}" alt=""></div><div><h3>Магазины и сервисы</h3><p>Повседневные покупки, бытовые услуги и полезные сервисы доступны рядом с домом.</p></div></div>
+          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="{{asset:icon/loc-walk.svg}}" alt=""></div><div><h3>Прогулки и отдых</h3><p>Зелёные зоны, прогулочные маршруты и места для отдыха создают приятную атмосферу для прогулок, спорта и спокойного досуга на свежем воздухе.</p></div></div>
         </div>
-        <!-- Карта: замените src на код из конструктора Яндекс.Карт (точка на ЖК) -->
-        <div class="zm-loc__map"><iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B&amp;z=15" title="ЖК «Московский» на карте" loading="lazy" allowfullscreen></iframe></div>
+        <!-- Карта: при желании замените src на код из конструктора Яндекс.Карт -->
+        <div class="zm-loc__map"><iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B%2C%2012&amp;z=16" title="ЖК «Московский» на карте" loading="lazy" allowfullscreen></iframe></div>
       </div>
     </div>
   </section>
@@ -166,17 +214,17 @@ url: /o-proekte
   <section class="zm-section">
     <div class="zm-container zm-arch">
       <h2 class="zm-h2">Архитектура и технологии</h2>
-      <p class="zm-text zm-arch__lead">Lorem ipsum dolor sit amet consectetur. Rhoncus nibh dis consectetur massa. Pellentesque morbi vel non suscipit integer lobortis donec leo vel. Elit rhoncus morbi pellentesque nunc sed sed. Tellus blandit feugiat hendrerit luctus.</p>
+      <p class="zm-lead zm-arch__lead">Lorem ipsum dolor sit amet consectetur. Rhoncus nibh dis consectetur massa. Pellentesque morbi vel non suscipit integer lobortis donec leo vel. Elit rhoncus morbi pellentesque nunc sed sed. Tellus blandit feugiat hendrerit luctus. Adipiscing cursus nullam neque tortor cursus mattis nisl donec. Sociis diam pharetra sed mollis sit.</p>
       <div class="zm-slider" data-zm-slider>
         <div class="zm-slider__track">
-          <article class="zm-arch__card"><div class="zm-arch__img"><img src="{{img:arch-1}}" alt="" loading="lazy"></div><div class="zm-arch__row"><b>01</b><h3>Современные фасадные решения</h3><p>Архитектура проекта, выполненная из керамогранита, гарантирует долговечность и сочетает сдержанную эстетику.</p></div></article>
-          <article class="zm-arch__card"><div class="zm-arch__img"><img src="{{img:arch-2}}" alt="" loading="lazy"></div><div class="zm-arch__row"><b>02</b><h3>Панорамное остекление</h3><p>Наполняют пространство естественным светом и ощущением свободы. Больше воздуха, уюта и визуального простора в каждой комнате.</p></div></article>
-          <article class="zm-arch__card"><div class="zm-arch__img"><img src="{{img:buy-building}}" alt="" loading="lazy"></div><div class="zm-arch__row"><b>03</b><h3>Корзины для кондиционеров</h3><p>Специальные корзины для кондиционеров сохраняют эстетику фасада и единый архитектурный стиль.</p></div></article>
-          <article class="zm-arch__card"><div class="zm-arch__img"><img src="{{img:tower-sunset}}" alt="" loading="lazy"></div><div class="zm-arch__row"><b>04</b><h3>Надёжные технологии строительства</h3><p>Используем современные технологии, надёжные материалы и контролируем каждый этап.</p></div></article>
+          <article class="zm-arch__card"><div class="zm-arch__img"><img src="{{img:arch-1}}" alt="" loading="lazy"></div><div class="zm-arch__row"><b>01</b><div><h3>Современные фасадные решения</h3><p>Архитектура проекта, выполненная из керамогранита, гарантирует долговечность и сочетает сдержанную эстетику.</p></div></div></article>
+          <article class="zm-arch__card"><div class="zm-arch__img"><img src="{{img:arch-2}}" alt="" loading="lazy"></div><div class="zm-arch__row"><b>02</b><div><h3>Панорамное остекление</h3><p>Наполняют пространство естественным светом и ощущением свободы. Больше воздуха, уюта и визуального простора в каждой комнате.</p></div></div></article>
+          <article class="zm-arch__card"><div class="zm-arch__img"><img src="{{img:arch-3}}" alt="" loading="lazy"></div><div class="zm-arch__row"><b>03</b><div><h3>Корзины для кондиционеров на фасаде</h3><p>Специальные корзины для кондиционеров сохраняют эстетику фасада и единый архитектурный стиль.</p></div></div></article>
+          <article class="zm-arch__card"><div class="zm-arch__img"><img src="{{img:buy-6}}" alt="" loading="lazy"></div><div class="zm-arch__row"><b>04</b><div><h3>Надёжные технологии строительства</h3><p>Используем современные технологии, надёжные материалы и контролируем каждый этап.</p></div></div></article>
         </div>
         <div class="zm-arrows">
-          <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 16 16" fill="none"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 8 14" fill="none"><path d="M7 1 1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 8 14" fill="none"><path d="m1 1 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
     </div>

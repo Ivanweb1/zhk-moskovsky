@@ -4,8 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Условия покупки — ЖК «Московский» (превью)</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Poiret+One&display=swap">
 <style>
+  /* Шрифты превью. На сайте блоки берут шрифты Tilda: заголовки — Sverdlovsk, текст — Manrope.
+     Sverdlovsk в превью нет, вместо него — близкий по ширине Fira Sans Extra Condensed. */
+  @font-face{font-family:'ZM Preview Head';font-weight:100 900;font-display:swap;src:url(../../preview/fonts/fira-sans-extra-condensed-cyrillic-200-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'Manrope';font-weight:400;font-display:swap;src:url(../../preview/fonts/manrope-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'Manrope';font-weight:500;font-display:swap;src:url(../../preview/fonts/manrope-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'Manrope';font-weight:600;font-display:swap;src:url(../../preview/fonts/manrope-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'ZM Preview Head';font-weight:100 900;font-display:swap;src:url(../../preview/fonts/fira-sans-extra-condensed-latin-200-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Manrope';font-weight:400;font-display:swap;src:url(../../preview/fonts/manrope-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Manrope';font-weight:500;font-display:swap;src:url(../../preview/fonts/manrope-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Manrope';font-weight:600;font-display:swap;src:url(../../preview/fonts/manrope-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  :root { --t-headline-font: 'ZM Preview Head'; --t-text-font: 'Manrope'; }
   /* Только для превью: имитация шапки и подвала Tilda. В Tilda остаются ваши шапка и подвал. */
   html, body { margin: 0; background: #f3f3f7; }
   .pv-head { position: sticky; top: 0; z-index: 50; padding: 10px 16px; background: #f3f3f7; }
@@ -15,7 +25,7 @@
   .pv-logo { font-weight: 600; letter-spacing: .04em; color: #b08d4f !important; margin-right: auto; }
   .pv-foot { margin-top: 40px; padding: 48px 20px; background: #132640; color: #fff; font: 13px/1.6 Manrope, Arial, sans-serif; }
   .pv-foot__in { max-width: 1200px; margin: 0 auto; }
-  .pv-foot b { display: block; font: 400 40px/1 'Poiret One', serif; text-transform: uppercase; margin-bottom: 16px; }
+  .pv-foot b { display: block; font: 200 60px/1 'ZM Preview Head', sans-serif; text-transform: uppercase; margin-bottom: 16px; }
 </style>
 <script>window.ZM_PREVIEW_ROOT = '../../preview/';</script>
 </head>
@@ -31,381 +41,450 @@
   <a href="tel:+79788355353">+7 978 835-53-53</a>
 </nav></header>
 <style>
-/* ===== ЖК «Московский» — общие стили блоков (всё внутри .zm, чтобы не конфликтовать с Tilda) ===== */
-
+/* ===== ЖК «Московский» — общие стили блоков. Размеры — из макета Figma (фреймы 1920 / 1440 / 980 / 375).
+   Всё внутри .zm, чтобы не конфликтовать со стилями Tilda. ===== */
 .zm {
-  /* Шрифты берутся из настроек сайта Tilda (--t-headline-font / --t-text-font); вне Tilda — запасные */
-  --zm-head: var(--t-headline-font, 'Poiret One'), Arial, sans-serif;
+  /* Шрифты берутся из настроек сайта Tilda (--t-headline-font / --t-text-font); в макете — Sverdlovsk и Manrope */
+  --zm-head: var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;
   --zm-text: var(--t-text-font, 'Manrope'), Arial, sans-serif;
-  /* Цвета — как на текущем сайте */
   --zm-navy: #132640;
-  --zm-navy-2: #1f3d6b;
+  --zm-navy-hover: #1f3d6b;
+  --zm-blue: #1b4471;
+  --zm-blue-2: #2e5b8d;
   --zm-bg: #f3f3f7;
   --zm-card: #e5e7f2;
   --zm-white: #ffffff;
-  --zm-ink: #132640;
-  --zm-muted: #7b8194;
-  --zm-line: #c9ccd8;
+  --zm-muted: rgba(19, 38, 64, .5);
   --zm-error: #d64545;
-  --zm-radius: 12px;
-  --zm-radius-lg: 20px;
-  --zm-gap: 12px;
+  --zm-pad: 20px;                 /* поля страницы */
+  --zm-section: 100px;            /* расстояние между блоками */
+  --zm-h: 150px;                  /* большие заголовки (Sverdlovsk) */
+  --zm-text-size: 16px;           /* основной текст */
 
   box-sizing: border-box;
   font-family: var(--zm-text);
-  font-size: 15px;
+  font-size: var(--zm-text-size);
   line-height: 1.5;
-  color: var(--zm-ink);
+  letter-spacing: -0.5px;
+  color: var(--zm-navy);
   background: var(--zm-bg);
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   overflow-x: clip;
 }
+@media (min-width: 1441px) { .zm { --zm-h: 10.4167vw; } }
+@media (max-width: 1240px) { .zm { --zm-h: calc(130px + (100vw - 980px) * 20 / 460); } }
+@media (max-width: 980px)  { .zm { --zm-h: calc(60px + (100vw - 375px) * 70 / 605); --zm-text-size: 14px; --zm-section: 80px; } }
+@media (max-width: 640px)  { .zm { --zm-h: 60px; --zm-text-size: 12px; --zm-pad: 12px; --zm-section: 64px; } }
+
 .zm :where(*, *::before, *::after) { box-sizing: border-box; }
 .zm :where(img) { display: block; max-width: 100%; }
 .zm :where(a) { color: inherit; text-decoration: none; }
-.zm :where(button) { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
-.zm :where(h1, h2, h3, h4, p, ul, ol) { margin: 0; padding: 0; }
+.zm :where(button) { font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
+.zm :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
 .zm :where(ul) { list-style: none; }
+.zm [hidden] { display: none !important; }
 
-.zm-container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 20px; }
-.zm-section { padding: 56px 0; }
-.zm-section--tight { padding: 32px 0; }
+.zm-container { width: 100%; padding: 0 var(--zm-pad); }
+.zm-section { padding-top: var(--zm-section); }
+.zm-section--last { padding-bottom: var(--zm-section); }
 
 /* ---------- Заголовки ---------- */
 .zm-h1, .zm-h2 {
   font-family: var(--zm-head);
   font-weight: 400;
+  font-size: var(--zm-h);
+  line-height: 1;
+  letter-spacing: 0;
   text-transform: uppercase;
-  line-height: .95;
-  letter-spacing: -.01em;
   color: var(--zm-navy);
+  overflow-wrap: break-word;
 }
-.zm-h1 { font-size: clamp(48px, 9.5vw, 132px); }
-.zm-h2 { font-size: clamp(40px, 7vw, 100px); }
-.zm-h3 { font-size: clamp(20px, 2vw, 26px); font-weight: 500; line-height: 1.2; }
-.zm-lead { font-size: 13px; line-height: 1.45; max-width: 300px; }
-.zm-text { font-size: 13px; line-height: 1.55; }
-.zm-text p + p { margin-top: .8em; }
-.zm-muted { color: var(--zm-muted); }
+.zm-lead { font-size: 18px; line-height: 24px; font-weight: 500; }
+.zm-text { font-size: var(--zm-text-size); line-height: 1.5; }
+.zm-text p + p { margin-top: 12px; }
+@media (max-width: 980px) { .zm-lead { font-size: 16px; line-height: 22px; } }
+@media (max-width: 640px) { .zm-lead { font-size: 14px; line-height: 19px; } }
 
-.zm-head-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; margin-bottom: 32px; }
-.zm-head-row > .zm-h1, .zm-head-row > .zm-h2 { min-width: 0; overflow-wrap: anywhere; }
-.zm-head-row .zm-lead { flex: 0 1 300px; margin-bottom: 8px; }
+/* шапка страницы: крошки + H1 (+ подзаголовок справа) */
+.zm-top { padding-top: 30px; }
+.zm-top__row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-top: 40px; }
+.zm-top__row .zm-lead { flex: 0 1 435px; padding-bottom: 8px; }
+@media (max-width: 980px) { .zm-top__row { flex-direction: column; align-items: flex-start; } .zm-top__row .zm-lead { flex: none; max-width: 520px; padding: 0; } }
+@media (max-width: 640px) { .zm-top { padding-top: 20px; } .zm-top__row { margin-top: 32px; gap: 16px; } }
 
 /* ---------- Хлебные крошки ---------- */
-.zm-crumbs { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; padding: 18px 0 14px; }
-.zm-crumbs a, .zm-crumbs span { position: relative; padding-left: 9px; }
-.zm-crumbs a::before, .zm-crumbs span::before {
-  content: ''; position: absolute; left: 0; top: 50%; width: 4px; height: 4px; margin-top: -2px;
-  border-radius: 50%; background: currentColor;
-}
+.zm-crumbs { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 18px; line-height: 24px; font-weight: 500; }
+.zm-crumbs > * { display: inline-flex; align-items: center; gap: 8px; }
+.zm-crumbs > *::before { content: ''; flex: none; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 .zm-crumbs a { color: var(--zm-muted); transition: color .2s; }
 .zm-crumbs a:hover { color: var(--zm-navy); }
-.zm-crumbs--light, .zm-crumbs--light a { color: rgba(255,255,255,.75); }
-.zm-crumbs--light span { color: #fff; }
+.zm-crumbs--light, .zm-crumbs--light span { color: #fff; }
+.zm-crumbs--light a { color: rgba(255,255,255,.5); }
+.zm-crumbs--light a:hover { color: #fff; }
+@media (max-width: 980px) { .zm-crumbs { font-size: 16px; } }
 
 /* ---------- Кнопки ---------- */
 .zm-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 48px; padding: 12px 32px; border-radius: 6px;
-  background: var(--zm-navy); color: #fff !important; font-size: 14px; font-weight: 500;
-  transition: background .2s, transform .2s, opacity .2s;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 65px; padding: 20px 40px; border-radius: 8px;
+  background: var(--zm-navy); color: #fff !important; font-size: 18px; line-height: 25px; font-weight: 500; letter-spacing: 0;
+  text-align: center; transition: background .2s, opacity .2s;
 }
-.zm-btn:hover { background: var(--zm-navy-2); }
-.zm-btn:active { transform: translateY(1px); }
-.zm-btn--light { background: var(--zm-bg); color: var(--zm-navy) !important; }
-.zm-btn--light:hover { background: #fff; }
+.zm-btn:hover { background: var(--zm-navy-hover); }
+.zm-btn--white { background: var(--zm-bg); color: var(--zm-navy) !important; }
+.zm-btn--white:hover { background: #fff; }
 .zm-btn--block { width: 100%; }
 .zm-btn[disabled] { opacity: .6; pointer-events: none; }
+@media (max-width: 640px) { .zm-btn { min-height: 49px; padding: 15px 40px; font-size: 14px; line-height: 19px; } }
 
-.zm-arrows { display: flex; gap: 6px; }
+.zm-arrows { display: flex; gap: 10px; }
 .zm-arrow {
-  width: 44px; height: 44px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center;
-  background: var(--zm-navy); color: #fff; transition: background .2s, opacity .2s;
+  flex: none; width: var(--zm-arrow, 54px); height: var(--zm-arrow, 54px); border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--zm-navy); color: #fff; transition: background .2s;
 }
-.zm-arrow:hover { background: var(--zm-navy-2); }
-.zm-arrow[disabled] { background: #bfc4cf; cursor: default; }
-.zm-arrow svg { width: 16px; height: 16px; }
+.zm-arrow:hover { background: var(--zm-navy-hover); }
+.zm-arrow[disabled] { background: #bec2cb; cursor: default; }
+.zm-arrow svg { width: 8px; height: 14px; }
+@media (max-width: 640px) { .zm-arrow { --zm-arrow: 40px; } }
 
-/* ---------- Плашки ---------- */
-.zm-pill { display: inline-flex; align-items: center; height: 32px; padding: 0 16px; border-radius: 20px; font-size: 13px; font-weight: 500; background: #fff; color: var(--zm-navy); white-space: nowrap; }
-.zm-pill--blue { background: var(--zm-navy-2); color: #fff; }
-.zm-pill--gray { background: var(--zm-card); color: var(--zm-muted); height: 26px; padding: 0 12px; font-size: 12px; font-weight: 400; }
+/* ---------- Плашки (категория новости, «До …») ---------- */
+.zm-pill { display: inline-flex; align-items: center; padding: 12px 24px; border-radius: 50px; background: #fff; color: #192f4c; font-size: 20px; line-height: 25px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
+.zm-pill--blue { background: var(--zm-blue); color: #fff; }
+@media (max-width: 640px) { .zm-pill { padding: 8px 16px; font-size: 14px; line-height: 14px; } }
 
-/* ---------- Селект (фильтры) ---------- */
-.zm-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-.zm-select { position: relative; width: 240px; max-width: 100%; }
+/* ---------- Выпадающие списки (фильтры) ---------- */
+.zm-filters { display: flex; flex-wrap: wrap; gap: 14px 24px; }
+.zm-select { position: relative; width: 350px; max-width: 100%; }
 .zm-select select {
-  width: 100%; height: 44px; padding: 0 40px 0 16px; border: 0; border-radius: 8px;
-  background: var(--zm-card); color: var(--zm-ink); font: inherit; font-size: 13px;
-  -webkit-appearance: none; appearance: none; cursor: pointer;
+  width: 100%; height: 64px; padding: 0 56px 0 20px; border: 0; border-radius: 12px;
+  background: var(--zm-card); color: var(--zm-navy); font: inherit; font-size: 18px; letter-spacing: 0;
+  -webkit-appearance: none; appearance: none; cursor: pointer; outline: none;
 }
+.zm-select select:focus-visible { box-shadow: inset 0 0 0 1.5px var(--zm-navy); }
+.zm-select select.is-empty { color: var(--zm-muted); }
 .zm-select::after {
-  content: ''; position: absolute; right: 18px; top: 50%; width: 7px; height: 7px; margin-top: -5px;
-  border: solid var(--zm-navy); border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); pointer-events: none;
+  content: ''; position: absolute; right: 26px; top: 50%; width: 9px; height: 9px; margin-top: -7px;
+  border: solid var(--zm-navy); border-width: 0 1.6px 1.6px 0; transform: rotate(45deg); pointer-events: none;
+}
+@media (max-width: 640px) {
+  .zm-filters { gap: 11px; }
+  .zm-select { width: calc(50% - 6px); }
+  .zm-select select { height: 49px; padding: 0 34px 0 12px; font-size: 14px; }
+  .zm-select::after { right: 15px; width: 7px; height: 7px; margin-top: -5px; }
 }
 
 /* ---------- Табы ---------- */
-.zm-tabs { display: inline-flex; padding: 4px; border-radius: 40px; background: var(--zm-card); gap: 2px; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.zm-tabs { display: inline-flex; max-width: 100%; padding: 4px; border-radius: 50px; background: var(--zm-card); overflow-x: auto; scrollbar-width: none; }
 .zm-tabs::-webkit-scrollbar { display: none; }
-.zm-tab { height: 48px; padding: 0 28px; border-radius: 40px; font-size: 15px; font-weight: 500; white-space: nowrap; transition: background .2s, color .2s; }
+.zm-tab { flex: none; padding: 24px 48px; border-radius: 50px; font-size: 20px; line-height: 19px; font-weight: 600; letter-spacing: 0; white-space: nowrap; transition: background .2s, color .2s; }
+.zm-tab:hover { color: var(--zm-blue-2); }
 .zm-tab.is-active { background: var(--zm-navy); color: #fff; }
+@media (max-width: 640px) { .zm-tab { padding: 16px 24px; font-size: 14px; } }
 
-/* ---------- Цифры-преимущества (hero) ---------- */
-.zm-stats { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-.zm-stats li { font-family: var(--zm-head); text-transform: uppercase; font-size: clamp(28px, 4vw, 52px); line-height: 1.15; color: #fff; text-align: right; }
+/* ---------- Цифры-преимущества на первом экране ---------- */
+.zm-stats { display: flex; flex-direction: column; align-items: flex-end; gap: 40px; }
+.zm-stats li { font-family: var(--zm-head); font-size: 64px; line-height: 1; letter-spacing: 0; text-transform: uppercase; color: #fff; text-align: right; -webkit-text-stroke: .5px #fff; }
+@media (min-width: 1441px) { .zm-stats li { font-size: 4.375vw; } }
+@media (max-width: 640px) { .zm-stats { gap: 20px; } .zm-stats li { font-size: 40px; } }
 
 /* ---------- Аккордеон FAQ ---------- */
-.zm-faq { display: flex; flex-direction: column; gap: 6px; margin-top: 40px; }
-.zm-faq__item { background: var(--zm-card); border-radius: 6px; }
+.zm-faq { display: flex; flex-direction: column; gap: 8px; margin-top: 40px; }
+.zm-faq__item { background: var(--zm-card); border-radius: 8px; }
 .zm-faq__q {
-  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px;
-  padding: 22px 28px; text-align: left; font-size: 14px; font-weight: 500;
+  width: 100%; min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 20px 35px; text-align: left; font-size: 20px; line-height: 27px; font-weight: 600; letter-spacing: 0;
 }
-.zm-faq__icon { position: relative; flex: none; width: 22px; height: 22px; }
+.zm-faq__icon { position: relative; flex: none; width: 48px; height: 48px; }
 .zm-faq__icon::before, .zm-faq__icon::after {
-  content: ''; position: absolute; left: 0; top: 50%; width: 100%; height: 1.5px; margin-top: -.75px;
-  background: var(--zm-navy); transition: transform .3s;
+  content: ''; position: absolute; left: 11px; top: 23.4px; width: 26px; height: 1.2px; background: #222; transition: transform .3s;
 }
 .zm-faq__icon::after { transform: rotate(90deg); }
 .zm-faq__item.is-open .zm-faq__icon::after { transform: rotate(0); }
 .zm-faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
 .zm-faq__item.is-open .zm-faq__a { grid-template-rows: 1fr; }
 .zm-faq__a > div { overflow: hidden; }
-.zm-faq__a .zm-text { padding: 0 28px 24px; max-width: 900px; }
+.zm-faq__a .zm-text { padding: 0 35px 28px; max-width: 1000px; font-size: 18px; line-height: 25px; color: rgba(19,38,64,.72); }
+@media (max-width: 980px) { .zm-faq__q { font-size: 18px; } }
+@media (max-width: 640px) {
+  .zm-faq { gap: 12px; margin-top: 32px; }
+  .zm-faq__q { min-height: 82px; padding: 20px; gap: 12px; }
+  .zm-faq__icon { width: 28px; height: 28px; }
+  .zm-faq__icon::before, .zm-faq__icon::after { left: 2px; top: 13.4px; width: 24px; }
+  .zm-faq__a .zm-text { padding: 0 20px 20px; font-size: 14px; line-height: 20px; }
+}
 
-/* ---------- Форма обратной связи ---------- */
-.zm-lead-form { display: grid; grid-template-columns: 1fr 2.1fr; gap: 6px; }
-.zm-lead-form__img { border-radius: var(--zm-radius); overflow: hidden; min-height: 260px; }
+/* ---------- Форма заявки ---------- */
+.zm-lead-form { display: grid; grid-template-columns: 501fr 889fr; gap: 10px; }
+.zm-lead-form__img { border-radius: 10px; overflow: hidden; }
 .zm-lead-form__img img { width: 100%; height: 100%; object-fit: cover; }
-.zm-lead-form__box { background: var(--zm-navy); color: #fff; border-radius: var(--zm-radius); padding: 28px; }
-.zm-lead-form__box .zm-h2 { color: #fff; font-size: clamp(34px, 5vw, 72px); }
-.zm-lead-form__sub { font-size: 13px; margin: 28px 0 14px; opacity: .9; }
-.zm-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.zm-lead-form__box { min-height: 566px; padding: 40px 20px 40px; border-radius: 10px; background: var(--zm-navy); color: var(--zm-bg); }
+.zm-lead-form__title { font-family: var(--zm-head); font-weight: 400; font-size: 105px; line-height: 100px; letter-spacing: 0; text-transform: uppercase; color: var(--zm-bg); }
+.zm-lead-form__sub { font-size: 18px; line-height: 25px; letter-spacing: 0; margin: 28px 0 32px; }
+.zm-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; }
 .zm-field { position: relative; display: block; }
-.zm-field input, .zm-field textarea {
-  width: 100%; height: 44px; padding: 0 16px; border: 1.5px solid transparent; border-radius: 6px;
-  background: #d9dbe4; color: var(--zm-ink); font: inherit; font-size: 13px; outline: none; transition: border-color .2s, background .2s;
+.zm-field input {
+  width: 100%; height: 65px; padding: 0 20px; border: 1.5px solid transparent; border-radius: 8px;
+  background: rgba(243,243,247,.88); color: var(--zm-navy); font: inherit; font-size: 18px; letter-spacing: 0; outline: none; transition: border-color .2s, background .2s;
 }
-.zm-field input::placeholder { color: #7f8597; }
-.zm-field input:focus { background: #fff; border-color: var(--zm-navy-2); }
+.zm-field input::placeholder { color: rgba(19,38,64,.5); opacity: 1; }
+.zm-field input:focus { background: #fff; }
 .zm-field.is-error input { border-color: var(--zm-error); background: #fbeaea; }
-.zm-field__err { display: none; font-size: 11px; color: #ffb4b4; margin-top: 4px; }
+.zm-field__err { display: none; font-size: 13px; color: #ffb4b4; margin-top: 4px; }
 .zm-field.is-error .zm-field__err { display: block; }
-.zm-field--phone input { padding-left: 74px; }
+.zm-field--phone input { padding-left: 76px; }
 .zm-field--phone::before {
-  content: ''; position: absolute; left: 14px; top: 16px; width: 16px; height: 11px; border-radius: 2px;
-  background: linear-gradient(#fff 0 33%, #1c57c9 33% 66%, #d52b1e 66%); box-shadow: 0 0 0 1px rgba(0,0,0,.08);
+  content: ''; position: absolute; left: 20px; top: 26px; width: 18px; height: 13px; border-radius: 2px; z-index: 1;
+  background: linear-gradient(#fff 0 33.3%, #1c57c9 33.3% 66.6%, #d52b1e 66.6%); box-shadow: 0 0 0 1px rgba(0,0,0,.12);
 }
-.zm-field--phone::after { content: '+7'; position: absolute; left: 44px; top: 12px; font-size: 13px; color: var(--zm-ink); }
-.zm-form__submit { grid-column: 1 / -1; margin-top: 2px; }
-.zm-form__submit .zm-btn { width: 100%; background: var(--zm-bg); color: var(--zm-navy) !important; }
-.zm-form__submit .zm-btn:hover { background: #fff; }
-.zm-check { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: 10px; font-size: 11px; line-height: 1.35; cursor: pointer; }
-.zm-check input { flex: none; width: 16px; height: 16px; margin: 1px 0 0; accent-color: var(--zm-navy-2); cursor: pointer; }
+.zm-field--phone::after { content: '+7'; position: absolute; left: 48px; top: 20px; font-size: 18px; line-height: 24px; color: var(--zm-navy); }
+.zm-form__submit { grid-column: 1 / -1; margin-top: 9px; }
+.zm-form__submit .zm-btn { width: 100%; }
+.zm-check { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: 16px; line-height: 1.05; letter-spacing: 0; cursor: pointer; }
+.zm-check input { -webkit-appearance: none; appearance: none; flex: none; width: 20px; height: 20px; margin: 6px 0 0; border: 2px solid rgba(243,243,247,.6); border-radius: 3px; cursor: pointer; display: grid; place-content: center; }
+.zm-check input:checked { background: var(--zm-bg); border-color: var(--zm-bg); }
+.zm-check input:checked::after { content: ''; width: 10px; height: 6px; margin-top: -3px; border: solid var(--zm-navy); border-width: 0 0 2px 2px; transform: rotate(-45deg); }
 .zm-check a { text-decoration: underline; }
+.zm-check.is-error input { border-color: #ff8a8a; }
 .zm-check.is-error { color: #ffb4b4; }
-.zm-form__done { display: none; padding: 26px 0 6px; }
-.zm-form__done strong { display: block; font-size: 20px; font-weight: 500; margin-bottom: 6px; }
+.zm-form__done { display: none; padding: 10px 0; font-size: 18px; line-height: 25px; }
+.zm-form__done strong { display: block; font-family: var(--zm-head); font-weight: 400; font-size: 48px; line-height: 1; text-transform: uppercase; margin-bottom: 12px; }
 .zm-form.is-sent .zm-form__grid { display: none; }
 .zm-form.is-sent .zm-form__done { display: block; }
+.zm-form__note { margin-top: 20px; font-size: 16px; line-height: 24px; opacity: .64; }
+@media (min-width: 1441px) { .zm-lead-form__title { font-size: 7.29vw; line-height: .86; } }
+@media (max-width: 1240px) { .zm-lead-form__title { font-size: 90px; line-height: 80px; } }
+@media (max-width: 980px) {
+  .zm-lead-form { grid-template-columns: 1fr; }
+  .zm-lead-form__img { display: none; }
+  .zm-lead-form__box { min-height: 0; }
+  .zm-field input { font-size: 16px; }
+}
+@media (max-width: 640px) {
+  .zm-lead-form__box { padding: 20px; }
+  .zm-lead-form__title { font-size: 40px; line-height: 48px; }
+  .zm-lead-form__sub { font-size: 16px; margin: 24px 0 16px; }
+  .zm-form__grid { grid-template-columns: 1fr; gap: 12px; }
+  .zm-field input { height: 55px; font-size: 14px; }
+  .zm-field--phone::before { top: 21px; }
+  .zm-field--phone::after { top: 15px; font-size: 16px; }
+  .zm-form__submit { margin-top: 0; }
+  .zm-check { font-size: 11px; line-height: 1.3; }
+  .zm-check input { margin-top: 0; }
+}
 
-/* ---------- Слайдер (горизонтальная лента со scroll-snap) ---------- */
+/* ---------- Слайдер (лента со scroll-snap) ---------- */
 .zm-slider { position: relative; }
 .zm-slider__track {
-  display: flex; gap: var(--zm-gap); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  display: flex; gap: var(--zm-gap, 20px); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch; scrollbar-width: none; overscroll-behavior-x: contain;
 }
 .zm-slider__track::-webkit-scrollbar { display: none; }
 .zm-slider__track > * { scroll-snap-align: start; flex: none; }
 
 /* ---------- Карточка новости ---------- */
-.zm-news-card { display: flex; flex-direction: column; border-radius: var(--zm-radius); overflow: hidden; background: var(--zm-card); transition: background .25s, color .25s; }
-.zm-news-card__img { position: relative; aspect-ratio: 16 / 10.5; overflow: hidden; }
+.zm-news-card { position: relative; display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: transparent; }
+.zm-news-card__img { position: relative; height: 344px; margin-bottom: -14px; border-radius: 8px 8px 0 0; overflow: hidden; background: var(--zm-card); }
 .zm-news-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.zm-news-card__tags { position: absolute; left: 14px; top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
-.zm-news-card__body { flex: 1; padding: 18px 16px 20px; border-radius: var(--zm-radius) var(--zm-radius) 0 0; margin-top: -10px; position: relative; background: inherit; }
-.zm-news-card__date { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--zm-muted); transition: color .25s; }
-.zm-news-card__date svg { width: 13px; height: 13px; }
-.zm-news-card__title { font-size: 20px; font-weight: 500; line-height: 1.25; margin: 12px 0 8px; }
-.zm-news-card__text { font-size: 12.5px; line-height: 1.5; color: #4b5266; transition: color .25s;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.zm-news-card:hover { background: var(--zm-navy); color: #fff; }
-.zm-news-card:hover .zm-news-card__text, .zm-news-card:hover .zm-news-card__date { color: rgba(255,255,255,.75); }
+.zm-news-card__tags { position: absolute; left: 20px; top: 20px; display: flex; gap: 12px; flex-wrap: wrap; }
+.zm-news-card__body { position: relative; flex: 1; display: flex; flex-direction: column; gap: 20px; min-height: 274px; padding: 20px; border-radius: 16px; background: #e7e8f3; transition: background .25s, color .25s; }
+.zm-news-card__date { display: flex; align-items: center; gap: 4px; font-size: 16px; line-height: 24px; font-weight: 500; color: rgba(19,38,64,.46); transition: color .25s; }
+.zm-news-card__date svg { width: 24px; height: 24px; }
+.zm-news-card__title { font-size: 28px; line-height: 41px; font-weight: 500; margin-bottom: -8px; }
+.zm-news-card__text { font-size: 18px; line-height: 24px; font-weight: 500; color: rgba(19,38,64,.72); transition: color .25s;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.zm-news-card:hover .zm-news-card__body, .zm-news-card:focus-visible .zm-news-card__body { background: var(--zm-navy); color: #fff; }
+.zm-news-card:hover .zm-news-card__text { color: rgba(255,255,255,.72); }
+.zm-news-card:hover .zm-news-card__date { color: rgba(255,255,255,.46); }
 .zm-news-card:hover .zm-news-card__img img { transform: scale(1.03); }
+@media (max-width: 1240px) { .zm-news-card__title { font-size: 22px; line-height: 30px; } .zm-news-card__text { font-size: 16px; } }
+@media (max-width: 640px) {
+  .zm-news-card__img { height: 254px; }
+  .zm-news-card__tags { left: 12px; top: 12px; gap: 8px; }
+  .zm-news-card__body { min-height: 172px; gap: 16px; }
+  .zm-news-card__date { font-size: 13px; }
+  .zm-news-card__date svg { width: 18px; height: 18px; }
+  .zm-news-card__title { font-size: 16px; line-height: 20px; margin-bottom: -4px; }
+  .zm-news-card__text { font-size: 14px; line-height: 17px; }
+}
 
-/* ---------- Банки-партнёры ---------- */
-.zm-banks { display: flex; flex-wrap: wrap; gap: var(--zm-gap); margin-top: 28px; }
-.zm-bank { flex: 1 1 200px; display: flex; align-items: center; gap: 14px; height: 88px; padding: 0 22px; border-radius: var(--zm-radius); background: #fff; font-size: 18px; font-weight: 500; }
-.zm-bank img { max-height: 44px; max-width: 120px; object-fit: contain; }
-.zm-bank i { flex: none; width: 48px; height: 48px; border-radius: 10px; background: var(--zm-bg); display: flex; align-items: center; justify-content: center; font-style: normal; font-size: 14px; font-weight: 600; color: var(--zm-navy-2); }
+/* ---------- Банк-партнёр (логотип) ---------- */
+.zm-bank-logo { flex: none; width: 108px; height: 100px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 28px; color: var(--zm-blue-2); }
+.zm-bank-logo img { width: 72px; height: 72px; object-fit: contain; }
 
 /* ---------- Lightbox ---------- */
-.zm-lb { position: fixed; inset: 0; z-index: 99999; display: none; flex-direction: column; background: var(--zm-bg); color: var(--zm-ink); font-family: var(--zm-text); }
+.zm-lb { position: fixed; inset: 0; z-index: 99999; display: none; flex-direction: column; background: var(--zm-bg); color: #222; font-family: var(--zm-text); }
 .zm-lb.is-open { display: flex; }
-.zm-lb__bar { position: relative; display: flex; align-items: center; justify-content: center; height: 56px; border-bottom: 1px solid var(--zm-line); flex: none; }
-.zm-lb__back { position: absolute; left: 12px; top: 8px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 6px; }
+.zm-lb__bar { position: relative; flex: none; display: flex; align-items: center; justify-content: center; height: 81px; padding: 0 25px; border-bottom: 1px solid #ccc; }
+.zm-lb__back { position: absolute; left: 25px; top: 20px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: #222; }
 .zm-lb__back:hover { background: var(--zm-card); }
-.zm-lb__back svg { width: 20px; height: 20px; }
-.zm-lb__bar-title { font-family: var(--zm-head); text-transform: uppercase; font-size: 18px; }
-.zm-lb__title { font-family: var(--zm-head); text-transform: uppercase; font-size: clamp(24px, 3vw, 36px); padding: 18px 20px 0; flex: none; }
-.zm-lb__stage { position: relative; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 18px 72px 24px; touch-action: pan-y; }
-.zm-lb__img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; user-select: none; -webkit-user-drag: none; }
-.zm-lb__nav { position: absolute; top: 50%; margin-top: -22px; width: 44px; height: 44px; border-radius: 6px; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(19,38,64,.08); }
-.zm-lb__nav svg { width: 16px; height: 16px; }
-.zm-lb__nav--prev { left: 16px; }
-.zm-lb__nav--next { right: 16px; }
-.zm-lb__count { position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); padding: 4px 14px; border-radius: 20px; background: rgba(255,255,255,.9); font-size: 12px; }
+.zm-lb__back svg { width: 22px; height: 22px; }
+.zm-lb__bar-title { font-family: var(--zm-head); font-size: 28px; line-height: 1; text-transform: uppercase; }
+.zm-lb__title { flex: none; padding: 50px 20px 0; font-family: var(--zm-head); font-size: 60px; line-height: 1; text-transform: uppercase; }
+.zm-lb__stage { position: relative; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 30px 128px 40px; touch-action: pan-y; }
+.zm-lb__img { max-width: 100%; max-height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; }
+.zm-lb__nav { position: absolute; top: 50%; margin-top: -32px; width: 64px; height: 64px; border-radius: 16px; background: #fff; color: var(--zm-navy); display: flex; align-items: center; justify-content: center; }
+.zm-lb__nav:hover { background: var(--zm-card); }
+.zm-lb__nav svg { width: 10px; height: 17px; }
+.zm-lb__nav--prev { left: 40px; }
+.zm-lb__nav--next { right: 40px; }
+.zm-lb__count { position: absolute; left: 50%; bottom: 60px; transform: translateX(-50%); padding: 16px 32px; border-radius: 50px; background: var(--zm-card); color: var(--zm-navy); font-size: 20px; line-height: 25px; }
 .zm-lock { overflow: hidden !important; }
-
-/* ---------- Адаптив ---------- */
-@media (max-width: 980px) {
-  .zm-section { padding: 44px 0; }
-  .zm-lead-form { grid-template-columns: 1fr; }
-  .zm-lead-form__img { display: none; }
-}
 @media (max-width: 640px) {
-  .zm { font-size: 14px; }
-  .zm-container { padding: 0 16px; }
-  .zm-section { padding: 36px 0; }
-  .zm-head-row { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
-  .zm-form__grid { grid-template-columns: 1fr; }
-  .zm-lead-form__box { padding: 22px 16px; }
-  .zm-faq__q { padding: 18px 16px; }
-  .zm-faq__a .zm-text { padding: 0 16px 20px; }
-  .zm-select { width: calc(50% - 5px); }
-  .zm-tab { height: 42px; padding: 0 18px; font-size: 14px; }
-  .zm-lb__stage { padding: 12px 8px 20px; }
+  .zm-lb__bar { height: 60px; }
+  .zm-lb__back { left: 10px; top: 10px; }
+  .zm-lb__bar-title { font-size: 22px; }
+  .zm-lb__title { padding: 24px 12px 0; font-size: 36px; }
+  .zm-lb__stage { padding: 16px 12px 24px; }
   .zm-lb__nav { display: none; }
-  .zm-lb__count { bottom: 30px; }
+  .zm-lb__count { bottom: 36px; padding: 8px 20px; font-size: 14px; }
 }
 
 </style>
 <style>
-.zm-buy-hero { position: relative; padding-bottom: 0; }
-.zm-buy-hero h1 { font-size: clamp(40px, 7.6vw, 108px); }
+/* Первый экран: H1 132px в две строки, вторая строка — поверх фото 1440×609 (затемнение 20%) */
+.zm-buy-hero { position: relative; }
+.zm-buy-hero .zm-container { position: relative; z-index: 2; }
+.zm-buy-hero h1 { margin-top: 44px; font-size: calc(var(--zm-h) * .88); line-height: 1; }
 .zm-buy-hero h1 span { display: block; }
-.zm-buy-hero__l2 { position: relative; z-index: 2; color: #fff; padding-top: 22px; }
-.zm-buy-hero__media { position: relative; margin-top: calc(-0.95 * clamp(40px, 7.6vw, 108px) - 22px); min-height: 600px; color: #fff; }
+.zm-buy-hero__l2 { color: #fff; }
+.zm-buy-hero__media { position: relative; z-index: 1; height: 609px; margin-top: calc(-1 * var(--zm-h) * .88 - 21px); color: #fff; }
 .zm-buy-hero__media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.zm-buy-hero__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,18,32,.35), rgba(10,18,32,.15) 50%, rgba(10,18,32,.45)); }
-.zm-buy-hero__in { position: relative; z-index: 1; min-height: 600px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; padding-top: calc(0.95 * clamp(40px, 7.6vw, 108px) + 46px); padding-bottom: 40px; }
-.zm-buy-hero__in .zm-lead { color: #fff; max-width: 320px; }
+.zm-buy-hero__media::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.2); }
+.zm-buy-hero__in { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; padding-top: 21px; padding-bottom: 56px; }
+.zm-buy-hero__in p { width: 420px; max-width: 100%; font-size: 16px; line-height: 1.4; font-weight: 500; }
 
-.zm-cond { background: var(--zm-card); }
-.zm-cond__list { display: flex; flex-direction: column; gap: var(--zm-gap); }
-.zm-cond__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--zm-gap); }
-.zm-cond__row:nth-child(even) .zm-cond__img { order: 2; }
-.zm-cond__img { border-radius: var(--zm-radius); overflow: hidden; min-height: 320px; }
-.zm-cond__img img { width: 100%; height: 100%; object-fit: cover; }
-.zm-cond__card { display: flex; flex-direction: column; justify-content: center; padding: 32px 26px; border-radius: var(--zm-radius); background: #fff; }
-.zm-cond__card h2 { font-size: clamp(28px, 2.8vw, 36px); font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
-.zm-cond__lead { font-size: 13.5px; font-weight: 500; margin-bottom: 8px; }
-.zm-cond__card ul { margin: 0 0 12px 18px; list-style: disc; font-size: 13.5px; font-weight: 500; }
-.zm-cond__card ul li { padding: 2px 0; }
-.zm-cond__card .zm-btn { align-self: flex-start; margin-top: 24px; }
+/* Способы покупки: ряды 1400×507, колонки 658 / 722 */
+.zm-cond { background: var(--zm-card); padding: var(--zm-section) 0; }
+.zm-cond__list { display: flex; flex-direction: column; gap: 20px; }
+.zm-cond__row { display: grid; grid-template-columns: 658fr 722fr; gap: 20px; min-height: 507px; }
+.zm-cond__img { position: relative; border-radius: 16px; overflow: hidden; }
+.zm-cond__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-cond__card { display: flex; flex-direction: column; justify-content: center; gap: 48px; padding: 32px; border-radius: 16px; background: #fff; }
+.zm-cond__card h2 { font-size: 40px; line-height: 41px; font-weight: 500; margin-bottom: 24px; }
+.zm-cond__lead { font-size: 18px; line-height: 24px; font-weight: 500; margin-bottom: 12px; }
+.zm-cond__card ul { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; padding-left: 18px; list-style: disc; font-size: 18px; line-height: 24px; font-weight: 500; }
+.zm-cond__card ul.is-muted { color: rgba(19,38,64,.64); }
+.zm-cond__card .zm-text { font-size: 18px; line-height: 1.5; font-weight: 400; }
+.zm-cond__card .zm-btn { align-self: flex-start; }
 
+/* Форма на этой странице выше: 695 */
+#zm-form .zm-lead-form__box { min-height: 695px; }
+#zm-form .zm-lead-form__title { font-size: 80px; line-height: 80px; }
 
+@media (min-width: 1441px) { .zm-buy-hero__media { height: 42.3vw; } }
+@media (max-width: 1240px) {
+  .zm-cond__row { grid-template-columns: 1fr 1fr; min-height: 460px; }
+  .zm-cond__card h2 { font-size: 32px; line-height: 36px; }
+  .zm-cond__card ul, .zm-cond__lead, .zm-cond__card .zm-text { font-size: 16px; }
+  #zm-form .zm-lead-form__title { font-size: 64px; line-height: 64px; }
+}
 @media (max-width: 980px) {
-  .zm-buy-hero__media, .zm-buy-hero__in { min-height: 480px; }
+  .zm-buy-hero__media { height: 520px; }
 }
 @media (max-width: 640px) {
-  .zm-buy-hero__l2 { color: var(--zm-navy); padding-top: 0; }
-  .zm-buy-hero__media { margin-top: 20px; }
-  .zm-buy-hero__media, .zm-buy-hero__in { min-height: 420px; }
-  .zm-buy-hero__in { padding-top: 24px; padding-bottom: 24px; }
-  .zm-cond__row { grid-template-columns: 1fr; }
-  .zm-cond__row .zm-cond__img { order: 0 !important; min-height: 0; aspect-ratio: 16 / 10; }
-  .zm-cond__card { padding: 24px 18px; }
-  .zm-cond__card .zm-btn { align-self: stretch; }
+  .zm-buy-hero h1 { margin-top: 32px; font-size: 40px; }
+  .zm-buy-hero__l2 { color: var(--zm-navy); }
+  .zm-buy-hero__media { margin-top: 20px; height: 420px; }
+  .zm-buy-hero__in { padding-top: 20px; padding-bottom: 20px; }
+  .zm-buy-hero__in p { font-size: 14px; }
+  .zm-cond__row { grid-template-columns: 1fr; gap: 12px; min-height: 0; }
+  .zm-cond__list { gap: 20px; }
+  .zm-cond__img { order: -1; height: 310px; }
+  .zm-cond__card { gap: 24px; padding: 20px; }
+  .zm-cond__card h2 { font-size: 24px; line-height: 30px; margin-bottom: 16px; }
+  .zm-cond__card ul, .zm-cond__lead, .zm-cond__card .zm-text { font-size: 14px; line-height: 24px; }
+  .zm-cond__card .zm-btn { align-self: flex-start; padding: 15px 40px; }
+  #zm-form .zm-lead-form__box { min-height: 0; }
+  #zm-form .zm-lead-form__title { font-size: 40px; line-height: 48px; }
 }
 </style>
 
 <div class="zm">
-  <!-- Hero -->
   <section class="zm-buy-hero">
-    <div class="zm-container">
+    <div class="zm-container zm-top">
       <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Условия покупки</span></nav>
       <h1 class="zm-h1"><span>Условия покупки квартиры</span> <span class="zm-buy-hero__l2">в ЖК «Московский»</span></h1>
     </div>
     <div class="zm-buy-hero__media">
       <img src="../../assets/img/buy-hero.jpg" alt="Покупка квартиры в ЖК «Московский»">
       <div class="zm-container zm-buy-hero__in">
-        <p class="zm-lead">Мы предлагаем несколько вариантов приобретения квартиры — выберите тот, который подойдёт именно вам. Все сделки проходят в соответствии с Федеральным законом № 214 и с использованием эскроу-счетов, что гарантирует безопасность ваших средств.</p>
+        <p>Мы предлагаем несколько вариантов приобретения квартиры — выберите тот, который подойдёт именно вам. Все сделки проходят в соответствии с Федеральным законом № 214 и с использованием эскроу-счетов, что гарантирует безопасность ваших средств.</p>
         <!-- Цифры-преимущества: текст можно менять -->
         <ul class="zm-stats"><li>Ипотека от 6%</li><li>Рассрочка без %</li><li>Эскроу-счета</li></ul>
       </div>
     </div>
   </section>
 
-  <!-- Способы покупки -->
-  <section class="zm-section zm-cond">
+  <section class="zm-cond">
     <div class="zm-container">
       <div class="zm-cond__list">
         <div class="zm-cond__row" id="ipoteka">
-          <div class="zm-cond__img"><img src="../../assets/img/buy-mortgage.jpg" alt="Ипотека" loading="lazy"></div>
+          <div class="zm-cond__img"><img src="../../assets/img/buy-1.jpg" alt="Ипотека" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Ипотека</h2>
-            <p class="zm-cond__lead">Подберём банк, рассчитаем платёж и оформим ипотеку под минимальную ставку.</p>
-            <ul><li>Ставка от 6%</li><li>Взнос от 30%</li><li>Семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <div>
+              <h2>Ипотека</h2>
+              <ul><li>Ставка от 5,5%</li><li>Взнос от 20,1%, семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
             <a class="zm-btn" href="/raschet-ipoteki">Рассчитать ипотеку</a>
           </div>
         </div>
         <div class="zm-cond__row" id="rassrochka">
-          <div class="zm-cond__img"><img src="../../assets/img/buy-installment.jpg" alt="Рассрочка" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Рассрочка</h2>
-            <p class="zm-cond__lead">Удобный способ оплаты напрямую от застройщика — без переплат и комиссий.</p>
-            <ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До ввода дома в эксплуатацию</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <div>
+              <h2>Рассрочка</h2>
+              <p class="zm-cond__lead">Удобный способ оплаты напрямую от застройщика — без переплат и комиссий.</p>
+              <ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До сентября 2027 г.</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
           </div>
+          <div class="zm-cond__img"><img src="../../assets/img/buy-2.jpg" alt="Рассрочка" loading="lazy"></div>
         </div>
-        <div class="zm-cond__row" id="100-oplata">
-          <div class="zm-cond__img"><img src="../../assets/img/tower-sunset.jpg" alt="Единовременная оплата" loading="lazy"></div>
+        <div class="zm-cond__row" id="matkapital">
+          <div class="zm-cond__img"><img src="../../assets/img/buy-3.jpg" alt="Материнский капитал" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Выгода при единовременной оплате</h2>
-            <p class="zm-cond__lead">Получите специальную цену и приоритет при выборе квартиры.</p>
-            <ul><li>Дополнительная скидка</li><li>Быстрое оформление</li><li>Минимум документов</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <div>
+              <h2>Материнский капитал</h2>
+              <p class="zm-cond__lead">Маткапитал возможно использовать при любом способе расчёта:</p>
+              <ul><li>рассрочке</li><li>в качестве первого взноса по ипотеке</li><li>при 100% оплате</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
           </div>
         </div>
         <div class="zm-cond__row" id="sertifikaty">
-          <div class="zm-cond__img"><img src="../../assets/img/concept-2.jpg" alt="Сертификаты" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Сертификаты</h2>
-            <p class="zm-cond__lead">Оплатите часть стоимости квартиры жилищным сертификатом.</p>
-            <ul><li>Жилищные сертификаты</li><li>Военная ипотека</li><li>Региональные программы</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <div>
+              <h2>Сертификаты</h2>
+              <p class="zm-cond__lead">Сертификаты принимаются:</p>
+              <ul><li>Государственный жилищный сертификат (ГЖС)</li><li>Свидетельство участника НИС</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
           </div>
-        </div>
-        <div class="zm-cond__row" id="matkapital">
-          <div class="zm-cond__img"><img src="../../assets/img/concept-1.jpg" alt="Материнский капитал" loading="lazy"></div>
-          <div class="zm-cond__card">
-            <h2>Материнский капитал</h2>
-            <p class="zm-cond__lead">Используйте государственные программы: оплатите часть стоимости квартиры маткапиталом.</p>
-            <ul><li>Первоначальный взнос по ипотеке</li><li>Погашение части стоимости</li><li>Помощь с оформлением документов</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
-          </div>
+          <div class="zm-cond__img"><img src="../../assets/img/buy-4.jpg" alt="Сертификаты" loading="lazy"></div>
         </div>
         <div class="zm-cond__row" id="214-fz">
-          <div class="zm-cond__img"><img src="../../assets/img/buy-building.jpg" alt="Договор долевого участия" loading="lazy"></div>
+          <div class="zm-cond__img"><img src="../../assets/img/buy-5.jpg" alt="Договор долевого участия" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Покупка по договору долевого участия (214-ФЗ)</h2>
-            <p class="zm-cond__lead">Вы заключаете официальный договор ДДУ — застройщик несёт ответственность по обязательствам. Деньги хранятся на эскроу-счёте и перечисляются застройщику только после сдачи дома.</p>
-            <ul><li>Прозрачная сделка</li><li>Юридическая защита</li><li>Государственный контроль</li><li>Банковская гарантия</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed.</p>
+            <div>
+              <h2>Покупка по договору<br>долевого участия (214-ФЗ)</h2>
+              <p class="zm-cond__lead">Все этапы реализации проекта ведутся по 214-ФЗ с использованием эскроу-счетов и банковского контроля. Это означает полную финансовую прозрачность, защиту средств дольщиков и минимальные риски.</p>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Банки-партнёры: замените названия/добавьте логотипы (<img> вместо <i>) -->
-      <div class="zm-banks">
-        <div class="zm-bank"><i>Г</i>Генбанк</div>
-        <div class="zm-bank"><i>Р</i>РНКБ</div>
-        <div class="zm-bank"><i>В</i>ВТБ</div>
-        <div class="zm-bank"><i>Б</i>Банк-партнёр</div>
+        <div class="zm-cond__row" id="banki">
+          <div class="zm-cond__card">
+            <div>
+              <h2>Банки-партнёры:</h2>
+              <!-- Условия банков: те же цифры стоят в калькуляторе на /raschet-ipoteki -->
+              <ul class="is-muted"><li>Генбанк: от 6%, 1–30 лет, ПВ от 20,1%</li><li>Банк России: от 5,5%, 1–30 лет, ПВ от 20,1%</li><li>ВТБ: от 6%, 1–30 лет, ПВ от 40,1%</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
+          </div>
+          <div class="zm-cond__img"><img src="../../assets/img/buy-6.jpg" alt="Банки-партнёры" loading="lazy"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -415,32 +494,32 @@
     <h2 class="zm-h2">Вопросы и ответы</h2>
     <div class="zm-faq">
       <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>01. Какой минимальный первоначальный взнос по ипотеке?</span><i class="zm-faq__icon"></i></button>
+        <button class="zm-faq__q" type="button"><span>01. Какой минимальный первоначальный взнос по ипотеке?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
         <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
       </div>
 
       <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>02. Можно ли использовать материнский капитал?</span><i class="zm-faq__icon"></i></button>
+        <button class="zm-faq__q" type="button"><span>02. Можно ли использовать материнский капитал?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
         <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
       </div>
 
       <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>03. Есть ли рассрочка от застройщика и на каких условиях?</span><i class="zm-faq__icon"></i></button>
+        <button class="zm-faq__q" type="button"><span>03. Есть ли рассрочка от застройщика и на каких условиях?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
         <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
       </div>
 
       <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>04. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon"></i></button>
+        <button class="zm-faq__q" type="button"><span>04. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
         <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
       </div>
 
       <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>05. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon"></i></button>
+        <button class="zm-faq__q" type="button"><span>05. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
         <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
       </div>
 
       <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>06. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon"></i></button>
+        <button class="zm-faq__q" type="button"><span>06. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
         <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
       </div>
 
@@ -449,12 +528,12 @@
 </section>
 
 
-  <section class="zm-section" id="zm-form">
+  <section class="zm-section zm-section--last" id="zm-form">
   <div class="zm-container">
     <div class="zm-lead-form">
       <div class="zm-lead-form__img"><img src="../../assets/img/form-building.jpg" alt="ЖК «Московский»" loading="lazy"></div>
       <div class="zm-lead-form__box">
-        <h2 class="zm-h2">Получите персональную консультацию по условиям покупки</h2>
+        <h2 class="zm-lead-form__title">Получите персональную консультацию по условиям покупки</h2>
         <p class="zm-lead-form__sub">Менеджер перезвонит в течение 15–30 минут и ответит на все вопросы</p>
         <form class="zm-form" data-zm-form data-form-name="Условия покупки — консультация" data-tilda-form="" data-webhook="" data-redirect="">
           <div class="zm-form__grid">
@@ -463,10 +542,10 @@
             <label class="zm-field"><input type="text" name="Time" placeholder="Удобное время звонка"></label>
             <label class="zm-field"><input type="text" name="Comment" placeholder="Комментарий"></label>
 
-            <div class="zm-form__submit"><button class="zm-btn" type="submit">Получить подборку квартир</button></div>
+            <div class="zm-form__submit"><button class="zm-btn zm-btn--white" type="submit">Получить подборку квартир</button></div>
             <label class="zm-check"><input type="checkbox" name="Agree"><span>Я подтверждаю ознакомление с <a href="/politica" target="_blank" rel="noopener">политикой обработки персональных данных</a> и даю согласие на обработку персональных данных в порядке и на условиях, указанных в политике</span></label>
           </div>
-          <div class="zm-form__done"><strong>Спасибо! Заявка отправлена</strong>Менеджер перезвонит вам в течение 15–30 минут.</div>
+          <div class="zm-form__done"><strong>Спасибо!</strong>Заявка отправлена — менеджер перезвонит вам в течение 15–30 минут.</div>
         </form>
         
       </div>
@@ -481,9 +560,9 @@
   if (window.ZM) { window.ZM.init(); return; }
 
   var ICON = {
-    prev: '<svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    next: '<svg viewBox="0 0 16 16" fill="none"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    cal: '<svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="currentColor"/><path d="M1.5 5.5h11M4.5 1v3M9.5 1v3M4 8h1M6.5 8h1M9 8h1M4 10.5h1M6.5 10.5h1" stroke="currentColor"/></svg>'
+    prev: '<svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M7 1 1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    next: '<svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="m1 1 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    cal: '<svg viewBox="0 0 24 24" aria-hidden="true"><path transform="translate(2.63 1.5)" fill="currentColor" d="M18.59 5.01C18.47 3.04 16.82 1.5 14.84 1.5L13.87 1.5L13.87 0.75C13.87 0.55 13.8 0.36 13.65 0.22C13.51 0.08 13.32 0 13.12 0C12.93 0 12.73 0.08 12.59 0.22C12.45 0.36 12.37 0.55 12.37 0.75L12.37 1.5L6.37 1.5L6.37 0.75C6.37 0.55 6.3 0.36 6.15 0.22C6.01 0.08 5.82 0 5.62 0C5.43 0 5.23 0.08 5.09 0.22C4.95 0.36 4.87 0.55 4.87 0.75L4.87 1.5L3.91 1.5C1.93 1.5 0.28 3.04 0.16 5.01C-0.06 8.72 -0.05 12.48 0.18 16.19C0.29 18.07 1.8 19.58 3.68 19.7C5.57 19.82 7.47 19.87 9.37 19.87C11.27 19.87 13.18 19.82 15.06 19.7C16.95 19.58 18.46 18.07 18.57 16.19C18.8 12.48 18.81 8.72 18.59 5.01ZM17.08 16.1C17.04 16.64 16.81 17.16 16.42 17.55C16.03 17.93 15.52 18.17 14.97 18.2C11.26 18.43 7.49 18.43 3.78 18.2C3.23 18.17 2.72 17.93 2.33 17.55C1.94 17.16 1.71 16.64 1.67 16.1C1.5 13.23 1.46 10.37 1.55 7.5L17.19 7.5C17.29 10.36 17.25 13.25 17.08 16.1ZM5.62 4.5C5.82 4.5 6.01 4.42 6.15 4.28C6.3 4.14 6.37 3.95 6.37 3.75L6.37 3L12.37 3L12.37 3.75C12.37 3.95 12.45 4.14 12.59 4.28C12.73 4.42 12.93 4.5 13.12 4.5C13.32 4.5 13.51 4.42 13.65 4.28C13.8 4.14 13.87 3.95 13.87 3.75L13.87 3L14.84 3C16.03 3 17.02 3.92 17.09 5.1C17.11 5.4 17.11 5.7 17.13 6L1.62 6C1.64 5.7 1.64 5.4 1.66 5.1C1.73 3.92 2.72 3 3.91 3L4.87 3L4.87 3.75C4.87 3.95 4.95 4.14 5.09 4.28C5.23 4.42 5.43 4.5 5.62 4.5Z"/><path transform="translate(7.13 11.25)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(10.88 11.25)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(7.13 15)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(14.63 11.25)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(14.63 15)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(10.88 15)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/></svg>'
   };
 
   function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
@@ -643,7 +722,7 @@
     lb.setAttribute('aria-modal', 'true');
     lb.innerHTML =
       '<div class="zm-lb__bar"><button class="zm-lb__back" type="button" aria-label="Закрыть">' +
-      '<svg viewBox="0 0 20 20" fill="none"><path d="M12.5 4 6.5 10l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '<svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M14 3 6 11l8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
       '</button><div class="zm-lb__bar-title"></div></div>' +
       '<div class="zm-lb__title"></div>' +
       '<div class="zm-lb__stage"><img class="zm-lb__img" alt="">' +
@@ -728,16 +807,23 @@
       .catch(function () { return fallback || []; });
   }
 
+  function initSelect(sel) {
+    if (sel.__zm) return; sel.__zm = 1;
+    var upd = function () { sel.classList.toggle('is-empty', !sel.value); };
+    sel.addEventListener('change', upd); upd();
+  }
+
   function init(scope) {
     var roots = scope ? [scope] : $all('.zm');
     roots.forEach(function (root) {
+      $all('.zm-select select', root).forEach(initSelect);
       initFaq(root);
       $all('[data-zm-slider]', root).forEach(initSlider);
       $all('form[data-zm-form]', root).forEach(initForm);
     });
   }
 
-  window.ZM = { init: init, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all };
+  window.ZM = { init: init, initSelect: initSelect, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); });
   else init();
 })();

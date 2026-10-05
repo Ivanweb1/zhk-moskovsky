@@ -3,9 +3,9 @@
   if (window.ZM) { window.ZM.init(); return; }
 
   var ICON = {
-    prev: '<svg viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    next: '<svg viewBox="0 0 16 16" fill="none"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    cal: '<svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="currentColor"/><path d="M1.5 5.5h11M4.5 1v3M9.5 1v3M4 8h1M6.5 8h1M9 8h1M4 10.5h1M6.5 10.5h1" stroke="currentColor"/></svg>'
+    prev: '<svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M7 1 1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    next: '<svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="m1 1 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    cal: '<svg viewBox="0 0 24 24" aria-hidden="true"><path transform="translate(2.63 1.5)" fill="currentColor" d="M18.59 5.01C18.47 3.04 16.82 1.5 14.84 1.5L13.87 1.5L13.87 0.75C13.87 0.55 13.8 0.36 13.65 0.22C13.51 0.08 13.32 0 13.12 0C12.93 0 12.73 0.08 12.59 0.22C12.45 0.36 12.37 0.55 12.37 0.75L12.37 1.5L6.37 1.5L6.37 0.75C6.37 0.55 6.3 0.36 6.15 0.22C6.01 0.08 5.82 0 5.62 0C5.43 0 5.23 0.08 5.09 0.22C4.95 0.36 4.87 0.55 4.87 0.75L4.87 1.5L3.91 1.5C1.93 1.5 0.28 3.04 0.16 5.01C-0.06 8.72 -0.05 12.48 0.18 16.19C0.29 18.07 1.8 19.58 3.68 19.7C5.57 19.82 7.47 19.87 9.37 19.87C11.27 19.87 13.18 19.82 15.06 19.7C16.95 19.58 18.46 18.07 18.57 16.19C18.8 12.48 18.81 8.72 18.59 5.01ZM17.08 16.1C17.04 16.64 16.81 17.16 16.42 17.55C16.03 17.93 15.52 18.17 14.97 18.2C11.26 18.43 7.49 18.43 3.78 18.2C3.23 18.17 2.72 17.93 2.33 17.55C1.94 17.16 1.71 16.64 1.67 16.1C1.5 13.23 1.46 10.37 1.55 7.5L17.19 7.5C17.29 10.36 17.25 13.25 17.08 16.1ZM5.62 4.5C5.82 4.5 6.01 4.42 6.15 4.28C6.3 4.14 6.37 3.95 6.37 3.75L6.37 3L12.37 3L12.37 3.75C12.37 3.95 12.45 4.14 12.59 4.28C12.73 4.42 12.93 4.5 13.12 4.5C13.32 4.5 13.51 4.42 13.65 4.28C13.8 4.14 13.87 3.95 13.87 3.75L13.87 3L14.84 3C16.03 3 17.02 3.92 17.09 5.1C17.11 5.4 17.11 5.7 17.13 6L1.62 6C1.64 5.7 1.64 5.4 1.66 5.1C1.73 3.92 2.72 3 3.91 3L4.87 3L4.87 3.75C4.87 3.95 4.95 4.14 5.09 4.28C5.23 4.42 5.43 4.5 5.62 4.5Z"/><path transform="translate(7.13 11.25)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(10.88 11.25)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(7.13 15)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(14.63 11.25)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(14.63 15)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/><path transform="translate(10.88 15)" fill="currentColor" d="M1.13 2.25C1.75 2.25 2.25 1.75 2.25 1.13C2.25 0.5 1.75 0 1.13 0C0.5 0 0 0.5 0 1.13C0 1.75 0.5 2.25 1.13 2.25Z"/></svg>'
   };
 
   function $all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
@@ -165,7 +165,7 @@
     lb.setAttribute('aria-modal', 'true');
     lb.innerHTML =
       '<div class="zm-lb__bar"><button class="zm-lb__back" type="button" aria-label="Закрыть">' +
-      '<svg viewBox="0 0 20 20" fill="none"><path d="M12.5 4 6.5 10l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '<svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M14 3 6 11l8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
       '</button><div class="zm-lb__bar-title"></div></div>' +
       '<div class="zm-lb__title"></div>' +
       '<div class="zm-lb__stage"><img class="zm-lb__img" alt="">' +
@@ -250,16 +250,23 @@
       .catch(function () { return fallback || []; });
   }
 
+  function initSelect(sel) {
+    if (sel.__zm) return; sel.__zm = 1;
+    var upd = function () { sel.classList.toggle('is-empty', !sel.value); };
+    sel.addEventListener('change', upd); upd();
+  }
+
   function init(scope) {
     var roots = scope ? [scope] : $all('.zm');
     roots.forEach(function (root) {
+      $all('.zm-select select', root).forEach(initSelect);
       initFaq(root);
       $all('[data-zm-slider]', root).forEach(initSlider);
       $all('form[data-zm-form]', root).forEach(initForm);
     });
   }
 
-  window.ZM = { init: init, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all };
+  window.ZM = { init: init, initSelect: initSelect, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); });
   else init();
 })();

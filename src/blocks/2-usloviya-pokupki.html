@@ -3,129 +3,148 @@ title: Условия покупки
 url: /usloviya-pokupki
 -->
 <style>
-.zm-buy-hero { position: relative; padding-bottom: 0; }
-.zm-buy-hero h1 { font-size: clamp(40px, 7.6vw, 108px); }
+/* Первый экран: H1 132px в две строки, вторая строка — поверх фото 1440×609 (затемнение 20%) */
+.zm-buy-hero { position: relative; }
+.zm-buy-hero .zm-container { position: relative; z-index: 2; }
+.zm-buy-hero h1 { margin-top: 44px; font-size: calc(var(--zm-h) * .88); line-height: 1; }
 .zm-buy-hero h1 span { display: block; }
-.zm-buy-hero__l2 { position: relative; z-index: 2; color: #fff; padding-top: 22px; }
-.zm-buy-hero__media { position: relative; margin-top: calc(-0.95 * clamp(40px, 7.6vw, 108px) - 22px); min-height: 600px; color: #fff; }
+.zm-buy-hero__l2 { color: #fff; }
+.zm-buy-hero__media { position: relative; z-index: 1; height: 609px; margin-top: calc(-1 * var(--zm-h) * .88 - 21px); color: #fff; }
 .zm-buy-hero__media > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.zm-buy-hero__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,18,32,.35), rgba(10,18,32,.15) 50%, rgba(10,18,32,.45)); }
-.zm-buy-hero__in { position: relative; z-index: 1; min-height: 600px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; padding-top: calc(0.95 * clamp(40px, 7.6vw, 108px) + 46px); padding-bottom: 40px; }
-.zm-buy-hero__in .zm-lead { color: #fff; max-width: 320px; }
+.zm-buy-hero__media::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.2); }
+.zm-buy-hero__in { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; padding-top: 21px; padding-bottom: 56px; }
+.zm-buy-hero__in p { width: 420px; max-width: 100%; font-size: 16px; line-height: 1.4; font-weight: 500; }
 
-.zm-cond { background: var(--zm-card); }
-.zm-cond__list { display: flex; flex-direction: column; gap: var(--zm-gap); }
-.zm-cond__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--zm-gap); }
-.zm-cond__row:nth-child(even) .zm-cond__img { order: 2; }
-.zm-cond__img { border-radius: var(--zm-radius); overflow: hidden; min-height: 320px; }
-.zm-cond__img img { width: 100%; height: 100%; object-fit: cover; }
-.zm-cond__card { display: flex; flex-direction: column; justify-content: center; padding: 32px 26px; border-radius: var(--zm-radius); background: #fff; }
-.zm-cond__card h2 { font-size: clamp(28px, 2.8vw, 36px); font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
-.zm-cond__lead { font-size: 13.5px; font-weight: 500; margin-bottom: 8px; }
-.zm-cond__card ul { margin: 0 0 12px 18px; list-style: disc; font-size: 13.5px; font-weight: 500; }
-.zm-cond__card ul li { padding: 2px 0; }
-.zm-cond__card .zm-btn { align-self: flex-start; margin-top: 24px; }
+/* Способы покупки: ряды 1400×507, колонки 658 / 722 */
+.zm-cond { background: var(--zm-card); padding: var(--zm-section) 0; }
+.zm-cond__list { display: flex; flex-direction: column; gap: 20px; }
+.zm-cond__row { display: grid; grid-template-columns: 658fr 722fr; gap: 20px; min-height: 507px; }
+.zm-cond__img { position: relative; border-radius: 16px; overflow: hidden; }
+.zm-cond__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-cond__card { display: flex; flex-direction: column; justify-content: center; gap: 48px; padding: 32px; border-radius: 16px; background: #fff; }
+.zm-cond__card h2 { font-size: 40px; line-height: 41px; font-weight: 500; margin-bottom: 24px; }
+.zm-cond__lead { font-size: 18px; line-height: 24px; font-weight: 500; margin-bottom: 12px; }
+.zm-cond__card ul { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; padding-left: 18px; list-style: disc; font-size: 18px; line-height: 24px; font-weight: 500; }
+.zm-cond__card ul.is-muted { color: rgba(19,38,64,.64); }
+.zm-cond__card .zm-text { font-size: 18px; line-height: 1.5; font-weight: 400; }
+.zm-cond__card .zm-btn { align-self: flex-start; }
 
+/* Форма на этой странице выше: 695 */
+#zm-form .zm-lead-form__box { min-height: 695px; }
+#zm-form .zm-lead-form__title { font-size: 80px; line-height: 80px; }
 
+@media (min-width: 1441px) { .zm-buy-hero__media { height: 42.3vw; } }
+@media (max-width: 1240px) {
+  .zm-cond__row { grid-template-columns: 1fr 1fr; min-height: 460px; }
+  .zm-cond__card h2 { font-size: 32px; line-height: 36px; }
+  .zm-cond__card ul, .zm-cond__lead, .zm-cond__card .zm-text { font-size: 16px; }
+  #zm-form .zm-lead-form__title { font-size: 64px; line-height: 64px; }
+}
 @media (max-width: 980px) {
-  .zm-buy-hero__media, .zm-buy-hero__in { min-height: 480px; }
+  .zm-buy-hero__media { height: 520px; }
 }
 @media (max-width: 640px) {
-  .zm-buy-hero__l2 { color: var(--zm-navy); padding-top: 0; }
-  .zm-buy-hero__media { margin-top: 20px; }
-  .zm-buy-hero__media, .zm-buy-hero__in { min-height: 420px; }
-  .zm-buy-hero__in { padding-top: 24px; padding-bottom: 24px; }
-  .zm-cond__row { grid-template-columns: 1fr; }
-  .zm-cond__row .zm-cond__img { order: 0 !important; min-height: 0; aspect-ratio: 16 / 10; }
-  .zm-cond__card { padding: 24px 18px; }
-  .zm-cond__card .zm-btn { align-self: stretch; }
+  .zm-buy-hero h1 { margin-top: 32px; font-size: 40px; }
+  .zm-buy-hero__l2 { color: var(--zm-navy); }
+  .zm-buy-hero__media { margin-top: 20px; height: 420px; }
+  .zm-buy-hero__in { padding-top: 20px; padding-bottom: 20px; }
+  .zm-buy-hero__in p { font-size: 14px; }
+  .zm-cond__row { grid-template-columns: 1fr; gap: 12px; min-height: 0; }
+  .zm-cond__list { gap: 20px; }
+  .zm-cond__img { order: -1; height: 310px; }
+  .zm-cond__card { gap: 24px; padding: 20px; }
+  .zm-cond__card h2 { font-size: 24px; line-height: 30px; margin-bottom: 16px; }
+  .zm-cond__card ul, .zm-cond__lead, .zm-cond__card .zm-text { font-size: 14px; line-height: 24px; }
+  .zm-cond__card .zm-btn { align-self: flex-start; padding: 15px 40px; }
+  #zm-form .zm-lead-form__box { min-height: 0; }
+  #zm-form .zm-lead-form__title { font-size: 40px; line-height: 48px; }
 }
 </style>
 
 <div class="zm">
-  <!-- Hero -->
   <section class="zm-buy-hero">
-    <div class="zm-container">
+    <div class="zm-container zm-top">
       <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Условия покупки</span></nav>
       <h1 class="zm-h1"><span>Условия покупки квартиры</span> <span class="zm-buy-hero__l2">в ЖК «Московский»</span></h1>
     </div>
     <div class="zm-buy-hero__media">
       <img src="{{img:buy-hero}}" alt="Покупка квартиры в ЖК «Московский»">
       <div class="zm-container zm-buy-hero__in">
-        <p class="zm-lead">Мы предлагаем несколько вариантов приобретения квартиры — выберите тот, который подойдёт именно вам. Все сделки проходят в соответствии с Федеральным законом № 214 и с использованием эскроу-счетов, что гарантирует безопасность ваших средств.</p>
+        <p>Мы предлагаем несколько вариантов приобретения квартиры — выберите тот, который подойдёт именно вам. Все сделки проходят в соответствии с Федеральным законом № 214 и с использованием эскроу-счетов, что гарантирует безопасность ваших средств.</p>
         <!-- Цифры-преимущества: текст можно менять -->
         <ul class="zm-stats"><li>Ипотека от 6%</li><li>Рассрочка без %</li><li>Эскроу-счета</li></ul>
       </div>
     </div>
   </section>
 
-  <!-- Способы покупки -->
-  <section class="zm-section zm-cond">
+  <section class="zm-cond">
     <div class="zm-container">
       <div class="zm-cond__list">
         <div class="zm-cond__row" id="ipoteka">
-          <div class="zm-cond__img"><img src="{{img:buy-mortgage}}" alt="Ипотека" loading="lazy"></div>
+          <div class="zm-cond__img"><img src="{{img:buy-1}}" alt="Ипотека" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Ипотека</h2>
-            <p class="zm-cond__lead">Подберём банк, рассчитаем платёж и оформим ипотеку под минимальную ставку.</p>
-            <ul><li>Ставка от 6%</li><li>Взнос от 30%</li><li>Семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <div>
+              <h2>Ипотека</h2>
+              <ul><li>Ставка от 5,5%</li><li>Взнос от 20,1%, семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
             <a class="zm-btn" href="/raschet-ipoteki">Рассчитать ипотеку</a>
           </div>
         </div>
         <div class="zm-cond__row" id="rassrochka">
-          <div class="zm-cond__img"><img src="{{img:buy-installment}}" alt="Рассрочка" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Рассрочка</h2>
-            <p class="zm-cond__lead">Удобный способ оплаты напрямую от застройщика — без переплат и комиссий.</p>
-            <ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До ввода дома в эксплуатацию</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <div>
+              <h2>Рассрочка</h2>
+              <p class="zm-cond__lead">Удобный способ оплаты напрямую от застройщика — без переплат и комиссий.</p>
+              <ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До сентября 2027 г.</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
           </div>
+          <div class="zm-cond__img"><img src="{{img:buy-2}}" alt="Рассрочка" loading="lazy"></div>
         </div>
-        <div class="zm-cond__row" id="100-oplata">
-          <div class="zm-cond__img"><img src="{{img:tower-sunset}}" alt="Единовременная оплата" loading="lazy"></div>
+        <div class="zm-cond__row" id="matkapital">
+          <div class="zm-cond__img"><img src="{{img:buy-3}}" alt="Материнский капитал" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Выгода при единовременной оплате</h2>
-            <p class="zm-cond__lead">Получите специальную цену и приоритет при выборе квартиры.</p>
-            <ul><li>Дополнительная скидка</li><li>Быстрое оформление</li><li>Минимум документов</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <div>
+              <h2>Материнский капитал</h2>
+              <p class="zm-cond__lead">Маткапитал возможно использовать при любом способе расчёта:</p>
+              <ul><li>рассрочке</li><li>в качестве первого взноса по ипотеке</li><li>при 100% оплате</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
           </div>
         </div>
         <div class="zm-cond__row" id="sertifikaty">
-          <div class="zm-cond__img"><img src="{{img:concept-2}}" alt="Сертификаты" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Сертификаты</h2>
-            <p class="zm-cond__lead">Оплатите часть стоимости квартиры жилищным сертификатом.</p>
-            <ul><li>Жилищные сертификаты</li><li>Военная ипотека</li><li>Региональные программы</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            <div>
+              <h2>Сертификаты</h2>
+              <p class="zm-cond__lead">Сертификаты принимаются:</p>
+              <ul><li>Государственный жилищный сертификат (ГЖС)</li><li>Свидетельство участника НИС</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
           </div>
-        </div>
-        <div class="zm-cond__row" id="matkapital">
-          <div class="zm-cond__img"><img src="{{img:concept-1}}" alt="Материнский капитал" loading="lazy"></div>
-          <div class="zm-cond__card">
-            <h2>Материнский капитал</h2>
-            <p class="zm-cond__lead">Используйте государственные программы: оплатите часть стоимости квартиры маткапиталом.</p>
-            <ul><li>Первоначальный взнос по ипотеке</li><li>Погашение части стоимости</li><li>Помощь с оформлением документов</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
-          </div>
+          <div class="zm-cond__img"><img src="{{img:buy-4}}" alt="Сертификаты" loading="lazy"></div>
         </div>
         <div class="zm-cond__row" id="214-fz">
-          <div class="zm-cond__img"><img src="{{img:buy-building}}" alt="Договор долевого участия" loading="lazy"></div>
+          <div class="zm-cond__img"><img src="{{img:buy-5}}" alt="Договор долевого участия" loading="lazy"></div>
           <div class="zm-cond__card">
-            <h2>Покупка по договору долевого участия (214-ФЗ)</h2>
-            <p class="zm-cond__lead">Вы заключаете официальный договор ДДУ — застройщик несёт ответственность по обязательствам. Деньги хранятся на эскроу-счёте и перечисляются застройщику только после сдачи дома.</p>
-            <ul><li>Прозрачная сделка</li><li>Юридическая защита</li><li>Государственный контроль</li><li>Банковская гарантия</li></ul>
-            <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed.</p>
+            <div>
+              <h2>Покупка по договору<br>долевого участия (214-ФЗ)</h2>
+              <p class="zm-cond__lead">Все этапы реализации проекта ведутся по 214-ФЗ с использованием эскроу-счетов и банковского контроля. Это означает полную финансовую прозрачность, защиту средств дольщиков и минимальные риски.</p>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Банки-партнёры: замените названия/добавьте логотипы (<img> вместо <i>) -->
-      <div class="zm-banks">
-        <div class="zm-bank"><i>Г</i>Генбанк</div>
-        <div class="zm-bank"><i>Р</i>РНКБ</div>
-        <div class="zm-bank"><i>В</i>ВТБ</div>
-        <div class="zm-bank"><i>Б</i>Банк-партнёр</div>
+        <div class="zm-cond__row" id="banki">
+          <div class="zm-cond__card">
+            <div>
+              <h2>Банки-партнёры:</h2>
+              <!-- Условия банков: те же цифры стоят в калькуляторе на /raschet-ipoteki -->
+              <ul class="is-muted"><li>Генбанк: от 6%, 1–30 лет, ПВ от 20,1%</li><li>Банк России: от 5,5%, 1–30 лет, ПВ от 20,1%</li><li>ВТБ: от 6%, 1–30 лет, ПВ от 40,1%</li></ul>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+            </div>
+          </div>
+          <div class="zm-cond__img"><img src="{{img:buy-6}}" alt="Банки-партнёры" loading="lazy"></div>
+        </div>
       </div>
     </div>
   </section>

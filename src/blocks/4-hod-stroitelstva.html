@@ -3,38 +3,39 @@ title: Ход строительства
 url: /hod-stroitelstva
 -->
 <style>
-.zm-build-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--zm-gap); }
-.zm-build-card { display: flex; flex-direction: column; border-radius: var(--zm-radius); overflow: hidden; background: var(--zm-card); text-align: left; transition: background .25s, color .25s; }
-.zm-build-card__img { aspect-ratio: 4 / 3; overflow: hidden; background: #d8dbe6; }
+/* Карточки 451×365, фото 451×307, подпись SemiBold 20 */
+.zm-build .zm-filters { margin: 40px 0 40px; }
+@media (min-width: 981px) { .zm-top__row .zm-build__lead { flex-basis: 279px; } }
+.zm-build-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 24px; }
+.zm-build-card { display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; background: var(--zm-card); text-align: left; transition: background .25s, color .25s; }
+.zm-build-card__img { aspect-ratio: 451 / 307; overflow: hidden; background: #d8dbe6; }
 .zm-build-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.zm-build-card__foot { display: flex; justify-content: space-between; gap: 10px; padding: 14px 14px 16px; font-size: 14px; }
-.zm-build-card__foot b { font-weight: 500; }
-.zm-build-card__foot span { color: var(--zm-muted); transition: color .25s; }
+.zm-build-card__foot { display: flex; justify-content: space-between; gap: 10px; padding: 19px 20px 20px; font-size: 20px; line-height: 19px; font-weight: 600; letter-spacing: 0; }
+.zm-build-card__foot span { opacity: .5; }
 .zm-build-card:hover { background: var(--zm-navy); color: #fff; }
-.zm-build-card:hover span { color: rgba(255,255,255,.7); }
 .zm-build-card:hover img { transform: scale(1.03); }
-.zm-build-empty { grid-column: 1 / -1; padding: 40px 0; color: var(--zm-muted); }
-@media (max-width: 980px) { .zm-build-grid { grid-template-columns: 1fr 1fr; } }
+.zm-build-empty { grid-column: 1 / -1; padding: 40px 0; color: var(--zm-muted); font-size: 18px; }
+@media (max-width: 980px) { .zm-build-grid { grid-template-columns: 1fr 1fr; gap: 16px; } .zm-build-card__foot { font-size: 16px; } }
 @media (max-width: 640px) {
-  .zm-build-grid { grid-template-columns: 1fr; }
-  .zm-build-card__foot { font-size: 13px; }
+  .zm-build .zm-filters { margin: 24px 0; }
+  .zm-build-grid { grid-template-columns: 1fr; gap: 12px; }
+  .zm-build-card__img { aspect-ratio: 351 / 270; }
+  .zm-build-card__foot { padding: 16px; font-size: 14px; }
 }
 </style>
 
 <div class="zm" id="zm-build-page">
-  <section class="zm-section zm-section--tight">
-    <div class="zm-container">
-      <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Ход строительства</span></nav>
-      <div class="zm-head-row">
-        <h1 class="zm-h1">Ход строительства</h1>
-        <p class="zm-lead">Актуальные фотоотчёты строительства ЖК&nbsp;«Московский»</p>
-      </div>
-      <div class="zm-filters">
-        <div class="zm-select"><select data-f="year" aria-label="Год"><option value="">Год</option></select></div>
-        <div class="zm-select"><select data-f="month" aria-label="Месяц"><option value="">Месяц</option></select></div>
-      </div>
-      <div class="zm-build-grid" data-grid></div>
+  <section class="zm-container zm-top zm-build zm-section--last">
+    <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Ход строительства</span></nav>
+    <div class="zm-top__row">
+      <h1 class="zm-h1">Ход строительства</h1>
+      <p class="zm-lead zm-build__lead">Актуальные фотоотчёты строительства ЖК&nbsp;«Московский»</p>
     </div>
+    <div class="zm-filters">
+      <div class="zm-select"><select data-f="year" aria-label="Год"><option value="">Год</option></select></div>
+      <div class="zm-select"><select data-f="month" aria-label="Месяц"><option value="">Месяц</option></select></div>
+    </div>
+    <div class="zm-build-grid" data-grid></div>
   </section>
 </div>
 
@@ -46,13 +47,15 @@ url: /hod-stroitelstva
      без потока — добавьте объект в начало REPORTS: { title: 'Июль 2026', photos: ['ссылка1', 'ссылка2', ...] } */
   var FEED_UID = '924680363231';
   var REPORTS = [
-    { title: 'Июнь 2026',    photos: ['https://static.tildacdn.com/tild3632-3664-4164-a363-303636613366/obj69122_photo2026-0.jpeg'] },
-    { title: 'Май 2026',     photos: ['https://static.tildacdn.com/tild6265-3339-4836-a132-663562323764/obj69122_photo2026-0.jpeg'] },
-    { title: 'Апрель 2026',  photos: ['https://static.tildacdn.com/tild6336-3339-4035-b065-366336356538/obj69122_photo2026-0.jpeg'] },
-    { title: 'Март 2026',    photos: ['https://static.tildacdn.com/tild3338-3038-4738-b936-613438366433/obj69122_photo2026-0.jpeg'] },
-    { title: 'Февраль 2026', photos: ['https://static.tildacdn.com/tild3966-6436-4936-b966-313836633334/EE6E534A214B4C10AC27.jpg'] },
-    { title: 'Январь 2026',  photos: ['https://static.tildacdn.com/tild6433-6162-4432-a133-386639626433/E527B36BC4474E66BB00.jpg'] },
-    { title: 'Декабрь 2025', photos: ['https://static.tildacdn.com/tild3463-3335-4332-b332-393365653833/__2026-02-18__123721.png'] }
+    { title: 'Август 2026',  photos: ['{{img:build-2026-08}}'] },
+    { title: 'Июль 2026',    photos: ['{{img:build-2026-07}}'] },
+    { title: 'Июнь 2026',    photos: ['{{img:build-2026-06}}', 'https://static.tildacdn.com/tild3632-3664-4164-a363-303636613366/obj69122_photo2026-0.jpeg'] },
+    { title: 'Май 2026',     photos: ['{{img:build-2026-05}}', 'https://static.tildacdn.com/tild6265-3339-4836-a132-663562323764/obj69122_photo2026-0.jpeg'] },
+    { title: 'Апрель 2026',  photos: ['{{img:build-2026-04}}', 'https://static.tildacdn.com/tild6336-3339-4035-b065-366336356538/obj69122_photo2026-0.jpeg'] },
+    { title: 'Март 2026',    photos: ['{{img:build-2026-03}}', 'https://static.tildacdn.com/tild3338-3038-4738-b936-613438366433/obj69122_photo2026-0.jpeg'] },
+    { title: 'Февраль 2026', photos: ['{{img:build-2026-02}}', 'https://static.tildacdn.com/tild3966-6436-4936-b966-313836633334/EE6E534A214B4C10AC27.jpg'] },
+    { title: 'Январь 2026',  photos: ['{{img:build-2026-01}}', 'https://static.tildacdn.com/tild6433-6162-4432-a133-386639626433/E527B36BC4474E66BB00.jpg'] },
+    { title: 'Декабрь 2025', photos: ['{{img:build-2025-12}}', 'https://static.tildacdn.com/tild3463-3335-4332-b332-393365653833/__2026-02-18__123721.png'] }
   ];
   /* ========================= */
 
@@ -79,7 +82,7 @@ url: /hod-stroitelstva
   function fillFilters() {
     var years = [];
     items.forEach(function (r) { if (r.year && years.indexOf(r.year) < 0) years.push(r.year); });
-    selY.innerHTML = '<option value="">Все годы</option>' + years.map(function (y) { return '<option>' + y + '</option>'; }).join('');
+    selY.innerHTML = '<option value="">Год</option>' + years.map(function (y) { return '<option>' + y + '</option>'; }).join('');
     fillMonths();
   }
   function fillMonths() {
@@ -87,7 +90,7 @@ url: /hod-stroitelstva
     items.forEach(function (r) { if ((!y || r.year === y) && r.month > -1 && ms.indexOf(r.month) < 0) ms.push(r.month); });
     ms.sort(function (a, b) { return a - b; });
     var cur = selM.value;
-    selM.innerHTML = '<option value="">Все месяцы</option>' + ms.map(function (m) { return '<option value="' + m + '">' + cap(MONTHS[m]) + '</option>'; }).join('');
+    selM.innerHTML = '<option value="">Месяц</option>' + ms.map(function (m) { return '<option value="' + m + '">' + cap(MONTHS[m]) + '</option>'; }).join('');
     if (ms.indexOf(+cur) > -1 && cur !== '') selM.value = cur;
   }
 
@@ -108,10 +111,11 @@ url: /hod-stroitelstva
     var r = items[+card.getAttribute('data-i')];
     window.ZM.lightbox({ barTitle: 'Ход строительства', title: r.title, images: r.photos, index: 0 });
   });
-  selY.addEventListener('change', function () { fillMonths(); render(); });
+  selY.addEventListener('change', function () { fillMonths(); sel(selM); render(); });
   selM.addEventListener('change', render);
 
   function start(list) { items = normalize(list); fillFilters(); render(); }
+  function sel(s) { if (window.ZM.initSelect) window.ZM.initSelect(s); s.classList.toggle('is-empty', !s.value); }
 
   // Пробуем взять фотоотчёты из «Потока» Tilda (обложка + галерея поста)
   function fromFeed() {
@@ -133,6 +137,13 @@ url: /hod-stroitelstva
   }
 
   start(REPORTS);
-  fromFeed().then(function (list) { var n = normalize(list); if (n.length) { items = n; fillFilters(); render(); } }, function () {});
+  // месяцы из потока заменяют одноимённые из REPORTS, остальные месяцы из REPORTS сохраняются
+  fromFeed().then(function (list) {
+    var feed = normalize(list); if (!feed.length) return;
+    var key = function (r) { return r.year + '-' + r.month; };
+    var have = {}; feed.forEach(function (r) { have[key(r)] = 1; });
+    items = normalize(feed.concat(items.filter(function (r) { return !have[key(r)]; })));
+    fillFilters(); render();
+  }, function () {});
 })();
 </script>

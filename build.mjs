@@ -24,7 +24,8 @@ function render(src, imgBase, depth = 0) {
       out = out.replace(/\{\{(?!policy\}|tildaForm\}|webhook\})\w+\}\}/g, ''); // незаданные аргументы
       return render(out, imgBase, depth + 1);
     })
-    .replace(/\{\{img:([\w-]+)\}\}/g, (_, n) => imgBase + n + '.jpg')
+    .replace(/\{\{img:([\w-]+)\}\}/g, (_, n) => imgBase + 'img/' + n + '.jpg')
+    .replace(/\{\{asset:([\w./-]+)\}\}/g, (_, p) => imgBase + p)
     .replace(/\{\{policy\}\}/g, cfg.policyUrl)
     .replace(/\{\{tildaForm\}\}/g, cfg.tildaFormRec)
     .replace(/\{\{webhook\}\}/g, cfg.webhook);
@@ -68,13 +69,13 @@ for (const file of blocks) {
   const tildaCode =
     `<!-- ЖК «Московский» · ${meta.title} · ${meta.url}\n` +
     `     Вставьте этот код целиком в вайб-блок Tilda. Собрано из src/blocks/${file} — правки вносите там и пересобирайте. -->\n` +
-    assemble(cfg.imgBaseTilda);
+    assemble(cfg.assetBase);
   fs.writeFileSync(path.join(root, 'dist/tilda', name + '.html'), tildaCode);
 
   // превью: страница лежит в preview/<url>/index.html, картинки — относительно корня репозитория
   const urlPath = meta.url.replace(/^\/|\/$/g, '');
   const depthUp = '../'.repeat(urlPath.split('/').length + 1);
-  const body = assemble(depthUp + 'assets/img/');
+  const body = assemble(depthUp + 'assets/');
   const page = shellTpl
     .replaceAll('{{title}}', meta.title)
     .replaceAll('{{root}}', depthUp + 'preview/')

@@ -4,8 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{title}} — ЖК «Московский» (превью)</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Poiret+One&display=swap">
 <style>
+  /* Шрифты превью. На сайте блоки берут шрифты Tilda: заголовки — Sverdlovsk, текст — Manrope.
+     Sverdlovsk в превью нет, вместо него — близкий по ширине Fira Sans Extra Condensed. */
+  @font-face{font-family:'ZM Preview Head';font-weight:100 900;font-display:swap;src:url({{root}}fonts/fira-sans-extra-condensed-cyrillic-200-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'Manrope';font-weight:400;font-display:swap;src:url({{root}}fonts/manrope-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'Manrope';font-weight:500;font-display:swap;src:url({{root}}fonts/manrope-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'Manrope';font-weight:600;font-display:swap;src:url({{root}}fonts/manrope-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'ZM Preview Head';font-weight:100 900;font-display:swap;src:url({{root}}fonts/fira-sans-extra-condensed-latin-200-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Manrope';font-weight:400;font-display:swap;src:url({{root}}fonts/manrope-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Manrope';font-weight:500;font-display:swap;src:url({{root}}fonts/manrope-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'Manrope';font-weight:600;font-display:swap;src:url({{root}}fonts/manrope-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  :root { --t-headline-font: 'ZM Preview Head'; --t-text-font: 'Manrope'; }
   /* Только для превью: имитация шапки и подвала Tilda. В Tilda остаются ваши шапка и подвал. */
   html, body { margin: 0; background: #f3f3f7; }
   .pv-head { position: sticky; top: 0; z-index: 50; padding: 10px 16px; background: #f3f3f7; }
@@ -15,7 +25,7 @@
   .pv-logo { font-weight: 600; letter-spacing: .04em; color: #b08d4f !important; margin-right: auto; }
   .pv-foot { margin-top: 40px; padding: 48px 20px; background: #132640; color: #fff; font: 13px/1.6 Manrope, Arial, sans-serif; }
   .pv-foot__in { max-width: 1200px; margin: 0 auto; }
-  .pv-foot b { display: block; font: 400 40px/1 'Poiret One', serif; text-transform: uppercase; margin-bottom: 16px; }
+  .pv-foot b { display: block; font: 200 60px/1 'ZM Preview Head', sans-serif; text-transform: uppercase; margin-bottom: 16px; }
 </style>
 <script>window.ZM_PREVIEW_ROOT = '{{root}}';</script>
 </head>
