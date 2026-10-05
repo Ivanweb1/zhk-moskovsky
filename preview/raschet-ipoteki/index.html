@@ -6,12 +6,12 @@
 <title>Расчёт ипотеки — ЖК «Московский» (превью)</title>
 <style>
   /* Шрифты превью. На сайте блоки берут шрифты Tilda: заголовки — Sverdlovsk, текст — Manrope.
-     Sverdlovsk в превью нет, вместо него — близкий по ширине Fira Sans Extra Condensed. */
-  @font-face{font-family:'ZM Preview Head';font-weight:100 900;font-display:swap;src:url(../../preview/fonts/fira-sans-extra-condensed-cyrillic-200-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+     Sverdlovsk в превью нет, вместо него — Fira Sans Extra Condensed, уменьшенный до ширины Sverdlovsk (size-adjust). */
+  @font-face{font-family:'ZM Preview Head';font-weight:100 900;font-display:swap;size-adjust:86%;src:url(../../preview/fonts/fira-sans-extra-condensed-cyrillic-200-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
   @font-face{font-family:'Manrope';font-weight:400;font-display:swap;src:url(../../preview/fonts/manrope-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
   @font-face{font-family:'Manrope';font-weight:500;font-display:swap;src:url(../../preview/fonts/manrope-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
   @font-face{font-family:'Manrope';font-weight:600;font-display:swap;src:url(../../preview/fonts/manrope-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-  @font-face{font-family:'ZM Preview Head';font-weight:100 900;font-display:swap;src:url(../../preview/fonts/fira-sans-extra-condensed-latin-200-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'ZM Preview Head';font-weight:100 900;font-display:swap;size-adjust:86%;src:url(../../preview/fonts/fira-sans-extra-condensed-latin-200-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
   @font-face{font-family:'Manrope';font-weight:400;font-display:swap;src:url(../../preview/fonts/manrope-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
   @font-face{font-family:'Manrope';font-weight:500;font-display:swap;src:url(../../preview/fonts/manrope-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
   @font-face{font-family:'Manrope';font-weight:600;font-display:swap;src:url(../../preview/fonts/manrope-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -47,6 +47,12 @@
   .zm-hd__logo img { width: 89px; height: 40px; }
   .zm-hd__msg { margin-left: auto; gap: 5px; }
   .zm-hd__burger { display: block; margin-left: 10px; }
+}
+@media (max-width: 640px) {
+  .zm-hd__bar { position: relative; }
+  .zm-hd__msg { order: -1; margin-left: 0; }
+  .zm-hd__logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .zm-hd__burger { margin-left: auto; }
   .zm-hd.is-open .zm-hd__menu { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; padding: 20px; border-radius: 10px; background: var(--zm-card); font-size: 16px; font-weight: 500; max-height: calc(100vh - 100px); overflow-y: auto; }
 }
 </style>

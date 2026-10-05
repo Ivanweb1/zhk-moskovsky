@@ -331,6 +331,12 @@
   .zm-hd__logo img { width: 89px; height: 40px; }
   .zm-hd__msg { margin-left: auto; gap: 5px; }
   .zm-hd__burger { display: block; margin-left: 10px; }
+}
+@media (max-width: 640px) {
+  .zm-hd__bar { position: relative; }
+  .zm-hd__msg { order: -1; margin-left: 0; }
+  .zm-hd__logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .zm-hd__burger { margin-left: auto; }
   .zm-hd.is-open .zm-hd__menu { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; padding: 20px; border-radius: 10px; background: var(--zm-card); font-size: 16px; font-weight: 500; max-height: calc(100vh - 100px); overflow-y: auto; }
 }
 </style>
