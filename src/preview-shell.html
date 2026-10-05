@@ -31,8 +31,9 @@
     if (!a) return;
     var href = a.getAttribute('href');
     e.preventDefault();
-    if (href === '/') { location.href = '{{root}}../index.html'; return; }
-    if (href.indexOf('/#') === 0) { location.href = 'https://xn----ctbkblbffabqdhubiarrjde5e2k.xn--p1ai' + href; return; }
+    if (href === '/') { location.href = '{{root}}glavnaya/'; return; }
+    if (href.indexOf('/#/') === 0) { location.href = 'https://xn----ctbkblbffabqdhubiarrjde5e2k.xn--p1ai' + href; return; }
+    if (href.indexOf('/#') === 0) { location.href = '{{root}}glavnaya/' + href.slice(1); return; }
     if (href.indexOf('/politica') === 0) { alert('Здесь откроется страница политики на сайте'); return; }
     location.href = '{{root}}' + href.replace(/^\//, '').replace(/\/?$/, '/');
   });

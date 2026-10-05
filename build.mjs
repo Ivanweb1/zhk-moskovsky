@@ -78,7 +78,7 @@ for (const b of all) {
   if (b.meta.part) continue;
 
   // превью: страница лежит в preview/<url>/index.html, картинки — относительно корня репозитория
-  const urlPath = b.meta.url.replace(/^\/|\/$/g, '');
+  const urlPath = b.meta.preview || b.meta.url.replace(/^\/|\/$/g, '');
   const depthUp = '../'.repeat(urlPath.split('/').length + 1);
   const base = depthUp + 'assets/';
   const page = shellTpl
@@ -101,7 +101,7 @@ h1{font-weight:500}a{color:#1f3d6b}li{margin:8px 0}code{background:#e4e6f1;paddi
 <body><main><h1>ЖК «Московский» — новые страницы (превью)</h1><ul>
 ${index.map((p) => p.part
   ? `<li>${p.title} — ${p.url} · код для Tilda: <a href="dist/tilda/${p.name}.html">dist/tilda/${p.name}.html</a></li>`
-  : `<li><a href="preview/${p.url.replace(/^\/|\/$/g, '')}/">${p.title}</a> — <code>${p.url}</code> · код для Tilda: <a href="dist/tilda/${p.name}.html">dist/tilda/${p.name}.html</a></li>`).join('\n')}
+  : `<li><a href="preview/${p.preview || p.url.replace(/^\/|\/$/g, '')}/">${p.title}</a> — <code>${p.url}</code> · код для Tilda: <a href="dist/tilda/${p.name}.html">dist/tilda/${p.name}.html</a></li>`).join('\n')}
 </ul></main></body></html>\n`
 );
 

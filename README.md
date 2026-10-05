@@ -5,6 +5,7 @@
 
 | Страница | Адрес в Tilda | Код для вставки |
 |---|---|---|
+| Главная | `/` | [`dist/tilda/01-glavnaya.html`](dist/tilda/01-glavnaya.html) |
 | О проекте | `/o-proekte` | [`dist/tilda/1-o-proekte.html`](dist/tilda/1-o-proekte.html) |
 | Условия покупки | `/usloviya-pokupki` | [`dist/tilda/2-usloviya-pokupki.html`](dist/tilda/2-usloviya-pokupki.html) |
 | Расчёт ипотеки | `/raschet-ipoteki` | [`dist/tilda/3-raschet-ipoteki.html`](dist/tilda/3-raschet-ipoteki.html) |
@@ -13,7 +14,10 @@
 | Новости | `/novosti` | [`dist/tilda/6-novosti.html`](dist/tilda/6-novosti.html) |
 | Шаблон новости | `/novosti/<адрес-новости>` | [`dist/tilda/7-novost-shablon.html`](dist/tilda/7-novost-shablon.html) |
 
-Главная не входит: изменения там минимальные, делаются в Zero Block.
+Главная собрана целиком по макету (11 блоков: первый экран, о проекте, локация, архитектура, планировки, форма подбора,
+о застройщике, способы покупки, ход строительства, новости и акции, FAQ). Якоря `#about`, `#location`, `#choose`, `#buy` сохранены.
+Кнопка «Выбрать свободную планировку» ведёт в текущий каталог квартир (`/#/macrocatalog/...`) — скрипт каталога на странице Tilda должен остаться подключённым.
+Перед заменой главной сделайте копию текущей страницы в Tilda.
 
 ## Превью
 

@@ -1,5 +1,5 @@
-<!-- ЖК «Московский» · О проекте · /o-proekte
-     Вставьте этот код целиком в вайб-блок Tilda. Собрано из src/blocks/1-o-proekte.html — правки вносите там и пересобирайте. -->
+<!-- ЖК «Московский» · Главная · /
+     Вставьте этот код целиком в вайб-блок Tilda. Собрано из src/blocks/01-glavnaya.html — правки вносите там и пересобирайте. -->
 <style>
 /* ===== ЖК «Московский» — общие стили блоков. Размеры — из макета Figma (фреймы 1920 / 1440 / 980 / 375).
    Всё внутри .zm, чтобы не конфликтовать со стилями Tilda. ===== */
@@ -306,38 +306,34 @@
 
 </style>
 <style>
-/* Первый экран: 1440×735, затемнение 32% */
-.zm-ab-hero { position: relative; height: 735px; display: flex; flex-direction: column; justify-content: space-between; padding: 29px 0 48px; color: #fff; overflow: hidden; }
-.zm-ab-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.zm-ab-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.32); }
-.zm-ab-hero > .zm-container { position: relative; z-index: 1; }
-.zm-ab-hero .zm-h1 { color: #fff; margin-top: 35px; }
-.zm-ab-hero__stats { display: flex; justify-content: flex-end; }
+/* ===== Главная — по фрейму «Главная / 1440» из макета ===== */
+.zm-home .zm-h2 { margin: 0; }
 
-/* Концепция: 4 колонки 361/321, высота рядов 315 и 388 */
-.zm-concept { background: var(--zm-card); padding: var(--zm-section) 0; }
-.zm-concept__grid { display: flex; flex-direction: column; gap: 20px; margin-top: 48px; }
-.zm-concept__row { display: grid; gap: 12px; }
-.zm-concept__row--a { grid-template-columns: 361fr 321fr 361fr 321fr; min-height: 315px; }
-.zm-concept__row--b { grid-template-columns: 321fr 361fr 321fr 361fr; min-height: 388px; }
-.zm-concept__text { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 20px; border-radius: 24px; background: #fff; }
-.zm-concept__text h3 { font-family: var(--zm-head); font-weight: 400; font-size: 54px; line-height: 1; letter-spacing: 1px; text-transform: uppercase; -webkit-text-stroke: .5px var(--zm-navy); }
-.zm-concept__img { position: relative; border-radius: 24px; overflow: hidden; min-height: 240px; }
-.zm-concept__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* 1. Первый экран: фото 671 + тёмная карточка 719×416 + фото 719×379, высота 805 */
+.zm-hh { display: grid; grid-template-columns: 671fr 719fr; gap: 10px; height: 805px; padding: 10px var(--zm-pad) 0; }
+.zm-hh__img { position: relative; border-radius: 10px; overflow: hidden; }
+.zm-hh__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-hh__right { display: grid; grid-template-rows: 416fr 379fr; gap: 10px; min-height: 0; }
+.zm-hh__card { display: flex; flex-direction: column; align-items: flex-start; padding: 20px; border-radius: 10px; background: var(--zm-navy); color: var(--zm-bg); }
+.zm-hh__pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.zm-hh__pills li { padding: 7px 10px; border-radius: 40px; background: #1f324c; font-size: 14px; line-height: 20px; letter-spacing: 0; }
+.zm-hh__title { margin: 20px 0 40px; font-family: var(--zm-head); font-weight: 400; letter-spacing: 0; text-transform: uppercase; color: var(--zm-bg); }
+.zm-hh__title small { display: block; font-size: 50px; line-height: 1; margin-bottom: 20px; }
+.zm-hh__title span { display: block; font-size: 110px; line-height: .5; padding-top: 28px; }
+.zm-hh__text { max-width: 401px; margin-top: auto; font-size: 14px; line-height: 20px; letter-spacing: 0; }
+.zm-hh__card .zm-btn { min-height: 56px; margin-top: 20px; padding: 16px 50px; font-size: 14px; line-height: 21.7px; }
 
-/* Преимущества: панель r40, фото 660×661 r20, видна одна карточка */
-.zm-adv { margin-top: 20px; padding: 20px; border-radius: 40px; background: var(--zm-card); }
-.zm-adv .zm-slider__track > * { width: 100%; }
-.zm-adv__slide { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.zm-adv__img { border-radius: 20px; overflow: hidden; aspect-ratio: 660 / 661; }
-.zm-adv__img img { width: 100%; height: 100%; object-fit: cover; }
-.zm-adv__body { display: flex; flex-direction: column; gap: 88px; padding-bottom: 68px; }
-.zm-adv__icon { width: 100px; height: 100px; border-radius: 24px; background: var(--zm-bg); display: flex; align-items: center; justify-content: center; }
-.zm-adv__icon img, .zm-adv__icon svg { width: 40px; height: 40px; }
-.zm-adv__body h3 { font-size: 30px; line-height: 41px; font-weight: 500; margin-bottom: 24px; }
-.zm-adv .zm-arrows { position: absolute; right: 20px; bottom: 20px; --zm-arrow: 48px; }
+/* 2. О проекте: текст 295 + фото 785×1464 r50 + колонка 280 с карточками 01–03 */
+.zm-hab { padding-top: 138px; }
+.zm-hab__grid { display: grid; grid-template-columns: 295fr 785fr 280fr; gap: 20px; margin-top: 50px; }
+.zm-hab__intro { display: flex; flex-direction: column; align-items: flex-start; gap: 32px; font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-hab__img { position: relative; min-height: 1464px; border-radius: 50px; overflow: hidden; }
+.zm-hab__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-hab__cards { display: flex; flex-direction: column; gap: 20px; }
+.zm-hab__card { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 20px; border-radius: 8px; background: var(--zm-card); font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-hab__card b, .zm-dev__card b { font-family: var(--zm-head); font-weight: 400; font-size: 150px; line-height: 1; letter-spacing: 0; }
 
-/* Локация: карточки 360×270, карта 1020×1140 */
+/* 3. Локация — как на «О проекте» */
 .zm-loc__head { display: flex; align-items: center; justify-content: space-between; gap: 10px 40px; margin-bottom: 50px; }
 .zm-loc__head p { flex: 0 1 300px; font-size: 14px; line-height: 19px; font-weight: 500; }
 .zm-loc { display: grid; grid-template-columns: 360fr 1020fr; gap: 20px; }
@@ -350,10 +346,10 @@
 .zm-loc__map { position: relative; min-height: 1140px; border-radius: 10px; overflow: hidden; background: var(--zm-card); }
 .zm-loc__map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-/* Архитектура: карточки 535×532, фото 495×340 */
-.zm-arch__lead { margin-top: 0; max-width: 1400px; }
-.zm-arch .zm-slider { margin-top: 38px; --zm-gap: 20px; }
-.zm-arch .zm-slider__track > * { width: 535px; }
+/* 4. Архитектура проекта: заголовок по центру, карточки 535×532 */
+.zm-harch .zm-h2 { text-align: center; }
+.zm-harch .zm-slider { margin-top: 88px; --zm-gap: 20px; }
+.zm-harch .zm-slider__track > * { width: 535px; }
 .zm-arch__card { display: flex; flex-direction: column; gap: 30px; padding: 20px; border-radius: 10px; background: var(--zm-card); }
 .zm-arch__img { height: 340px; border-radius: 8px; overflow: hidden; background: var(--zm-bg); }
 .zm-arch__img img { width: 100%; height: 100%; object-fit: cover; }
@@ -361,140 +357,203 @@
 .zm-arch__row b { flex: none; width: 28px; font-size: 24px; line-height: 32px; font-weight: 500; }
 .zm-arch__row h3 { font-size: 24px; line-height: 32px; font-weight: 500; margin-bottom: 20px; }
 .zm-arch__row p { font-size: 14px; line-height: 19px; font-weight: 500; }
-.zm-arch .zm-arrows { justify-content: flex-end; margin-top: 30px; }
+.zm-harch .zm-arrows { justify-content: flex-end; margin-top: 30px; }
+
+/* 5. Планировочные решения: фото 1400×605 + кнопка 583×83 r30 по центру */
+.zm-plans__box { position: relative; display: block; height: 605px; margin-top: 50px; border-radius: 10px; overflow: hidden; }
+.zm-plans__box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.zm-plans__box:hover img { transform: scale(1.02); }
+.zm-plans__btn { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 583px; max-width: calc(100% - 40px); min-height: 83px; display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 30px; background: var(--zm-navy); color: #fff; font-size: 18px; line-height: 28px; font-weight: 600; letter-spacing: 0; text-align: center; transition: background .2s; }
+.zm-plans__box:hover .zm-plans__btn { background: var(--zm-navy-hover); }
+
+/* 6. Форма подбора: фото 545 + тёмная карточка 845, высота 754 */
+.zm-pick { display: grid; grid-template-columns: 545fr 845fr; gap: 10px; min-height: 754px; }
+.zm-pick__img { position: relative; border-radius: 10px; overflow: hidden; }
+.zm-pick__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-pick__box { display: flex; flex-direction: column; padding: 20px; border-radius: 10px; background: var(--zm-navy); color: var(--zm-bg); }
+.zm-pick__title { font-family: var(--zm-head); font-weight: 400; font-size: 80px; line-height: 80px; letter-spacing: 0; text-transform: uppercase; color: var(--zm-bg); }
+.zm-pick__texts { display: grid; grid-template-columns: 401fr 364fr; gap: 40px; margin-top: auto; padding-bottom: 54px; font-size: 14px; line-height: 20px; letter-spacing: 0; }
+.zm-pick .zm-form__grid { grid-template-columns: 245fr 245fr 285fr; gap: 15px 10px; }
+.zm-pick .zm-form__submit { grid-column: auto; margin: 0; }
+.zm-pick .zm-form__submit .zm-btn { height: 65px; padding: 0 20px; }
+.zm-pick .zm-check { grid-column: 1 / -1; font-size: 14px; line-height: 16.8px; }
+.zm-pick__note { margin-top: 15px; font-size: 13px; line-height: 18px; letter-spacing: 0; }
+
+/* 7. О застройщике: 3 колонки по 453 */
+.zm-dev { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
+.zm-dev__col { display: flex; flex-direction: column; gap: 20px; }
+.zm-dev__card { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 50px; padding: 20px; border-radius: 10px; background: var(--zm-card); }
+.zm-dev__card--dark { background: var(--zm-navy); color: var(--zm-bg); }
+.zm-dev__card h3 { margin-bottom: 10px; font-size: 24px; line-height: 32px; font-weight: 500; }
+.zm-dev__card p { font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-dev__card p + p { margin-top: 19px; }
+.zm-dev__img { position: relative; height: 340px; flex: none; border-radius: 10px; overflow: hidden; }
+.zm-dev__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* 8. Способы покупки: фон #e5e7f2, карточки 400×556 */
+.zm-hbuy { background: var(--zm-card); padding: 100px 0 64px; }
+.zm-hbuy__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px 40px; }
+.zm-hbuy__head .zm-h2 { flex: 0 1 780px; }
+.zm-hbuy__head div { flex: 0 1 400px; font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-hbuy__head p + p { margin-top: 19px; }
+.zm-hbuy .zm-slider { margin-top: 100px; --zm-gap: 20px; }
+.zm-hbuy .zm-slider__track > * { width: 400px; min-height: 556px; }
+.zm-hbuy__card { display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 20px; border-radius: 10px; background: var(--zm-bg); font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-hbuy__card h3 { margin-top: 20px; font-size: 24px; line-height: 32px; font-weight: 500; }
+.zm-hbuy__card ul { margin-top: 19px; padding-left: 20px; list-style: disc; }
+.zm-hbuy__photo { position: relative; border-radius: 10px; overflow: hidden; }
+.zm-hbuy__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-hbuy__bar { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 30px; }
+
+/* 9. Ход строительства: карточки 448×365 */
+.zm-hbuild__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 50px; }
+.zm-hbuild__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 24px; }
+.zm-build-card { display: flex; flex-direction: column; border-radius: 8px; overflow: hidden; background: var(--zm-card); transition: background .25s, color .25s; }
+.zm-build-card__img { aspect-ratio: 448 / 307; overflow: hidden; background: #d8dbe6; }
+.zm-build-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.zm-build-card__foot { display: flex; justify-content: space-between; gap: 10px; padding: 19px 20px 20px; font-size: 20px; line-height: 19px; font-weight: 600; letter-spacing: 0; }
+.zm-build-card__foot span { opacity: .5; }
+.zm-build-card:hover { background: var(--zm-navy); color: #fff; }
+.zm-build-card:hover img { transform: scale(1.03); }
+
+/* 10. Новости и акции */
+.zm-hnews__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 50px; }
+.zm-hnews__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.zm-hnews__grid .zm-news-card__img { height: 328px; }
+.zm-hnews__grid .zm-news-card__body { min-height: 228px; }
+.zm-hnews__grid .zm-news-card__title { font-size: 24px; line-height: 30px; margin-bottom: -4px; }
+
+/* 11. FAQ */
+.zm-hfaq__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px 126px; }
+.zm-hfaq__head div { flex: 0 1 393px; font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-hfaq__head p + p { margin-top: 19px; }
+.zm-hfaq .zm-faq { margin-top: 71px; gap: 3px; }
+.zm-hfaq .zm-faq__q { min-height: 91px; padding: 30px 36px; }
 
 @media (min-width: 1441px) {
-  .zm-ab-hero { height: 51vw; }
+  .zm-hh { height: 55.9vw; }
+  .zm-hab__img { min-height: 101.7vw; }
   .zm-loc__map { min-height: 79vw; }
+  .zm-plans__box { height: 42vw; }
 }
 @media (max-width: 1240px) {
-  .zm-ab-hero { height: 620px; }
-  .zm-concept__row--a, .zm-concept__row--b { grid-template-columns: 1fr 1fr; min-height: 0; }
-  .zm-concept__row--b > :nth-child(1) { order: 2; } .zm-concept__row--b > :nth-child(3) { order: 4; }
-  .zm-concept__text { min-height: 300px; }
-  .zm-concept__text h3 { font-size: 48px; }
-  .zm-adv__body h3 { font-size: 24px; }
+  .zm-hh { height: 700px; }
+  .zm-hh__title span { font-size: 90px; }
+  .zm-hab__grid { grid-template-columns: 1fr 1.6fr; }
+  .zm-hab__intro { grid-column: 1 / -1; }
+  .zm-hab__img { min-height: 1100px; }
   .zm-loc { grid-template-columns: 1fr 1.6fr; }
   .zm-loc__map { min-height: 900px; }
+  .zm-pick .zm-form__grid { grid-template-columns: 1fr 1fr; }
+  .zm-pick .zm-form__submit { grid-column: 1 / -1; }
+  .zm-dev__card b, .zm-hab__card b { font-size: 110px; }
 }
 @media (max-width: 980px) {
-  .zm-loc__head { flex-direction: column; align-items: flex-start; margin-bottom: 32px; }
-  .zm-loc__head p { flex: none; max-width: 520px; }
+  .zm-hh { grid-template-columns: 1fr; height: auto; }
+  .zm-hh__img:not(.zm-hh__img--2) { display: none; }
+  .zm-hh__right { grid-template-rows: auto 435px; }
+  .zm-hab__grid { grid-template-columns: 1fr; }
+  .zm-hab__img { min-height: 674px; }
+  .zm-hab__cards { position: absolute; left: 0; right: 0; bottom: 30px; flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 30px; gap: 16px; }
+  .zm-hab__cards::-webkit-scrollbar { display: none; }
+  .zm-hab__card { flex: none; width: 295px; min-height: 349px; scroll-snap-align: center; }
+  .zm-loc__head, .zm-hbuy__head, .zm-hfaq__head { flex-direction: column; align-items: flex-start; }
+  .zm-loc__head p, .zm-hbuy__head div, .zm-hfaq__head div, .zm-hbuy__head .zm-h2 { flex: none; max-width: 520px; }
+  .zm-hbuy__head .zm-h2 { max-width: none; }
   .zm-loc { grid-template-columns: 1fr; }
   .zm-loc__list { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * var(--zm-pad)); padding: 0 var(--zm-pad); }
   .zm-loc__list::-webkit-scrollbar { display: none; }
   .zm-loc__item { flex: none; width: 295px; min-height: 325px; scroll-snap-align: start; }
   .zm-loc__map { min-height: 655px; }
-  .zm-adv__slide { grid-template-columns: 1fr; gap: 24px; }
-  .zm-adv__img { aspect-ratio: 311 / 274; }
-  .zm-adv__body { gap: 24px; }
+  .zm-pick { grid-template-columns: 1fr; }
+  .zm-pick__img { display: none; }
+  .zm-dev { grid-template-columns: 1fr; }
+  .zm-hbuild__grid, .zm-hnews__grid { grid-template-columns: 1fr 1fr; }
+  .zm-hbuy .zm-slider { margin-top: 40px; }
 }
 @media (max-width: 640px) {
-  .zm-ab-hero { height: 389px; padding: 20px 0 20px; }
-  .zm-ab-hero .zm-h1 { margin-top: 35px; }
-  .zm-concept { padding: 40px 0; }
-  .zm-concept__grid { margin-top: 24px; gap: 12px; }
-  .zm-concept__row--a, .zm-concept__row--b { grid-template-columns: 1fr; gap: 12px; }
-  .zm-concept__row--a > :nth-child(1) { order: 1; } .zm-concept__row--a > :nth-child(2) { order: 2; }
-  .zm-concept__row--a > :nth-child(3) { order: 3; } .zm-concept__row--a > :nth-child(4) { order: 4; }
-  .zm-concept__text { min-height: 0; gap: 24px; }
-  .zm-concept__text h3 { font-size: 40px; }
-  .zm-concept__img { aspect-ratio: 1; min-height: 0; }
-  .zm-adv { padding: 20px; }
-  .zm-adv__icon { width: 64px; height: 64px; border-radius: 16px; }
-  .zm-adv__icon img { width: 28px; height: 28px; }
-  .zm-adv__body h3 { font-size: 24px; line-height: 41px; margin-bottom: 16px; }
-  .zm-adv .zm-arrows { --zm-arrow: 48px; }
+  .zm-hh { padding: 10px var(--zm-pad) 0; }
+  .zm-hh__right { grid-template-rows: auto 435px; }
+  .zm-hh__pills li { padding: 7px 10px; font-size: 12px; line-height: 17px; }
+  .zm-hh__title { margin: 30px 0 30px; }
+  .zm-hh__title small { font-size: 30px; margin-bottom: 10px; }
+  .zm-hh__title span { font-size: 50px; line-height: .5; padding-top: 12px; }
+  .zm-hh__card .zm-btn { width: 100%; min-height: 54px; }
+  .zm-hab { padding-top: 50px; }
+  .zm-hab__grid { margin-top: 20px; }
+  .zm-hab__intro { gap: 20px; }
+  .zm-hab__intro .zm-btn { min-height: 52px; padding: 15px 77px; }
+  .zm-hab__card b, .zm-dev__card b { font-size: 80px; }
   .zm-loc__item h3 { font-size: 18px; line-height: 24px; }
-  .zm-arch .zm-slider { margin-top: 24px; }
-  .zm-arch .zm-slider__track > * { width: calc(100vw - 2 * var(--zm-pad)); }
+  .zm-harch .zm-slider { margin-top: 24px; }
+  .zm-harch .zm-slider__track > * { width: calc(100vw - 2 * var(--zm-pad)); }
   .zm-arch__img { height: 335px; }
   .zm-arch__row { gap: 23px; }
   .zm-arch__row b, .zm-arch__row h3 { font-size: 18px; line-height: 24px; }
+  .zm-plans__box { height: 464px; margin-top: 24px; }
+  #choose .zm-h2 { font-size: 46px; }
+  .zm-plans__btn { width: auto; min-height: 52px; padding: 15px 40px; border-radius: 8px; font-size: 14px; line-height: 22px; font-weight: 500; white-space: nowrap; }
+  .zm-pick__box { padding: 20px; }
+  .zm-pick__title { font-size: 30px; line-height: 30px; }
+  .zm-pick__texts { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; padding-bottom: 24px; }
+  .zm-pick .zm-form__grid { grid-template-columns: 1fr; gap: 12px; }
+  .zm-pick .zm-check { font-size: 11px; line-height: 1.3; }
+  .zm-pick__note { font-size: 12px; }
+  .zm-dev { margin-top: 24px; }
+  .zm-dev__img { height: 220px; }
+  .zm-dev__card h3 { font-size: 18px; line-height: 24px; }
+  .zm-hbuy { padding: 64px 0 40px; }
+  .zm-hbuy .zm-slider { margin-top: 32px; }
+  .zm-hbuy .zm-slider__track > * { width: 86vw; min-height: 480px; }
+  .zm-hbuy__bar .zm-btn { padding: 15px 40px; }
+  .zm-hbuild__head, .zm-hnews__head { flex-direction: column; align-items: flex-start; margin-bottom: 24px; }
+  .zm-hbuild__grid, .zm-hnews__grid { grid-template-columns: 1fr; gap: 12px; }
+  .zm-hbuild__grid > :nth-child(n+4) { display: none; }
+  .zm-build-card__foot { padding: 16px; font-size: 14px; }
+  .zm-hnews__grid .zm-news-card__img { height: 254px; }
+  .zm-hnews__grid .zm-news-card__body { min-height: 172px; }
+  .zm-hnews__grid .zm-news-card__title { font-size: 16px; line-height: 20px; }
+  .zm-hfaq .zm-faq { margin-top: 32px; gap: 12px; }
+  .zm-hfaq .zm-faq__q { min-height: 82px; padding: 20px; }
 }
 </style>
 
-<div class="zm">
-  <!-- Первый экран -->
-  <section class="zm-ab-hero">
-    <img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/about-hero.jpg" alt="ЖК «Московский»">
-    <div class="zm-container">
-      <nav class="zm-crumbs zm-crumbs--light" aria-label="Хлебные крошки"><a href="/">Главная</a><span>О проекте</span></nav>
-      <h1 class="zm-h1">О проекте</h1>
-    </div>
-    <div class="zm-container zm-ab-hero__stats">
-      <ul class="zm-stats"><li>Ипотека от 6%</li><li>Рассрочка без %</li><li>Эскроу-счета</li></ul>
+<div class="zm zm-home" id="zm-home">
+  <!-- 1. Первый экран -->
+  <section class="zm-hh" id="top">
+    <div class="zm-hh__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-hero.jpg" alt="ЖК «Московский»"></div>
+    <div class="zm-hh__right">
+      <div class="zm-hh__card">
+        <ul class="zm-hh__pills"><li>ипотека от 6%</li><li>сдача дома — II кв. 2028</li><li>от 7 млн / руб</li></ul>
+        <h1 class="zm-hh__title"><small>Жилой комплекс</small><span>Московский</span></h1>
+        <p class="zm-hh__text">Городская инфраструктура, парк для прогулок, школы и магазины рядом с домом — всё, для удобной жизни в сформированном районе Симферополя.</p>
+        <a class="zm-btn zm-btn--white" href="#zm-form" data-scroll-form>Получить консультацию</a>
+      </div>
+      <div class="zm-hh__img zm-hh__img--2"><picture><source media="(max-width: 980px)" srcset="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-hero-m.jpg"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-hero-2.jpg" alt="Двор ЖК «Московский»"></picture></div>
     </div>
   </section>
 
-  <!-- Концепция -->
-  <section class="zm-concept">
-    <div class="zm-container">
-      <h2 class="zm-h2">Концепция</h2>
-      <div class="zm-concept__grid">
-        <div class="zm-concept__row zm-concept__row--a">
-          <div class="zm-concept__text"><h3>Комфорт</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum.</p></div>
-          <div class="zm-concept__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/concept-1.jpg" alt="" loading="lazy"></div>
-          <div class="zm-concept__text"><h3>Практичность</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum.</p></div>
-          <div class="zm-concept__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/concept-2.jpg" alt="" loading="lazy"></div>
-        </div>
-        <div class="zm-concept__row zm-concept__row--b">
-          <div class="zm-concept__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/concept-3.jpg" alt="" loading="lazy"></div>
-          <div class="zm-concept__text"><h3>Городская инфраструктура</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum.</p></div>
-          <div class="zm-concept__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/concept-4.jpg" alt="" loading="lazy"></div>
-          <div class="zm-concept__text"><h3>Спокойная атмосфера</h3><p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum.</p></div>
-        </div>
+  <!-- 2. О проекте -->
+  <section class="zm-container zm-hab" id="about">
+    <h2 class="zm-h2">О проекте</h2>
+    <div class="zm-hab__grid">
+      <div class="zm-hab__intro">
+        <p>Проект расположен в развитом районе Симферополя с готовой городской инфраструктурой — всё, что нужно для повседневной жизни и экономии Вашего времени.</p>
+        <a class="zm-btn" href="/o-proekte">Узнать больше</a>
+      </div>
+      <div class="zm-hab__img">
+        <picture><source media="(max-width: 980px)" srcset="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-about-m.jpg"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-about.jpg" alt="ЖК «Московский»" loading="lazy"></picture>
+      </div>
+      <div class="zm-hab__cards" data-about-cards>
+        <div class="zm-hab__card"><b>01</b><p>Продуманная архитектура и понятная организация пространства формируют комфортную городскую среду для жизни. Проект ориентирован на практичность и удобство — без избыточных решений, с фокусом на то, что действительно важно в повседневности.</p></div>
+        <div class="zm-hab__card"><b>02</b><p>Планировки квартир функциональны и легко адаптируются под разные сценарии жизни — для одного человека, пары или семьи. Дополнительное внимание уделено практичности: удобные комнаты, рациональное использование площади, возможность гибко организовать пространство.</p></div>
+        <div class="zm-hab__card"><b>03</b><p>Проект сочетает преимущества городской среды и спокойную атмосферу жилого пространства. Это понятный и комфортный формат жилья для тех, кто ценит стабильность, удобство и продуманную среду для жизни.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Преимущества комплекса: слайдер, видна одна карточка -->
-  <section class="zm-section">
-    <div class="zm-container">
-      <h2 class="zm-h2">Преимущества<br>комплекса</h2>
-      <div class="zm-adv zm-slider" data-zm-slider>
-        <div class="zm-slider__track">
-          <article class="zm-adv__slide">
-            <div class="zm-adv__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/adv-security.jpg" alt="Безопасность" loading="lazy"></div>
-            <div class="zm-adv__body">
-              <div class="zm-adv__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/adv-home.svg" alt=""></div>
-              <div>
-                <h3>Безопасность</h3>
-                <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque. Id pulvinar velit in sit diam nunc. Sed feugiat vitae elit ut elit non ut. Integer massa ut risus consectetur potenti elementum eleifend tempus.</p><p>Dui aliquam netus odio tristique. Pharetra viverra augue magnis at pellentesque a vitae vel commodo. Sed bibendum purus pharetra sed vitae convallis ipsum a mattis. Purus lacus tellus egestas morbi condimentum aliquet congue quam in. Euismod etiam ac sit quisque turpis.</p></div>
-              </div>
-            </div>
-          </article>
-          <article class="zm-adv__slide">
-            <div class="zm-adv__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/arch-2.jpg" alt="Благоустроенный двор" loading="lazy"></div>
-            <div class="zm-adv__body">
-              <div class="zm-adv__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-walk.svg" alt=""></div>
-              <div>
-                <h3>Благоустроенный двор</h3>
-                <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div>
-              </div>
-            </div>
-          </article>
-          <article class="zm-adv__slide">
-            <div class="zm-adv__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/concept-3.jpg" alt="Коммерция на первых этажах" loading="lazy"></div>
-            <div class="zm-adv__body">
-              <div class="zm-adv__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-shop.svg" alt=""></div>
-              <div>
-                <h3>Коммерция на первых этажах</h3>
-                <div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="zm-arrows">
-          <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 8 14" fill="none"><path d="M7 1 1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 8 14" fill="none"><path d="m1 1 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Локация и инфраструктура -->
-  <section class="zm-section">
+  <!-- 3. Локация -->
+  <section class="zm-section" id="location">
     <div class="zm-container">
       <div class="zm-loc__head">
         <h2 class="zm-h2">Локация для вашего<br>ритма жизни</h2>
@@ -507,17 +566,15 @@
           <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-shop.svg" alt=""></div><div><h3>Магазины и сервисы</h3><p>Повседневные покупки, бытовые услуги и полезные сервисы доступны рядом с домом.</p></div></div>
           <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-walk.svg" alt=""></div><div><h3>Прогулки и отдых</h3><p>Зелёные зоны, прогулочные маршруты и места для отдыха создают приятную атмосферу для прогулок, спорта и спокойного досуга на свежем воздухе.</p></div></div>
         </div>
-        <!-- Карта: при желании замените src на код из конструктора Яндекс.Карт -->
         <div class="zm-loc__map"><iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B%2C%2012&amp;z=16" title="ЖК «Московский» на карте" loading="lazy" allowfullscreen></iframe></div>
       </div>
     </div>
   </section>
 
-  <!-- Архитектура и технологии -->
-  <section class="zm-section">
-    <div class="zm-container zm-arch">
-      <h2 class="zm-h2">Архитектура и технологии</h2>
-      <p class="zm-lead zm-arch__lead">Lorem ipsum dolor sit amet consectetur. Rhoncus nibh dis consectetur massa. Pellentesque morbi vel non suscipit integer lobortis donec leo vel. Elit rhoncus morbi pellentesque nunc sed sed. Tellus blandit feugiat hendrerit luctus. Adipiscing cursus nullam neque tortor cursus mattis nisl donec. Sociis diam pharetra sed mollis sit.</p>
+  <!-- 4. Архитектура проекта -->
+  <section class="zm-section zm-harch">
+    <div class="zm-container">
+      <h2 class="zm-h2">Архитектура проекта</h2>
       <div class="zm-slider" data-zm-slider>
         <div class="zm-slider__track">
           <article class="zm-arch__card"><div class="zm-arch__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/arch-1.jpg" alt="" loading="lazy"></div><div class="zm-arch__row"><b>01</b><div><h3>Современные фасадные решения</h3><p>Архитектура проекта, выполненная из керамогранита, гарантирует долговечность и сочетает сдержанную эстетику.</p></div></div></article>
@@ -533,70 +590,177 @@
     </div>
   </section>
 
-  <section class="zm-section">
-  <div class="zm-container">
-    <h2 class="zm-h2">Вопросы и ответы</h2>
-    <div class="zm-faq">
-      <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>01. Где находится ЖК «Московский»?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
-        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
-      </div>
-
-      <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>02. Какая инфраструктура рядом с комплексом?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
-        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
-      </div>
-
-      <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>03. Какие особенности архитектуры у дома?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
-        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
-      </div>
-
-      <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>04. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
-        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
-      </div>
-
-      <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>05. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
-        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
-      </div>
-
-      <div class="zm-faq__item">
-        <button class="zm-faq__q" type="button"><span>06. Lorem ipsum dolor sit amet consectetur?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
-        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
-      </div>
-
+  <!-- 5. Планировочные решения: ссылка на каталог квартир -->
+  <section class="zm-section" id="choose">
+    <div class="zm-container">
+      <h2 class="zm-h2">Планировочные решения</h2>
+      <a class="zm-plans__box" href="/#/macrocatalog/houses/10009970/facades?studio=null&amp;category=flat&amp;activity=sell&amp;presMode=house">
+        <picture><source media="(max-width: 640px)" srcset="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-plans-m.jpg"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-plans.jpg" alt="Выбор планировки онлайн" loading="lazy"></picture>
+        <span class="zm-plans__btn">Выбрать свободную планировку</span>
+      </a>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <section class="zm-section zm-section--last" id="zm-form">
-  <div class="zm-container">
-    <div class="zm-lead-form">
-      <div class="zm-lead-form__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/form-building.jpg" alt="ЖК «Московский»" loading="lazy"></div>
-      <div class="zm-lead-form__box">
-        <h2 class="zm-lead-form__title">Получите точный расчёт и консультацию</h2>
-        <p class="zm-lead-form__sub">Менеджер перезвонит в течение 15–30 минут и ответит на все вопросы</p>
-        <form class="zm-form" data-zm-form data-form-name="О проекте — консультация" data-tilda-form="" data-webhook="" data-redirect="">
-          <div class="zm-form__grid">
-            <label class="zm-field"><input type="text" name="Name" placeholder="Как к вам обратиться?" autocomplete="name"><span class="zm-field__err">Укажите имя</span></label>
-            <label class="zm-field zm-field--phone"><input type="tel" name="Phone" placeholder="(000) 000-00-00" autocomplete="tel-national" inputmode="tel" data-zm-phone><span class="zm-field__err">Введите номер полностью</span></label>
-            <label class="zm-field"><input type="text" name="Time" placeholder="Удобное время звонка"></label>
-            <label class="zm-field"><input type="text" name="Comment" placeholder="Комментарий"></label>
-
-            <div class="zm-form__submit"><button class="zm-btn zm-btn--white" type="submit">Получить консультацию</button></div>
-            <label class="zm-check"><input type="checkbox" name="Agree"><span>Я подтверждаю ознакомление с <a href="/politica" target="_blank" rel="noopener">политикой обработки персональных данных</a> и даю согласие на обработку персональных данных в порядке и на условиях, указанных в политике</span></label>
+  <!-- 6. Форма подбора -->
+  <section class="zm-section" id="zm-form">
+    <div class="zm-container">
+      <div class="zm-pick">
+        <div class="zm-pick__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/form-building.jpg" alt="ЖК «Московский»" loading="lazy"></div>
+        <div class="zm-pick__box">
+          <h2 class="zm-pick__title">Подберём квартиру<br>под ваш стиль жизни</h2>
+          <div class="zm-pick__texts">
+            <p>Наш специалист поможет подобрать подходящую квартиру, расскажет об инфраструктуре, сроках сдачи и доступных условиях покупки. Без навязчивости — просто ответим на все ваши вопросы.</p>
+            <p>После заявки вы получите подборку подходящих квартир, цены и планировки, а также консультацию менеджера по ипотеке.</p>
           </div>
-          <div class="zm-form__done"><strong>Спасибо!</strong>Заявка отправлена — менеджер перезвонит вам в течение 15–30 минут.</div>
-        </form>
-        
+          <form class="zm-form" data-zm-form data-form-name="Главная — подбор квартиры" data-tilda-form="" data-webhook="" data-redirect="">
+            <div class="zm-form__grid">
+              <label class="zm-field"><input type="text" name="Name" placeholder="Как к вам обратиться?" autocomplete="name"><span class="zm-field__err">Укажите имя</span></label>
+              <label class="zm-field zm-field--phone"><input type="tel" name="Phone" placeholder="(000) 000-00-00" autocomplete="tel-national" inputmode="tel" data-zm-phone><span class="zm-field__err">Введите номер полностью</span></label>
+              <div class="zm-form__submit"><button class="zm-btn zm-btn--white" type="submit">Получить подборку квартир</button></div>
+              <label class="zm-check"><input type="checkbox" name="Agree"><span>Я подтверждаю ознакомление с <a href="/politica" target="_blank" rel="noopener">политикой обработки персональных данных</a> и даю согласие на обработку персональных данных в порядке и на условиях, указанных в политике</span></label>
+            </div>
+            <div class="zm-form__done"><strong>Спасибо!</strong>Заявка отправлена — менеджер свяжется с вами в течение 15 минут.</div>
+          </form>
+          <p class="zm-pick__note">*Наш менеджер свяжется с вами в течение 15 минут.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- 7. О застройщике -->
+  <section class="zm-section">
+    <div class="zm-container">
+      <h2 class="zm-h2">О застройщике</h2>
+      <div class="zm-dev">
+        <div class="zm-dev__col">
+          <div class="zm-dev__card zm-dev__card--dark"><b>01</b><div><h3>Мы строим открыто и в строгом соответствии с законодательством РФ.</h3><p>Все этапы реализации проектов ведутся по 214-ФЗ с использованием эскроу-счетов и банковского контроля. Это означает полную финансовую прозрачность, защиту средств дольщиков и минимальные риски.</p><p>Мы берём на себя ответственность за каждый этап, от проектирования до ввода объекта в эксплуатацию, и всегда выполняем обязательства перед клиентами и партнёрами.</p></div></div>
+        </div>
+        <div class="zm-dev__col">
+          <div class="zm-dev__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-dev.jpg" alt="" loading="lazy"></div>
+          <div class="zm-dev__card"><b>02</b><div><h3>Контроль качества строительства</h3><p>Качество — ключевой приоритет нашей работы. Мы используем современные строительные технологии, проверенные инженерные решения и надёжные материалы от сертифицированных поставщиков.</p></div></div>
+        </div>
+        <div class="zm-dev__col">
+          <div class="zm-dev__card"><b>03</b><div><h3>Собственная команда архитекторов</h3><p>В компании работает собственная команда архитекторов, инженеров и проектировщиков, что позволяет нам разрабатывать комплексные решения без привлечения сторонних подрядчиков.</p></div></div>
+          <div class="zm-dev__card"><b>04</b><div><h3>Тщательное планирование</h3><p>Мы тщательно планируем каждый этап строительства и строго соблюдаем утверждённые графики работ.</p><p>Чёткая организация процессов, контроль сроков и профессиональная команда позволяют нам сдавать объекты точно в срок, без срывов и компромиссов по качеству.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Способы покупки -->
+  <section class="zm-hbuy" id="buy" style="margin-top:var(--zm-section)">
+    <div class="zm-container">
+      <div class="zm-hbuy__head">
+        <h2 class="zm-h2">Способы<br>покупки</h2>
+        <div><p>Мы предлагаем несколько вариантов приобретения квартиры — выберите тот, который подойдёт именно вам.</p><p>Все сделки проходят в соответствии с Федеральным законом № 214 и с использованием эскроу-счетов, что гарантирует безопасность ваших средств.</p></div>
+      </div>
+      <div class="zm-slider" data-zm-slider>
+        <div class="zm-slider__track">
+          <article class="zm-hbuy__card"><div><p>Ипотека от ведущих банков</p><h3>Покупка в ипотеку — просто и выгодно</h3></div><div><p>Подберём банк, рассчитаем платёж и оформим ипотеку под минимальную ставку.</p><ul><li>Ставка от 6%</li><li>Взнос от 30%, семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>Рассрочка от застройщика</p><h3>Платите частями — без переплаты и комиссий</h3></div><div><p>Удобный способ оплаты напрямую от застройщика — без переплат и комиссий.</p><ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До ввода дома в эксплуатацию</li></ul></div></article>
+          <div class="zm-hbuy__photo"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-buy.jpg" alt="" loading="lazy"></div>
+          <article class="zm-hbuy__card"><div><p>100% оплата</p><h3>Максимальная выгода при единовременной оплате</h3></div><div><p>Получите специальную цену и приоритет при выборе квартиры.</p><ul><li>Дополнительная скидка</li><li>Быстрое оформление</li><li>Минимум документов</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>Материнский капитал / Сертификаты</p><h3>Используйте государственные программы</h3></div><div><p>Оплатите часть стоимости квартиры маткапиталом или жилищным сертификатом.</p><ul><li>Маткапитал</li><li>Военная ипотека</li><li>Региональные программы</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>Безопасная сделка под защитой закона</p><h3>Покупка по договору долевого участия (214-ФЗ)</h3></div><div><p>Вы заключаете официальный договор ДДУ — застройщик несёт ответственность по обязательствам.</p><ul><li>Прозрачная сделка</li><li>Юридическая защита</li><li>Государственный контроль</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>Эскроу-счета</p><h3>Ваши деньги под защитой до момента передачи квартиры</h3></div><div><p>Деньги хранятся на эскроу-счёте и перечисляются застройщику только после сдачи дома.</p><ul><li>Полная безопасность</li><li>Банковская гарантия</li><li>По стандартам 214-ФЗ</li></ul></div></article>
+        </div>
+        <div class="zm-hbuy__bar">
+          <a class="zm-btn" href="/usloviya-pokupki">Подробнее</a>
+          <div class="zm-arrows">
+            <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 8 14" fill="none"><path d="M7 1 1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 8 14" fill="none"><path d="m1 1 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Ход строительства: последние 6 месяцев; полный список — на /hod-stroitelstva -->
+  <section class="zm-section">
+    <div class="zm-container">
+      <div class="zm-hbuild__head">
+        <h2 class="zm-h2">Ход строительства</h2>
+        <a class="zm-btn" href="/hod-stroitelstva">Смотреть все</a>
+      </div>
+      <div class="zm-hbuild__grid">
+        <a class="zm-build-card" href="/hod-stroitelstva"><div class="zm-build-card__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/build-2026-08.jpg" alt="Август 2026" loading="lazy"></div><div class="zm-build-card__foot">Август 2026<span>10 фото</span></div></a>
+        <a class="zm-build-card" href="/hod-stroitelstva"><div class="zm-build-card__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/build-2026-07.jpg" alt="Июль 2026" loading="lazy"></div><div class="zm-build-card__foot">Июль 2026<span>10 фото</span></div></a>
+        <a class="zm-build-card" href="/hod-stroitelstva"><div class="zm-build-card__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/build-2026-06.jpg" alt="Июнь 2026" loading="lazy"></div><div class="zm-build-card__foot">Июнь 2026<span>10 фото</span></div></a>
+        <a class="zm-build-card" href="/hod-stroitelstva"><div class="zm-build-card__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/build-2026-05.jpg" alt="Май 2026" loading="lazy"></div><div class="zm-build-card__foot">Май 2026<span>10 фото</span></div></a>
+        <a class="zm-build-card" href="/hod-stroitelstva"><div class="zm-build-card__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/build-2026-04.jpg" alt="Апрель 2026" loading="lazy"></div><div class="zm-build-card__foot">Апрель 2026<span>10 фото</span></div></a>
+        <a class="zm-build-card" href="/hod-stroitelstva"><div class="zm-build-card__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/build-2026-03.jpg" alt="Март 2026" loading="lazy"></div><div class="zm-build-card__foot">Март 2026<span>10 фото</span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Новости и акции: 3 последние со страницы /novosti -->
+  <section class="zm-section">
+    <div class="zm-container">
+      <div class="zm-hnews__head">
+        <h2 class="zm-h2">Новости и акции</h2>
+        <a class="zm-btn" href="/novosti">Читать все</a>
+      </div>
+      <div class="zm-hnews__grid" data-home-news></div>
+    </div>
+  </section>
+
+  <!-- 11. FAQ -->
+  <section class="zm-section zm-section--last zm-hfaq">
+    <div class="zm-container">
+      <div class="zm-hfaq__head">
+        <h2 class="zm-h2">Ответы на частые<br>вопросы</h2>
+        <div><p>Мы собрали самые популярные вопросы о покупке квартиры и подготовили простые и понятные ответы.</p><p>Если вы не нашли нужную информацию — свяжитесь с нашим менеджером, и мы подробно расскажем обо всех деталях.</p></div>
+      </div>
+      <div class="zm-faq">
+        <div class="zm-faq__item"><button class="zm-faq__q" type="button"><span>01. Когда планируется сдача дома?</span><i class="zm-faq__icon" aria-hidden="true"></i></button><div class="zm-faq__a"><div><div class="zm-text"><p>Строительство ведётся по графику, утверждённому проектной декларацией.</p><p>Срок сдачи — III квартал 2028 года. Мы регулярно обновляем фото и отчёты о ходе работ в разделе <a href="/hod-stroitelstva">«Ход строительства»</a>.</p></div></div></div></div>
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>02. Какие гарантии даёт застройщик?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>03. Как я могу убедиться, что застройщик надёжный?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>04. Какие варианты покупки доступны?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>05. Можно ли использовать материнский капитал или военную ипотеку?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>06. Что входит в стоимость квартиры?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>07. Когда можно начать делать ремонт или заселяться?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>08. Где находится жилой комплекс и что рядом?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>09. Можно ли забронировать квартиру онлайн?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+        <div class="zm-faq__item">
+        <button class="zm-faq__q" type="button"><span>10. Что делать, если я хочу сначала посмотреть дом и квартиру?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
+        <div class="zm-faq__a"><div><div class="zm-text"><p>Lorem ipsum dolor sit amet consectetur. Ultricies aliquam id quam fringilla gravida parturient. Morbi tincidunt egestas dignissim faucibus sed gravida libero massa eros. Id commodo sollicitudin cursus donec tincidunt suscipit quam dolor scelerisque.</p></div></div></div>
+      </div>
+
+      </div>
+    </div>
+  </section>
 </div>
 <script>
 /* ===== ЖК «Московский» — общий JS блоков: аккордеон, слайдеры, формы, lightbox ===== */
@@ -873,4 +1037,38 @@
 })();
 
 </script>
+<script>
+(function () {
+  var root = document.getElementById('zm-home');
+  if (!root || root.__home) return; root.__home = 1;
 
+  // карточки 01–03 «О проекте»: на мобильных — поверх фото
+  var cards = root.querySelector('[data-about-cards]');
+  var img = root.querySelector('.zm-hab__img');
+  var mq = window.matchMedia('(max-width: 980px)');
+  function place() { if (mq.matches) img.appendChild(cards); else img.parentNode.appendChild(cards); }
+  place(); if (mq.addEventListener) mq.addEventListener('change', place); else mq.addListener(place);
+
+  // «Получить консультацию» — плавно к форме
+  root.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-scroll-form]');
+    if (!a) return;
+    e.preventDefault();
+    var f = document.getElementById('zm-form');
+    if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Новости и акции: 3 последние со страницы /novosti
+  var fallback = [
+    { slug: 'nazvanie-novosti', type: 'promo', until: '01.01.27', date: '01.10.26 16:15', title: 'Lorem ipsum dolor sit amet consectetur', text: 'Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non.', img: 'https://ivanweb1.github.io/zhk-moskovsky/assets/img/news-2.jpg' },
+    { slug: 'novost-2', type: 'news', date: '25.09.26 12:00', title: 'Lorem ipsum dolor sit amet consectetur', text: 'Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non.', img: 'https://ivanweb1.github.io/zhk-moskovsky/assets/img/news-1.jpg' },
+    { slug: 'statya-3', type: 'article', date: '18.09.26 10:30', title: 'Lorem ipsum dolor sit amet consectetur', text: 'Lorem ipsum dolor sit amet consectetur. Molestie sit non rutrum arcu nibh non.', img: 'https://ivanweb1.github.io/zhk-moskovsky/assets/img/buy-1.jpg' }
+  ];
+  var url = window.ZM_PREVIEW_ROOT ? window.ZM_PREVIEW_ROOT + 'novosti/' : '/novosti';
+  window.ZM.loadNews(url, fallback).then(function (list) {
+    list = list.slice(0, 3);
+    list.forEach(function (n) { n.url = '/novosti/' + n.slug; });
+    root.querySelector('[data-home-news]').innerHTML = list.map(window.ZM.newsCard).join('');
+  });
+})();
+</script>

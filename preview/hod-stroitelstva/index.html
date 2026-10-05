@@ -398,6 +398,9 @@
   .zm-lb__count { bottom: 36px; padding: 8px 20px; font-size: 14px; }
 }
 
+/* якоря не прячутся под закреплённой шапкой */
+.zm [id] { scroll-margin-top: 90px; }
+
 </style>
 <style>
 /* Карточки 451×365, фото 451×307, подпись SemiBold 20 */
@@ -894,8 +897,9 @@
     if (!a) return;
     var href = a.getAttribute('href');
     e.preventDefault();
-    if (href === '/') { location.href = '../../preview/../index.html'; return; }
-    if (href.indexOf('/#') === 0) { location.href = 'https://xn----ctbkblbffabqdhubiarrjde5e2k.xn--p1ai' + href; return; }
+    if (href === '/') { location.href = '../../preview/glavnaya/'; return; }
+    if (href.indexOf('/#/') === 0) { location.href = 'https://xn----ctbkblbffabqdhubiarrjde5e2k.xn--p1ai' + href; return; }
+    if (href.indexOf('/#') === 0) { location.href = '../../preview/glavnaya/' + href.slice(1); return; }
     if (href.indexOf('/politica') === 0) { alert('Здесь откроется страница политики на сайте'); return; }
     location.href = '../../preview/' + href.replace(/^\//, '').replace(/\/?$/, '/');
   });
