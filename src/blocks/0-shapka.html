@@ -19,7 +19,13 @@ part: header
 .zm-hd__msg img, .zm-hd__burger img { width: 42px; height: 42px; }
 .zm-hd__burger { display: none; }
 .zm-hd__menu { display: none; }
-@media (min-width: 1441px) { .zm-hd__nav { gap: 3.5vw; } }
+@media (min-width: 1920px) {
+  .zm-hd__bar { height: 65px; padding: 10px 14px; }
+  .zm-hd__link { font-size: 18px; line-height: 24px; }
+  .zm-hd__choose { margin-left: 108px; }
+  .zm-hd__nav { gap: 49px; margin-left: 108px; }
+  .zm-hd__msg { margin-left: 211px; }
+}
 @media (max-width: 1300px) { .zm-hd__choose { margin-left: 24px; } .zm-hd__nav { gap: 24px; margin-left: 32px; } .zm-hd__msg { margin-left: 24px; } }
 @media (max-width: 1080px) {
   .zm-hd { padding: 10px 12px 0; }

@@ -35,7 +35,13 @@
 .zm-hd__msg img, .zm-hd__burger img { width: 42px; height: 42px; }
 .zm-hd__burger { display: none; }
 .zm-hd__menu { display: none; }
-@media (min-width: 1441px) { .zm-hd__nav { gap: 3.5vw; } }
+@media (min-width: 1920px) {
+  .zm-hd__bar { height: 65px; padding: 10px 14px; }
+  .zm-hd__link { font-size: 18px; line-height: 24px; }
+  .zm-hd__choose { margin-left: 108px; }
+  .zm-hd__nav { gap: 49px; margin-left: 108px; }
+  .zm-hd__msg { margin-left: 211px; }
+}
 @media (max-width: 1300px) { .zm-hd__choose { margin-left: 24px; } .zm-hd__nav { gap: 24px; margin-left: 32px; } .zm-hd__msg { margin-left: 24px; } }
 @media (max-width: 1080px) {
   .zm-hd { padding: 10px 12px 0; }
@@ -133,7 +139,7 @@
   -webkit-text-size-adjust: 100%;
   overflow-x: clip;
 }
-@media (min-width: 1441px) { .zm { --zm-h: 10.4167vw; } }
+@media (min-width: 1920px) { .zm { --zm-h: 200px; } }
 @media (max-width: 1240px) { .zm { --zm-h: calc(130px + (100vw - 980px) * 20 / 460); } }
 @media (max-width: 980px)  { .zm { --zm-h: calc(60px + (100vw - 375px) * 70 / 605); --zm-text-size: 14px; --zm-section: 80px; } }
 @media (max-width: 640px)  { .zm { --zm-h: 60px; --zm-text-size: 12px; --zm-pad: 12px; --zm-section: 64px; } }
@@ -247,7 +253,7 @@
 /* ---------- Цифры-преимущества на первом экране ---------- */
 .zm-stats { display: flex; flex-direction: column; align-items: flex-end; gap: 40px; }
 .zm-stats li { font-family: var(--zm-head); font-size: 64px; line-height: 1; letter-spacing: 0; text-transform: uppercase; color: #fff; text-align: right; -webkit-text-stroke: .5px #fff; }
-@media (min-width: 1441px) { .zm-stats li { font-size: 4.375vw; } }
+@media (min-width: 1920px) { .zm-stats li { font-size: 84px; } }
 @media (max-width: 640px) { .zm-stats { gap: 20px; } .zm-stats li { font-size: 40px; } }
 
 /* ---------- Аккордеон FAQ ---------- */
@@ -314,7 +320,7 @@
 .zm-form.is-sent .zm-form__grid { display: none; }
 .zm-form.is-sent .zm-form__done { display: block; }
 .zm-form__note { margin-top: 20px; font-size: 16px; line-height: 24px; opacity: .64; }
-@media (min-width: 1441px) { .zm-lead-form__title { font-size: 7.29vw; line-height: .86; } }
+@media (min-width: 1920px) { .zm-lead-form__title { font-size: 140px; line-height: 120px; } }
 @media (max-width: 1240px) { .zm-lead-form__title { font-size: 90px; line-height: 80px; } }
 @media (max-width: 980px) {
   .zm-lead-form { grid-template-columns: 1fr; }
@@ -404,6 +410,23 @@
 
 /* якоря не прячутся под закреплённой шапкой */
 .zm [id] { scroll-margin-top: 90px; }
+
+/* ===== Макет 1920 (как в Tilda: с 1920px включается отдельная раскладка) ===== */
+@media (min-width: 1920px) {
+  .zm { --zm-text-size: 18px; }
+  .zm-lead { font-size: 18px; line-height: 24px; }
+  .zm-crumbs { font-size: 20px; }
+  .zm-btn { min-height: 69px; padding: 20px 70px; font-size: 20px; line-height: 27px; }
+  .zm-faq__q { min-height: 122px; padding: 30px 48px; font-size: 20px; line-height: 27px; }
+  .zm-faq__icon { width: 63px; height: 63px; }
+  .zm-faq__icon::before, .zm-faq__icon::after { left: 14px; top: 31px; width: 35px; height: 1.5px; }
+  .zm-faq__a .zm-text { padding: 0 48px 36px; font-size: 22px; line-height: 31px; max-width: 1300px; }
+  .zm-news-card__img { height: 444px; }
+  .zm-news-card__body { min-height: 209px; }
+  .zm-news-card__title { font-size: 28px; line-height: 41px; }
+  .zm-news-card__text { font-size: 18px; line-height: 24px; -webkit-line-clamp: 3; }
+  .zm-arrow { --zm-arrow: 54px; }
+}
 
 </style>
 <style>
@@ -993,6 +1016,21 @@
 .zm-ft__contacts .zm-ft__gap { margin-top: 24px; }
 .zm-ft__bottom { display: grid; grid-template-columns: 404fr 388fr 432fr; gap: 88px; margin-top: 60px; font-size: 14px; line-height: 19px; font-weight: 500; }
 .zm-ft__bottom > div { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+@media (min-width: 1920px) {
+  .zm-ft { min-height: 936px; padding: 66px 20px 10px; }
+  .zm-ft__title { margin-bottom: 20px; }
+  .zm-ft__main { grid-template-columns: 1330fr 550fr; gap: 0; }
+  .zm-ft__addr { max-width: 526px; margin-bottom: 42px; font-size: 30px; line-height: 41px; }
+  .zm-ft__navtitle { margin-bottom: 32px; font-size: 30px; }
+  .zm-ft__nav { gap: 24px; margin-bottom: 40px; font-size: 24px; }
+  .zm-ft__btn { width: 235px; justify-content: center; padding: 20px 40px; font-size: 18px; }
+  .zm-ft__contacts { gap: 20px; }
+  .zm-ft__contacts .zm-ft__gap { padding-top: 24px; }
+  .zm-ft__contacts span { font-size: 18px; line-height: 24px; font-weight: 600; }
+  .zm-ft__contacts b { font-size: 30px; line-height: 41px; font-weight: 600; }
+  .zm-ft__contacts .zm-ft__gap { margin-top: 0; }
+  .zm-ft__bottom { grid-template-columns: 532fr 368fr 313fr; gap: 0 335px; margin-top: 17px; font-size: 18px; line-height: 24px; font-weight: 600; }
+}
 @media (max-width: 980px) {
   .zm-ft { min-height: 0; padding-top: 40px; padding-bottom: 30px; }
   .zm-ft__title { margin-bottom: 40px; }

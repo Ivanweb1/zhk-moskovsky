@@ -20,6 +20,21 @@ part: footer
 .zm-ft__contacts .zm-ft__gap { margin-top: 24px; }
 .zm-ft__bottom { display: grid; grid-template-columns: 404fr 388fr 432fr; gap: 88px; margin-top: 60px; font-size: 14px; line-height: 19px; font-weight: 500; }
 .zm-ft__bottom > div { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+@media (min-width: 1920px) {
+  .zm-ft { min-height: 936px; padding: 66px 20px 10px; }
+  .zm-ft__title { margin-bottom: 20px; }
+  .zm-ft__main { grid-template-columns: 1330fr 550fr; gap: 0; }
+  .zm-ft__addr { max-width: 526px; margin-bottom: 42px; font-size: 30px; line-height: 41px; }
+  .zm-ft__navtitle { margin-bottom: 32px; font-size: 30px; }
+  .zm-ft__nav { gap: 24px; margin-bottom: 40px; font-size: 24px; }
+  .zm-ft__btn { width: 235px; justify-content: center; padding: 20px 40px; font-size: 18px; }
+  .zm-ft__contacts { gap: 20px; }
+  .zm-ft__contacts .zm-ft__gap { padding-top: 24px; }
+  .zm-ft__contacts span { font-size: 18px; line-height: 24px; font-weight: 600; }
+  .zm-ft__contacts b { font-size: 30px; line-height: 41px; font-weight: 600; }
+  .zm-ft__contacts .zm-ft__gap { margin-top: 0; }
+  .zm-ft__bottom { grid-template-columns: 532fr 368fr 313fr; gap: 0 335px; margin-top: 17px; font-size: 18px; line-height: 24px; font-weight: 600; }
+}
 @media (max-width: 980px) {
   .zm-ft { min-height: 0; padding-top: 40px; padding-bottom: 30px; }
   .zm-ft__title { margin-bottom: 40px; }
