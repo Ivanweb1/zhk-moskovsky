@@ -1,0 +1,72 @@
+<!--meta
+title: Подвал сайта
+url: на всех новых страницах — последним блоком
+part: footer
+-->
+<style>
+/* Подвал по компоненту FOOTER из макета: 1440×900, фото фасада, текст #f3f3f7 */
+.zm-ft { display: flex; flex-direction: column; justify-content: space-between; min-height: 900px; padding: 10px var(--zm-pad); color: var(--zm-bg); background: var(--zm-navy) url({{asset:shell/footer.jpg}}) center / cover no-repeat; }
+.zm-ft a:hover { text-decoration: underline; }
+.zm-ft__title { margin-bottom: 80px; font-family: var(--zm-head); font-weight: 400; font-size: var(--zm-h); line-height: 1; letter-spacing: 0; text-transform: uppercase; }
+.zm-ft__main { display: grid; grid-template-columns: 959fr 431fr; gap: 10px; }
+.zm-ft__addr { max-width: 442px; margin-bottom: 32px; font-size: 24px; line-height: 32px; font-weight: 500; }
+.zm-ft__navtitle { margin-bottom: 24px; font-size: 30px; line-height: 24px; font-weight: 500; color: rgba(255,255,255,.5); }
+.zm-ft__nav { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; margin-bottom: 32px; font-size: 20px; line-height: 24px; font-weight: 500; color: #fff; }
+.zm-ft__btn { display: inline-flex; padding: 16px 32px; border-radius: 8px; background: #fff; color: var(--zm-navy) !important; font-size: 16px; line-height: 24px; font-weight: 500; transition: opacity .2s; }
+.zm-ft__btn:hover { text-decoration: none !important; opacity: .9; }
+.zm-ft__contacts { display: flex; flex-direction: column; gap: 20px; }
+.zm-ft__contacts span { display: block; margin-bottom: 8px; font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-ft__contacts b { display: block; font-size: 24px; line-height: 32px; font-weight: 500; }
+.zm-ft__contacts .zm-ft__gap { margin-top: 24px; }
+.zm-ft__bottom { display: grid; grid-template-columns: 404fr 388fr 432fr; gap: 88px; margin-top: 60px; font-size: 14px; line-height: 19px; font-weight: 500; }
+.zm-ft__bottom > div { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+@media (max-width: 980px) {
+  .zm-ft { min-height: 0; padding-top: 40px; padding-bottom: 30px; }
+  .zm-ft__title { margin-bottom: 40px; }
+  .zm-ft__main { grid-template-columns: 1fr; gap: 40px; }
+  .zm-ft__bottom { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
+}
+@media (max-width: 640px) {
+  .zm-ft { padding: 10px var(--zm-pad) 20px; }
+  .zm-ft__title { font-size: 78px; line-height: 78px; margin-bottom: 0; }
+  .zm-ft__addr { font-size: 18px; line-height: 24px; }
+  .zm-ft__navtitle { font-size: 24px; }
+  .zm-ft__nav { font-size: 16px; gap: 14px; }
+  .zm-ft__contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+  .zm-ft__contacts b { font-size: 17px; line-height: 24px; }
+  .zm-ft__contacts .zm-ft__gap { margin-top: 0; }
+}
+</style>
+
+<div class="zm">
+  <footer class="zm-ft">
+    <div>
+      <h2 class="zm-ft__title">Свяжитесь с нами</h2>
+      <div class="zm-ft__main">
+        <div>
+          <p class="zm-ft__addr">Республика Крым, Город Симферополь, проспект Победы д.12, офис продаж ЖК «Московский»</p>
+          <p class="zm-ft__navtitle">Навигация</p>
+          <nav class="zm-ft__nav" aria-label="Навигация в подвале">
+            <a href="/o-proekte">О проекте</a>
+            <a href="/hod-stroitelstva">Ход строительства</a>
+            <a href="/#location">Расположение</a>
+            <a href="/usloviya-pokupki">Условия покупки</a>
+            <a href="/raschet-ipoteki">Расчёт ипотеки</a>
+          </nav>
+          <a class="zm-ft__btn" href="/#choose">Выбрать квартиру</a>
+        </div>
+        <div class="zm-ft__contacts">
+          <div><span>Email:</span><b><a href="mailto:szmoskovskiy@mail.ru">szmoskovskiy@mail.ru</a></b></div>
+          <div><span>Телефон:</span><b><a href="tel:+79788355353">+7 (978) 835-53-53</a></b></div>
+          <div class="zm-ft__gap"><span>Время работы:</span><b>Пн–Пт: 8:00–17:00<br>Сб–Вс: выходной</b></div>
+          <div class="zm-ft__gap"><span>Мессенджеры:</span><b><a href="https://max.ru/u/f9LHodD0cOIPuZ167VTV23ZKIo2ePgWOZb0SFqb5VtiKuubXDK8LxwMIgvs" target="_blank" rel="noopener">MAX</a><br><a href="https://t.me/DjemileKonsol" target="_blank" rel="noopener">Telegram</a></b></div>
+        </div>
+      </div>
+    </div>
+    <div class="zm-ft__bottom">
+      <div><p>Вся предоставленная информация на сайте носит информационный характер и не является публичной офертой</p><p>Все права защищены, 2026</p></div>
+      <div><a href="{{policy}}">Политика конфиденциальности</a><a href="{{policy}}">Политика обработки персональных данных</a></div>
+      <div><a href="https://disk.yandex.ru/i/RZvDdBFLVRS4vw" target="_blank" rel="noopener">Договор аренды земельного участка</a><a href="https://disk.yandex.ru/i/gTl0k5tzhB5Zhg" target="_blank" rel="noopener">Заключение экспертизы</a><a href="https://disk.yandex.ru/i/eopIXOHN13qHHA" target="_blank" rel="noopener">Разрешение на строительство</a></div>
+    </div>
+  </footer>
+</div>

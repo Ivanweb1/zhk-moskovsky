@@ -1,0 +1,82 @@
+<!--meta
+title: Шапка сайта
+url: на всех новых страницах — первым блоком
+part: header
+-->
+<style>
+/* Шапка по компоненту HEADER из макета: плашка 1400×66 r10, лого 102×46, пункты Manrope Medium 14 */
+.zm-hd { position: fixed; top: 0; left: 0; right: 0; z-index: 9990; padding: 10px 20px 0; background: var(--zm-bg); }
+.zm-hd-space { height: 76px; background: var(--zm-bg); }
+.zm-hd__bar { display: flex; align-items: center; height: 66px; padding: 10px 15px; border-radius: 10px; background: var(--zm-card); }
+.zm-hd a { transition: opacity .2s; }
+.zm-hd a:hover { opacity: .6; }
+.zm-hd__logo img { width: 102px; height: 46px; }
+.zm-hd__link { font-size: 14px; line-height: 19px; font-weight: 500; white-space: nowrap; }
+.zm-hd__choose { margin-left: 71px; }
+.zm-hd__nav { display: flex; gap: 50px; margin-left: 66px; }
+.zm-hd__phone { margin-left: auto; }
+.zm-hd__msg { display: flex; gap: 10px; margin-left: 66px; }
+.zm-hd__msg img, .zm-hd__burger img { width: 42px; height: 42px; }
+.zm-hd__burger { display: none; }
+.zm-hd__menu { display: none; }
+@media (min-width: 1441px) { .zm-hd__nav { gap: 3.5vw; } }
+@media (max-width: 1300px) { .zm-hd__choose { margin-left: 24px; } .zm-hd__nav { gap: 24px; margin-left: 32px; } .zm-hd__msg { margin-left: 24px; } }
+@media (max-width: 1080px) {
+  .zm-hd { padding: 10px 12px 0; }
+  .zm-hd-space { height: 72px; }
+  .zm-hd__bar { height: 62px; padding: 10px; }
+  .zm-hd__choose, .zm-hd__nav, .zm-hd__phone { display: none; }
+  .zm-hd__logo img { width: 89px; height: 40px; }
+  .zm-hd__msg { margin-left: auto; gap: 5px; }
+  .zm-hd__burger { display: block; margin-left: 10px; }
+  .zm-hd.is-open .zm-hd__menu { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; padding: 20px; border-radius: 10px; background: var(--zm-card); font-size: 16px; font-weight: 500; max-height: calc(100vh - 100px); overflow-y: auto; }
+}
+</style>
+
+<div class="zm">
+  <div class="zm-hd-space"></div>
+  <header class="zm-hd" id="zm-hd">
+    <div class="zm-hd__bar">
+      <a class="zm-hd__logo" href="/" aria-label="ЖК «Московский» — на главную"><img src="{{asset:shell/logo.svg}}" alt="ЖК Московский"></a>
+      <a class="zm-hd__link zm-hd__choose" href="/#choose">Выбрать квартиру</a>
+      <nav class="zm-hd__nav" aria-label="Меню">
+        <a class="zm-hd__link" href="/o-proekte">О проекте</a>
+        <a class="zm-hd__link" href="/hod-stroitelstva">Ход строительства</a>
+        <a class="zm-hd__link" href="/#location">Расположение</a>
+        <a class="zm-hd__link" href="/usloviya-pokupki">Условия покупки</a>
+        <a class="zm-hd__link" href="/raschet-ipoteki">Расчёт ипотеки</a>
+      </nav>
+      <a class="zm-hd__link zm-hd__phone" href="tel:+79788355353">+7 978 835-53-53</a>
+      <div class="zm-hd__msg">
+        <a href="https://t.me/DjemileKonsol" target="_blank" rel="noopener" aria-label="Написать в Telegram"><img src="{{asset:shell/msg-1.svg}}" alt=""></a>
+        <a href="https://max.ru/u/f9LHodD0cOIPuZ167VTV23ZKIo2ePgWOZb0SFqb5VtiKuubXDK8LxwMIgvs" target="_blank" rel="noopener" aria-label="Написать в MAX"><img src="{{asset:shell/msg-2.svg}}" alt=""></a>
+      </div>
+      <button class="zm-hd__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="zm-hd-menu"><img src="{{asset:shell/burger.svg}}" alt=""></button>
+    </div>
+    <nav class="zm-hd__menu" id="zm-hd-menu" aria-label="Мобильное меню">
+      <a href="/#choose">Выбрать квартиру</a>
+      <a href="/o-proekte">О проекте</a>
+      <a href="/hod-stroitelstva">Ход строительства</a>
+      <a href="/#location">Расположение</a>
+      <a href="/usloviya-pokupki">Условия покупки</a>
+      <a href="/raschet-ipoteki">Расчёт ипотеки</a>
+      <a href="/dokumenty">Документы</a>
+      <a href="/novosti">Новости</a>
+      <a href="tel:+79788355353">+7 978 835-53-53</a>
+    </nav>
+  </header>
+</div>
+
+<script>
+(function () {
+  var hd = document.getElementById('zm-hd');
+  if (!hd || hd.__zm) return; hd.__zm = 1;
+  var btn = hd.querySelector('.zm-hd__burger');
+  btn.addEventListener('click', function () {
+    var open = hd.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  hd.querySelectorAll('.zm-hd__menu a').forEach(function (a) { a.addEventListener('click', function () { hd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { hd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); } });
+})();
+</script>

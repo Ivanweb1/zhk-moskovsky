@@ -50,40 +50,46 @@ fs.mkdirSync(path.join(root, 'dist/tilda'), { recursive: true });
 const shellTpl = read('src/preview-shell.html');
 const index = [];
 
-for (const file of blocks) {
+function prepare(file) {
   const { meta, src } = splitBlock(read('src/blocks/' + file));
-  const name = path.basename(file, '.html');
-
-  // скрипты страницы идут после общего base.js (им нужен window.ZM); JSON-данные остаются на месте
-  const pageScripts = [];
+  // скрипты блока идут после общего base.js (им нужен window.ZM); JSON-данные остаются на месте
+  const scripts = [];
   const markup = src.replace(/<script(?![^>]*type="application\/json")[^>]*>[\s\S]*?<\/script>\s*/g, (m) => {
-    pageScripts.push(m.trim());
+    scripts.push(m.trim());
     return '';
   });
-  const assemble = (imgBase) =>
-    `<style>\n${baseCss}\n</style>\n` +
-    render(markup, imgBase).trim() +
-    `\n<script>\n${baseJs}\n</script>\n` +
-    pageScripts.map((s) => render(s, imgBase)).join('\n') + '\n';
+  return { meta, markup, scripts, name: path.basename(file, '.html'), file };
+}
+const full = (b, base) =>
+  `<style>\n${baseCss}\n</style>\n` + render(b.markup, base).trim() +
+  `\n<script>\n${baseJs}\n</script>\n` + b.scripts.map((s) => render(s, base)).join('\n') + '\n';
+const bare = (b, base) => render(b.markup, base).trim() + '\n' + b.scripts.map((s) => render(s, base)).join('\n');
 
+const all = blocks.map(prepare);
+const parts = Object.fromEntries(all.filter((b) => b.meta.part).map((b) => [b.meta.part, b]));
+
+for (const b of all) {
   const tildaCode =
-    `<!-- ЖК «Московский» · ${meta.title} · ${meta.url}\n` +
-    `     Вставьте этот код целиком в вайб-блок Tilda. Собрано из src/blocks/${file} — правки вносите там и пересобирайте. -->\n` +
-    assemble(cfg.assetBase);
-  fs.writeFileSync(path.join(root, 'dist/tilda', name + '.html'), tildaCode);
+    `<!-- ЖК «Московский» · ${b.meta.title} · ${b.meta.url}\n` +
+    `     Вставьте этот код целиком в вайб-блок Tilda. Собрано из src/blocks/${b.file} — правки вносите там и пересобирайте. -->\n` +
+    full(b, cfg.assetBase);
+  fs.writeFileSync(path.join(root, 'dist/tilda', b.name + '.html'), tildaCode);
+  index.push({ ...b.meta, name: b.name, size: Buffer.byteLength(tildaCode) });
+  if (b.meta.part) continue;
 
   // превью: страница лежит в preview/<url>/index.html, картинки — относительно корня репозитория
-  const urlPath = meta.url.replace(/^\/|\/$/g, '');
+  const urlPath = b.meta.url.replace(/^\/|\/$/g, '');
   const depthUp = '../'.repeat(urlPath.split('/').length + 1);
-  const body = assemble(depthUp + 'assets/');
+  const base = depthUp + 'assets/';
   const page = shellTpl
-    .replaceAll('{{title}}', meta.title)
+    .replaceAll('{{title}}', b.meta.title)
     .replaceAll('{{root}}', depthUp + 'preview/')
-    .replace('{{content}}', body);
+    .replace('{{header}}', parts.header ? bare(parts.header, base) : '')
+    .replace('{{footer}}', parts.footer ? bare(parts.footer, base) : '')
+    .replace('{{content}}', full(b, base));
   const out = path.join(root, 'preview', urlPath, 'index.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, page);
-  index.push({ ...meta, name, size: Buffer.byteLength(tildaCode) });
 }
 
 fs.writeFileSync(
@@ -93,7 +99,9 @@ fs.writeFileSync(
 <style>body{font:15px/1.5 Manrope,Arial,sans-serif;background:#f2f2f7;color:#14243d;margin:0;padding:40px 16px}main{max-width:720px;margin:0 auto}
 h1{font-weight:500}a{color:#1f3d6b}li{margin:8px 0}code{background:#e4e6f1;padding:1px 6px;border-radius:4px;font-size:13px}</style></head>
 <body><main><h1>ЖК «Московский» — новые страницы (превью)</h1><ul>
-${index.map((p) => `<li><a href="preview/${p.url.replace(/^\/|\/$/g, '')}/">${p.title}</a> — <code>${p.url}</code> · код для Tilda: <a href="dist/tilda/${p.name}.html">dist/tilda/${p.name}.html</a></li>`).join('\n')}
+${index.map((p) => p.part
+  ? `<li>${p.title} — ${p.url} · код для Tilda: <a href="dist/tilda/${p.name}.html">dist/tilda/${p.name}.html</a></li>`
+  : `<li><a href="preview/${p.url.replace(/^\/|\/$/g, '')}/">${p.title}</a> — <code>${p.url}</code> · код для Tilda: <a href="dist/tilda/${p.name}.html">dist/tilda/${p.name}.html</a></li>`).join('\n')}
 </ul></main></body></html>\n`
 );
 
