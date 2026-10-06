@@ -1047,11 +1047,14 @@
   .zm-pick__title { font-size: 40px; line-height: 40px; }
   .zm-pick__texts { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 10px; padding-bottom: 0; font-size: 14px; line-height: 20px; font-weight: 400; }
   .zm-pick .zm-form { margin-top: 24px; }
-  .zm-pick .zm-form__grid { display: flex; flex-direction: column; gap: 0; }
-  .zm-pick .zm-field { width: calc(100% - 20px); margin: 0; }
+  .zm-pick .zm-form__grid { display: flex; flex-direction: column; gap: 10px; }
+  .zm-pick .zm-field { width: 100%; margin: 0; }
   .zm-pick .zm-field input { height: 65px; border-radius: 8px; font-size: 18px; }
-  .zm-pick .zm-check { order: 3; margin: 0; padding-top: 2px; font-size: 14px; line-height: 16.8px; }
-  .zm-pick .zm-form__submit { order: 4; margin: 0; }
+  .zm-pick .zm-field--phone::before, .zm-pick .zm-field--phone::after { top: 50%; transform: translateY(-50%); }
+  .zm-pick .zm-field--phone::after { font-size: 18px; line-height: 24px; }
+  .zm-pick .zm-check { order: 3; margin: 2px 0 0; font-size: 14px; line-height: 16.8px; }
+  .zm-pick .zm-check input { margin-top: 0; }
+  .zm-pick .zm-form__submit { order: 4; margin: 2px 0 0; }
   .zm-pick .zm-form__submit .zm-btn { width: 100%; height: 65px; padding: 0 15px; font-size: 12px; font-weight: 500; }
   .zm-pick__note { margin-top: 15px; font-size: 13px; }
 
