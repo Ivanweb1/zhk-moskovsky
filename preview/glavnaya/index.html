@@ -23,8 +23,8 @@
 <style>
 /* Шапка по компоненту HEADER из макета: плашка 1400×66 r10, лого 102×46, пункты Manrope Medium 14 */
 .zm-hd { position: fixed; top: 0; left: 0; right: 0; z-index: 9990; padding: 10px 20px 0; background: var(--zm-bg); }
-.zm-hd-space { height: 76px; background: var(--zm-bg); }
-.zm-hd__bar { display: flex; align-items: center; height: 66px; padding: 10px 15px; border-radius: 10px; background: var(--zm-card); }
+.zm-hd-space { height: 75px; background: var(--zm-bg); }
+.zm-hd__bar { display: flex; align-items: center; height: 65px; padding: 10px 15px; border-radius: 10px; background: var(--zm-card); }
 .zm-hd a { transition: opacity .2s; }
 .zm-hd__logo:hover, .zm-hd__msg a:hover { opacity: .6; }
 /* подчёркивание пунктов меню, как на текущем сайте: выезжает слева при наведении, уезжает вправо */
@@ -631,7 +631,7 @@
 .zm-hfaq .zm-faq__q { min-height: 91px; padding: 20px 36px; }
 
 /* Десктоп 1241–1919: точные положения из фрейма 1440 */
-@media (min-width: 1241px) and (max-width: 1919px) {
+@media (min-width: 1440px) and (max-width: 1919px) {
   .zm-hab__intro .zm-btn { margin-top: 11px; }
   .zm-loc__head { align-items: flex-end; }
   .zm-loc__item h3 { white-space: nowrap; }
@@ -738,8 +738,6 @@
   .zm-hbuy__head { align-items: flex-end; }
   .zm-hbuy__head div { flex: 0 1 450px; font-size: 18px; line-height: 24px; padding-bottom: 0; }
   .zm-hbuy__head p + p, .zm-hfaq__head p + p { margin-top: 0; }
-  .zm-hbuy .zm-slider { margin-top: 10px; }
-  .zm-hbuy__bar { margin-bottom: 91px; }
   .zm-hbuy .zm-slider__track { margin-left: 20px; }
   .zm-hbuy .zm-slider__track > * { width: 455px; min-height: 653px; }
   .zm-hbuy__card { font-size: 18px; line-height: 24px; }
@@ -766,8 +764,167 @@
   .zm-hfaq .zm-faq { margin: 93px 27px 0 28px; }
   .zm-hfaq .zm-faq__q { min-height: 120px; padding: 30px 48px; }
 }
-/* ===== Планшет / небольшой десктоп 768–1240 — по фрейму «Главная / 980» ===== */
-@media (min-width: 768px) and (max-width: 1240px) {
+/* «Локация» на сайте (после разбивки на буквы) — в 3 строки: «Локация для / вашего / ритма жизни» */
+.zm-br-live { display: none; }
+@media (min-width: 1200px) { .zm-br-live { display: inline; } }
+
+/* ===== От 1200px — 1 в 1 с текущей главной сайта (брейкпоинты Zero Block: 1920 / 1440 / 1200) =====
+   Базовые линии пересчитаны под наш Sverdlovsk с исправленными метриками. */
+@media (min-width: 1200px) {
+  .zm-hh { height: 815px; }
+  .zm-hh__title { margin: 32px 0 0; }
+  .zm-hh__title small { line-height: 1; margin-bottom: 0; }
+  .zm-hh__title > span { position: static; padding: 0; margin: 34px 0 0; }
+  .zm-hh__text { margin-top: 35px; }
+  .zm-hh__card .zm-btn { margin-top: 21px; width: 256px; min-height: 56px; padding: 0 20px; }
+  /* заголовки старых блоков: боксы как на сайте, буквы на том же месте, что со старым файлом шрифта (+0.237em) */
+  .zm-home .zm-h2, .zm-hab__card b, .zm-dev__card b, .zm-pick__title { position: relative; top: .237em; }
+  .zm-home .zm-hnews .zm-h2 { top: 0; }
+  .zm-hab__card { flex: none; justify-content: space-between; gap: 0; }
+  .zm-hab__card:nth-child(n) { gap: 0; }
+  .zm-harch .zm-arrows { gap: 5px; }
+  .zm-harch .zm-slider__track { margin-left: 20px; }
+  .zm-hbuy .zm-slider { margin-top: 40px; }
+  .zm-hbuy .zm-slider__track { margin-left: 20px; }
+  .zm-hbuy__bar { min-height: 54px; margin-bottom: 76px; }
+  .zm-hbuy .zm-arrows { gap: 5px; }
+  .zm-dev__col { gap: 20px; }
+  .zm-dev__card, .zm-dev__col .zm-dev__card { flex: none; justify-content: space-between; gap: 0; }
+  .zm-dev__col:nth-child(1) .zm-dev__card { flex: 1; }
+}
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .zm-hab { padding-top: 110px; }
+  .zm-hab__img { min-height: 1426px; }
+  .zm-hab__card:nth-child(1) { height: 462px; }
+  .zm-hab__card:nth-child(2) { height: 481px; }
+  .zm-hab__card:nth-child(3) { height: 443px; }
+  .zm-hloc { padding-top: 200px; }
+  .zm-loc__head { align-items: flex-end; margin-bottom: 50px; }
+  .zm-loc__head p { padding-bottom: 0; }
+  .zm-loc { grid-template-columns: 345fr 1035fr; }
+  .zm-loc__item { min-height: 270px; }
+  .zm-loc__map { min-height: 1140px; }
+  .zm-harch { padding-top: 100px; }
+  .zm-plans__btn { top: 223px; width: 589px; min-height: 84px; }
+  .zm-pick { grid-template-columns: 610fr 790fr; }
+  .zm-pick__title { margin-top: 0; line-height: 80px; }
+  .zm-pick__texts { margin-top: 147px; padding-bottom: 0; }
+  .zm-pick .zm-form { margin-top: 64px; }
+  .zm-hdev { padding-top: 236px; }
+  .zm-dev__img { height: 340px; }
+  .zm-dev__col:nth-child(2) .zm-dev__card { height: 394px; }
+  .zm-dev__col:nth-child(3) .zm-dev__card:first-child { height: 358px; }
+  .zm-dev__col:nth-child(3) .zm-dev__card:last-child { height: 396px; gap: 50px; }
+  .zm-dev__col:nth-child(n+2) .zm-dev__card { justify-content: flex-start; gap: 50px; }
+  .zm-dev__col:nth-child(2) .zm-dev__card b { top: .237em; }
+  .zm-home .zm-hbuy { margin-top: 16px; padding: 100px 0 14px; }
+  .zm-hbuy__bar { margin-bottom: 41px; }
+}
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .zm-hh { grid-template-columns: 431fr 719fr; }
+  .zm-home { --zm-h: 130px; } /* на сайте заголовки на этом брейкпоинте 130 */
+  .zm-hab { padding-top: 90px; }
+  .zm-hab__grid { grid-template-columns: 325fr 530fr 265fr; }
+  .zm-hab__img { min-height: 1303px; }
+  .zm-hab__card:nth-child(1) { height: 421px; }
+  .zm-hab__card:nth-child(2) { height: 459px; }
+  .zm-hab__card:nth-child(3) { height: 383px; }
+  .zm-hab__card b { font-size: 130px; }
+  .zm-hloc { padding-top: 180px; }
+  .zm-loc__head { align-items: flex-end; margin-bottom: 50px; }
+  .zm-loc__head .zm-h2 { flex: 0 1 850px; }
+  .zm-loc__head p { flex: 0 1 300px; }
+  .zm-loc { grid-template-columns: 345fr 795fr; }
+  .zm-loc__item { flex: none; min-height: 270px; justify-content: space-between; }
+  .zm-loc__item h3 { font-size: 24px; line-height: 32px; margin-bottom: 20px; white-space: nowrap; }
+  .zm-loc__map { min-height: 1178px; }
+  .zm-harch { padding-top: 80px; }
+  .zm-harch .zm-slider__track > * { width: 554px; }
+  .zm-arch__img { height: 300px; }
+  .zm-harch .zm-arrows { margin-top: 41px; }
+  .zm-hplans { padding-top: 56px; }
+  .zm-plans__box { height: 455px; margin-top: 20px; }
+  .zm-plans__btn { top: 185px; transform: translateX(-50%); width: 491px; min-height: 70px; }
+  .zm-hpick { padding-top: 95px; }
+  .zm-pick { grid-template-columns: 589fr 561fr; min-height: 794px; }
+  .zm-pick__title { font-size: 70px; line-height: 70px; white-space: nowrap; }
+  .zm-pick__texts { grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 207px; padding-bottom: 0; }
+  .zm-pick .zm-form { margin-top: 64px; }
+  .zm-pick .zm-form__grid { grid-template-columns: 1fr 1fr; }
+  .zm-pick .zm-form__submit { grid-column: 1 / -1; }
+  .zm-hdev { padding-top: 166px; }
+  .zm-dev { gap: 20px; }
+  .zm-dev__img { height: 298px; }
+  .zm-dev__col:nth-child(2) .zm-dev__card { height: 406px; }
+  .zm-dev__col:nth-child(3) .zm-dev__card:first-child { height: 330px; }
+  .zm-dev__col:nth-child(3) .zm-dev__card:last-child { height: 374px; }
+  .zm-dev__card b { font-size: 130px; }
+  .zm-dev__col:nth-child(n+2) .zm-dev__card { justify-content: flex-start; gap: 0; }
+  .zm-dev__col:nth-child(n+2) .zm-dev__card h3 { margin-bottom: 20px; }
+  .zm-home .zm-hbuy { margin-top: 81px; padding: 121px 0 12px; }
+  .zm-hbuy__head .zm-h2 { flex: 0 1 880px; white-space: nowrap; }
+  .zm-hbuy__head .zm-h2 br { display: none; }
+  .zm-hbuild .zm-h2 { white-space: nowrap; }
+  .zm-hbuy__head div { flex: 0 1 250px; }
+  .zm-hbuy .zm-slider { margin-top: -1px; }
+  .zm-hbuy__bar { margin-bottom: 20px; }
+  .zm-hbuy .zm-slider__track > * { width: 350px; min-height: 588px; }
+  .zm-hfaq__head .zm-h2 { flex: 0 1 764px; white-space: normal; }
+  .zm-hfaq__head div { flex: 0 1 325px; padding-bottom: 0; }
+  .zm-hfaq .zm-faq { max-width: 931px; margin: 69px auto 0; gap: 3px; }
+  .zm-hfaq .zm-faq__q { min-height: 76px; padding: 18px 18px 18px 29px; font-size: 20px; }
+  .zm-hfaq .zm-faq__icon { width: 40px; height: 40px; }
+  .zm-hfaq .zm-faq__icon::before, .zm-hfaq .zm-faq__icon::after { left: 7px; top: 19.4px; width: 26px; }
+  .zm-hh__right { grid-template-rows: 422fr 373fr; }
+  .zm-hh__title { margin-top: 37px; }
+  .zm-hh__title small { font-size: 70px; }
+  .zm-hh__title > span { font-size: 70px; line-height: 35px; margin-top: 20px; }
+  .zm-hh__text { max-width: 362px; margin-top: 44px; }
+  .zm-hh__card .zm-btn { margin-top: 20px; width: 350px; min-height: 63px; }
+}
+@media (min-width: 1920px) {
+  .zm-hh { grid-template-columns: 935fr 935fr; }
+  .zm-hh__right { grid-template-rows: 470fr 325fr; }
+  .zm-hh__title { margin-top: 37px; }
+  .zm-hh__title small { font-size: 70px; }
+  .zm-hh__title > span { font-size: 140px; line-height: 70px; margin-top: 37px; }
+  .zm-hh__text { max-width: 498px; margin-top: 27px; }
+  .zm-hh__card .zm-btn { margin-top: 20px; width: 300px; min-height: 58px; font-size: 16px; }
+  .zm-hab { padding-top: 110px; }
+  .zm-hab__grid { grid-template-columns: 485fr 759fr 576fr; margin-right: 20px; }
+  .zm-hab__img { min-height: 1456px; }
+  .zm-hab__card { padding: 20px 0 20px 20px; }
+  .zm-hab__card:nth-child(1), .zm-hab__card:nth-child(2) { height: 480px; }
+  .zm-hab__card:nth-child(3) { height: 456px; }
+  .zm-hloc { padding-top: 200px; }
+  .zm-home .zm-br1920 { display: none; }
+  .zm-loc__head { margin-bottom: 50px; }
+  .zm-loc__head .zm-h2 { flex: 0 1 1420px; min-height: 0; padding: 0; }
+  .zm-loc__head p { width: 450px; padding-bottom: 0; }
+  .zm-harch .zm-slider { margin-left: 0; }
+  .zm-harch .zm-arrows { margin-top: 40px; }
+  .zm-hplans { padding-top: 76px; }
+  .zm-pick__texts { grid-template-columns: 622px 460px; gap: 40px; margin-top: 73px; padding-bottom: 0; }
+  .zm-pick .zm-form { margin-top: 94px; }
+  .zm-hdev { padding-top: 110px; }
+  .zm-dev__img { height: 354px; }
+  .zm-dev__col:nth-child(2) .zm-dev__card { height: 424px; margin: 0; }
+  .zm-dev__col:nth-child(3) .zm-dev__card:first-child { height: 353px; }
+  .zm-dev__col:nth-child(3) .zm-dev__card:last-child { height: 425px; }
+  .zm-dev__col:nth-child(1) .zm-dev__card { height: auto; }
+  .zm-dev__col:nth-child(n+2) .zm-dev__card { justify-content: flex-start; gap: 30px; }
+  .zm-home .zm-hbuy { margin-top: 2px; padding: 100px 0 15px; }
+  .zm-hbuy__bar { margin-bottom: 61px; }
+  .zm-hbuy .zm-slider__track > * { width: 455px; min-height: 655px; }
+  .zm-hfaq__head .zm-h2 { flex: 0 1 1175px; white-space: normal; }
+  .zm-hfaq__head div { padding-bottom: 0; }
+  .zm-hfaq .zm-faq { margin: 105px 27px 0 28px; }
+  .zm-hfaq .zm-faq__q { min-height: 122px; padding: 29px 30px 29px 47px; font-size: 20px; }
+  .zm-dev__col:nth-child(n+2) .zm-dev__card { justify-content: flex-start; gap: 30px; }
+}
+
+/* ===== Планшет 768–1199 — по фрейму «Главная / 980» (на текущем сайте планшетная версия не доделана) ===== */
+@media (min-width: 768px) and (max-width: 1199px) {
   /* 1. Первый экран: фото 465 + карточка 465×388 + фото 465×119, высота 528 */
   .zm-hh { grid-template-columns: 1fr 1fr; height: 538px; }
   .zm-hh__right { grid-template-rows: 388fr 119fr; gap: 11px; }
@@ -1083,7 +1240,7 @@
   <section class="zm-hloc" id="location">
     <div class="zm-container">
       <div class="zm-loc__head">
-        <h2 class="zm-h2">Локация <br class="zm-br1920">для вашего<br>ритма жизни</h2>
+        <h2 class="zm-h2">Локация для<br class="zm-br-live"> вашего<br>ритма жизни</h2>
         <p>Проект расположен в сформированном районе Симферополя с готовой городской инфраструктурой. В пешей доступности находятся школы, магазины, медицинские учреждения и парк для прогулок — всё, что нужно для повседневной жизни без лишних поездок по городу.</p>
       </div>
       <div class="zm-loc">
