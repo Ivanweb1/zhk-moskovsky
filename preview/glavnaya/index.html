@@ -790,7 +790,9 @@
 /* ===== От 1200px — 1 в 1 с текущей главной сайта (брейкпоинты Zero Block: 1920 / 1440 / 1200) =====
    Базовые линии пересчитаны под наш Sverdlovsk с исправленными метриками. */
 @media (min-width: 1200px) {
-  .zm-hh { height: 815px; }
+  /* как на сайте: первый экран на всю высоту окна (Zero Block 100vh), но не ниже артборда брейкпоинта */
+  .zm-hh { --hh-min: 700px; height: calc(max(100vh, var(--hh-min)) - 85px); }
+  .zm-hh__right { grid-template-rows: minmax(416px, 1fr) minmax(0, 1fr); }
   .zm-hh__title { margin: 32px 0 0; }
   .zm-hh__title small { line-height: 1; margin-bottom: 0; }
   .zm-hh__title > span { position: static; padding: 0; margin: 34px 0 0; }
@@ -840,7 +842,7 @@
   .zm-hbuy__bar { margin-bottom: 41px; }
 }
 @media (min-width: 1200px) and (max-width: 1439px) {
-  .zm-hh { grid-template-columns: 431fr 719fr; }
+  .zm-hh { grid-template-columns: 431fr 719fr; --hh-min: 550px; }
   .zm-home { --zm-h: 130px; } /* на сайте заголовки на этом брейкпоинте 130 */
   .zm-hab { padding-top: 90px; }
   .zm-hab__grid { grid-template-columns: 325fr 530fr 265fr; }
@@ -894,7 +896,7 @@
   .zm-hfaq .zm-faq__q { min-height: 76px; padding: 18px 18px 18px 29px; font-size: 20px; }
   .zm-hfaq .zm-faq__icon { width: 40px; height: 40px; }
   .zm-hfaq .zm-faq__icon::before, .zm-hfaq .zm-faq__icon::after { left: 7px; top: 19.4px; width: 26px; }
-  .zm-hh__right { grid-template-rows: 422fr 373fr; }
+  .zm-hh__right { grid-template-rows: minmax(422px, 1fr) minmax(0, 1fr); }
   .zm-hh__title { margin-top: 37px; }
   .zm-hh__title small { font-size: 70px; }
   .zm-hh__title > span { font-size: 70px; line-height: 35px; margin-top: 20px; }
@@ -902,8 +904,8 @@
   .zm-hh__card .zm-btn { margin-top: 20px; width: 350px; min-height: 63px; }
 }
 @media (min-width: 1920px) {
-  .zm-hh { grid-template-columns: 935fr 935fr; }
-  .zm-hh__right { grid-template-rows: 470fr 325fr; }
+  .zm-hh { grid-template-columns: 935fr 935fr; --hh-min: 800px; }
+  .zm-hh__right { grid-template-rows: minmax(470px, 1fr) minmax(0, 1fr); }
   .zm-hh__title { margin-top: 37px; }
   .zm-hh__title small { font-size: 70px; }
   .zm-hh__title > span { font-size: 140px; line-height: 70px; margin-top: 37px; }
@@ -1009,7 +1011,8 @@
   /* 1. Первый экран: карточка, под ней фото */
   .zm-hh { display: flex; flex-direction: column; height: auto; padding: 13px 20px 10px; }
   .zm-hh > .zm-hh__img { display: none; }
-  .zm-hh__right { display: flex; flex-direction: column; gap: 10px; }
+  .zm-hh { --hh-min: 800px; min-height: calc(max(100vh, var(--hh-min)) - 72px); }
+  .zm-hh__right { flex: 1; display: flex; flex-direction: column; gap: 10px; }
   .zm-hh__card { padding: 20px; }
   .zm-hh__pills li { padding: 7px 10px; font-size: 14px; line-height: 20px; }
   .zm-hh__title { margin: 20px 0 0; }
@@ -1017,7 +1020,7 @@
   .zm-hh__title > span { position: relative; top: .237em; font-size: 60px; line-height: 30px; padding: 0; }
   .zm-hh__text { max-width: 362px; margin-top: 60px; }
   .zm-hh__card .zm-btn { width: 350px; max-width: 100%; min-height: 63px; margin-top: 20px; padding: 10px 20px; }
-  .zm-hh__img--2 { flex: none; }
+  .zm-hh__img--2 { flex: 1 0 auto; }
 
   /* 2. О проекте */
   .zm-hab__grid { display: block; margin-top: 10px; }
@@ -1126,7 +1129,7 @@
 /* --- 960–1199 --- */
 @media (min-width: 960px) and (max-width: 1199px) {
   .zm-home { --zm-h: 130px; }
-  .zm-hh { display: grid; grid-template-columns: 191fr 719fr; gap: 10px; height: 815px; padding-bottom: 0; }
+  .zm-hh { display: grid; grid-template-columns: 191fr 719fr; gap: 10px; height: calc(max(100vh, 550px) - 85px); min-height: 0; padding-bottom: 0; }
   .zm-hh > .zm-hh__img { display: block; }
   .zm-hh__right { display: block; }
   .zm-hh__img--2 { display: none; }
@@ -1332,6 +1335,7 @@
 /* --- 390–479 --- */
 @media (min-width: 390px) and (max-width: 479px) {
   .zm-home { --zm-h: 70px; }
+  .zm-hh { --hh-min: 1120px; }
   .zm-hh__title { margin-top: 44px; }
   .zm-hh__title small { font-size: 33px; line-height: 33px; }
   .zm-hh__title > span { font-size: 64px; line-height: 32px; }
@@ -1375,7 +1379,7 @@
 /* --- до 389 (артборд 320) --- */
 @media (max-width: 389px) {
   .zm-home { --zm-h: 60px; }
-  .zm-hh { padding-top: 10px; }
+  .zm-hh { padding-top: 10px; --hh-min: 1040px; }
   .zm-hh__title small { font-size: 30px; line-height: 30px; }
   .zm-hh__title > span { font-size: 50px; line-height: 25px; }
   .zm-hh__text { max-width: none; }
