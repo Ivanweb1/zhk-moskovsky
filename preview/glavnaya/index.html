@@ -922,6 +922,19 @@
   .zm-hfaq .zm-faq__q { min-height: 122px; padding: 29px 30px 29px 47px; font-size: 20px; }
   .zm-dev__col:nth-child(n+2) .zm-dev__card { justify-content: flex-start; gap: 30px; }
 }
+/* FAQ ≥1200 — как T668 на сайте: блок там масштабируется скриптом (zoom = ширина/1200×0.99),
+   поэтому размеры заданы через --k = 1px × zoom */
+@media (min-width: 1200px) {
+  .zm-hfaq .zm-faq { --k: .0825vw; }
+  .zm-hfaq .zm-faq__q { min-height: 0; gap: 0; padding: calc(25 * var(--k)) calc(18 * var(--k)) calc(25 * var(--k)) calc(30 * var(--k)); font-size: calc(20 * var(--k)); line-height: calc(27 * var(--k)); font-weight: 600; }
+  .zm-hfaq .zm-faq__q > span { padding-right: calc(30 * var(--k)); }
+  .zm-hfaq .zm-faq__icon { width: calc(40 * var(--k)); height: calc(40 * var(--k)); margin: calc(-6.5 * var(--k)) 0; transition: transform .3s; }
+  .zm-hfaq .zm-faq__icon::before, .zm-hfaq .zm-faq__icon::after { left: calc(9 * var(--k)); top: calc(19.5 * var(--k)); width: calc(22 * var(--k)); height: max(1px, var(--k)); background: #222; }
+  .zm-hfaq .zm-faq__item.is-open .zm-faq__icon { transform: rotate(-45deg); }
+  .zm-hfaq .zm-faq__item.is-open .zm-faq__icon::after { transform: rotate(90deg); }
+  .zm-hfaq .zm-faq__a .zm-text { max-width: none; padding: 0 calc(30 * var(--k)) calc(20 * var(--k)); font-size: calc(16 * var(--k)); line-height: 1.55; font-weight: 300; color: #132640; }
+  .zm-hfaq .zm-faq__a .zm-text p + p { margin-top: 1.55em; }
+}
 
 /* ===== Планшет 768–1199 — по фрейму «Главная / 980» (на текущем сайте планшетная версия не доделана) ===== */
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -1868,6 +1881,33 @@
   .zm-ft__contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
   .zm-ft__contacts b { font-size: 17px; line-height: 24px; }
   .zm-ft__contacts .zm-ft__gap { margin-top: 0; }
+}
+/* Главная: в макете главной подвала нет, поэтому там подвал как на текущем сайте —
+   без навигации и кнопки, раскладка по артборду 900px (1200 / 1440 / 1920) */
+body:has(.zm-home) .zm-ft__navtitle, body:has(.zm-home) .zm-ft__nav, body:has(.zm-home) .zm-ft__btn { display: none; }
+@media (min-width: 1200px) {
+  body:has(.zm-home) .zm-ft { min-height: 900px; padding: 10px 20px; }
+  body:has(.zm-home) .zm-ft__title { position: relative; top: .237em; margin-bottom: 127px; }
+  body:has(.zm-home) .zm-ft__main { grid-template-columns: 959fr 431fr; gap: 10px; }
+  body:has(.zm-home) .zm-ft__addr { margin-bottom: 0; }
+  body:has(.zm-home) .zm-ft__bottom { grid-template-columns: 404fr 388fr 432fr; gap: 88px; align-items: end; margin-top: 0; }
+  body:has(.zm-home) .zm-ft__bottom > div:last-child { white-space: normal; }
+  body:has(.zm-home) .zm-ft__bottom > div:first-child { gap: 0; }
+}
+@media (min-width: 1200px) and (max-width: 1439px) {
+  body:has(.zm-home) .zm-ft { --zm-h: 130px; }
+  body:has(.zm-home) .zm-ft__title { margin-bottom: 138px; }
+  body:has(.zm-home) .zm-ft__main { grid-template-columns: 729fr 431fr; gap: 0; }
+  body:has(.zm-home) .zm-ft__bottom { grid-template-columns: 453fr 446fr 261fr; gap: 0; }
+}
+@media (min-width: 1920px) {
+  body:has(.zm-home) .zm-ft__title { margin-bottom: 58px; }
+  body:has(.zm-home) .zm-ft__main { grid-template-columns: 1335fr 545fr; gap: 0; }
+  body:has(.zm-home) .zm-ft__addr { max-width: 556px; }
+  body:has(.zm-home) .zm-ft__contacts span { font-weight: 500; }
+  body:has(.zm-home) .zm-ft__contacts b { font-weight: 500; }
+  body:has(.zm-home) .zm-ft__contacts .zm-ft__gap { padding-top: 0; margin-top: 24px; }
+  body:has(.zm-home) .zm-ft__bottom { grid-template-columns: 868fr 704fr 308fr; gap: 0; font-weight: 500; }
 }
 </style>
 
