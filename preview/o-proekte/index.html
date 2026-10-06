@@ -153,6 +153,9 @@
    иначе браузер ставит буквы на 0.24em ниже макета, и вёрстка зависит от того, какой файл загружен в Tilda. */
 @font-face { font-family: 'ZM Sverdlovsk'; font-weight: 400; font-style: normal; font-display: swap;
   src: url(../../assets/fonts/zm-sverdlovsk.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk.woff) format('woff'); }
+/* тот же шрифт с запасом сверху — для полей ввода: иначе Chrome/Safari срезают верх цифр в input */
+@font-face { font-family: 'ZM Sverdlovsk Field'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url(../../assets/fonts/zm-sverdlovsk-field.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk-field.woff) format('woff'); }
 .zm {
   /* Заголовки — свой Sverdlovsk (см. выше), текст — шрифт из настроек сайта Tilda (--t-text-font); в макете — Manrope */
   --zm-head: 'ZM Sverdlovsk', var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;
@@ -809,7 +812,7 @@
           <div class="zm-loc__item"><div class="zm-loc__icon"><img src="../../assets/icon/loc-walk.svg" alt=""></div><div><h3>Прогулки и отдых</h3><p>Зелёные зоны, прогулочные маршруты и места для отдыха создают приятную атмосферу для прогулок, спорта и спокойного досуга на свежем воздухе.</p></div></div>
         </div>
         <!-- Карта: при желании замените src на код из конструктора Яндекс.Карт -->
-        <div class="zm-loc__map"><iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B%2C%2012&amp;z=16" title="ЖК «Московский» на карте" loading="lazy" allowfullscreen></iframe></div>
+        <div class="zm-loc__map"><iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9A%D0%B8%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%20141%D0%91&amp;z=16" title="ЖК «Московский» на карте" loading="lazy" allowfullscreen></iframe></div>
       </div>
     </div>
   </section>
@@ -1297,7 +1300,7 @@
       <h2 class="zm-ft__title">Свяжитесь с нами</h2>
       <div class="zm-ft__main">
         <div>
-          <p class="zm-ft__addr">Республика Крым, Город Симферополь, проспект Победы д.12, офис продаж ЖК «Московский»</p>
+          <p class="zm-ft__addr">Республика Крым, Город Симферополь, Улица Киевская, д.&nbsp;141Б</p>
           <p class="zm-ft__navtitle">Навигация</p>
           <nav class="zm-ft__nav" aria-label="Навигация в подвале">
             <a href="/o-proekte">О проекте</a>

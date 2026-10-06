@@ -153,6 +153,9 @@
    иначе браузер ставит буквы на 0.24em ниже макета, и вёрстка зависит от того, какой файл загружен в Tilda. */
 @font-face { font-family: 'ZM Sverdlovsk'; font-weight: 400; font-style: normal; font-display: swap;
   src: url(../../assets/fonts/zm-sverdlovsk.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk.woff) format('woff'); }
+/* тот же шрифт с запасом сверху — для полей ввода: иначе Chrome/Safari срезают верх цифр в input */
+@font-face { font-family: 'ZM Sverdlovsk Field'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url(../../assets/fonts/zm-sverdlovsk-field.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk-field.woff) format('woff'); }
 .zm {
   /* Заголовки — свой Sverdlovsk (см. выше), текст — шрифт из настроек сайта Tilda (--t-text-font); в макете — Manrope */
   --zm-head: 'ZM Sverdlovsk', var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;
@@ -1068,7 +1071,7 @@ a.zm-doc__dl:hover img { filter: brightness(0) invert(1); }
       <h2 class="zm-ft__title">Свяжитесь с нами</h2>
       <div class="zm-ft__main">
         <div>
-          <p class="zm-ft__addr">Республика Крым, Город Симферополь, проспект Победы д.12, офис продаж ЖК «Московский»</p>
+          <p class="zm-ft__addr">Республика Крым, Город Симферополь, Улица Киевская, д.&nbsp;141Б</p>
           <p class="zm-ft__navtitle">Навигация</p>
           <nav class="zm-ft__nav" aria-label="Навигация в подвале">
             <a href="/o-proekte">О проекте</a>

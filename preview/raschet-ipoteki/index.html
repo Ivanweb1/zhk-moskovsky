@@ -153,6 +153,9 @@
    иначе браузер ставит буквы на 0.24em ниже макета, и вёрстка зависит от того, какой файл загружен в Tilda. */
 @font-face { font-family: 'ZM Sverdlovsk'; font-weight: 400; font-style: normal; font-display: swap;
   src: url(../../assets/fonts/zm-sverdlovsk.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk.woff) format('woff'); }
+/* тот же шрифт с запасом сверху — для полей ввода: иначе Chrome/Safari срезают верх цифр в input */
+@font-face { font-family: 'ZM Sverdlovsk Field'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url(../../assets/fonts/zm-sverdlovsk-field.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk-field.woff) format('woff'); }
 .zm {
   /* Заголовки — свой Sverdlovsk (см. выше), текст — шрифт из настроек сайта Tilda (--t-text-font); в макете — Manrope */
   --zm-head: 'ZM Sverdlovsk', var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;
@@ -547,7 +550,7 @@
 .zm-calc__box { position: relative; display: flex; align-items: center; gap: 12px; height: 65px; padding: 0 16px; border-radius: 4px 4px 0 0; background: #fff; }
 .zm-calc__box::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 5px; background: rgba(19,38,64,.5); }
 /* line-height с запасом: иначе Safari обрезает верх цифр Sverdlovsk в поле */
-.zm-calc__box input { flex: 1; min-width: 0; height: 100%; padding: 0; line-height: 1.5; border: 0; outline: none; background: none; font-family: var(--zm-head); font-size: 32px; letter-spacing: 0; text-transform: uppercase; color: var(--zm-navy); }
+.zm-calc__box input { flex: 1; min-width: 0; height: 100%; padding: 0; line-height: 1.5; border: 0; outline: none; background: none; font-family: 'ZM Sverdlovsk Field', var(--zm-head); font-size: 32px; letter-spacing: 0; text-transform: uppercase; color: var(--zm-navy); }
 .zm-calc__box em { flex: none; font-style: normal; font-family: var(--zm-head); font-size: 26px; letter-spacing: 0; color: var(--zm-navy); white-space: nowrap; }
 .zm-calc__box em i { font-style: normal; font-family: var(--zm-text); font-weight: 200; opacity: .5; }
 .zm-calc__group.is-error .zm-calc__box { box-shadow: inset 0 0 0 1.5px var(--zm-error); }
@@ -580,7 +583,7 @@
 .zm-bk__cols span { display: block; margin-bottom: 4px; font-size: 16px; line-height: 24px; letter-spacing: 0; color: rgba(19,38,64,.6); white-space: nowrap; }
 .zm-bk__cols b { font-size: 20px; line-height: 24px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
 .zm-bk .zm-arrow { --zm-arrow: 48px; align-self: flex-end; border-radius: 12px; margin: 0 8px 4px 0; }
-.zm-bk__best { position: absolute; right: 0; top: 0; padding: 8px 24px; border-radius: 50px; background: var(--zm-blue-2); color: #fff; font-size: 16px; line-height: 24px; letter-spacing: 0; }
+.zm-bk__best { position: absolute; right: 0; top: 0; padding: 12px 24px; border-radius: 0 20px 0 32px; /* как в макете: язычок из правого верхнего угла карточки */ background: var(--zm-blue-2); color: #fff; font-size: 16px; line-height: 24px; letter-spacing: 0; }
 
 /* ≥1920 — по фрейму «Расчёт ипотеки / 1920» */
 @media (min-width: 1920px) {
@@ -642,7 +645,7 @@
   .zm-bk__cols span { margin: 0; font-size: 14px; line-height: 24px; }
   .zm-bk__cols b { font-size: 16px; line-height: 24px; }
   .zm-bk .zm-arrow { --zm-arrow: 44px; position: absolute; right: 8px; bottom: 8px; margin: 0; border-radius: 12px; }
-  .zm-bk__best { padding: 8px 16px; border-radius: 50px 20px 0 32px; font-size: 14px; line-height: 24px; }
+  .zm-bk__best { padding: 8px 16px; border-radius: 0 20px 0 32px; font-size: 14px; line-height: 24px; }
 }
 </style>
 
@@ -1335,7 +1338,7 @@
       <h2 class="zm-ft__title">Свяжитесь с нами</h2>
       <div class="zm-ft__main">
         <div>
-          <p class="zm-ft__addr">Республика Крым, Город Симферополь, проспект Победы д.12, офис продаж ЖК «Московский»</p>
+          <p class="zm-ft__addr">Республика Крым, Город Симферополь, Улица Киевская, д.&nbsp;141Б</p>
           <p class="zm-ft__navtitle">Навигация</p>
           <nav class="zm-ft__nav" aria-label="Навигация в подвале">
             <a href="/o-proekte">О проекте</a>

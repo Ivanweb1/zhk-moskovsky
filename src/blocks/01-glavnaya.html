@@ -556,7 +556,8 @@ preview: glavnaya
   #choose .zm-h2 { font-size: var(--zm-h); line-height: 1; }
   .zm-plans__box { margin-top: 20px; }
   .zm-home .zm-hpick { padding-top: 95px; }
-  .zm-plans__btn { top: 50%; transform: translate(-50%, -50%); width: 491px; max-width: calc(100% - 40px); min-height: 70px; padding: 15px 20px; border-radius: 30px; font-size: 18px; line-height: 28px; font-weight: 600; white-space: normal; }
+  /* кнопка как в макете 375 на всех ширинах до 1199 */
+  .zm-plans__btn { top: 50%; transform: translate(-50%, -50%); width: 307px; max-width: calc(100% - 40px); min-height: 52px; padding: 15px 20px; border-radius: 8px; font-size: 14px; line-height: 22px; font-weight: 500; white-space: nowrap; }
 
   /* 6. Форма подбора: тёмная карточка, под ней фото (на 960 — наоборот) */
   .zm-hpick .zm-container { padding: 0 10px; }
@@ -712,7 +713,7 @@ preview: glavnaya
   .zm-home .zm-harch { padding-top: 60px; }
 
   .zm-home .zm-hplans { padding-top: 71px; }
-  .zm-plans__box { height: 705px; }
+  .zm-plans__box { height: 464px; }
 
   .zm-hpick .zm-container { padding: 0 20px; }
   .zm-pick__img { height: 256px; }
@@ -774,7 +775,7 @@ preview: glavnaya
   .zm-arch__card:nth-child(4) .zm-arch__img { height: 359px; }
 
   .zm-home .zm-hplans { padding-top: 60px; }
-  .zm-plans__box { height: 705px; }
+  .zm-plans__box { height: 464px; }
 
   .zm-pick__img { height: 499px; }
   .zm-pick .zm-form { margin-top: 0; }
@@ -908,9 +909,7 @@ preview: glavnaya
 
   .zm-pick__title { font-size: 30px; line-height: 30px; }
   .zm-pick__texts { grid-template-columns: 133px 96px; }
-  .zm-pick__box { min-height: 859px; }
-  .zm-pick .zm-form { margin-top: auto; padding-top: 44px; }
-  .zm-pick__img { height: 43px; } /* так на сайте */
+  .zm-pick__img { height: 391px; }
 
   .zm-home .zm-hdev { padding-top: 50px; }
   .zm-hdev .zm-h2 { font-size: 52px; }
@@ -997,7 +996,7 @@ preview: glavnaya
           <div class="zm-loc__item"><div class="zm-loc__icon"><img src="{{asset:icon/loc-shop.svg}}" alt=""></div><div><h3>Магазины и&nbsp;сервисы</h3><p>Повседневные покупки, бытовые услуги и&nbsp;полезные сервисы доступны рядом с&nbsp;домом.</p></div></div>
           <div class="zm-loc__item"><div class="zm-loc__icon"><img src="{{asset:icon/loc-walk.svg}}" alt=""></div><div><h3>Прогулки и&nbsp;отдых</h3><p>Зелёные зоны, прогулочные маршруты и&nbsp;места для отдыха создают приятную атмосферу для прогулок, спорта и&nbsp;спокойного досуга на&nbsp;свежем воздухе.</p></div></div>
         </div>
-        <div class="zm-loc__map"><iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B%2C%2012&amp;z=16" title="ЖК «Московский» на карте" loading="lazy" allowfullscreen></iframe></div>
+        <div class="zm-loc__map"><iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9A%D0%B8%D0%B5%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%20141%D0%91&amp;z=16" title="ЖК «Московский» на карте" loading="lazy" allowfullscreen></iframe></div>
       </div>
     </div>
   </section>
