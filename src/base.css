@@ -51,6 +51,16 @@
 .zm-section { padding-top: var(--zm-section); }
 .zm-section--last, .zm > section:last-of-type { padding-bottom: var(--zm-section); }
 
+/* ---------- Анимации (как на текущей главной) ---------- */
+.zm-w { white-space: nowrap; }
+.zm-blur .zm-c { opacity: 0; filter: blur(10px); transition: opacity .6s cubic-bezier(.5, 1, .89, 1), filter .6s cubic-bezier(.5, 1, .89, 1); }
+.zm-blur.is-in .zm-c { opacity: 1; filter: blur(0); }
+.zm-rise { transform: translateY(190px); }
+.zm-rise.is-in { transform: none; transition: transform .7s linear; }
+@media (max-width: 959px) { .zm-hab__intro.zm-rise, .zm-hab__cards.zm-rise { transform: none; } } /* на сайте этот блок на мобильных не анимируется */
+.zm-up { opacity: 0; translate: 0 100px; }
+.zm-up.is-in { opacity: 1; translate: 0 0; transition: opacity 1s ease, translate 1s ease, background .2s; }
+
 /* ---------- Заголовки ---------- */
 .zm-br1920 { display: none; }
 @media (min-width: 1920px) { .zm-br1920 { display: block; } } /* перенос строки только во фрейме 1920 */

@@ -26,7 +26,10 @@
 .zm-hd-space { height: 76px; background: var(--zm-bg); }
 .zm-hd__bar { display: flex; align-items: center; height: 66px; padding: 10px 15px; border-radius: 10px; background: var(--zm-card); }
 .zm-hd a { transition: opacity .2s; }
-.zm-hd a:hover { opacity: .6; }
+.zm-hd__logo:hover, .zm-hd__msg a:hover { opacity: .6; }
+/* подчёркивание пунктов меню, как на текущем сайте: выезжает слева при наведении, уезжает вправо */
+.zm-hd__link { background: linear-gradient(currentColor, currentColor) right bottom / 0 1px no-repeat; transition: background-size .7s cubic-bezier(.22, .61, .36, 1); }
+.zm-hd__link:hover { background-position: left bottom; background-size: 100% 1px; }
 .zm-hd__logo img { width: 102px; height: 46px; }
 .zm-hd__link { font-size: 14px; line-height: 19px; font-weight: 500; white-space: nowrap; }
 .zm-hd__choose { margin-left: 71px; }
@@ -172,6 +175,16 @@
 .zm-container { width: 100%; padding: 0 var(--zm-pad); }
 .zm-section { padding-top: var(--zm-section); }
 .zm-section--last, .zm > section:last-of-type { padding-bottom: var(--zm-section); }
+
+/* ---------- Анимации (как на текущей главной) ---------- */
+.zm-w { white-space: nowrap; }
+.zm-blur .zm-c { opacity: 0; filter: blur(10px); transition: opacity .6s cubic-bezier(.5, 1, .89, 1), filter .6s cubic-bezier(.5, 1, .89, 1); }
+.zm-blur.is-in .zm-c { opacity: 1; filter: blur(0); }
+.zm-rise { transform: translateY(190px); }
+.zm-rise.is-in { transform: none; transition: transform .7s linear; }
+@media (max-width: 959px) { .zm-hab__intro.zm-rise, .zm-hab__cards.zm-rise { transform: none; } } /* на сайте этот блок на мобильных не анимируется */
+.zm-up { opacity: 0; translate: 0 100px; }
+.zm-up.is-in { opacity: 1; translate: 0 0; transition: opacity 1s ease, translate 1s ease, background .2s; }
 
 /* ---------- Заголовки ---------- */
 .zm-br1920 { display: none; }
@@ -778,6 +791,57 @@
     sel.addEventListener('change', upd); upd();
   }
 
+  /* ---------- Анимации как на текущей главной сайта ----------
+     Заголовки и вводные тексты проявляются по буквам из размытия (там — GSAP + SplitType: opacity 0, blur 10px,
+     0.6s на букву, power1.out, волна по строке 0.9s), блоки «О проекте» и «Локация» выезжают снизу на 190px за 0.7s,
+     кнопка «Выбрать свободную планировку» — fadeInUp 100px за 1s. Запуск — когда элемент появляется на экране. */
+  var BLUR_SEL = '.zm-h1, .zm-h2, .zm-hh__title > small, .zm-hh__title > span, .zm-hh__text, .zm-hab__intro p, .zm-loc__head p, .zm-hbuy__head > div, .zm-hfaq__head > div, .zm-top__row .zm-lead, .zm-news-top__row p, [data-zm-blur]';
+  var RISE_SEL = '.zm-home .zm-hab__intro, .zm-home .zm-hab__cards, .zm-home .zm-hloc > .zm-container, [data-zm-rise]';
+  var UP_SEL = '.zm-plans__btn, [data-zm-up]';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = null;
+  function seen(el) {
+    if (!io) {
+      if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
+      io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.01 });
+    }
+    io.observe(el);
+  }
+  function splitChars(el) {
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), nodes = [], n, chars = [];
+    while ((n = walker.nextNode())) if (n.nodeValue.replace(/\s+/g, '')) nodes.push(n);
+    nodes.forEach(function (tn) {
+      var frag = document.createDocumentFragment();
+      tn.nodeValue.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        var w = document.createElement('span'); w.className = 'zm-w'; w.setAttribute('aria-hidden', 'true');
+        Array.prototype.forEach.call(part, function (ch) {
+          var c = document.createElement('span'); c.className = 'zm-c'; c.textContent = ch; w.appendChild(c); chars.push(c);
+        });
+        frag.appendChild(w);
+      });
+      tn.parentNode.replaceChild(frag, tn);
+    });
+    var step = chars.length > 1 ? 0.9 / (chars.length - 1) : 0;
+    chars.forEach(function (c, i) { c.style.transitionDelay = (i * step).toFixed(3) + 's'; });
+  }
+  function initAnim(root) {
+    if (reduce) return;
+    $all(BLUR_SEL, root).forEach(function (el) {
+      if (el.__zmBlur || el.closest('.zm-c, [data-zm-noanim]')) return;
+      // вложенные цели (заголовок внутри блока с текстом) делим только один раз
+      if (el.parentElement && el.parentElement.closest('.zm-blur')) return;
+      el.__zmBlur = 1;
+      if (!el.hasAttribute('aria-label') && /^H[1-6]$/.test(el.tagName)) el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+      splitChars(el); el.classList.add('zm-blur'); seen(el);
+    });
+    $all(RISE_SEL, root).forEach(function (el) { if (el.__zmRise) return; el.__zmRise = 1; el.classList.add('zm-rise'); seen(el); });
+    $all(UP_SEL, root).forEach(function (el) { if (el.__zmUp) return; el.__zmUp = 1; el.classList.add('zm-up'); seen(el); });
+  }
+
   function init(scope) {
     var roots = scope ? [scope] : $all('.zm');
     roots.forEach(function (root) {
@@ -785,10 +849,11 @@
       initFaq(root);
       $all('[data-zm-slider]', root).forEach(initSlider);
       $all('form[data-zm-form]', root).forEach(initForm);
+      initAnim(root);
     });
   }
 
-  window.ZM = { init: init, initSelect: initSelect, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all };
+  window.ZM = { init: init, initSelect: initSelect, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all, anim: initAnim };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); });
   else init();
 })();
