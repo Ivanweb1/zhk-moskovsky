@@ -1,7 +1,8 @@
 // Сборка: src/blocks/*.html → dist/tilda/*.html (код для вайб-блока Tilda) и preview/*/index.html (превью страниц)
-// Запуск: node build.mjs
+// Запуск: npm install (один раз, ставит esbuild для сжатия кода) → node build.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 
 const root = path.dirname(new URL(import.meta.url).pathname);
 const cfg = JSON.parse(fs.readFileSync(path.join(root, 'config.json'), 'utf8'));
@@ -11,6 +12,25 @@ const amapFile = path.join(root, 'assets-map.json');
 const amap = fs.existsSync(amapFile) ? JSON.parse(fs.readFileSync(amapFile, 'utf8')) : {};
 const assetUrl = (base, p) => (base === cfg.assetBase && amap[p]) ? amap[p] : base + p;
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
+
+// Вайб-блок Tilda принимает код до 100 КБ, поэтому код для Tilda сжимается (esbuild): стили, скрипты, разметка.
+// Исходники и превью остаются читаемыми.
+const LIMIT = 100 * 1024;
+let esbuild = null;
+if (!process.env.ZM_NOMINIFY) try { esbuild = createRequire(import.meta.url)('esbuild'); } catch { console.warn('! esbuild не установлен (npm install) — код для Tilda не сжат'); }
+function minify(html) {
+  if (!esbuild) return html;
+  const keep = [];
+  const stash = (code) => '\u0000' + (keep.push(code) - 1) + '\u0000';
+  html = html.replace(/(<style[^>]*>)([\s\S]*?)(<\/style>)/g, (_, a, c, b) =>
+    stash(a + esbuild.transformSync(c, { loader: 'css', minify: true }).code.trim() + b));
+  html = html.replace(/(<script([^>]*)>)([\s\S]*?)(<\/script>)/g, (m, a, attrs, c, b) => {
+    if (/application\/json/.test(attrs)) return stash(a + JSON.stringify(JSON.parse(c)) + b);
+    return stash(c.trim() ? a + esbuild.transformSync(c, { loader: 'js', minify: true, target: 'es2017' }).code.trim() + b : m);
+  });
+  html = html.replace(/<!--(?!\s*ЖК)[\s\S]*?-->/g, '').replace(/>\s+</g, '> <').replace(/\s*\n\s*/g, '\n');
+  return html.replace(/\u0000(\d+)\u0000/g, (_, i) => keep[+i]);
+}
 
 const baseCss = read('src/base.css');
 const baseJs = read('src/base.js');
@@ -76,6 +96,9 @@ const hoist = `<script>(function(s){var b=document.body,c=document.querySelector
 const full = (b, base) =>
   `<style data-zm-base data-zm-v="${zmV}">\n${render(baseCss, base)}\n</style>\n${hoist}\n` + render(b.markup, base).trim() +
   `\n<script>\n${baseJs}\n</script>\n` + b.scripts.map((s) => render(s, base)).join('\n') + '\n';
+// «base: shared» в meta — блок без общего кода: его даёт шапка выше на странице (так главная укладывается в 100 КБ)
+const needShell = `<script>if(!window.ZM)console.error('[ZM] Нет общего кода: выше на странице должен стоять блок «Шапка» (0-shapka).');</script>\n`;
+const own = (b, base) => b.meta.base === 'shared' ? needShell + bare(b, base) + '\n' : full(b, base);
 const bare = (b, base) => render(b.markup, base).trim() + '\n' + b.scripts.map((s) => render(s, base)).join('\n');
 
 const all = blocks.map(prepare);
@@ -84,8 +107,9 @@ const parts = Object.fromEntries(all.filter((b) => b.meta.part).map((b) => [b.me
 for (const b of all) {
   const tildaCode =
     `<!-- ЖК «Московский» · ${b.meta.title} · ${b.meta.url}\n` +
-    `     Вставьте этот код целиком в вайб-блок Tilda. Собрано из src/blocks/${b.file} — правки вносите там и пересобирайте. -->\n` +
-    full(b, cfg.assetBase);
+    `     Вставьте этот код целиком в вайб-блок Tilda. Собрано из src/blocks/${b.file} — правки вносите там и пересобирайте.` +
+    (b.meta.base === 'shared' ? `\n     Общий код (стили, скрипты) этот блок берёт из блока «Шапка» — он должен стоять выше на странице.` : '') + ` -->\n` +
+    minify(own(b, cfg.assetBase));
   fs.writeFileSync(path.join(root, 'dist/tilda', b.name + '.html'), tildaCode);
   index.push({ ...b.meta, name: b.name, size: Buffer.byteLength(tildaCode) });
   if (b.meta.part) continue;
@@ -97,9 +121,9 @@ for (const b of all) {
   const page = shellTpl
     .replaceAll('{{title}}', b.meta.title)
     .replaceAll('{{root}}', depthUp + 'preview/')
-    .replace('{{header}}', parts.header ? bare(parts.header, base) : '')
+    .replace('{{header}}', parts.header ? (b.meta.base === 'shared' ? full(parts.header, base) : bare(parts.header, base)) : '')
     .replace('{{footer}}', parts.footer ? bare(parts.footer, base) : '')
-    .replace('{{content}}', full(b, base));
+    .replace('{{content}}', own(b, base));
   const out = path.join(root, 'preview', urlPath, 'index.html');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, page);
@@ -131,4 +155,4 @@ fs.writeFileSync(path.join(root, 'index.html'), read('src/pult.html')
   .replace('{{partButtons}}', partButtons)
   .replace('{{rows}}', rows));
 
-for (const p of index) console.log(`${p.name.padEnd(28)} ${p.url.padEnd(34)} ${(p.size / 1024).toFixed(1)} KB`);
+for (const p of index) console.log(`${p.name.padEnd(28)} ${p.url.padEnd(34)} ${(p.size / 1024).toFixed(1)} KB${p.size > LIMIT ? '  ← больше 100 КБ, Tilda не сохранит!' : ''}`);

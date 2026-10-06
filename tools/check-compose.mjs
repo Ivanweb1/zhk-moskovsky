@@ -31,7 +31,8 @@ let total = 0;
 for (const f of pages) {
   const B = fs.readFileSync(d + f, 'utf8');
   for (const w of [1920, 1440, 1024, 375]) {
-    const alone = { ...(await styles(wrap('h', H), w)), ...(await styles(wrap('b', B), w)), ...(await styles(wrap('f', F), w)) };
+    const shared = !/data-zm-base/.test(B); // блок без общего кода — отдельно рисуем вместе с шапкой
+    const alone = { ...(await styles(wrap('h', H), w)), ...(await styles(shared ? wrap('x', H) + wrap('b', B) : wrap('b', B), w)), ...(await styles(wrap('f', F), w)) };
     const full = await styles(`<html><head>${TILDA}</head><body><div class="t-records">${wrap('h', H)}${wrap('b', B)}${wrap('f', F)}</div></body></html>`, w);
     const diffs = new Set();
     for (const k of ['h', 'b', 'f']) alone[k].forEach((s, i) => { const t = full[k][i]; if (t && s[1] !== t[1]) { const a = s[1].split('|'), c = t[1].split('|'); PROPS.forEach((p, j) => { if (a[j] !== c[j]) diffs.add(k + ' ' + s[0].slice(0, 55) + ' ' + p + ': ' + a[j] + ' -> ' + c[j]); }); } });
