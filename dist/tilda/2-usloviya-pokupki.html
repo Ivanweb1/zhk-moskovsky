@@ -420,6 +420,8 @@
 /* Форма на этой странице выше: 695 */
 #zm-form .zm-lead-form__box { min-height: 695px; }
 #zm-form .zm-lead-form__title { font-size: 80px; line-height: 80px; }
+/* строки как в макете (переносы <br>), без лишнего переноса, когда полоса прокрутки съедает ширину */
+@media (min-width: 980px) { #zm-form .zm-lead-form__title { white-space: nowrap; } }
 
 @media (min-width: 1441px) { .zm-buy-hero__media { height: 42.3vw; } }
 /* ≥1920 — по фрейму «Условия покупки / 1920»: ряды 930 + 930 × 507 */
