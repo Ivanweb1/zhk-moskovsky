@@ -722,33 +722,96 @@
                                           Найденный блок прячем — посетитель видит только нашу форму;
        data-webhook="https://..."      — или свой обработчик (POST, FormData);
        data-redirect="/spasibo"        — страница «Спасибо» после отправки (необязательно).                   */
+  // Как отправляет форма Tilda (tilda-forms-1.0.min.js; разобрано в проекте fulfil-landing):
+  // submit у формы только нажимает [type="submit"], вся отправка — в обработчике клика на #recNNN.
+  // Поэтому отправляем нажатием кнопки. Ход виден по button.tildaSendingStatus: '1' — пошла, '0' — отказ
+  // (не прошла проверка полей), пусто — обработчик Tilda не сработал. События: tildaform:aftersuccess / aftererror.
   function findTildaForm(recId) {
     if (recId) {
       var rec = document.getElementById(String(recId).replace(/^#/, ''));
       return rec && rec.querySelector('form');
     }
     var marker = document.querySelector('.t-rec form [name="Form"]');
-    return marker && marker.closest('form');
+    if (marker) return marker.closest('form');
+    var forms = $all('.t-rec form.t-form');
+    for (var i = 0; i < forms.length; i++) if (!forms[i].closest('.zm')) return forms[i];
+    return null;
   }
+  // Прячем за край экрана, а не display:none — форма должна остаться рабочей.
   function hideTildaForm(recId) {
     var form = findTildaForm(recId);
-    var rec = form && form.closest('.t-rec');
-    if (rec) rec.style.display = 'none';
+    var rec = form && (form.closest('.t-rec') || form.closest('[id^="rec"]'));
+    if (!rec || rec.__zmHidden) return;
+    rec.__zmHidden = 1;
+    rec.style.cssText += ';position:absolute!important;left:-9999px!important;top:0!important;width:1px!important;height:1px!important;overflow:hidden!important;padding:0!important;';
+    rec.setAttribute('aria-hidden', 'true');
   }
+  function fire(input) {
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+  // Телефон с маской Tilda: видимое поле — номер без кода, проверяется скрытое Phone длиной от 18 символов.
+  function fillTildaPhone(form, value) {
+    var visible = form.querySelector('.t-input-phonemask, [name^="tildaspec-phone-part"]:not([type="hidden"])');
+    if (!visible) return false;
+    var d = phoneDigits(value), tpl = visible.getAttribute('data-phonemask-without-code') || '(000) 000-00-00', out = '', k = 0;
+    for (var i = 0; i < tpl.length && k < d.length; i++) out += tpl.charAt(i) === '0' ? d.charAt(k++) : tpl.charAt(i);
+    visible.value = out; visible.dispatchEvent(new Event('input', { bubbles: true })); visible.value = out;
+    var result = form.querySelector('.js-phonemask-result, input[type="hidden"][name="Phone"]');
+    if (result) { result.value = (visible.getAttribute('data-phonemask-code') || '+7') + ' ' + out; result.dispatchEvent(new Event('change', { bubbles: true })); }
+    return true;
+  }
+  function fillTildaForm(form, data) {
+    Object.keys(data).forEach(function (key) {
+      if (key === 'Phone' && fillTildaPhone(form, data[key])) return;
+      var input = form.querySelector('[name="' + key + '"]:not([type="hidden"])') || form.querySelector('[name="' + key + '"]');
+      if (!input) { input = document.createElement('input'); input.type = 'hidden'; input.name = key; form.appendChild(input); }
+      input.value = data[key];
+      fire(input);
+    });
+    // обязательные поля, которых нет в нашей форме (например, галка согласия) — иначе Tilda молча не отправит
+    $all('[required], .js-tilda-rule', form).forEach(function (f) {
+      if (f.type === 'checkbox' || f.type === 'radio') { if (!f.checked) { f.checked = true; fire(f); } return; }
+      if (!f.value) { f.value = f.type === 'email' ? 'no-reply@example.com' : '—'; fire(f); }
+    });
+  }
+  // Возвращает Promise; false — формы Tilda на странице нет.
   function sendToTilda(recId, data) {
     var form = findTildaForm(recId);
     if (!form) return false;
-    Object.keys(data).forEach(function (key) {
-      var input = form.querySelector('[name="' + key + '"]');
-      if (input) {
-        input.value = data[key];
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-        input.dispatchEvent(new Event('change', { bubbles: true }));
+    hideTildaForm(recId);
+    return new Promise(function (resolve, reject) {
+      fillTildaForm(form, data);
+      var btn = form.querySelector('[type="submit"], .t-submit');
+      if (!btn) { reject(new Error('В форме Tilda нет кнопки отправки')); return; }
+      var settled = false, timer;
+      function guard(e) { if (e.target === form) e.preventDefault(); } // страховка от перезагрузки страницы
+      function cleanup() {
+        form.removeEventListener('tildaform:aftersuccess', ok);
+        form.removeEventListener('tildaform:aftererror', err);
+        document.removeEventListener('submit', guard, true);
+        clearTimeout(timer);
       }
+      function ok() { if (settled) return; settled = true; cleanup(); resolve(); }
+      function fail(msg) { if (settled) return; settled = true; cleanup(); reject(new Error(msg)); }
+      function err() {
+        var box = form.querySelector('.js-rule-error-all, .js-errorbox-all');
+        fail('Tilda: ' + ((box && box.textContent.trim()) || 'ошибка отправки'));
+      }
+      document.addEventListener('submit', guard, true);
+      form.addEventListener('tildaform:aftersuccess', ok);
+      form.addEventListener('tildaform:aftererror', err);
+      form.removeAttribute('data-success-popup'); // окно Tilda «Спасибо» не нужно — показываем своё
+      btn.tildaSendingStatus = '';
+      btn.click();
+      setTimeout(function () {
+        if (settled) return;
+        if (btn.tildaSendingStatus === '1') return;
+        if (btn.tildaSendingStatus === '0') { err(); return; }
+        fail('Форма Tilda найдена, но Tilda её не обслуживает: страница не опубликована или в блоке не подключён приёмник');
+      }, 60);
+      timer = setTimeout(ok, 8000); // приёмник ответил молча — посетителя дальше не держим
     });
-    var btn = form.querySelector('[type="submit"], .t-submit');
-    if (btn) btn.click(); else if (form.requestSubmit) form.requestSubmit(); else form.submit();
-    return true;
   }
 
   function initForm(form) {
@@ -790,7 +853,13 @@
 
       var rec = form.getAttribute('data-tilda-form');
       var hook = form.getAttribute('data-webhook');
-      if (rec !== null && sendToTilda(rec, data)) return done();
+      function failed(e) {
+        if (window.console) console.error('[ZM] Заявка не ушла:', e && e.message, data);
+        if (btn) btn.disabled = false;
+        alert('Не удалось отправить заявку. Пожалуйста, позвоните нам.');
+      }
+      var sending = rec !== null && sendToTilda(rec, data);
+      if (sending) { sending.then(done, failed); return; }
       if (hook) {
         var fd = new FormData();
         Object.keys(data).forEach(function (k) { fd.append(k, data[k]); });
