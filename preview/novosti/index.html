@@ -625,7 +625,11 @@
 <script>
 /* ===== ЖК «Московский» — общий JS блоков: аккордеон, слайдеры, формы, lightbox ===== */
 (function () {
-  if (window.ZM) { window.ZM.init(); return; }
+  // Версия общего кода. Он вшит в каждый блок, и на странице могут оказаться копии разных версий
+  // (например, шапка вставлена раньше страницы). Первая запустившаяся копия занимает window.ZM —
+  // поэтому более новая копия её заменяет. При правках base.js увеличивайте число.
+  var ZM_V = 3;
+  if (window.ZM && (window.ZM.v || 0) >= ZM_V) { window.ZM.init(); return; }
 
   var ICON = {
     prev: '<svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M7 1 1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -754,7 +758,7 @@
       fire(input);
     });
     // обязательные поля, которых нет в нашей форме (например, галка согласия) — иначе Tilda молча не отправит
-    $all('[required], .js-tilda-rule', form).forEach(function (f) {
+    $all('[required], [data-tilda-req="1"]', form).forEach(function (f) {
       if (f.type === 'checkbox' || f.type === 'radio') { if (!f.checked) { f.checked = true; fire(f); } return; }
       if (!f.value) { f.value = f.type === 'email' ? 'no-reply@example.com' : '—'; fire(f); }
     });
@@ -798,63 +802,74 @@
     });
   }
 
+  function setErr(field, on) { if (field) field.classList.toggle('is-error', !!on); }
+  function submitForm(form) {
+    var ok = true;
+    var name = form.querySelector('[name="Name"]');
+    var phone = form.querySelector('[name="Phone"]');
+    var agree = form.querySelector('[name="Agree"]');
+    if (name) { var bad = name.value.trim().length < 2; setErr(name.closest('.zm-field'), bad); ok = ok && !bad; }
+    if (phone) { var badP = phoneDigits(phone.value).length !== 10; setErr(phone.closest('.zm-field'), badP); ok = ok && !badP; }
+    if (agree) { setErr(agree.closest('.zm-check'), !agree.checked); ok = ok && agree.checked; }
+    if (!ok) { var first = form.querySelector('.is-error input'); if (first) first.focus(); return; }
+
+    var data = {};
+    $all('input, textarea, select', form).forEach(function (i) {
+      if (!i.name || i.name === 'Agree') return;
+      data[i.name] = i.name === 'Phone' ? '+7 ' + i.value : i.value;
+    });
+    data.Form = form.getAttribute('data-form-name') || document.title;
+    data.Page = location.href;
+
+    var btn = form.querySelector('[type="submit"]');
+    if (btn) btn.disabled = true;
+    function done() {
+      var redirect = form.getAttribute('data-redirect');
+      if (redirect) { location.href = redirect; return; }
+      form.classList.add('is-sent');
+      if (btn) btn.disabled = false;
+    }
+
+    var rec = form.getAttribute('data-tilda-form');
+    var hook = form.getAttribute('data-webhook');
+    function failed(e) {
+      if (window.console) console.error('[ZM] Заявка не ушла:', e && e.message, data);
+      if (btn) btn.disabled = false;
+      alert('Не удалось отправить заявку. Пожалуйста, позвоните нам.');
+    }
+    var sending = rec !== null && sendToTilda(rec, data);
+    if (sending) { sending.then(done, failed); return; }
+    if (hook) {
+      var fd = new FormData();
+      Object.keys(data).forEach(function (k) { fd.append(k, data[k]); });
+      fetch(hook, { method: 'POST', body: fd, mode: 'no-cors' }).then(done, function () {
+        if (btn) btn.disabled = false;
+        alert('Не удалось отправить заявку. Пожалуйста, позвоните нам.');
+      });
+      return;
+    }
+    if (window.console) console.info('[ZM] Заявка (получатель не настроен):', data);
+    done();
+  }
+
   function initForm(form) {
-    if (form.__zm) return; form.__zm = 1;
-    form.setAttribute('novalidate', '');
     var tildaRec = form.getAttribute('data-tilda-form');
     if (tildaRec !== null) hideTildaForm(tildaRec);
+    if (form.__zm && (form.__zmV || 0) < ZM_V && form.parentNode) {
+      // форму уже подключила старая копия кода (без ZM_V) — заменяем копией без её обработчиков
+      var fresh = form.cloneNode(true);
+      form.parentNode.replaceChild(fresh, form);
+      form = fresh;
+    }
+    if (form.__zm) return; form.__zm = 1; form.__zmV = ZM_V;
+    form.setAttribute('novalidate', '');
     $all('input[data-zm-phone]', form).forEach(phoneMask);
-
-    function setErr(field, on) { if (field) field.classList.toggle('is-error', !!on); }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var ok = true;
-      var name = form.querySelector('[name="Name"]');
-      var phone = form.querySelector('[name="Phone"]');
-      var agree = form.querySelector('[name="Agree"]');
-      if (name) { var bad = name.value.trim().length < 2; setErr(name.closest('.zm-field'), bad); ok = ok && !bad; }
-      if (phone) { var badP = phoneDigits(phone.value).length !== 10; setErr(phone.closest('.zm-field'), badP); ok = ok && !badP; }
-      if (agree) { setErr(agree.closest('.zm-check'), !agree.checked); ok = ok && agree.checked; }
-      if (!ok) { var first = form.querySelector('.is-error input'); if (first) first.focus(); return; }
-
-      var data = {};
-      $all('input, textarea, select', form).forEach(function (i) {
-        if (!i.name || i.name === 'Agree') return;
-        data[i.name] = i.name === 'Phone' ? '+7 ' + i.value : i.value;
-      });
-      data.Form = form.getAttribute('data-form-name') || document.title;
-      data.Page = location.href;
-
-      var btn = form.querySelector('[type="submit"]');
-      if (btn) btn.disabled = true;
-      function done() {
-        var redirect = form.getAttribute('data-redirect');
-        if (redirect) { location.href = redirect; return; }
-        form.classList.add('is-sent');
-        if (btn) btn.disabled = false;
-      }
-
-      var rec = form.getAttribute('data-tilda-form');
-      var hook = form.getAttribute('data-webhook');
-      function failed(e) {
-        if (window.console) console.error('[ZM] Заявка не ушла:', e && e.message, data);
-        if (btn) btn.disabled = false;
-        alert('Не удалось отправить заявку. Пожалуйста, позвоните нам.');
-      }
-      var sending = rec !== null && sendToTilda(rec, data);
-      if (sending) { sending.then(done, failed); return; }
-      if (hook) {
-        var fd = new FormData();
-        Object.keys(data).forEach(function (k) { fd.append(k, data[k]); });
-        fetch(hook, { method: 'POST', body: fd, mode: 'no-cors' }).then(done, function () {
-          if (btn) btn.disabled = false;
-          alert('Не удалось отправить заявку. Пожалуйста, позвоните нам.');
-        });
-        return;
-      }
-      if (window.console) console.info('[ZM] Заявка (получатель не настроен):', data);
-      done();
+      // отправляет самая новая копия кода на странице (см. ZM_V)
+      if (window.ZM && window.ZM.submit && window.ZM.submit !== submitForm) { window.ZM.submit(form); return; }
+      submitForm(form);
     });
 
     $all('input', form).forEach(function (i) {
@@ -1028,7 +1043,7 @@
     });
   }
 
-  window.ZM = { init: init, initSelect: initSelect, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all, anim: initAnim };
+  window.ZM = { v: ZM_V, submit: submitForm, init: init, initSelect: initSelect, icon: ICON, esc: esc, fmt: fmt, lightbox: openLightbox, newsCard: newsCard, loadNews: loadNews, initSlider: initSlider, all: $all, anim: initAnim };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { init(); });
   else init();
 })();
