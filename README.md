@@ -26,6 +26,8 @@
 После включения GitHub Pages (Settings → Pages → Branch: `main`, папка `/ (root)`) превью всех страниц будет по адресу
 `https://ivanweb1.github.io/zhk-moskovsky/`. Локально: `python3 -m http.server` в папке репозитория → `http://localhost:8000/`.
 
+**Картинки в Tilda.** Картинки, которые уже есть на текущей главной, блоки берут прямо с сайта (`static.tildacdn.com`). Остальные лежат в папке [`tilda-upload`](tilda-upload) — загрузите их в Tilda и пришлите ссылки (или `links.txt` + `node set-links.mjs`), подробности — в [`tilda-upload/README.md`](tilda-upload/README.md). Ссылки хранятся в `assets-map.json`.
+
 GitHub Pages нужен и для картинок: блоки берут фото, логотипы банков и иконки из `assets/` по адресу Pages
 (`config.json` → `assetBase`). Если удобнее держать картинки в Tilda — загрузите их туда и поменяйте `assetBase` или ссылки.
 

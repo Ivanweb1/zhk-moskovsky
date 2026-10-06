@@ -58,6 +58,8 @@ code { padding: 1px 6px; border-radius: 4px; background: #e8eaf3; font-size: 13p
     <h2>1. Подготовка (один раз)</h2>
     <label class="check"><input type="checkbox" data-key="prep-pages"><span>Картинки и шрифт доступны с GitHub Pages <span class="badge" data-assets>проверяю…</span>
       <small>Блоки берут фото, иконки и шрифт Sverdlovsk отсюда: <code>{{assetBase}}</code>. Если не работает — включите Pages: Settings → Pages → Branch <code>main</code>, папка <code>/ (root)</code>.</small></span></label>
+    <label class="check"><input type="checkbox" data-key="prep-images"><span>Картинки из папки <a href="tilda-upload/">tilda-upload</a> загружены в Tilda, ссылки подставлены
+      <small>Картинки с текущей главной уже берутся с сайта. Остальные — загрузить и прислать ссылки (или <code>links.txt</code> → <code>node set-links.mjs</code>).</small></span></label>
     <label class="check"><input type="checkbox" data-key="prep-fonts"><span>В настройках сайта Tilda загружен Manrope: Normal, Medium, Semibold
       <small>Файлы — в папке <a href="fonts-for-tilda/">fonts-for-tilda</a>. Настройки сайта → Шрифты и цвета → Свои шрифты.</small></span></label>
     <label class="check"><input type="checkbox" data-key="prep-backup"><span>Сделана копия текущей главной страницы в Tilda

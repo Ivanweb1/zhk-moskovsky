@@ -58,6 +58,8 @@ code { padding: 1px 6px; border-radius: 4px; background: #e8eaf3; font-size: 13p
     <h2>1. Подготовка (один раз)</h2>
     <label class="check"><input type="checkbox" data-key="prep-pages"><span>Картинки и шрифт доступны с GitHub Pages <span class="badge" data-assets>проверяю…</span>
       <small>Блоки берут фото, иконки и шрифт Sverdlovsk отсюда: <code>https://ivanweb1.github.io/zhk-moskovsky/assets/</code>. Если не работает — включите Pages: Settings → Pages → Branch <code>main</code>, папка <code>/ (root)</code>.</small></span></label>
+    <label class="check"><input type="checkbox" data-key="prep-images"><span>Картинки из папки <a href="tilda-upload/">tilda-upload</a> загружены в Tilda, ссылки подставлены
+      <small>Картинки с текущей главной уже берутся с сайта. Остальные — загрузить и прислать ссылки (или <code>links.txt</code> → <code>node set-links.mjs</code>).</small></span></label>
     <label class="check"><input type="checkbox" data-key="prep-fonts"><span>В настройках сайта Tilda загружен Manrope: Normal, Medium, Semibold
       <small>Файлы — в папке <a href="fonts-for-tilda/">fonts-for-tilda</a>. Настройки сайта → Шрифты и цвета → Свои шрифты.</small></span></label>
     <label class="check"><input type="checkbox" data-key="prep-backup"><span>Сделана копия текущей главной страницы в Tilda
@@ -80,7 +82,7 @@ code { padding: 1px 6px; border-radius: 4px; background: #e8eaf3; font-size: 13p
     <h2>3. Страницы</h2>
     <p class="page__meta">На каждой странице: создать страницу с адресом из списка → вайб-блок «Шапка» → вайб-блок с кодом страницы → вайб-блок «Подвал» → опубликовать. Код вставляется целиком.</p>
     <div class="page">
-      <div><div class="page__name">Главная</div><div class="page__meta">Адрес в Tilda: <code>/</code> · 135 КБ</div></div>
+      <div><div class="page__name">Главная</div><div class="page__meta">Адрес в Tilda: <code>/</code> · 136 КБ</div></div>
       <div class="page__btns"><button class="btn" type="button" data-copy="dist/tilda/01-glavnaya.html">Скопировать код</button><a class="btn btn--ghost" href="preview/glavnaya/" target="_blank" rel="noopener">Превью</a></div>
       <div class="page__checks">
         <label><input type="checkbox" data-key="p-01-glavnaya-blocks">шапка, страница и подвал вставлены</label>

@@ -5,6 +5,11 @@ import path from 'node:path';
 
 const root = path.dirname(new URL(import.meta.url).pathname);
 const cfg = JSON.parse(fs.readFileSync(path.join(root, 'config.json'), 'utf8'));
+// прямые ссылки на картинки в Tilda (assets-map.json): если ссылка задана — блок для Tilda берёт картинку оттуда,
+// иначе — с GitHub Pages (config.json → assetBase). Превью всегда берёт локальные файлы.
+const amapFile = path.join(root, 'assets-map.json');
+const amap = fs.existsSync(amapFile) ? JSON.parse(fs.readFileSync(amapFile, 'utf8')) : {};
+const assetUrl = (base, p) => (base === cfg.assetBase && amap[p]) ? amap[p] : base + p;
 const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 
 const baseCss = read('src/base.css');
@@ -24,8 +29,8 @@ function render(src, imgBase, depth = 0) {
       out = out.replace(/\{\{(?!policy\}|tildaForm\}|webhook\})\w+\}\}/g, ''); // незаданные аргументы
       return render(out, imgBase, depth + 1);
     })
-    .replace(/\{\{img:([\w-]+)\}\}/g, (_, n) => imgBase + 'img/' + n + '.jpg')
-    .replace(/\{\{asset:([\w./-]+)\}\}/g, (_, p) => imgBase + p)
+    .replace(/\{\{img:([\w-]+)\}\}/g, (_, n) => assetUrl(imgBase, 'img/' + n + '.jpg'))
+    .replace(/\{\{asset:([\w./-]+)\}\}/g, (_, p) => assetUrl(imgBase, p))
     .replace(/\{\{policy\}\}/g, cfg.policyUrl)
     .replace(/\{\{tildaForm\}\}/g, cfg.tildaFormRec)
     .replace(/\{\{webhook\}\}/g, cfg.webhook);
