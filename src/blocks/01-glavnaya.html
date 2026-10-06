@@ -280,6 +280,9 @@ preview: glavnaya
 /* «Локация» на сайте (после разбивки на буквы) — в 3 строки: «Локация для / вашего / ритма жизни» */
 .zm-br-live { display: none; }
 @media (min-width: 1200px) { .zm-br-live { display: inline; } }
+/* кнопка «Смотреть все» — низом по низу заголовка (заголовок сдвинут на .237em, см. выше) */
+@media (min-width: 1200px) { .zm-hbuild__head .zm-btn { position: relative; top: calc(var(--zm-h) * .237); flex: none; white-space: nowrap; } }
+@media (min-width: 1200px) and (max-width: 1439px) { .zm-hbuild__head .zm-btn { padding-left: 40px; padding-right: 40px; } }
 @media (min-width: 1200px) and (max-width: 1919px) { .zm-br-m { display: none; } }
 
 /* ===== От 1200px — 1 в 1 с текущей главной сайта (брейкпоинты Zero Block: 1920 / 1440 / 1200) =====
