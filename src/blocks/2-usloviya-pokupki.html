@@ -29,6 +29,7 @@ url: /usloviya-pokupki
 .zm-cond__card li { position: relative; }
 .zm-cond__card li::before { content: '•'; position: absolute; left: -18px; top: 0; font-size: 20px; line-height: 24px; }
 .zm-cond__card ul.is-muted { color: rgba(19,38,64,.64); }
+.zm-cond__banks span { color: rgba(19,38,64,.64); } /* в макете название банка серое, условия — тёмные */
 .zm-cond__card .zm-text { font-size: 18px; line-height: 1.24; font-weight: 400; }
 .zm-cond__card .zm-btn { align-self: flex-start; padding-left: 40px; padding-right: 40px; }
 
@@ -75,18 +76,22 @@ url: /usloviya-pokupki
   .zm-buy-hero__media { height: 520px; }
 }
 @media (max-width: 640px) {
-  .zm-buy-hero h1 { margin-top: 32px; font-size: 40px; }
-  .zm-buy-hero__l2 { color: var(--zm-navy); }
-  .zm-buy-hero__media { margin-top: 20px; height: 420px; }
-  .zm-buy-hero__in { padding-top: 20px; padding-bottom: 20px; }
-  .zm-buy-hero__in p { font-size: 14px; }
+  /* фрейм 375: заголовок 50/50 в три строки, третья строка — белая поверх фото */
+  .zm-buy-hero h1 { margin-top: 35px; font-size: 50px; line-height: 50px; }
+  .zm-buy-hero__media { margin-top: -55px; height: 389px; }
+  .zm-buy-hero__in { padding-top: 71px; padding-bottom: 20px; }
+  .zm-buy-hero__in p { width: auto; font-size: 14px; line-height: 1.24; }
+  /* карточки — в порядке макета (как в разметке), 14/1.24 */
+  .zm-cond { padding-top: 40px; }
   .zm-cond__row { grid-template-columns: 1fr; gap: 12px; min-height: 0; }
-  .zm-cond__list { gap: 20px; }
-  .zm-cond__img { order: -1; height: 310px; }
+  .zm-cond__list { gap: 12px; }
+  .zm-cond__img { height: 310px; }
   .zm-cond__card { gap: 24px; padding: 20px; }
-  .zm-cond__card h2 { font-size: 24px; line-height: 30px; margin-bottom: 16px; }
-  .zm-cond__card ul, .zm-cond__lead, .zm-cond__card .zm-text { font-size: 14px; line-height: 24px; }
-  .zm-cond__card .zm-btn { align-self: flex-start; padding: 15px 40px; }
+  .zm-cond__card h2 { font-size: 24px; line-height: 1.24; margin-bottom: 16px; }
+  .zm-cond__lead { font-size: 14px; line-height: 1.24; margin-bottom: 8px; }
+  .zm-cond__card ul { gap: 2px; margin-bottom: 8px; font-size: 14px; line-height: 24px; }
+  .zm-cond__card .zm-text { font-size: 14px; line-height: 1.24; }
+  .zm-cond__card .zm-btn { align-self: flex-start; min-height: 49px; padding: 15px 40px; font-size: 14px; }
   #zm-form .zm-lead-form__box { min-height: 0; }
   #zm-form .zm-lead-form__title { font-size: 40px; line-height: 48px; }
 }
@@ -96,7 +101,7 @@ url: /usloviya-pokupki
   <section class="zm-buy-hero">
     <div class="zm-container zm-top">
       <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Условия покупки</span></nav>
-      <h1 class="zm-h1"><span>Условия покупки квартиры</span> <span class="zm-buy-hero__l2">в ЖК «Московский»</span></h1>
+      <h1 class="zm-h1"><span>Условия покупки <br class="zm-br-sm">квартиры</span> <span class="zm-buy-hero__l2">в ЖК «Московский»</span></h1>
     </div>
     <div class="zm-buy-hero__media">
       <img src="{{img:buy-hero}}" alt="Покупка квартиры в ЖК «Московский»">
@@ -170,7 +175,7 @@ url: /usloviya-pokupki
             <div>
               <h2>Банки-партнёры:</h2>
               <!-- Условия банков: те же цифры стоят в калькуляторе на /raschet-ipoteki -->
-              <ul class="is-muted"><li>Генбанк: от 6%, 1–30 лет, ПВ от 20,1%</li><li>Банк России: от 5,5%, 1–30 лет, ПВ от 20,1%</li><li>ВТБ: от 6%, 1–30 лет, ПВ от 40,1%</li></ul>
+              <ul class="zm-cond__banks"><li><span>Генбанк:</span> от 6%, 1–30 лет, ПВ от 20,1%</li><li><span>Банк России:</span> от 5,5%, 1–30 лет, ПВ от 20,1%</li><li><span>ВТБ:</span> от 6%, 1–30 лет, ПВ от 40,1%</li></ul>
               <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum. Sit viverra felis sollicitudin mattis id ac libero in lorem. Pretium est vel in nec pellentesque.</p>
             </div>
           </div>
