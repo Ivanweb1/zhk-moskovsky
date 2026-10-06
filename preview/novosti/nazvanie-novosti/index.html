@@ -38,7 +38,21 @@
 .zm-hd__msg { display: flex; gap: 10px; margin-left: 66px; }
 .zm-hd__msg img, .zm-hd__burger img { width: 42px; height: 42px; }
 .zm-hd__burger { display: none; }
-.zm-hd__menu { display: none; }
+.zm-hd__menu, .zm-hd__overlay { display: none; }
+/* мобильное меню — как на текущем сайте (Tilda T450): синяя панель 260px выезжает справа, фон затемняется */
+@media (max-width: 979px) {
+  .zm-hd__overlay { display: block; position: fixed; inset: 0; z-index: 9998; background: rgba(0,0,0,.6); opacity: 0; visibility: hidden; transition: opacity .3s ease-in-out, visibility .3s; }
+  .zm-hd__menu { display: flex; flex-direction: column; justify-content: space-between; position: fixed; top: 0; right: 0; bottom: 0; z-index: 9999; width: 260px; max-width: 100%; padding: 42px 25px 25px; overflow-y: auto; background: var(--zm-navy); color: #fff; transform: translateX(100%); visibility: hidden; transition: transform .3s ease-in-out, visibility .3s; }
+  .zm-hd.is-open .zm-hd__overlay { opacity: 1; visibility: visible; }
+  .zm-hd.is-open .zm-hd__menu { transform: none; visibility: visible; }
+  .zm-hd__menu nav { display: flex; flex-direction: column; align-items: flex-start; }
+  .zm-hd__menu nav a { margin-bottom: 15px; font-size: 16px; line-height: 22px; font-weight: 400; color: #fff; transition: opacity .3s ease-in-out; }
+  .zm-hd__menu nav a:hover { opacity: .7; }
+  .zm-hd__info { margin-top: 30px; font-size: 16px; line-height: 23.2px; font-weight: 300; color: #f3f3f7; }
+  .zm-hd__close { position: absolute; top: 5px; right: 5px; width: 40px; height: 40px; padding: 0; border: 0; background: none; cursor: pointer; }
+  .zm-hd__close::before, .zm-hd__close::after { content: ''; position: absolute; left: 8px; top: 19px; width: 24px; height: 2px; background: #fff; transform: rotate(45deg); }
+  .zm-hd__close::after { transform: rotate(-45deg); }
+}
 @media (min-width: 1920px) {
   .zm-hd__bar { height: 65px; padding: 10px 14px; }
   .zm-hd__link { font-size: 18px; line-height: 24px; }
@@ -72,7 +86,6 @@
   .zm-hd__msg { order: -1; margin-left: 0; }
   .zm-hd__logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
   .zm-hd__burger { margin-left: auto; }
-  .zm-hd.is-open .zm-hd__menu { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; padding: 20px; border-radius: 10px; background: var(--zm-card); font-size: 16px; font-weight: 500; max-height: calc(100vh - 100px); overflow-y: auto; }
 }
 </style>
 
@@ -96,17 +109,21 @@
       </div>
       <button class="zm-hd__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="zm-hd-menu"><img src="../../../assets/shell/burger.svg" alt=""></button>
     </div>
-    <nav class="zm-hd__menu" id="zm-hd-menu" aria-label="Мобильное меню">
-      <a href="/#choose">Выбрать квартиру</a>
-      <a href="/o-proekte">О проекте</a>
-      <a href="/hod-stroitelstva">Ход строительства</a>
-      <a href="/#location">Расположение</a>
-      <a href="/usloviya-pokupki">Условия покупки</a>
-      <a href="/raschet-ipoteki">Расчёт ипотеки</a>
-      <a href="/dokumenty">Документы</a>
-      <a href="/novosti">Новости</a>
-      <a href="tel:+79788355353">+7 978 835-53-53</a>
-    </nav>
+    <div class="zm-hd__overlay" data-zm-close></div>
+    <div class="zm-hd__menu" id="zm-hd-menu" aria-label="Меню">
+      <button class="zm-hd__close" type="button" aria-label="Закрыть меню" data-zm-close></button>
+      <nav aria-label="Мобильное меню">
+        <a href="/#choose">Выбрать квартиру</a>
+        <a href="/o-proekte">О проекте</a>
+        <a href="/hod-stroitelstva">Ход строительства</a>
+        <a href="/#location">Расположение</a>
+        <a href="/usloviya-pokupki">Условия покупки</a>
+        <a href="/raschet-ipoteki">Расчёт ипотеки</a>
+        <a href="/dokumenty">Документы</a>
+        <a href="/novosti">Новости</a>
+      </nav>
+      <p class="zm-hd__info"><a href="tel:+79788355353">+7 978 835-53-53</a><br>Республика Крым, Город Симферополь, Улица Киевская, д. 141Б</p>
+    </div>
   </header>
 </div>
 <script>
@@ -114,12 +131,13 @@
   var hd = document.getElementById('zm-hd');
   if (!hd || hd.__zm) return; hd.__zm = 1;
   var btn = hd.querySelector('.zm-hd__burger');
-  btn.addEventListener('click', function () {
-    var open = hd.classList.toggle('is-open');
+  function set(open) {
+    hd.classList.toggle('is-open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  hd.querySelectorAll('.zm-hd__menu a').forEach(function (a) { a.addEventListener('click', function () { hd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { hd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); } });
+  }
+  btn.addEventListener('click', function () { set(!hd.classList.contains('is-open')); });
+  hd.querySelectorAll('[data-zm-close], .zm-hd__menu a').forEach(function (el) { el.addEventListener('click', function () { set(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
 <style>
