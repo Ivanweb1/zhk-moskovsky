@@ -549,10 +549,13 @@
 .zm-cond__card { display: flex; flex-direction: column; justify-content: center; gap: 48px; padding: 32px; border-radius: 16px; background: #fff; }
 .zm-cond__card h2 { font-size: 40px; line-height: 41px; font-weight: 500; margin-bottom: 24px; }
 .zm-cond__lead { font-size: 18px; line-height: 24px; font-weight: 500; margin-bottom: 12px; }
-.zm-cond__card ul { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; padding-left: 18px; list-style: disc; font-size: 18px; line-height: 24px; font-weight: 500; }
+.zm-cond__card ul { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; padding-left: 18px; list-style: none; font-size: 18px; line-height: 24px; font-weight: 500; }
+/* маркер как в макете: «•» Manrope 20px, текст с отступом 18px */
+.zm-cond__card li { position: relative; }
+.zm-cond__card li::before { content: '•'; position: absolute; left: -18px; top: 0; font-size: 20px; line-height: 24px; }
 .zm-cond__card ul.is-muted { color: rgba(19,38,64,.64); }
-.zm-cond__card .zm-text { font-size: 18px; line-height: 1.5; font-weight: 400; }
-.zm-cond__card .zm-btn { align-self: flex-start; }
+.zm-cond__card .zm-text { font-size: 18px; line-height: 1.24; font-weight: 400; }
+.zm-cond__card .zm-btn { align-self: flex-start; padding-left: 40px; padding-right: 40px; }
 
 /* Форма на этой странице выше: 695 */
 #zm-form .zm-lead-form__box { min-height: 695px; }
@@ -637,7 +640,7 @@
             <div>
               <h2>Ипотека</h2>
               <ul><li>Ставка от 5,5%</li><li>Взнос от 20,1%, семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul>
-              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum. Sit viverra felis sollicitudin mattis id ac libero in lorem. Pretium est vel in nec pellentesque.</p>
             </div>
             <a class="zm-btn" href="/raschet-ipoteki">Рассчитать ипотеку</a>
           </div>
@@ -648,7 +651,7 @@
               <h2>Рассрочка</h2>
               <p class="zm-cond__lead">Удобный способ оплаты напрямую от застройщика — без переплат и комиссий.</p>
               <ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До сентября 2027 г.</li></ul>
-              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum. Sit viverra felis sollicitudin mattis id ac libero in lorem. Pretium est vel in nec pellentesque.</p>
             </div>
           </div>
           <div class="zm-cond__img"><img src="../../assets/img/buy-2.jpg" alt="Рассрочка" loading="lazy"></div>
@@ -660,7 +663,7 @@
               <h2>Материнский капитал</h2>
               <p class="zm-cond__lead">Маткапитал возможно использовать при любом способе расчёта:</p>
               <ul><li>рассрочке</li><li>в качестве первого взноса по ипотеке</li><li>при 100% оплате</li></ul>
-              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum. Sit viverra felis sollicitudin mattis id ac libero in lorem. Pretium est vel in nec pellentesque.</p>
             </div>
           </div>
         </div>
@@ -670,7 +673,7 @@
               <h2>Сертификаты</h2>
               <p class="zm-cond__lead">Сертификаты принимаются:</p>
               <ul><li>Государственный жилищный сертификат (ГЖС)</li><li>Свидетельство участника НИС</li></ul>
-              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum. Sit viverra felis sollicitudin mattis id ac libero in lorem. Pretium est vel in nec pellentesque.</p>
             </div>
           </div>
           <div class="zm-cond__img"><img src="../../assets/img/buy-4.jpg" alt="Сертификаты" loading="lazy"></div>
@@ -681,7 +684,7 @@
             <div>
               <h2>Покупка по договору<br>долевого участия (214-ФЗ)</h2>
               <p class="zm-cond__lead">Все этапы реализации проекта ведутся по 214-ФЗ с использованием эскроу-счетов и банковского контроля. Это означает полную финансовую прозрачность, защиту средств дольщиков и минимальные риски.</p>
-              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum. Sit viverra felis sollicitudin mattis id ac libero in lorem. Pretium est vel in nec pellentesque.</p>
             </div>
           </div>
         </div>
@@ -691,7 +694,7 @@
               <h2>Банки-партнёры:</h2>
               <!-- Условия банков: те же цифры стоят в калькуляторе на /raschet-ipoteki -->
               <ul class="is-muted"><li>Генбанк: от 6%, 1–30 лет, ПВ от 20,1%</li><li>Банк России: от 5,5%, 1–30 лет, ПВ от 20,1%</li><li>ВТБ: от 6%, 1–30 лет, ПВ от 40,1%</li></ul>
-              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat.</p>
+              <p class="zm-text">Lorem ipsum dolor sit amet consectetur. Sit ullamcorper maecenas pellentesque id fermentum diam vitae massa cursus. Est porttitor sagittis id feugiat. Enim nunc massa lectus suspendisse elit sed. Eget nunc faucibus netus sed aenean vel duis vel volutpat. Sed sapien ultrices tincidunt tellus condimentum. Sit viverra felis sollicitudin mattis id ac libero in lorem. Pretium est vel in nec pellentesque.</p>
             </div>
           </div>
           <div class="zm-cond__img"><img src="../../assets/img/buy-6.jpg" alt="Банки-партнёры" loading="lazy"></div>
