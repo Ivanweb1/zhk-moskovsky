@@ -1016,33 +1016,6 @@ a.zm-doc__dl:hover img { filter: brightness(0) invert(1); }
   .zm-ft__contacts b { font-size: 17px; line-height: 24px; }
   .zm-ft__contacts .zm-ft__gap { margin-top: 0; }
 }
-/* Главная: в макете главной подвала нет, поэтому там подвал как на текущем сайте —
-   без навигации и кнопки, раскладка по артборду 900px (1200 / 1440 / 1920) */
-body:has(.zm-home) .zm-ft__navtitle, body:has(.zm-home) .zm-ft__nav, body:has(.zm-home) .zm-ft__btn { display: none; }
-@media (min-width: 1200px) {
-  body:has(.zm-home) .zm-ft { min-height: 900px; padding: 10px 20px; }
-  body:has(.zm-home) .zm-ft__title { position: relative; top: .237em; margin-bottom: 127px; }
-  body:has(.zm-home) .zm-ft__main { grid-template-columns: 959fr 431fr; gap: 10px; }
-  body:has(.zm-home) .zm-ft__addr { margin-bottom: 0; }
-  body:has(.zm-home) .zm-ft__bottom { grid-template-columns: 404fr 388fr 432fr; gap: 88px; align-items: end; margin-top: 0; }
-  body:has(.zm-home) .zm-ft__bottom > div:last-child { white-space: normal; }
-  body:has(.zm-home) .zm-ft__bottom > div:first-child { gap: 0; }
-}
-@media (min-width: 1200px) and (max-width: 1439px) {
-  body:has(.zm-home) .zm-ft { --zm-h: 130px; }
-  body:has(.zm-home) .zm-ft__title { margin-bottom: 138px; }
-  body:has(.zm-home) .zm-ft__main { grid-template-columns: 729fr 431fr; gap: 0; }
-  body:has(.zm-home) .zm-ft__bottom { grid-template-columns: 453fr 446fr 261fr; gap: 0; }
-}
-@media (min-width: 1920px) {
-  body:has(.zm-home) .zm-ft__title { margin-bottom: 58px; }
-  body:has(.zm-home) .zm-ft__main { grid-template-columns: 1335fr 545fr; gap: 0; }
-  body:has(.zm-home) .zm-ft__addr { max-width: 556px; }
-  body:has(.zm-home) .zm-ft__contacts span { font-weight: 500; }
-  body:has(.zm-home) .zm-ft__contacts b { font-weight: 500; }
-  body:has(.zm-home) .zm-ft__contacts .zm-ft__gap { padding-top: 0; margin-top: 24px; }
-  body:has(.zm-home) .zm-ft__bottom { grid-template-columns: 868fr 704fr 308fr; gap: 0; font-weight: 500; }
-}
 </style>
 
 <div class="zm">
