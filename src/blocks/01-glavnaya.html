@@ -806,7 +806,9 @@ preview: glavnaya
   .zm-harch .zm-arch__card { min-height: 582px; }
   .zm-arch__img { flex: 1; height: auto; min-height: 0; }
 
-  .zm-plans__box { height: 1025px; }
+  /* на сайте здесь пусто, а кнопка за краем экрана — фото и кнопка как в макете 375 */
+  .zm-plans__box { height: 464px; }
+  .zm-plans__btn { width: 307px; max-width: calc(100% - 40px); min-height: 52px; padding: 15px 20px; border-radius: 8px; font-size: 14px; line-height: 22px; font-weight: 500; white-space: nowrap; }
 
   .zm-hpick .zm-container { padding: 0 10px; }
 
@@ -892,7 +894,7 @@ preview: glavnaya
 
   .zm-home .zm-hplans { padding-top: 50px; }
   #choose .zm-h2 { font-size: 55px; }
-  .zm-plans__box { height: 946px; margin-top: 30px; }
+  .zm-plans__box { margin-top: 30px; }
 
   .zm-pick__title { font-size: 30px; line-height: 30px; }
   .zm-pick__texts { grid-template-columns: 133px 96px; }
