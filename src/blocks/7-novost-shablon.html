@@ -110,7 +110,12 @@ url: /novosti/nazvanie-novosti
   .zm-post__gal figure { aspect-ratio: 351 / 254; }
   .zm-post__gal .zm-arrow { --zm-arrow: 40px; margin-top: -20px; }
   .zm-post__gal [data-zm-count] { padding: 8px 20px; font-size: 14px; line-height: 14px; }
-  .zm-more__head .zm-arrows { --zm-arrow: 40px; gap: 10px; }
+  /* фрейм 375: заголовок в одну строку, под ним стрелки 40 (шаг 8), ниже карточки */
+  .zm-more { gap: 24px; }
+  .zm-more__br { display: none; }
+  .zm-more__head { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .zm-more__head .zm-arrows { --zm-arrow: 40px; gap: 8px; }
+  .zm-more .zm-slider__track { --zm-gap: 12px; }
   .zm-more .zm-slider__track > * { width: 100%; }
 }
 </style>
@@ -177,7 +182,7 @@ url: /novosti/nazvanie-novosti
     <div class="zm-container">
       <div class="zm-more zm-slider" data-zm-slider data-more>
         <div class="zm-more__head">
-          <h2 class="zm-h2">Читайте<br>также</h2>
+          <h2 class="zm-h2">Читайте<br class="zm-more__br"> также</h2>
           <div class="zm-arrows">
             <button class="zm-arrow" type="button" data-zm-prev aria-label="Назад"><svg viewBox="0 0 8 14" fill="none"><path d="M7 1 1 7l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
             <button class="zm-arrow" type="button" data-zm-next aria-label="Вперёд"><svg viewBox="0 0 8 14" fill="none"><path d="m1 1 6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
