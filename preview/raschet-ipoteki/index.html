@@ -540,7 +540,8 @@
 .zm-calc__select::after { right: 22px; }
 .zm-calc__box { position: relative; display: flex; align-items: center; gap: 12px; height: 65px; padding: 0 16px; border-radius: 4px 4px 0 0; background: #fff; }
 .zm-calc__box::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 5px; background: rgba(19,38,64,.5); }
-.zm-calc__box input { flex: 1; min-width: 0; height: 100%; padding: 0; border: 0; outline: none; background: none; font-family: var(--zm-head); font-size: 32px; letter-spacing: 0; text-transform: uppercase; color: var(--zm-navy); }
+/* line-height с запасом: иначе Safari обрезает верх цифр Sverdlovsk в поле */
+.zm-calc__box input { flex: 1; min-width: 0; height: 100%; padding: 0; line-height: 1.5; border: 0; outline: none; background: none; font-family: var(--zm-head); font-size: 32px; letter-spacing: 0; text-transform: uppercase; color: var(--zm-navy); }
 .zm-calc__box em { flex: none; font-style: normal; font-family: var(--zm-head); font-size: 26px; letter-spacing: 0; color: var(--zm-navy); white-space: nowrap; }
 .zm-calc__box em i { font-style: normal; font-family: var(--zm-text); font-weight: 200; opacity: .5; }
 .zm-calc__group.is-error .zm-calc__box { box-shadow: inset 0 0 0 1.5px var(--zm-error); }
@@ -619,20 +620,23 @@
   .zm-calc__hint, .zm-calc__note { font-size: 14px; line-height: 20px; }
   .zm-calc__right { padding: 12px; border-radius: 24px; }
   .zm-banks-list { gap: 12px; }
-  .zm-bk { gap: 12px; padding: 8px 8px 12px; align-items: flex-start; }
-  .zm-bk .zm-bank-logo { width: 64px; height: 60px; }
-  .zm-bk .zm-bank-logo img { width: 44px; height: 44px; }
-  .zm-bk__info { flex-basis: calc(100% - 80px); }
-  .zm-bk__name { font-size: 18px; }
-  .zm-bk__type { font-size: 13px; padding: 2px 8px; }
-  .zm-bk__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .zm-bk__cols > div + div { padding-left: 0; border-left: 0; }
-  .zm-bk__cols span { font-size: 13px; line-height: 18px; }
-  .zm-bk__cols b { font-size: 16px; }
-  .zm-bk .zm-arrow { display: none; }
-  .zm-bk__best { position: static; order: -1; padding: 4px 14px; font-size: 13px; }
+  /* фрейм 375: лого 56×52, под ним название и «Вид ипотеки», линия, 2×2 цифры, стрелка 44 справа внизу, плашка в углу */
+  .zm-bk { flex-direction: column; align-items: stretch; gap: 12px; min-height: 0; padding: 8px; }
+  .zm-bk .zm-bank-logo { width: 56px; height: 52px; }
+  .zm-bk .zm-bank-logo img { width: 28px; height: 28px; }
+  .zm-bk__info { flex: none; }
+  .zm-bk__top { flex-wrap: nowrap; justify-content: space-between; gap: 16px; min-height: 32px; margin: 0; padding-bottom: 8px; border-bottom: 1px solid rgba(19,38,64,.2); }
   .zm-bk.has-best .zm-bk__top { padding-right: 0; }
-  .zm-bk { min-height: 0; }
+  .zm-bk__name { font-size: 18px; line-height: 1; }
+  .zm-bk__type { flex: none; padding: 4px 4px 4px 12px; font-size: 14px; line-height: 24px; }
+  .zm-bk__type svg { width: 20px; height: 20px; }
+  .zm-bk__over { display: none; }
+  .zm-bk__cols { display: grid; grid-template-columns: auto auto; justify-content: start; gap: 8px 24px; margin-top: 8px; padding-right: 56px; }
+  .zm-bk__cols > div + div { padding-left: 0; border-left: 0; }
+  .zm-bk__cols span { margin: 0; font-size: 14px; line-height: 24px; }
+  .zm-bk__cols b { font-size: 16px; line-height: 24px; }
+  .zm-bk .zm-arrow { --zm-arrow: 44px; position: absolute; right: 8px; bottom: 8px; margin: 0; border-radius: 12px; }
+  .zm-bk__best { padding: 8px 16px; border-radius: 50px 20px 0 32px; font-size: 14px; line-height: 24px; }
 }
 </style>
 
