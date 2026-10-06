@@ -34,10 +34,14 @@
 .zm-hd__link:hover { background-position: left bottom; background-size: 100% 1px; }
 .zm-hd__logo img { width: 102px; height: 46px; }
 .zm-hd__link { font-size: 14px; line-height: 19px; font-weight: 500; white-space: nowrap; }
-.zm-hd__choose { margin-left: 71px; }
-.zm-hd__nav { display: flex; gap: 50px; margin-left: 66px; }
+.zm-hd__nav { display: flex; }
+/* расстояния тянутся с шириной экрана, чтобы все пункты (с «Документами») стояли ровно и не слипались:
+   1241 → отступы 24 / между пунктами 20, 1440 → 48 / 36, дальше до 66 / 50 */
+.zm-hd { --hd-m: clamp(24px, calc(24px + (100vw - 1241px) * .12), 66px); --hd-g: clamp(20px, calc(20px + (100vw - 1241px) * .08), 50px); }
+.zm-hd__choose { margin-left: var(--hd-m); }
+.zm-hd__nav { gap: var(--hd-g); margin-left: var(--hd-m); margin-right: var(--hd-m); }
 .zm-hd__phone { margin-left: auto; }
-.zm-hd__msg { display: flex; gap: 10px; margin-left: 66px; }
+.zm-hd__msg { display: flex; gap: 10px; margin-left: var(--hd-m); }
 .zm-hd__msg img, .zm-hd__burger img { width: 42px; height: 42px; }
 .zm-hd__burger { display: none; }
 .zm-hd__menu, .zm-hd__overlay { display: none; }
@@ -58,19 +62,18 @@
 @media (min-width: 1920px) {
   .zm-hd__bar { height: 65px; padding: 10px 14px; }
   .zm-hd__link { font-size: 18px; line-height: 24px; }
-  .zm-hd__choose { margin-left: 108px; }
-  .zm-hd__nav { gap: 49px; margin-left: 108px; }
-  .zm-hd__msg { margin-left: 211px; }
+  .zm-hd { --hd-m: 80px; --hd-g: 44px; }
 }
-@media (max-width: 1300px) { .zm-hd__choose { margin-left: 24px; } .zm-hd__nav { gap: 24px; margin-left: 32px; } .zm-hd__msg { margin-left: 24px; } }
 /* 980–1240: по фрейму 980 — плашка 940×65, лого 100×45, меню 12px, мессенджеры 30px */
 @media (max-width: 1240px) {
   .zm-hd__bar { height: 65px; padding: 10px 15px; }
   .zm-hd__logo img { width: 100px; height: 45px; }
-  .zm-hd__choose { margin-left: 16px; }
-  .zm-hd__nav { gap: 12px; margin-left: 15px; }
+  /* 980–1240: с «Документами» телефон в строку не помещается — он остаётся в мессенджерах, меню и подвале */
+  .zm-hd { --hd-m: clamp(16px, calc(16px + (100vw - 980px) * .06), 32px); --hd-g: clamp(12px, calc(12px + (100vw - 980px) * .05), 24px); }
+  .zm-hd__phone { display: none; }
+  .zm-hd__nav { margin-right: 16px; }
   .zm-hd__nav .zm-hd__link { font-size: 12px; }
-  .zm-hd__msg { gap: 5px; margin-left: 16px; }
+  .zm-hd__msg { gap: 5px; margin-left: auto; }
   .zm-hd__msg img { width: 30px; height: 30px; }
 }
 @media (max-width: 979px) {
@@ -103,6 +106,7 @@
         <a class="zm-hd__link" href="/#location">Расположение</a>
         <a class="zm-hd__link" href="/usloviya-pokupki">Условия покупки</a>
         <a class="zm-hd__link" href="/raschet-ipoteki">Расчёт ипотеки</a>
+        <a class="zm-hd__link" href="/dokumenty">Документы</a>
       </nav>
       <a class="zm-hd__link zm-hd__phone" href="tel:+79788355353">+7 978 835-53-53</a>
       <div class="zm-hd__msg">
@@ -1097,6 +1101,7 @@
             <a href="/#location">Расположение</a>
             <a href="/usloviya-pokupki">Условия покупки</a>
             <a href="/raschet-ipoteki">Расчёт ипотеки</a>
+            <a href="/dokumenty">Документы</a>
           </nav>
           <a class="zm-ft__btn" href="/#choose">Выбрать квартиру</a>
         </div>
