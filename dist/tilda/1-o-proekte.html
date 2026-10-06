@@ -55,6 +55,8 @@
 .zm-section--last, .zm > section:last-of-type { padding-bottom: var(--zm-section); }
 
 /* ---------- Заголовки ---------- */
+.zm-br1920 { display: none; }
+@media (min-width: 1920px) { .zm-br1920 { display: block; } } /* перенос строки только во фрейме 1920 */
 .zm-h1, .zm-h2 {
   font-family: var(--zm-head);
   font-weight: 400;
@@ -174,6 +176,14 @@
 .zm-faq__item.is-open .zm-faq__a { grid-template-rows: 1fr; }
 .zm-faq__a > div { overflow: hidden; }
 .zm-faq__a .zm-text { padding: 0 35px 28px; max-width: 1000px; font-size: 18px; line-height: 25px; color: rgba(19,38,64,.72); }
+/* фрейм 1920: пункты 1880×122, иконка 63 */
+@media (min-width: 1920px) {
+  .zm-faq { margin-top: 50px; }
+  .zm-faq__q { min-height: 122px; padding: 30px 48px; font-size: 24px; line-height: 27px; }
+  .zm-faq__icon { width: 63px; height: 63px; }
+  .zm-faq__icon::before, .zm-faq__icon::after { left: 17px; top: 31px; width: 29px; }
+  .zm-faq__a .zm-text { padding: 0 48px 30px; font-size: 20px; line-height: 28px; }
+}
 @media (max-width: 767px) { .zm-faq__q { font-size: 18px; } }
 @media (max-width: 640px) {
   .zm-faq { gap: 12px; margin-top: 32px; }
@@ -221,7 +231,7 @@
 .zm-form.is-sent .zm-form__grid { display: none; }
 .zm-form.is-sent .zm-form__done { display: block; }
 .zm-form__note { margin-top: 20px; font-size: 16px; line-height: 24px; opacity: .64; }
-@media (min-width: 1920px) { .zm-lead-form__title { font-size: 140px; line-height: 120px; } }
+@media (min-width: 1920px) { .zm-lead-form { grid-template-columns: 637fr 1233fr; } .zm-lead-form__box { min-height: 665px; padding: 47px 20px; } .zm-lead-form__title { font-size: 140px; line-height: 120px; } .zm-lead-form__sub { margin: 23px 0 32px; } } /* фрейм 1920 */
 @media (max-width: 1240px) { .zm-lead-form__title { font-size: 90px; line-height: 80px; } }
 /* 768–1240 — по фрейму 980: фото 940×592 сверху, под ним карточка 940×548, поля 2×2 по 55 */
 @media (min-width: 768px) and (max-width: 1240px) {
@@ -281,6 +291,8 @@
 .zm-news-card:hover .zm-news-card__date { color: rgba(255,255,255,.46); }
 .zm-news-card:hover .zm-news-card__img img { transform: scale(1.03); }
 @media (max-width: 1240px) { .zm-news-card__title { font-size: 22px; line-height: 30px; } .zm-news-card__text { font-size: 16px; } }
+/* фрейм 1920: фото 612×444, метки 20px, вкладки 67 */
+@media (min-width: 1920px) { .zm-news-card__img { height: 444px; } .zm-news-card__tags .zm-pill { padding: 12px 24px; font-size: 20px; line-height: 25px; } .zm-tab { padding: 24px 48px; font-size: 24px; } }
 /* фрейм 980: фото 464×328, текстовая часть 193 */
 @media (min-width: 768px) and (max-width: 1240px) { .zm-news-card__img { height: 328px; margin-bottom: -19px; } .zm-news-card__body { min-height: 193px; } .zm-news-card__title { font-size: 20px; line-height: 1.24; margin-bottom: 0; } }
 @media (max-width: 640px) {
@@ -408,6 +420,40 @@
 @media (min-width: 1441px) {
   .zm-ab-hero { height: 51vw; }
   .zm-loc__map { min-height: 79vw; }
+}
+/* ≥1920 — по фрейму «О проекте / 1920» */
+@media (min-width: 1920px) {
+  .zm-ab-hero { padding-bottom: 52px; }
+  .zm-ab-hero .zm-stats { gap: 48px; }
+  .zm-concept { padding: 100px 0; }
+  .zm-concept__grid { margin-top: 64px; }
+  .zm-concept__row--a, .zm-concept__row--b { grid-template-columns: repeat(4, 1fr); gap: 20px; min-height: 455px; }
+  .zm-concept__text h3 { font-size: 64px; }
+  .zm-concept__text .zm-text { font-size: 18px; line-height: 1.24; }
+  .zm-adv { margin-top: 20px; }
+  .zm-adv__slide { grid-template-columns: 900fr 900fr; gap: 40px; }
+  .zm-adv__img { aspect-ratio: auto; height: 661px; }
+  .zm-adv__icon { width: 120px; height: 120px; }
+  .zm-adv__body h3 { font-size: 30px; line-height: 41px; }
+  .zm-adv__body .zm-text { font-size: 18px; line-height: 24px; }
+  .zm-ab-loc { padding-top: 0; }
+  .zm-loc__head { margin-top: 0; margin-bottom: -124px; align-items: flex-end; } /* в макете блок заголовка 800 заходит под карточки */
+  .zm-loc__head .zm-h2 { flex: 0 1 1512px; min-height: 800px; padding: 100px 0; }
+  .zm-loc__head p { flex: none; width: 448px; font-size: 18px; line-height: 24px; padding-bottom: 145px; position: relative; z-index: 1; }
+  .zm-loc { grid-template-columns: 485fr 1375fr; }
+  .zm-loc__item { min-height: 289px; gap: 20px; }
+  .zm-loc__icon { width: 60px; height: 60px; }
+  .zm-loc__item h3 { font-size: 30px; line-height: 41px; }
+  .zm-loc__item p { font-size: 18px; line-height: 24px; }
+  .zm-loc__map { min-height: 1216px; }
+  .zm-arch .zm-slider { margin-top: 21px; }
+  .zm-arch .zm-slider__track > * { width: 713px; min-height: 660px; }
+  .zm-arch__img { height: 445px; }
+  .zm-arch__card { gap: 40px; }
+  .zm-arch__row { gap: 39px; }
+  .zm-arch__row b { width: 31px; font-size: 30px; line-height: 41px; }
+  .zm-arch__row h3 { font-size: 30px; line-height: 41px; }
+  .zm-arch__row p { font-size: 18px; line-height: 24px; }
 }
 /* 768–1240 — по фрейму «О проекте / 980» */
 @media (min-width: 768px) and (max-width: 1240px) {
@@ -561,10 +607,10 @@
   </section>
 
   <!-- Локация и инфраструктура -->
-  <section class="zm-section">
+  <section class="zm-section zm-ab-loc">
     <div class="zm-container">
       <div class="zm-loc__head">
-        <h2 class="zm-h2">Локация для вашего<br>ритма жизни</h2>
+        <h2 class="zm-h2">Локация <br class="zm-br1920">для вашего<br>ритма жизни</h2>
         <p>Проект расположен в сформированном районе Симферополя с готовой городской инфраструктурой. В пешей доступности находятся школы, магазины, медицинские учреждения и парк для прогулок — всё, что нужно для повседневной жизни без лишних поездок по городу.</p>
       </div>
       <div class="zm-loc">

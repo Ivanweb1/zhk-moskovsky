@@ -48,6 +48,22 @@ url: /novosti/nazvanie-novosti
 .zm-more .zm-slider__track { --zm-gap: 24px; }
 .zm-more .zm-slider__track > * { width: calc((100% - 24px) / 2); }
 
+/* ≥1920 — по фрейму «Новость / 1920» */
+@media (min-width: 1920px) {
+  .zm-post-hero { grid-template-columns: 920fr 880fr; gap: 40px; }
+  .zm-post-hero__img { min-height: 667px; }
+  .zm-post-back { min-height: 67px; font-size: 20px; }
+  .zm-post-hero__tags .zm-pill { padding: 12px 24px; font-size: 24px; line-height: 25px; }
+  .zm-post-hero h1 { font-size: 72px; margin-bottom: 24px; }
+  .zm-post-hero__sub { font-size: 24px; line-height: 1.32; }
+  .zm-post-hero__date { font-size: 20px; }
+  .zm-post { grid-template-columns: 912fr 920fr; gap: 40px 48px; margin-top: 60px; }
+  .zm-post__text { font-size: 20px; line-height: 1.32; }
+  .zm-post__text h2 { font-size: 48px; }
+  .zm-post__text h3 { font-size: 32px; }
+  .zm-post__gal figure { aspect-ratio: 920 / 667; }
+  .zm-post__gal .zm-arrow { --zm-arrow: 69px; margin-top: -35px; }
+}
 /* 768–1240 — по фрейму «Новость / 980»: шапка 940×409, текст во всю ширину, галерея после текста */
 @media (min-width: 768px) and (max-width: 1240px) {
   .zm-post-hero { grid-template-columns: 399fr 481fr; margin-top: 35px; }

@@ -6,7 +6,6 @@ preview: glavnaya
 <style>
 /* ===== Главная — по фрейму «Главная / 1440» из макета ===== */
 .zm-home .zm-h2 { margin: 0; }
-.zm-br1920 { display: none; }
 
 /* 1. Первый экран: фото 671 + тёмная карточка 719×416 + фото 719×379, высота 805 */
 .zm-hh { display: grid; grid-template-columns: 671fr 719fr; gap: 10px; height: 805px; padding: 10px var(--zm-pad) 0; }
@@ -192,7 +191,6 @@ preview: glavnaya
   .zm-hloc { padding-top: 221px; }
   .zm-loc__head { margin-bottom: 29px; align-items: flex-end; }
   .zm-loc__head .zm-h2 { flex: 0 1 1512px; white-space: normal; min-height: 800px; padding: 100px 0; } /* в макете 3 строки по центру блока 800 */
-  .zm-br1920 { display: block; }
   .zm-loc__head p { flex: none; width: 448px; font-size: 18px; line-height: 24px; padding-bottom: 21px; }
   .zm-loc { grid-template-columns: 485fr 1375fr; }
   .zm-loc__item { min-height: 289px; gap: 20px; }
@@ -296,7 +294,7 @@ preview: glavnaya
   .zm-hab__img { min-height: 782px; margin: 0 -22px; }
   .zm-hab__cards { flex-direction: row; }
   .zm-hab__card { min-height: 414px; gap: 40px; }
-  .zm-hab__card b, .zm-dev__card b { font-size: 130px; }
+  .zm-hab__card b, .zm-dev__card b { font-size: min(130px, 13.3vw); }
 
   /* 3. Локация: заголовок, текст под ним, 4 карточки 228×293 в ряд, карта 940×655 */
   .zm-hloc { padding-top: 138px; }

@@ -17,6 +17,8 @@ url: /hod-stroitelstva
 .zm-build-empty { grid-column: 1 / -1; padding: 40px 0; color: var(--zm-muted); font-size: 18px; }
 /* по фрейму 1440 */
 @media (min-width: 1241px) and (max-width: 1919px) { .zm-build .zm-top__row { margin-top: 64px; } .zm-build .zm-filters { margin-top: 69px; } .zm-top__row .zm-build__lead { padding-bottom: 19px; } }
+/* по фрейму 1920: карточки 611×557, фото 467 */
+@media (min-width: 1920px) { .zm-top__row .zm-build__lead { flex-basis: 309px; font-size: 20px; line-height: 1.32; } .zm-build-grid { gap: 24px; } .zm-build-card__img { aspect-ratio: 611 / 467; } .zm-build-card__foot { padding: 29px 32px 44px; font-size: 24px; } }
 /* по фрейму 980 */
 @media (min-width: 768px) and (max-width: 1240px) { .zm-build .zm-filters { margin: 30px 0 32px; } .zm-build-grid { gap: 20px 12px; } .zm-build-card__img { aspect-ratio: auto; height: 230px; } .zm-build-card__foot { font-size: 16px; } }
 @media (max-width: 767px) { .zm-build-grid { grid-template-columns: 1fr 1fr; gap: 16px; } .zm-build-card__foot { font-size: 16px; } }

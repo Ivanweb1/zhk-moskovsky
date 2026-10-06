@@ -34,6 +34,18 @@ url: /usloviya-pokupki
 #zm-form .zm-lead-form__title { font-size: 80px; line-height: 80px; }
 
 @media (min-width: 1441px) { .zm-buy-hero__media { height: 42.3vw; } }
+/* ≥1920 — по фрейму «Условия покупки / 1920»: ряды 930 + 930 × 507 */
+@media (min-width: 1920px) {
+  .zm-cond__row { grid-template-columns: 1fr 1fr; }
+  .zm-cond__card { padding: 40px; }
+  .zm-cond__card h2 { font-size: 48px; line-height: 41px; }
+  .zm-cond__lead, .zm-cond__card ul { font-size: 20px; line-height: 24px; }
+  .zm-cond__card .zm-text { font-size: 20px; line-height: 1.24; }
+  .zm-cond__card .zm-btn { min-height: 69px; padding: 20px 40px; font-size: 20px; }
+  #zm-form .zm-lead-form__box { min-height: 789px; }
+  #zm-form .zm-lead-form__title { font-size: 113px; line-height: 110px; }
+  #zm-form .zm-lead-form__sub { margin-top: 40px; }
+}
 /* 768–1240 — по фрейму «Условия покупки / 980» */
 @media (min-width: 768px) and (max-width: 1240px) {
   .zm-buy-hero h1 { margin-top: 33px; font-size: calc(var(--zm-h) * 10 / 13); }
@@ -51,7 +63,9 @@ url: /usloviya-pokupki
   .zm-cond__card .zm-text { font-size: 16px; line-height: 1.24; }
   #zm-form .zm-lead-form__box { min-height: 656px; }
   #zm-form .zm-lead-form__title { font-size: 80px; line-height: 80px; }
+  #zm-form .zm-lead-form__sub { margin-top: 47px; }
 }
+@media (min-width: 1241px) and (max-width: 1919px) { #zm-form .zm-lead-form__sub { margin-top: 46px; } } /* по фрейму 1440 */
 @media (max-width: 767px) {
   .zm-buy-hero__media { height: 520px; }
 }
@@ -163,5 +177,5 @@ url: /usloviya-pokupki
 
   {{> faq q1="Какой минимальный первоначальный взнос по ипотеке?" q2="Можно ли использовать материнский капитал?" q3="Есть ли рассрочка от застройщика и на каких условиях?" q4="Lorem ipsum dolor sit amet consectetur?" q5="Lorem ipsum dolor sit amet consectetur?" q6="Lorem ipsum dolor sit amet consectetur?"}}
 
-  {{> lead-form title="Получите персональную консультацию по условиям покупки" name="Условия покупки — консультация" button="Получить подборку квартир" fields="full"}}
+  {{> lead-form title="Получите<br>персональную консультацию<br>по условиям покупки" name="Условия покупки — консультация" button="Получить подборку квартир" fields="full"}}
 </div>

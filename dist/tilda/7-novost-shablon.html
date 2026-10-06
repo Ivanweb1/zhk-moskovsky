@@ -55,6 +55,8 @@
 .zm-section--last, .zm > section:last-of-type { padding-bottom: var(--zm-section); }
 
 /* ---------- Заголовки ---------- */
+.zm-br1920 { display: none; }
+@media (min-width: 1920px) { .zm-br1920 { display: block; } } /* перенос строки только во фрейме 1920 */
 .zm-h1, .zm-h2 {
   font-family: var(--zm-head);
   font-weight: 400;
@@ -174,6 +176,14 @@
 .zm-faq__item.is-open .zm-faq__a { grid-template-rows: 1fr; }
 .zm-faq__a > div { overflow: hidden; }
 .zm-faq__a .zm-text { padding: 0 35px 28px; max-width: 1000px; font-size: 18px; line-height: 25px; color: rgba(19,38,64,.72); }
+/* фрейм 1920: пункты 1880×122, иконка 63 */
+@media (min-width: 1920px) {
+  .zm-faq { margin-top: 50px; }
+  .zm-faq__q { min-height: 122px; padding: 30px 48px; font-size: 24px; line-height: 27px; }
+  .zm-faq__icon { width: 63px; height: 63px; }
+  .zm-faq__icon::before, .zm-faq__icon::after { left: 17px; top: 31px; width: 29px; }
+  .zm-faq__a .zm-text { padding: 0 48px 30px; font-size: 20px; line-height: 28px; }
+}
 @media (max-width: 767px) { .zm-faq__q { font-size: 18px; } }
 @media (max-width: 640px) {
   .zm-faq { gap: 12px; margin-top: 32px; }
@@ -221,7 +231,7 @@
 .zm-form.is-sent .zm-form__grid { display: none; }
 .zm-form.is-sent .zm-form__done { display: block; }
 .zm-form__note { margin-top: 20px; font-size: 16px; line-height: 24px; opacity: .64; }
-@media (min-width: 1920px) { .zm-lead-form__title { font-size: 140px; line-height: 120px; } }
+@media (min-width: 1920px) { .zm-lead-form { grid-template-columns: 637fr 1233fr; } .zm-lead-form__box { min-height: 665px; padding: 47px 20px; } .zm-lead-form__title { font-size: 140px; line-height: 120px; } .zm-lead-form__sub { margin: 23px 0 32px; } } /* фрейм 1920 */
 @media (max-width: 1240px) { .zm-lead-form__title { font-size: 90px; line-height: 80px; } }
 /* 768–1240 — по фрейму 980: фото 940×592 сверху, под ним карточка 940×548, поля 2×2 по 55 */
 @media (min-width: 768px) and (max-width: 1240px) {
@@ -281,6 +291,8 @@
 .zm-news-card:hover .zm-news-card__date { color: rgba(255,255,255,.46); }
 .zm-news-card:hover .zm-news-card__img img { transform: scale(1.03); }
 @media (max-width: 1240px) { .zm-news-card__title { font-size: 22px; line-height: 30px; } .zm-news-card__text { font-size: 16px; } }
+/* фрейм 1920: фото 612×444, метки 20px, вкладки 67 */
+@media (min-width: 1920px) { .zm-news-card__img { height: 444px; } .zm-news-card__tags .zm-pill { padding: 12px 24px; font-size: 20px; line-height: 25px; } .zm-tab { padding: 24px 48px; font-size: 24px; } }
 /* фрейм 980: фото 464×328, текстовая часть 193 */
 @media (min-width: 768px) and (max-width: 1240px) { .zm-news-card__img { height: 328px; margin-bottom: -19px; } .zm-news-card__body { min-height: 193px; } .zm-news-card__title { font-size: 20px; line-height: 1.24; margin-bottom: 0; } }
 @media (max-width: 640px) {
@@ -392,6 +404,22 @@
 .zm-more .zm-slider__track { --zm-gap: 24px; }
 .zm-more .zm-slider__track > * { width: calc((100% - 24px) / 2); }
 
+/* ≥1920 — по фрейму «Новость / 1920» */
+@media (min-width: 1920px) {
+  .zm-post-hero { grid-template-columns: 920fr 880fr; gap: 40px; }
+  .zm-post-hero__img { min-height: 667px; }
+  .zm-post-back { min-height: 67px; font-size: 20px; }
+  .zm-post-hero__tags .zm-pill { padding: 12px 24px; font-size: 24px; line-height: 25px; }
+  .zm-post-hero h1 { font-size: 72px; margin-bottom: 24px; }
+  .zm-post-hero__sub { font-size: 24px; line-height: 1.32; }
+  .zm-post-hero__date { font-size: 20px; }
+  .zm-post { grid-template-columns: 912fr 920fr; gap: 40px 48px; margin-top: 60px; }
+  .zm-post__text { font-size: 20px; line-height: 1.32; }
+  .zm-post__text h2 { font-size: 48px; }
+  .zm-post__text h3 { font-size: 32px; }
+  .zm-post__gal figure { aspect-ratio: 920 / 667; }
+  .zm-post__gal .zm-arrow { --zm-arrow: 69px; margin-top: -35px; }
+}
 /* 768–1240 — по фрейму «Новость / 980»: шапка 940×409, текст во всю ширину, галерея после текста */
 @media (min-width: 768px) and (max-width: 1240px) {
   .zm-post-hero { grid-template-columns: 399fr 481fr; margin-top: 35px; }

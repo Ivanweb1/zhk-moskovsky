@@ -50,6 +50,16 @@ url: /raschet-ipoteki
 .zm-bk .zm-arrow { --zm-arrow: 48px; align-self: flex-end; border-radius: 12px; margin: 0 8px 4px 0; }
 .zm-bk__best { position: absolute; right: 0; top: 0; padding: 8px 24px; border-radius: 50px; background: var(--zm-blue-2); color: #fff; font-size: 16px; line-height: 24px; letter-spacing: 0; }
 
+/* ≥1920 — по фрейму «Расчёт ипотеки / 1920» */
+@media (min-width: 1920px) {
+  .zm-calc-tabs { margin: 0 0 38px; }
+  .zm-calc-tabs .zm-tab { padding: 24px 48px; font-size: 24px; }
+  .zm-calc { grid-template-columns: 626fr 1234fr; }
+  .zm-calc__form { gap: 24px; }
+  .zm-calc__label { font-size: 18px; line-height: 25px; }
+  .zm-calc__select select { height: 65px; }
+  .zm-calc__hint { font-size: 18px; }
+}
 /* 768–1240 — по фрейму «Расчёт ипотеки / 980»: параметры сеткой 2×2, банки под ними (список 660 с прокруткой) */
 @media (min-width: 768px) and (max-width: 1240px) {
   .zm-calc-page-top .zm-top__row { flex-direction: column; align-items: flex-start; gap: 12px; }
