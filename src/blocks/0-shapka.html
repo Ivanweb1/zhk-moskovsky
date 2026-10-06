@@ -27,13 +27,24 @@ part: header
   .zm-hd__msg { margin-left: 211px; }
 }
 @media (max-width: 1300px) { .zm-hd__choose { margin-left: 24px; } .zm-hd__nav { gap: 24px; margin-left: 32px; } .zm-hd__msg { margin-left: 24px; } }
-@media (max-width: 1080px) {
+/* 980–1240: по фрейму 980 — плашка 940×65, лого 100×45, меню 12px, мессенджеры 30px */
+@media (max-width: 1240px) {
+  .zm-hd__bar { height: 65px; padding: 10px 15px; }
+  .zm-hd__logo img { width: 100px; height: 45px; }
+  .zm-hd__choose { margin-left: 16px; }
+  .zm-hd__nav { gap: 12px; margin-left: 15px; }
+  .zm-hd__nav .zm-hd__link { font-size: 12px; }
+  .zm-hd__msg { gap: 5px; margin-left: 16px; }
+  .zm-hd__msg img { width: 30px; height: 30px; }
+}
+@media (max-width: 979px) {
   .zm-hd { padding: 10px 12px 0; }
   .zm-hd-space { height: 72px; }
   .zm-hd__bar { height: 62px; padding: 10px; }
   .zm-hd__choose, .zm-hd__nav, .zm-hd__phone { display: none; }
   .zm-hd__logo img { width: 89px; height: 40px; }
   .zm-hd__msg { margin-left: auto; gap: 5px; }
+  .zm-hd__msg img { width: 42px; height: 42px; }
   .zm-hd__burger { display: block; margin-left: 10px; }
 }
 @media (max-width: 640px) {

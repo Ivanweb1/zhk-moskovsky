@@ -67,14 +67,14 @@
 .zm-lead { font-size: 18px; line-height: 24px; font-weight: 500; }
 .zm-text { font-size: var(--zm-text-size); line-height: 1.5; }
 .zm-text p + p { margin-top: 12px; }
-@media (max-width: 980px) { .zm-lead { font-size: 16px; line-height: 22px; } }
+@media (max-width: 767px) { .zm-lead { font-size: 16px; line-height: 22px; } }
 @media (max-width: 640px) { .zm-lead { font-size: 14px; line-height: 19px; } }
 
 /* шапка страницы: крошки + H1 (+ подзаголовок справа) */
 .zm-top { padding-top: 30px; }
 .zm-top__row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-top: 40px; }
 .zm-top__row .zm-lead { flex: 0 1 435px; padding-bottom: 8px; }
-@media (max-width: 980px) { .zm-top__row { flex-direction: column; align-items: flex-start; } .zm-top__row .zm-lead { flex: none; max-width: 520px; padding: 0; } }
+@media (max-width: 767px) { .zm-top__row { flex-direction: column; align-items: flex-start; } .zm-top__row .zm-lead { flex: none; max-width: 520px; padding: 0; } }
 @media (max-width: 640px) { .zm-top { padding-top: 20px; } .zm-top__row { margin-top: 32px; gap: 16px; } }
 
 /* ---------- Хлебные крошки ---------- */
@@ -86,7 +86,7 @@
 .zm-crumbs--light, .zm-crumbs--light span { color: #fff; }
 .zm-crumbs--light a { color: rgba(255,255,255,.5); }
 .zm-crumbs--light a:hover { color: #fff; }
-@media (max-width: 980px) { .zm-crumbs { font-size: 16px; } }
+@media (max-width: 767px) { .zm-crumbs { font-size: 16px; } }
 
 /* ---------- Кнопки ---------- */
 .zm-btn {
@@ -172,7 +172,7 @@
 .zm-faq__item.is-open .zm-faq__a { grid-template-rows: 1fr; }
 .zm-faq__a > div { overflow: hidden; }
 .zm-faq__a .zm-text { padding: 0 35px 28px; max-width: 1000px; font-size: 18px; line-height: 25px; color: rgba(19,38,64,.72); }
-@media (max-width: 980px) { .zm-faq__q { font-size: 18px; } }
+@media (max-width: 767px) { .zm-faq__q { font-size: 18px; } }
 @media (max-width: 640px) {
   .zm-faq { gap: 12px; margin-top: 32px; }
   .zm-faq__q { min-height: 82px; padding: 20px; gap: 12px; line-height: 21px; }
@@ -221,7 +221,7 @@
 .zm-form__note { margin-top: 20px; font-size: 16px; line-height: 24px; opacity: .64; }
 @media (min-width: 1920px) { .zm-lead-form__title { font-size: 140px; line-height: 120px; } }
 @media (max-width: 1240px) { .zm-lead-form__title { font-size: 90px; line-height: 80px; } }
-@media (max-width: 980px) {
+@media (max-width: 767px) {
   .zm-lead-form { grid-template-columns: 1fr; }
   .zm-lead-form__img { display: none; }
   .zm-lead-form__box { min-height: 0; }
@@ -352,7 +352,7 @@ a.zm-doc__dl:hover img { filter: brightness(0) invert(1); }
 .zm-doc__dl.is-off { opacity: .4; }
 .zm-docs__empty { grid-column: 1 / -1; padding: 40px 0; font-size: 18px; color: var(--zm-muted); }
 @media (max-width: 1240px) { .zm-doc__title { font-size: 20px; } }
-@media (max-width: 980px) { .zm-docs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 767px) { .zm-docs { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) {
   .zm-docs-page .zm-filters { margin: 24px 0; gap: 11px; }
   .zm-docs { gap: 11px; }
