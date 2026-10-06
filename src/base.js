@@ -75,13 +75,27 @@
 
   /* ---------- Формы ----------
      Куда отправлять заявку — атрибуты на <form>:
-       data-tilda-form="rec123456789"  — id блока со штатной формой Tilda на этой же странице (рекомендуется:
-                                          Tilda сама отправит заявку в подключённые CRM / почту / Telegram);
+       data-tilda-form=""              — штатная форма Tilda на этой же странице (рекомендуется: Tilda сама отправит
+                                          заявку в подключённые CRM / почту / Telegram). Пусто — ищем сами блок Tilda
+                                          с формой, где есть поле с переменной Form; можно указать id: "rec123456789".
+                                          Найденный блок прячем — посетитель видит только нашу форму;
        data-webhook="https://..."      — или свой обработчик (POST, FormData);
        data-redirect="/spasibo"        — страница «Спасибо» после отправки (необязательно).                   */
+  function findTildaForm(recId) {
+    if (recId) {
+      var rec = document.getElementById(String(recId).replace(/^#/, ''));
+      return rec && rec.querySelector('form');
+    }
+    var marker = document.querySelector('.t-rec form [name="Form"]');
+    return marker && marker.closest('form');
+  }
+  function hideTildaForm(recId) {
+    var form = findTildaForm(recId);
+    var rec = form && form.closest('.t-rec');
+    if (rec) rec.style.display = 'none';
+  }
   function sendToTilda(recId, data) {
-    var rec = document.getElementById(String(recId).replace(/^#/, ''));
-    var form = rec && rec.querySelector('form');
+    var form = findTildaForm(recId);
     if (!form) return false;
     Object.keys(data).forEach(function (key) {
       var input = form.querySelector('[name="' + key + '"]');
@@ -99,6 +113,8 @@
   function initForm(form) {
     if (form.__zm) return; form.__zm = 1;
     form.setAttribute('novalidate', '');
+    var tildaRec = form.getAttribute('data-tilda-form');
+    if (tildaRec !== null) hideTildaForm(tildaRec);
     $all('input[data-zm-phone]', form).forEach(phoneMask);
 
     function setErr(field, on) { if (field) field.classList.toggle('is-error', !!on); }
@@ -133,7 +149,7 @@
 
       var rec = form.getAttribute('data-tilda-form');
       var hook = form.getAttribute('data-webhook');
-      if (rec && sendToTilda(rec, data)) return done();
+      if (rec !== null && sendToTilda(rec, data)) return done();
       if (hook) {
         var fd = new FormData();
         Object.keys(data).forEach(function (k) { fd.append(k, data[k]); });

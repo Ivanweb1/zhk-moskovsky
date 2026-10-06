@@ -115,12 +115,11 @@ const rows = index.filter((p) => !p.part).map((p) => {
       </div>
     </div>`;
 }).join('\n    ');
-const formsOk = !!(cfg.tildaFormRec || cfg.webhook);
 fs.writeFileSync(path.join(root, 'index.html'), read('src/pult.html')
   .replaceAll('{{assetBase}}', cfg.assetBase)
   .replaceAll('{{policyUrl}}', esc(cfg.policyUrl))
-  .replace('{{formsClass}}', formsOk ? 'ok' : 'warn')
-  .replace('{{formsText}}', formsOk ? 'настроено' : 'не настроено')
+  .replace('{{formsClass}}', cfg.webhook ? 'ok' : 'warn')
+  .replace('{{formsText}}', cfg.webhook ? 'свой обработчик' : 'нужен блок BF204N')
   .replace('{{partButtons}}', partButtons)
   .replace('{{rows}}', rows));
 

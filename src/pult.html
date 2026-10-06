@@ -65,7 +65,7 @@ code { padding: 1px 6px; border-radius: 4px; background: #e8eaf3; font-size: 13p
     <label class="check"><input type="checkbox" data-key="prep-backup"><span>Сделана копия текущей главной страницы в Tilda
       <small>Главная заменяется целиком — копия на случай отката.</small></span></label>
     <label class="check"><input type="checkbox" data-key="prep-forms"><span>Заявки с форм приходят куда нужно <span class="badge {{formsClass}}">{{formsText}}</span>
-      <small>Куда отправлять заявки, задаётся в <code>config.json</code> (<code>tildaFormRec</code> или <code>webhook</code>), после правки — <code>node build.mjs</code>.</small></span></label>
+      <small>На каждой странице с формой — блок BF204N с полями Name, Phone, Time, Comment, Calc, Form, Page (тип «Поле ввода», без «обязательно»). Наша форма сама его находит и прячет. Подробно — README, раздел «Формы».</small></span></label>
     <label class="check"><input type="checkbox" data-key="prep-noindex"><span>Пока страницы не готовы — у них включён запрет индексации
       <small>В Tilda: настройки страницы → «Запретить индексацию». Превью на GitHub Pages уже закрыто от поисковиков.</small></span></label>
     <label class="check"><input type="checkbox" data-key="prep-policy"><span>Ссылка на политику обработки данных ведёт на нужную страницу
