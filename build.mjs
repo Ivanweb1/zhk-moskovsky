@@ -65,8 +65,15 @@ function prepare(file) {
   });
   return { meta, markup, scripts, name: path.basename(file, '.html'), file };
 }
+// Общие стили вшиты в каждый блок, но на странице должны действовать один раз и раньше стилей блоков:
+// иначе копия из нижнего блока (подвала) перебивает правила блоков выше. Скрипт сразу после <style>
+// переносит его в начало <head>; если там уже есть копия — остаётся более новая (ZM_V из base.js).
+const zmV = (baseJs.match(/var ZM_V = (\d+)/) || [])[1] || '0';
+const hoist = `<script>(function(s){var h=document.head||document.documentElement,c=h.querySelector('style[data-zm-base]');` +
+  `if(c&&+c.getAttribute('data-zm-v')>=+s.getAttribute('data-zm-v')){s.parentNode.removeChild(s);return;}` +
+  `if(c)c.parentNode.removeChild(c);h.insertBefore(s,h.firstChild);})(document.currentScript.previousElementSibling);</script>`;
 const full = (b, base) =>
-  `<style>\n${render(baseCss, base)}\n</style>\n` + render(b.markup, base).trim() +
+  `<style data-zm-base data-zm-v="${zmV}">\n${render(baseCss, base)}\n</style>\n${hoist}\n` + render(b.markup, base).trim() +
   `\n<script>\n${baseJs}\n</script>\n` + b.scripts.map((s) => render(s, base)).join('\n') + '\n';
 const bare = (b, base) => render(b.markup, base).trim() + '\n' + b.scripts.map((s) => render(s, base)).join('\n');
 

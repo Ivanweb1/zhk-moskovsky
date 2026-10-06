@@ -145,7 +145,7 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
-<style>
+<style data-zm-base data-zm-v="4">
 /* ===== ЖК «Московский» — общие стили блоков. Размеры — из макета Figma (фреймы 1920 / 1440 / 980 / 375).
    Всё внутри .zm, чтобы не конфликтовать со стилями Tilda. ===== */
 /* Sverdlovsk подключаем свой: в файле исправлены вертикальные метрики (ascent 696 / descent 200, как в Figma),
@@ -190,12 +190,14 @@
 @media (max-width: 767px)  { .zm { --zm-section: 64px; } }
 @media (max-width: 640px)  { .zm { --zm-h: 60px; --zm-text-size: 12px; --zm-pad: 12px; --zm-section: 64px; } }
 
-.zm :where(*, *::before, *::after) { box-sizing: border-box; }
-.zm :where(img) { display: block; max-width: 100%; }
-.zm :where(a) { color: inherit; text-decoration: none; }
-.zm :where(button) { font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
-.zm :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
-.zm :where(ul) { list-style: none; }
+/* Сброс — нулевой специфичности: общий код вшит в каждый блок, и копия из нижнего блока (например, подвала)
+   иначе перебивала бы стили блоков выше по странице — так у h1 главной обнулялся отступ. */
+:where(.zm) :where(*, *::before, *::after) { box-sizing: border-box; }
+:where(.zm) :where(img) { display: block; max-width: 100%; }
+:where(.zm) :where(a) { color: inherit; text-decoration: none; }
+:where(.zm) :where(button) { font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
+:where(.zm) :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
+:where(.zm) :where(ul) { list-style: none; }
 .zm [hidden] { display: none !important; }
 
 .zm-container { width: 100%; padding: 0 var(--zm-pad); }
@@ -535,6 +537,7 @@
 }
 
 </style>
+<script>(function(s){var h=document.head||document.documentElement,c=h.querySelector('style[data-zm-base]');if(c&&+c.getAttribute('data-zm-v')>=+s.getAttribute('data-zm-v')){s.parentNode.removeChild(s);return;}if(c)c.parentNode.removeChild(c);h.insertBefore(s,h.firstChild);})(document.currentScript.previousElementSibling);</script>
 <style>
 .zm-calc-tabs { margin: 25px 0 32px; }
 .zm-calc { display: grid; grid-template-columns: 491fr 909fr; gap: 20px; align-items: start; }
@@ -764,7 +767,7 @@
   // Версия общего кода. Он вшит в каждый блок, и на странице могут оказаться копии разных версий
   // (например, шапка вставлена раньше страницы). Первая запустившаяся копия занимает window.ZM —
   // поэтому более новая копия её заменяет. При правках base.js увеличивайте число.
-  var ZM_V = 3;
+  var ZM_V = 4;
   if (window.ZM && (window.ZM.v || 0) >= ZM_V) { window.ZM.init(); return; }
 
   var ICON = {
