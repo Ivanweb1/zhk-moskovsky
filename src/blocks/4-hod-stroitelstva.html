@@ -15,6 +15,8 @@ url: /hod-stroitelstva
 .zm-build-card:hover { background: var(--zm-navy); color: #fff; }
 .zm-build-card:hover img { transform: scale(1.03); }
 .zm-build-empty { grid-column: 1 / -1; padding: 40px 0; color: var(--zm-muted); font-size: 18px; }
+/* по фрейму 1440 */
+@media (min-width: 1241px) and (max-width: 1919px) { .zm-build .zm-top__row { margin-top: 64px; } .zm-build .zm-filters { margin-top: 69px; } .zm-top__row .zm-build__lead { padding-bottom: 19px; } }
 @media (max-width: 980px) { .zm-build-grid { grid-template-columns: 1fr 1fr; gap: 16px; } .zm-build-card__foot { font-size: 16px; } }
 @media (max-width: 640px) {
   .zm-build .zm-filters { margin: 24px 0; }

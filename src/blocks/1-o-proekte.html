@@ -35,7 +35,8 @@ url: /o-proekte
 .zm-adv .zm-arrows { position: absolute; right: 20px; bottom: 20px; --zm-arrow: 48px; }
 
 /* Локация: карточки 360×270, карта 1020×1140 */
-.zm-loc__head { display: flex; align-items: center; justify-content: space-between; gap: 10px 40px; margin-bottom: 50px; }
+.zm-loc__head { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-bottom: 82px; }
+@media (min-width: 1241px) and (max-width: 1919px) { .zm-loc__head { margin-top: 36px; } } /* по фрейму 1440 */
 .zm-loc__head p { flex: 0 1 300px; font-size: 14px; line-height: 19px; font-weight: 500; }
 .zm-loc { display: grid; grid-template-columns: 360fr 1020fr; gap: 20px; }
 .zm-loc__list { display: flex; flex-direction: column; gap: 20px; }

@@ -4,6 +4,9 @@ url: /dokumenty
 -->
 <style>
 /* Карточка документа 453×116: плашка вида, иконка 41×48, название Medium 24, кнопка 48×48 */
+.zm-docs-h1 { margin-top: 40px; }
+@media (min-width: 1241px) and (max-width: 1919px) { .zm-docs-h1 { margin-top: 74px; } } /* по фрейму 1440 */
+@media (max-width: 640px) { .zm-docs-h1 { margin-top: 70px; } } /* по фрейму 375 */
 .zm-docs-sub { margin-top: 1px; }
 .zm-docs-page .zm-filters { margin: 40px 0; gap: 14px; }
 .zm-docs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -41,7 +44,7 @@ a.zm-doc__dl:hover img { filter: brightness(0) invert(1); }
 <div class="zm zm-docs-page" id="zm-docs-page">
   <section class="zm-container zm-top">
     <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Документы</span></nav>
-    <h1 class="zm-h1" style="margin-top:40px">Документы</h1>
+    <h1 class="zm-h1 zm-docs-h1">Документы</h1>
     <p class="zm-lead zm-docs-sub">Официальные документы ЖК «Московский»</p>
     <div class="zm-filters">
       <div class="zm-select"><select data-f="kind" aria-label="Вид документа"><option value="">Вид документа</option></select></div>

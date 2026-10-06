@@ -154,7 +154,14 @@ preview: glavnaya
   .zm-hab__card:nth-child(3) { gap: 124px; }
   .zm-dev__col:nth-child(3) .zm-dev__card:first-child { flex: none; height: 358px; }
   .zm-dev__col:nth-child(3) .zm-dev__card:last-child { flex: none; height: 396px; gap: 0; }
+  .zm-hnews__head { margin-bottom: 50px; }
   .zm-hnews__head .zm-h2 { height: 136px; line-height: 200px; }
+  /* эти заголовки выверены по фрейму 1440 до исправления метрик шрифта — держим их на прежнем месте */
+  .zm-hab .zm-h2, .zm-harch .zm-h2, .zm-hplans .zm-h2, .zm-hdev .zm-h2, .zm-hbuild .zm-h2, .zm-hfaq .zm-h2,
+  .zm-hab__card b { position: relative; top: .2em; }
+  .zm-hh__title span { position: relative; top: 18px; }
+  .zm-pick__title { margin-top: 18px; line-height: 75px; }
+  .zm-dev__col:nth-child(2) .zm-dev__card b { position: relative; top: -20px; }
   .zm-hnews .zm-pill { padding: 8px 24px; font-size: 18px; }
   .zm-hnews .zm-news-card__text { font-size: 16px; }
   .zm-hfaq__head p:first-child { max-width: 275px; }
@@ -167,7 +174,7 @@ preview: glavnaya
   .zm-hh__pills li { padding: 6px 16px; border-radius: 20px; font-size: 18px; line-height: 25px; }
   .zm-hh__title { margin: 46px 0 0; }
   .zm-hh__title small { font-size: 70px; line-height: 70px; margin-bottom: 0; }
-  .zm-hh__title span { font-size: 140px; line-height: 70px; padding-top: 0; margin-top: -15px; }
+  .zm-hh__title span { font-size: 140px; line-height: 70px; padding-top: 0; margin-top: -15px; position: relative; top: 34px; }
   .zm-hh__text { max-width: 481px; font-size: 18px; line-height: 25px; }
   .zm-hh__card .zm-btn { min-height: 58px; margin-top: 47px; padding: 16px 60px; font-size: 16px; line-height: 24.8px; }
 
@@ -184,7 +191,7 @@ preview: glavnaya
   /* Локация: карточки 485×289, карта 1375×1216 */
   .zm-hloc { padding-top: 221px; }
   .zm-loc__head { margin-bottom: 29px; align-items: flex-end; }
-  .zm-loc__head .zm-h2 { flex: 0 1 1512px; white-space: normal; min-height: 800px; }
+  .zm-loc__head .zm-h2 { flex: 0 1 1512px; white-space: normal; min-height: 800px; padding: 100px 0; } /* в макете 3 строки по центру блока 800 */
   .zm-br1920 { display: block; }
   .zm-loc__head p { flex: none; width: 448px; font-size: 18px; line-height: 24px; padding-bottom: 21px; }
   .zm-loc { grid-template-columns: 485fr 1375fr; }
@@ -362,7 +369,7 @@ preview: glavnaya
   .zm-hh__card { min-height: 463px; }
   .zm-hh__title { margin: 24px 0 0; }
   .zm-hh__title small { font-size: 30px; line-height: 30px; max-width: 160px; margin-bottom: 0; }
-  .zm-hh__title span { font-size: 50px; line-height: 25px; padding-top: 30px; position: relative; top: -40px; }
+  .zm-hh__title span { font-size: 50px; line-height: 25px; padding-top: 30px; position: relative; top: -20px; }
   .zm-hh__text { margin-top: 50px; }
 
   .zm-home .zm-hab { padding-top: 50px; }

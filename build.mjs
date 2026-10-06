@@ -61,7 +61,7 @@ function prepare(file) {
   return { meta, markup, scripts, name: path.basename(file, '.html'), file };
 }
 const full = (b, base) =>
-  `<style>\n${baseCss}\n</style>\n` + render(b.markup, base).trim() +
+  `<style>\n${render(baseCss, base)}\n</style>\n` + render(b.markup, base).trim() +
   `\n<script>\n${baseJs}\n</script>\n` + b.scripts.map((s) => render(s, base)).join('\n') + '\n';
 const bare = (b, base) => render(b.markup, base).trim() + '\n' + b.scripts.map((s) => render(s, base)).join('\n');
 

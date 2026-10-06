@@ -18,6 +18,8 @@ url: /novosti
 .zm-pager__num:hover { color: var(--zm-navy); }
 .zm-pager__num.is-active { background: var(--zm-navy); color: #fff; }
 .zm-pager__dots { pointer-events: none; }
+/* по фрейму 1440 */
+@media (min-width: 1241px) and (max-width: 1919px) { .zm-news-top__row { margin-top: 62px; } .zm-news-bar { margin-top: 76px; } }
 @media (max-width: 980px) { .zm-news-grid { grid-template-columns: 1fr 1fr; } .zm-news-top__row { flex-direction: column; align-items: flex-start; } .zm-news-top__row p { flex: none; padding: 0; } }
 @media (max-width: 640px) {
   .zm-news-top__row { margin-top: 32px; gap: 16px; }

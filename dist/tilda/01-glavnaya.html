@@ -3,9 +3,13 @@
 <style>
 /* ===== ЖК «Московский» — общие стили блоков. Размеры — из макета Figma (фреймы 1920 / 1440 / 980 / 375).
    Всё внутри .zm, чтобы не конфликтовать со стилями Tilda. ===== */
+/* Sverdlovsk подключаем свой: в файле исправлены вертикальные метрики (ascent 696 / descent 200, как в Figma),
+   иначе браузер ставит буквы на 0.24em ниже макета, и вёрстка зависит от того, какой файл загружен в Tilda. */
+@font-face { font-family: 'ZM Sverdlovsk'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url(https://ivanweb1.github.io/zhk-moskovsky/assets/fonts/zm-sverdlovsk.woff2) format('woff2'), url(https://ivanweb1.github.io/zhk-moskovsky/assets/fonts/zm-sverdlovsk.woff) format('woff'); }
 .zm {
-  /* Шрифты берутся из настроек сайта Tilda (--t-headline-font / --t-text-font); в макете — Sverdlovsk и Manrope */
-  --zm-head: var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;
+  /* Заголовки — свой Sverdlovsk (см. выше), текст — шрифт из настроек сайта Tilda (--t-text-font); в макете — Manrope */
+  --zm-head: 'ZM Sverdlovsk', var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;
   --zm-text: var(--t-text-font, 'Manrope'), Arial, sans-serif;
   --zm-navy: #132640;
   --zm-navy-hover: #1f3d6b;
@@ -150,6 +154,8 @@
 @media (max-width: 640px) { .zm-stats { gap: 20px; } .zm-stats li { font-size: 40px; } }
 
 /* ---------- Аккордеон FAQ ---------- */
+/* выверено по фрейму 1440 до исправления метрик шрифта */
+@media (min-width: 1241px) and (max-width: 1919px) { .zm-faq__title { position: relative; top: .2em; } }
 .zm-faq { display: flex; flex-direction: column; gap: 8px; margin-top: 40px; }
 .zm-faq__item { background: var(--zm-card); border-radius: 8px; }
 .zm-faq__q {
@@ -223,7 +229,7 @@
 }
 @media (max-width: 640px) {
   .zm-lead-form__box { padding: 20px; }
-  .zm-lead-form__title { font-size: 40px; line-height: 48px; }
+  .zm-lead-form__title { font-size: 40px; line-height: 48px; margin-right: -14px; } /* как в макете: «Получите точный расчёт» в одну строку */
   .zm-lead-form__sub { font-size: 16px; margin: 24px 0 16px; }
   .zm-form__grid { grid-template-columns: 1fr; gap: 12px; }
   .zm-field input { height: 55px; font-size: 14px; }
@@ -473,7 +479,14 @@
   .zm-hab__card:nth-child(3) { gap: 124px; }
   .zm-dev__col:nth-child(3) .zm-dev__card:first-child { flex: none; height: 358px; }
   .zm-dev__col:nth-child(3) .zm-dev__card:last-child { flex: none; height: 396px; gap: 0; }
+  .zm-hnews__head { margin-bottom: 50px; }
   .zm-hnews__head .zm-h2 { height: 136px; line-height: 200px; }
+  /* эти заголовки выверены по фрейму 1440 до исправления метрик шрифта — держим их на прежнем месте */
+  .zm-hab .zm-h2, .zm-harch .zm-h2, .zm-hplans .zm-h2, .zm-hdev .zm-h2, .zm-hbuild .zm-h2, .zm-hfaq .zm-h2,
+  .zm-hab__card b { position: relative; top: .2em; }
+  .zm-hh__title span { position: relative; top: 18px; }
+  .zm-pick__title { margin-top: 18px; line-height: 75px; }
+  .zm-dev__col:nth-child(2) .zm-dev__card b { position: relative; top: -20px; }
   .zm-hnews .zm-pill { padding: 8px 24px; font-size: 18px; }
   .zm-hnews .zm-news-card__text { font-size: 16px; }
   .zm-hfaq__head p:first-child { max-width: 275px; }
@@ -486,7 +499,7 @@
   .zm-hh__pills li { padding: 6px 16px; border-radius: 20px; font-size: 18px; line-height: 25px; }
   .zm-hh__title { margin: 46px 0 0; }
   .zm-hh__title small { font-size: 70px; line-height: 70px; margin-bottom: 0; }
-  .zm-hh__title span { font-size: 140px; line-height: 70px; padding-top: 0; margin-top: -15px; }
+  .zm-hh__title span { font-size: 140px; line-height: 70px; padding-top: 0; margin-top: -15px; position: relative; top: 34px; }
   .zm-hh__text { max-width: 481px; font-size: 18px; line-height: 25px; }
   .zm-hh__card .zm-btn { min-height: 58px; margin-top: 47px; padding: 16px 60px; font-size: 16px; line-height: 24.8px; }
 
@@ -503,7 +516,7 @@
   /* Локация: карточки 485×289, карта 1375×1216 */
   .zm-hloc { padding-top: 221px; }
   .zm-loc__head { margin-bottom: 29px; align-items: flex-end; }
-  .zm-loc__head .zm-h2 { flex: 0 1 1512px; white-space: normal; min-height: 800px; }
+  .zm-loc__head .zm-h2 { flex: 0 1 1512px; white-space: normal; min-height: 800px; padding: 100px 0; } /* в макете 3 строки по центру блока 800 */
   .zm-br1920 { display: block; }
   .zm-loc__head p { flex: none; width: 448px; font-size: 18px; line-height: 24px; padding-bottom: 21px; }
   .zm-loc { grid-template-columns: 485fr 1375fr; }
@@ -681,7 +694,7 @@
   .zm-hh__card { min-height: 463px; }
   .zm-hh__title { margin: 24px 0 0; }
   .zm-hh__title small { font-size: 30px; line-height: 30px; max-width: 160px; margin-bottom: 0; }
-  .zm-hh__title span { font-size: 50px; line-height: 25px; padding-top: 30px; position: relative; top: -40px; }
+  .zm-hh__title span { font-size: 50px; line-height: 25px; padding-top: 30px; position: relative; top: -20px; }
   .zm-hh__text { margin-top: 50px; }
 
   .zm-home .zm-hab { padding-top: 50px; }

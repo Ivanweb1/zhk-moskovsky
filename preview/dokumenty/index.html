@@ -111,9 +111,13 @@
 <style>
 /* ===== ЖК «Московский» — общие стили блоков. Размеры — из макета Figma (фреймы 1920 / 1440 / 980 / 375).
    Всё внутри .zm, чтобы не конфликтовать со стилями Tilda. ===== */
+/* Sverdlovsk подключаем свой: в файле исправлены вертикальные метрики (ascent 696 / descent 200, как в Figma),
+   иначе браузер ставит буквы на 0.24em ниже макета, и вёрстка зависит от того, какой файл загружен в Tilda. */
+@font-face { font-family: 'ZM Sverdlovsk'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url(../../assets/fonts/zm-sverdlovsk.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk.woff) format('woff'); }
 .zm {
-  /* Шрифты берутся из настроек сайта Tilda (--t-headline-font / --t-text-font); в макете — Sverdlovsk и Manrope */
-  --zm-head: var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;
+  /* Заголовки — свой Sverdlovsk (см. выше), текст — шрифт из настроек сайта Tilda (--t-text-font); в макете — Manrope */
+  --zm-head: 'ZM Sverdlovsk', var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;
   --zm-text: var(--t-text-font, 'Manrope'), Arial, sans-serif;
   --zm-navy: #132640;
   --zm-navy-hover: #1f3d6b;
@@ -258,6 +262,8 @@
 @media (max-width: 640px) { .zm-stats { gap: 20px; } .zm-stats li { font-size: 40px; } }
 
 /* ---------- Аккордеон FAQ ---------- */
+/* выверено по фрейму 1440 до исправления метрик шрифта */
+@media (min-width: 1241px) and (max-width: 1919px) { .zm-faq__title { position: relative; top: .2em; } }
 .zm-faq { display: flex; flex-direction: column; gap: 8px; margin-top: 40px; }
 .zm-faq__item { background: var(--zm-card); border-radius: 8px; }
 .zm-faq__q {
@@ -331,7 +337,7 @@
 }
 @media (max-width: 640px) {
   .zm-lead-form__box { padding: 20px; }
-  .zm-lead-form__title { font-size: 40px; line-height: 48px; }
+  .zm-lead-form__title { font-size: 40px; line-height: 48px; margin-right: -14px; } /* как в макете: «Получите точный расчёт» в одну строку */
   .zm-lead-form__sub { font-size: 16px; margin: 24px 0 16px; }
   .zm-form__grid { grid-template-columns: 1fr; gap: 12px; }
   .zm-field input { height: 55px; font-size: 14px; }
@@ -432,6 +438,9 @@
 </style>
 <style>
 /* Карточка документа 453×116: плашка вида, иконка 41×48, название Medium 24, кнопка 48×48 */
+.zm-docs-h1 { margin-top: 40px; }
+@media (min-width: 1241px) and (max-width: 1919px) { .zm-docs-h1 { margin-top: 74px; } } /* по фрейму 1440 */
+@media (max-width: 640px) { .zm-docs-h1 { margin-top: 70px; } } /* по фрейму 375 */
 .zm-docs-sub { margin-top: 1px; }
 .zm-docs-page .zm-filters { margin: 40px 0; gap: 14px; }
 .zm-docs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -469,7 +478,7 @@ a.zm-doc__dl:hover img { filter: brightness(0) invert(1); }
 <div class="zm zm-docs-page" id="zm-docs-page">
   <section class="zm-container zm-top">
     <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Документы</span></nav>
-    <h1 class="zm-h1" style="margin-top:40px">Документы</h1>
+    <h1 class="zm-h1 zm-docs-h1">Документы</h1>
     <p class="zm-lead zm-docs-sub">Официальные документы ЖК «Московский»</p>
     <div class="zm-filters">
       <div class="zm-select"><select data-f="kind" aria-label="Вид документа"><option value="">Вид документа</option></select></div>
@@ -480,7 +489,7 @@ a.zm-doc__dl:hover img { filter: brightness(0) invert(1); }
 
   <section class="zm-section">
   <div class="zm-container">
-    <h2 class="zm-h2">Вопросы и ответы</h2>
+    <h2 class="zm-h2 zm-faq__title">Вопросы и ответы</h2>
     <div class="zm-faq">
       <div class="zm-faq__item">
         <button class="zm-faq__q" type="button"><span>01. Где можно посмотреть разрешение на строительство?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
