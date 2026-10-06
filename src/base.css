@@ -42,14 +42,12 @@
 @media (max-width: 767px)  { .zm { --zm-section: 64px; } }
 @media (max-width: 640px)  { .zm { --zm-h: 60px; --zm-text-size: 12px; --zm-pad: 12px; --zm-section: 64px; } }
 
-/* Сброс — нулевой специфичности: общий код вшит в каждый блок, и копия из нижнего блока (например, подвала)
-   иначе перебивала бы стили блоков выше по странице — так у h1 главной обнулялся отступ. */
-:where(.zm) :where(*, *::before, *::after) { box-sizing: border-box; }
-:where(.zm) :where(img) { display: block; max-width: 100%; }
-:where(.zm) :where(a) { color: inherit; text-decoration: none; }
-:where(.zm) :where(button) { font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
-:where(.zm) :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
-:where(.zm) :where(ul) { list-style: none; }
+.zm :where(*, *::before, *::after) { box-sizing: border-box; }
+.zm :where(img) { display: block; max-width: 100%; border: 0; }
+.zm :where(a) { color: inherit; text-decoration: none; }
+.zm :where(button) { font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
+.zm :where(h1, h2, h3, h4, p, ul, ol, figure) { margin: 0; padding: 0; }
+.zm :where(ul) { list-style: none; }
 .zm [hidden] { display: none !important; }
 
 .zm-container { width: 100%; padding: 0 var(--zm-pad); }

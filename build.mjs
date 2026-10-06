@@ -67,11 +67,12 @@ function prepare(file) {
 }
 // Общие стили вшиты в каждый блок, но на странице должны действовать один раз и раньше стилей блоков:
 // иначе копия из нижнего блока (подвала) перебивает правила блоков выше. Скрипт сразу после <style>
-// переносит его в начало <head>; если там уже есть копия — остаётся более новая (ZM_V из base.js).
+// переносит его в начало <body> — после CSS Tilda в <head> (как и было), но до всех блоков.
+// Если копия там уже есть, остаётся более новая (ZM_V из base.js).
 const zmV = (baseJs.match(/var ZM_V = (\d+)/) || [])[1] || '0';
-const hoist = `<script>(function(s){var h=document.head||document.documentElement,c=h.querySelector('style[data-zm-base]');` +
+const hoist = `<script>(function(s){var b=document.body,c=document.querySelector('style[data-zm-hoisted]');if(!b||!s)return;` +
   `if(c&&+c.getAttribute('data-zm-v')>=+s.getAttribute('data-zm-v')){s.parentNode.removeChild(s);return;}` +
-  `if(c)c.parentNode.removeChild(c);h.insertBefore(s,h.firstChild);})(document.currentScript.previousElementSibling);</script>`;
+  `if(c)c.parentNode.removeChild(c);s.setAttribute('data-zm-hoisted','');b.insertBefore(s,b.firstChild);})(document.currentScript.previousElementSibling);</script>`;
 const full = (b, base) =>
   `<style data-zm-base data-zm-v="${zmV}">\n${render(baseCss, base)}\n</style>\n${hoist}\n` + render(b.markup, base).trim() +
   `\n<script>\n${baseJs}\n</script>\n` + b.scripts.map((s) => render(s, base)).join('\n') + '\n';

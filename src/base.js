@@ -3,7 +3,7 @@
   // Версия общего кода. Он вшит в каждый блок, и на странице могут оказаться копии разных версий
   // (например, шапка вставлена раньше страницы). Первая запустившаяся копия занимает window.ZM —
   // поэтому более новая копия её заменяет. При правках base.js увеличивайте число.
-  var ZM_V = 4;
+  var ZM_V = 5;
   if (window.ZM && (window.ZM.v || 0) >= ZM_V) { window.ZM.init(); return; }
 
   var ICON = {
@@ -354,6 +354,8 @@
     if (sel.__zm) return; sel.__zm = 1;
     var upd = function () { sel.classList.toggle('is-empty', !sel.value); };
     sel.addEventListener('change', upd); upd();
+    // варианты может добавить скрипт блока уже после подключения (если общий код раньше запустился в шапке)
+    if (window.MutationObserver) new MutationObserver(upd).observe(sel, { childList: true });
   }
 
   /* ---------- Анимации как на текущей главной сайта ----------
