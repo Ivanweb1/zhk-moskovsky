@@ -345,9 +345,10 @@
 
 /* ---------- Форма заявки ---------- */
 .zm-lead-form { display: grid; grid-template-columns: 501fr 889fr; gap: 10px; }
-.zm-lead-form__img { border-radius: 10px; overflow: hidden; }
-.zm-lead-form__img img { width: 100%; height: 100%; object-fit: cover; }
-.zm-lead-form__box { min-height: 566px; padding: 40px 20px 40px; border-radius: 10px; background: var(--zm-navy); color: var(--zm-bg); }
+.zm-lead-form__img { position: relative; border-radius: 10px; overflow: hidden; }
+/* фото не растягивает блок: высоту задаёт карточка с формой, как в макете */
+.zm-lead-form__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.zm-lead-form__box { min-height: 566px; padding: 40px 20px 31px; border-radius: 10px; background: var(--zm-navy); color: var(--zm-bg); }
 .zm-lead-form__title { font-family: var(--zm-head); font-weight: 400; font-size: 105px; line-height: 100px; letter-spacing: 0; text-transform: uppercase; color: var(--zm-bg); }
 .zm-lead-form__sub { font-size: 18px; line-height: 25px; letter-spacing: 0; margin: 28px 0 32px; }
 .zm-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; }
@@ -381,7 +382,7 @@
 .zm-form.is-sent .zm-form__grid { display: none; }
 .zm-form.is-sent .zm-form__done { display: block; }
 .zm-form__note { margin-top: 20px; font-size: 16px; line-height: 24px; opacity: .64; }
-@media (min-width: 1920px) { .zm-lead-form { grid-template-columns: 637fr 1233fr; } .zm-lead-form__box { min-height: 665px; padding: 47px 20px; } .zm-lead-form__title { font-size: 140px; line-height: 120px; } .zm-lead-form__sub { margin: 23px 0 32px; } } /* фрейм 1920 */
+@media (min-width: 1920px) { .zm-lead-form { grid-template-columns: 637fr 1233fr; } .zm-lead-form__box { min-height: 665px; padding: 47px 20px 15px; } .zm-lead-form__title { font-size: 140px; line-height: 120px; } .zm-lead-form__sub { margin: 23px 0 32px; } } /* фрейм 1920 */
 @media (max-width: 1240px) { .zm-lead-form__title { font-size: 90px; line-height: 80px; } }
 /* 768–1240 — по фрейму 980: фото 940×592 сверху, под ним карточка 940×548, поля 2×2 по 55 */
 @media (min-width: 768px) and (max-width: 1240px) {
@@ -854,7 +855,7 @@
   <section class="zm-section zm-section--last" id="zm-form">
   <div class="zm-container">
     <div class="zm-lead-form">
-      <div class="zm-lead-form__img"><img src="../../assets/img/form-building.jpg" alt="ЖК «Московский»" loading="lazy"></div>
+      <div class="zm-lead-form__img"><img src="../../assets/img/lead-form.jpg" alt="ЖК «Московский»" loading="lazy"></div>
       <div class="zm-lead-form__box">
         <h2 class="zm-lead-form__title">Получите точный расчёт и консультацию</h2>
         <p class="zm-lead-form__sub">Менеджер перезвонит в течение 15–30 минут и ответит на все вопросы</p>
