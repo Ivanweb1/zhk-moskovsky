@@ -409,8 +409,8 @@
    1241 → отступы 24 / между пунктами 20, 1440 → 48 / 36, дальше до 66 / 50 */
 .zm-hd { --hd-m: clamp(24px, calc(24px + (100vw - 1241px) * .12), 66px); --hd-g: clamp(20px, calc(20px + (100vw - 1241px) * .08), 50px); }
 .zm-hd__choose { margin-left: var(--hd-m); }
-.zm-hd__nav { gap: var(--hd-g); margin-left: var(--hd-m); margin-right: var(--hd-m); }
-.zm-hd__phone { margin-left: auto; }
+/* пункты — по центру между «Выбрать квартиру» и телефоном: слева и справа поровну (не меньше --hd-m) */
+.zm-hd__nav { gap: var(--hd-g); margin: 0 auto; padding: 0 var(--hd-m); }
 .zm-hd__msg { display: flex; gap: 10px; margin-left: var(--hd-m); }
 .zm-hd__msg img, .zm-hd__burger img { width: 42px; height: 42px; }
 .zm-hd__burger { display: none; }
@@ -441,9 +441,8 @@
   /* 980–1240: с «Документами» телефон в строку не помещается — он остаётся в мессенджерах, меню и подвале */
   .zm-hd { --hd-m: clamp(16px, calc(16px + (100vw - 980px) * .06), 32px); --hd-g: clamp(12px, calc(12px + (100vw - 980px) * .05), 24px); }
   .zm-hd__phone { display: none; }
-  .zm-hd__nav { margin-right: 16px; }
   .zm-hd__nav .zm-hd__link { font-size: 12px; }
-  .zm-hd__msg { gap: 5px; margin-left: auto; }
+  .zm-hd__msg { gap: 5px; margin-left: 0; }
   .zm-hd__msg img { width: 30px; height: 30px; }
 }
 @media (max-width: 979px) {
