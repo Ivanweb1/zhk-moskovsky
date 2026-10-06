@@ -34,11 +34,23 @@ url: /usloviya-pokupki
 #zm-form .zm-lead-form__title { font-size: 80px; line-height: 80px; }
 
 @media (min-width: 1441px) { .zm-buy-hero__media { height: 42.3vw; } }
-@media (max-width: 1240px) {
-  .zm-cond__row { grid-template-columns: 1fr 1fr; min-height: 460px; }
-  .zm-cond__card h2 { font-size: 32px; line-height: 36px; }
-  .zm-cond__card ul, .zm-cond__lead, .zm-cond__card .zm-text { font-size: 16px; }
-  #zm-form .zm-lead-form__title { font-size: 64px; line-height: 64px; }
+/* 768–1240 — по фрейму «Условия покупки / 980» */
+@media (min-width: 768px) and (max-width: 1240px) {
+  .zm-buy-hero h1 { margin-top: 33px; font-size: calc(var(--zm-h) * 10 / 13); }
+  .zm-buy-hero__media { height: 415px; margin-top: calc(-1 * var(--zm-h) * 10 / 13 - 13px); }
+  .zm-buy-hero__in { align-items: stretch; padding-top: calc(var(--zm-h) * 10 / 13 + 17px); padding-bottom: 48px; }
+  .zm-buy-hero__in p { align-self: flex-start; font-size: 14px; line-height: 1.32; }
+  .zm-buy-hero__in .zm-stats { align-self: flex-end; gap: 32px; }
+  .zm-buy-hero__in .zm-stats li { font-size: 48px; }
+  .zm-cond { padding: 62px 0 60px; }
+  .zm-cond__row { grid-template-columns: 436fr 484fr; min-height: 507px; }
+  .zm-cond__row:first-child { min-height: 424px; }
+  .zm-cond__card { padding: 24px; gap: 32px; }
+  .zm-cond__card h2 { font-size: 32px; line-height: 1.24; margin-bottom: 20px; }
+  .zm-cond__card ul, .zm-cond__lead { font-size: 16px; line-height: 24px; }
+  .zm-cond__card .zm-text { font-size: 16px; line-height: 1.24; }
+  #zm-form .zm-lead-form__box { min-height: 656px; }
+  #zm-form .zm-lead-form__title { font-size: 80px; line-height: 80px; }
 }
 @media (max-width: 767px) {
   .zm-buy-hero__media { height: 520px; }

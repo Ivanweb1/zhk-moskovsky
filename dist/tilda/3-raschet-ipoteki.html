@@ -37,8 +37,9 @@
   overflow-x: clip;
 }
 @media (min-width: 1920px) { .zm { --zm-h: 200px; } }
-@media (max-width: 1240px) { .zm { --zm-h: calc(130px + (100vw - 980px) * 20 / 460); } }
-@media (max-width: 980px)  { .zm { --zm-h: calc(60px + (100vw - 375px) * 70 / 605); --zm-text-size: 14px; --zm-section: 80px; } }
+@media (max-width: 1240px) { .zm { --zm-h: calc(130px + (100vw - 980px) * 20 / 460); --zm-text-size: 14px; --zm-section: 60px; } } /* фрейм 980 */
+@media (max-width: 980px)  { .zm { --zm-h: calc(60px + (100vw - 375px) * 70 / 605); } }
+@media (max-width: 767px)  { .zm { --zm-section: 64px; } }
 @media (max-width: 640px)  { .zm { --zm-h: 60px; --zm-text-size: 12px; --zm-pad: 12px; --zm-section: 64px; } }
 
 .zm :where(*, *::before, *::after) { box-sizing: border-box; }
@@ -74,6 +75,7 @@
 .zm-top { padding-top: 30px; }
 .zm-top__row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-top: 40px; }
 .zm-top__row .zm-lead { flex: 0 1 435px; padding-bottom: 8px; }
+@media (min-width: 768px) and (max-width: 1240px) { .zm-top__row { flex-direction: column; align-items: flex-start; gap: 12px; } .zm-top__row .zm-lead { flex: none; max-width: 435px; padding: 0; } } /* фрейм 980: заголовок во всю ширину */
 @media (max-width: 767px) { .zm-top__row { flex-direction: column; align-items: flex-start; } .zm-top__row .zm-lead { flex: none; max-width: 520px; padding: 0; } }
 @media (max-width: 640px) { .zm-top { padding-top: 20px; } .zm-top__row { margin-top: 32px; gap: 16px; } }
 
@@ -221,6 +223,20 @@
 .zm-form__note { margin-top: 20px; font-size: 16px; line-height: 24px; opacity: .64; }
 @media (min-width: 1920px) { .zm-lead-form__title { font-size: 140px; line-height: 120px; } }
 @media (max-width: 1240px) { .zm-lead-form__title { font-size: 90px; line-height: 80px; } }
+/* 768–1240 — по фрейму 980: фото 940×592 сверху, под ним карточка 940×548, поля 2×2 по 55 */
+@media (min-width: 768px) and (max-width: 1240px) {
+  .zm-lead-form { grid-template-columns: 1fr; }
+  .zm-lead-form__img { height: 592px; }
+  .zm-lead-form__box { min-height: 548px; padding: 40px 21px; }
+  .zm-lead-form__sub { margin: 20px 0 24px; }
+  .zm-form__grid { gap: 12px 11px; }
+  .zm-field input { height: 55px; font-size: 16px; }
+  .zm-field--phone::before { top: 21px; }
+  .zm-field--phone::after { top: 15px; font-size: 16px; }
+  .zm-form__submit { margin-top: 8px; }
+  .zm-form__submit .zm-btn { min-height: 55px; }
+  .zm-faq__q { min-height: 84px; padding: 18px; font-size: 18px; }
+}
 @media (max-width: 767px) {
   .zm-lead-form { grid-template-columns: 1fr; }
   .zm-lead-form__img { display: none; }
@@ -265,6 +281,8 @@
 .zm-news-card:hover .zm-news-card__date { color: rgba(255,255,255,.46); }
 .zm-news-card:hover .zm-news-card__img img { transform: scale(1.03); }
 @media (max-width: 1240px) { .zm-news-card__title { font-size: 22px; line-height: 30px; } .zm-news-card__text { font-size: 16px; } }
+/* фрейм 980: фото 464×328, текстовая часть 193 */
+@media (min-width: 768px) and (max-width: 1240px) { .zm-news-card__img { height: 328px; margin-bottom: -19px; } .zm-news-card__body { min-height: 193px; } .zm-news-card__title { font-size: 20px; line-height: 1.24; margin-bottom: 0; } }
 @media (max-width: 640px) {
   .zm-news-card__img { height: 254px; }
   .zm-news-card__tags { left: 20px; top: 20px; gap: 12px; }
@@ -376,7 +394,21 @@
 .zm-bk .zm-arrow { --zm-arrow: 48px; align-self: flex-end; border-radius: 12px; margin: 0 8px 4px 0; }
 .zm-bk__best { position: absolute; right: 0; top: 0; padding: 8px 24px; border-radius: 50px; background: var(--zm-blue-2); color: #fff; font-size: 16px; line-height: 24px; letter-spacing: 0; }
 
-@media (max-width: 1240px) {
+/* 768–1240 — по фрейму «Расчёт ипотеки / 980»: параметры сеткой 2×2, банки под ними (список 660 с прокруткой) */
+@media (min-width: 768px) and (max-width: 1240px) {
+  .zm-calc-page-top .zm-top__row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .zm-calc-page-top .zm-top__row .zm-lead { flex: none; max-width: 435px; padding: 0; }
+  .zm-calc-tabs { margin: 24px 0 24px; }
+  .zm-calc { grid-template-columns: 1fr; }
+  .zm-calc__form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+  .zm-calc__form > :last-child { grid-column: 1 / -1; }
+  .zm-calc__label { margin-bottom: 8px; }
+  .zm-calc__select select { font-size: 16px; }
+  .zm-calc__box input { font-size: 28px; }
+  .zm-calc__hint { font-size: 16px; }
+  .zm-calc__note { font-size: 14px; }
+}
+@media (max-width: 767px) {
   .zm-calc { grid-template-columns: 1fr; }
   .zm-banks-list { height: auto; max-height: none; overflow: visible; padding-right: 0; }
 }
@@ -414,7 +446,7 @@
 </style>
 
 <div class="zm" id="zm-calc-page">
-  <section class="zm-container zm-top">
+  <section class="zm-container zm-top zm-calc-page-top">
     <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Расчёт ипотеки</span></nav>
     <div class="zm-top__row">
       <h1 class="zm-h1">Расчёт ипотеки</h1>

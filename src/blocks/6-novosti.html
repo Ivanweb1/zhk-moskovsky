@@ -20,6 +20,8 @@ url: /novosti
 .zm-pager__dots { pointer-events: none; }
 /* по фрейму 1440 */
 @media (min-width: 1241px) and (max-width: 1919px) { .zm-news-top__row { margin-top: 62px; } .zm-news-bar { margin-top: 76px; } }
+/* по фрейму 980 */
+@media (min-width: 768px) and (max-width: 1240px) { .zm-news-top__row { margin-top: 35px; gap: 20px 40px; } .zm-news-top__row p { flex: 0 1 357px; font-size: 16px; line-height: 1.2; padding-bottom: 20px; } .zm-news-bar { margin: 32px 0 32px; } .zm-news-bar .zm-select { width: 216px; } .zm-news-grid { grid-template-columns: 1fr 1fr; gap: 32px 12px; } .zm-pager { margin-top: 32px; } .zm-pager .zm-btn { min-height: 52px; padding: 15px 48px; } .zm-pager__pages .zm-arrow { --zm-arrow: 48px; } .zm-pager__num { min-width: 48px; height: 48px; font-size: 16px; } }
 @media (max-width: 767px) { .zm-news-grid { grid-template-columns: 1fr 1fr; } .zm-news-top__row { flex-direction: column; align-items: flex-start; } .zm-news-top__row p { flex: none; padding: 0; } }
 @media (max-width: 640px) {
   .zm-news-top__row { margin-top: 32px; gap: 16px; }

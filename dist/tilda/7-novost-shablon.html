@@ -37,8 +37,9 @@
   overflow-x: clip;
 }
 @media (min-width: 1920px) { .zm { --zm-h: 200px; } }
-@media (max-width: 1240px) { .zm { --zm-h: calc(130px + (100vw - 980px) * 20 / 460); } }
-@media (max-width: 980px)  { .zm { --zm-h: calc(60px + (100vw - 375px) * 70 / 605); --zm-text-size: 14px; --zm-section: 80px; } }
+@media (max-width: 1240px) { .zm { --zm-h: calc(130px + (100vw - 980px) * 20 / 460); --zm-text-size: 14px; --zm-section: 60px; } } /* фрейм 980 */
+@media (max-width: 980px)  { .zm { --zm-h: calc(60px + (100vw - 375px) * 70 / 605); } }
+@media (max-width: 767px)  { .zm { --zm-section: 64px; } }
 @media (max-width: 640px)  { .zm { --zm-h: 60px; --zm-text-size: 12px; --zm-pad: 12px; --zm-section: 64px; } }
 
 .zm :where(*, *::before, *::after) { box-sizing: border-box; }
@@ -74,6 +75,7 @@
 .zm-top { padding-top: 30px; }
 .zm-top__row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; margin-top: 40px; }
 .zm-top__row .zm-lead { flex: 0 1 435px; padding-bottom: 8px; }
+@media (min-width: 768px) and (max-width: 1240px) { .zm-top__row { flex-direction: column; align-items: flex-start; gap: 12px; } .zm-top__row .zm-lead { flex: none; max-width: 435px; padding: 0; } } /* фрейм 980: заголовок во всю ширину */
 @media (max-width: 767px) { .zm-top__row { flex-direction: column; align-items: flex-start; } .zm-top__row .zm-lead { flex: none; max-width: 520px; padding: 0; } }
 @media (max-width: 640px) { .zm-top { padding-top: 20px; } .zm-top__row { margin-top: 32px; gap: 16px; } }
 
@@ -221,6 +223,20 @@
 .zm-form__note { margin-top: 20px; font-size: 16px; line-height: 24px; opacity: .64; }
 @media (min-width: 1920px) { .zm-lead-form__title { font-size: 140px; line-height: 120px; } }
 @media (max-width: 1240px) { .zm-lead-form__title { font-size: 90px; line-height: 80px; } }
+/* 768–1240 — по фрейму 980: фото 940×592 сверху, под ним карточка 940×548, поля 2×2 по 55 */
+@media (min-width: 768px) and (max-width: 1240px) {
+  .zm-lead-form { grid-template-columns: 1fr; }
+  .zm-lead-form__img { height: 592px; }
+  .zm-lead-form__box { min-height: 548px; padding: 40px 21px; }
+  .zm-lead-form__sub { margin: 20px 0 24px; }
+  .zm-form__grid { gap: 12px 11px; }
+  .zm-field input { height: 55px; font-size: 16px; }
+  .zm-field--phone::before { top: 21px; }
+  .zm-field--phone::after { top: 15px; font-size: 16px; }
+  .zm-form__submit { margin-top: 8px; }
+  .zm-form__submit .zm-btn { min-height: 55px; }
+  .zm-faq__q { min-height: 84px; padding: 18px; font-size: 18px; }
+}
 @media (max-width: 767px) {
   .zm-lead-form { grid-template-columns: 1fr; }
   .zm-lead-form__img { display: none; }
@@ -265,6 +281,8 @@
 .zm-news-card:hover .zm-news-card__date { color: rgba(255,255,255,.46); }
 .zm-news-card:hover .zm-news-card__img img { transform: scale(1.03); }
 @media (max-width: 1240px) { .zm-news-card__title { font-size: 22px; line-height: 30px; } .zm-news-card__text { font-size: 16px; } }
+/* фрейм 980: фото 464×328, текстовая часть 193 */
+@media (min-width: 768px) and (max-width: 1240px) { .zm-news-card__img { height: 328px; margin-bottom: -19px; } .zm-news-card__body { min-height: 193px; } .zm-news-card__title { font-size: 20px; line-height: 1.24; margin-bottom: 0; } }
 @media (max-width: 640px) {
   .zm-news-card__img { height: 254px; }
   .zm-news-card__tags { left: 20px; top: 20px; gap: 12px; }
@@ -374,12 +392,28 @@
 .zm-more .zm-slider__track { --zm-gap: 24px; }
 .zm-more .zm-slider__track > * { width: calc((100% - 24px) / 2); }
 
-@media (max-width: 1240px) {
-  .zm-post-hero h1 { font-size: 40px; }
-  .zm-more { grid-template-columns: 1fr; gap: 32px; }
-  .zm-more__head { flex-direction: row; align-items: flex-end; }
+/* 768–1240 — по фрейму «Новость / 980»: шапка 940×409, текст во всю ширину, галерея после текста */
+@media (min-width: 768px) and (max-width: 1240px) {
+  .zm-post-hero { grid-template-columns: 399fr 481fr; margin-top: 35px; }
+  .zm-post-hero__img { min-height: 369px; }
+  .zm-post-back { min-height: 56px; padding: 16px; font-size: 16px; }
+  .zm-post-hero__tags { margin-bottom: 32px; }
+  .zm-post-hero__tags .zm-pill { font-size: 18px; }
+  .zm-post-hero h1 { font-size: 40px; margin-bottom: 12px; }
+  .zm-post-hero__sub { font-size: 18px; line-height: 1.32; }
+  .zm-post-hero__date { font-size: 16px; }
+  .zm-post { grid-template-columns: 1fr; margin-top: 32px; }
+  .zm-post__text { font-size: 16px; line-height: 1.32; }
+  .zm-post__text h2 { font-size: 32px; }
+  .zm-post__text h3 { font-size: 24px; }
+  .zm-post__text h4 { font-size: 20px; }
+  .zm-post__gal { position: relative; top: 0; margin-top: 20px; }
+  .zm-post__gal figure { aspect-ratio: 940 / 682; }
+  .zm-more .zm-slider__track > * { width: 464px; }
 }
 @media (max-width: 767px) {
+  .zm-more { grid-template-columns: 1fr; gap: 32px; }
+  .zm-more__head { flex-direction: row; align-items: flex-end; }
   .zm-post-hero { grid-template-columns: 1fr; }
   .zm-post-hero__body { order: -1; }
   .zm-post-hero__img { min-height: 0; aspect-ratio: 4 / 3; }

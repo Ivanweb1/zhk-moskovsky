@@ -50,7 +50,21 @@ url: /raschet-ipoteki
 .zm-bk .zm-arrow { --zm-arrow: 48px; align-self: flex-end; border-radius: 12px; margin: 0 8px 4px 0; }
 .zm-bk__best { position: absolute; right: 0; top: 0; padding: 8px 24px; border-radius: 50px; background: var(--zm-blue-2); color: #fff; font-size: 16px; line-height: 24px; letter-spacing: 0; }
 
-@media (max-width: 1240px) {
+/* 768–1240 — по фрейму «Расчёт ипотеки / 980»: параметры сеткой 2×2, банки под ними (список 660 с прокруткой) */
+@media (min-width: 768px) and (max-width: 1240px) {
+  .zm-calc-page-top .zm-top__row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .zm-calc-page-top .zm-top__row .zm-lead { flex: none; max-width: 435px; padding: 0; }
+  .zm-calc-tabs { margin: 24px 0 24px; }
+  .zm-calc { grid-template-columns: 1fr; }
+  .zm-calc__form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+  .zm-calc__form > :last-child { grid-column: 1 / -1; }
+  .zm-calc__label { margin-bottom: 8px; }
+  .zm-calc__select select { font-size: 16px; }
+  .zm-calc__box input { font-size: 28px; }
+  .zm-calc__hint { font-size: 16px; }
+  .zm-calc__note { font-size: 14px; }
+}
+@media (max-width: 767px) {
   .zm-calc { grid-template-columns: 1fr; }
   .zm-banks-list { height: auto; max-height: none; overflow: visible; padding-right: 0; }
 }
@@ -88,7 +102,7 @@ url: /raschet-ipoteki
 </style>
 
 <div class="zm" id="zm-calc-page">
-  <section class="zm-container zm-top">
+  <section class="zm-container zm-top zm-calc-page-top">
     <nav class="zm-crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>Расчёт ипотеки</span></nav>
     <div class="zm-top__row">
       <h1 class="zm-h1">Расчёт ипотеки</h1>

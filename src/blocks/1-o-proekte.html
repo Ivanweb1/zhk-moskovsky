@@ -65,15 +65,40 @@ url: /o-proekte
   .zm-ab-hero { height: 51vw; }
   .zm-loc__map { min-height: 79vw; }
 }
-@media (max-width: 1240px) {
-  .zm-ab-hero { height: 620px; }
-  .zm-concept__row--a, .zm-concept__row--b { grid-template-columns: 1fr 1fr; min-height: 0; }
-  .zm-concept__row--b > :nth-child(1) { order: 2; } .zm-concept__row--b > :nth-child(3) { order: 4; }
-  .zm-concept__text { min-height: 300px; }
+/* 768–1240 — по фрейму «О проекте / 980» */
+@media (min-width: 768px) and (max-width: 1240px) {
+  .zm-ab-hero { height: 501px; padding: 30px 0 48px; }
+  .zm-ab-hero .zm-stats li { font-size: 64px; }
+  .zm-concept { padding: 60px 0; }
+  .zm-concept__grid { margin-top: 32px; }
+  .zm-concept__row--a { grid-template-columns: 484fr 444fr; grid-auto-rows: 315px; min-height: 0; }
+  .zm-concept__row--b { grid-template-columns: 444fr 484fr; grid-auto-rows: 315px; min-height: 0; }
   .zm-concept__text h3 { font-size: 48px; }
-  .zm-adv__body h3 { font-size: 24px; }
-  .zm-loc { grid-template-columns: 1fr 1.6fr; }
-  .zm-loc__map { min-height: 900px; }
+  .zm-concept__text .zm-text { font-size: 14px; line-height: 1.24; }
+  .zm-concept__img { min-height: 0; }
+  .zm-adv { margin-top: 34px; }
+  .zm-adv__slide { grid-template-columns: 440fr 440fr; gap: 20px; }
+  .zm-adv__img { aspect-ratio: auto; height: 550px; }
+  .zm-adv__body { gap: 32px; padding-bottom: 0; }
+  .zm-adv__icon { width: 80px; height: 80px; }
+  .zm-adv__body h3 { font-size: 24px; line-height: 41px; margin-bottom: 20px; }
+  .zm-adv__body .zm-text { font-size: 14px; line-height: 1.24; }
+  .zm-loc__head { flex-direction: column; align-items: flex-start; gap: 50px; margin-bottom: 50px; }
+  .zm-loc__head .zm-h2 { flex: none; }
+  .zm-loc__head p { flex: none; max-width: 482px; }
+  .zm-loc { grid-template-columns: 1fr; gap: 20px; }
+  .zm-loc__list { flex-direction: row; gap: 10px; }
+  .zm-loc__item { flex: 1; min-height: 293px; justify-content: flex-start; gap: 48px; }
+  .zm-loc__icon { width: 48px; height: 48px; }
+  .zm-loc__item h3 { font-size: 20px; line-height: 1.24; margin-bottom: 12px; }
+  .zm-loc__map { min-height: 655px; }
+  .zm-arch .zm-h2 { font-size: calc(var(--zm-h) * 10 / 13); }
+  .zm-arch__lead { font-size: 16px; line-height: 1.24; }
+  .zm-arch .zm-slider { margin-top: 20px; }
+  .zm-arch .zm-slider__track > * { width: 365px; min-height: 593px; }
+  .zm-arch__card { gap: 43px; }
+  .zm-arch__img { height: 350px; }
+  .zm-arch__row { gap: 30px; }
 }
 @media (max-width: 767px) {
   .zm-loc__head { flex-direction: column; align-items: flex-start; margin-bottom: 32px; }
