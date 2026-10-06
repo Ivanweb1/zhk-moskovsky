@@ -67,6 +67,8 @@
 /* ---------- Заголовки ---------- */
 .zm-br1920 { display: none; }
 @media (min-width: 1920px) { .zm-br1920 { display: block; } } /* перенос строки только во фрейме 1920 */
+.zm-br-sm { display: none; }
+@media (max-width: 640px) { .zm-br-sm { display: inline; } } /* перенос строки только во фрейме 375 */
 .zm-h1, .zm-h2 {
   font-family: var(--zm-head);
   font-weight: 400;
@@ -560,7 +562,7 @@
 
   <section class="zm-section">
   <div class="zm-container">
-    <h2 class="zm-h2 zm-faq__title">Вопросы и ответы</h2>
+    <h2 class="zm-h2 zm-faq__title">Вопросы <br class="zm-br-sm">и ответы</h2>
     <div class="zm-faq">
       <div class="zm-faq__item">
         <button class="zm-faq__q" type="button"><span>01. Какой минимальный первоначальный взнос по ипотеке?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>

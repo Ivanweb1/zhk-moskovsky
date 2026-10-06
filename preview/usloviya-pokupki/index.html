@@ -207,6 +207,8 @@
 /* ---------- Заголовки ---------- */
 .zm-br1920 { display: none; }
 @media (min-width: 1920px) { .zm-br1920 { display: block; } } /* перенос строки только во фрейме 1920 */
+.zm-br-sm { display: none; }
+@media (max-width: 640px) { .zm-br-sm { display: inline; } } /* перенос строки только во фрейме 375 */
 .zm-h1, .zm-h2 {
   font-family: var(--zm-head);
   font-weight: 400;
@@ -700,7 +702,7 @@
 
   <section class="zm-section">
   <div class="zm-container">
-    <h2 class="zm-h2 zm-faq__title">Вопросы и ответы</h2>
+    <h2 class="zm-h2 zm-faq__title">Вопросы <br class="zm-br-sm">и ответы</h2>
     <div class="zm-faq">
       <div class="zm-faq__item">
         <button class="zm-faq__q" type="button"><span>01. Какой минимальный первоначальный взнос по ипотеке?</span><i class="zm-faq__icon" aria-hidden="true"></i></button>
@@ -1142,7 +1144,8 @@
   .zm-ft__bottom { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
 }
 @media (max-width: 640px) {
-  .zm-ft { padding: 10px var(--zm-pad) 20px; }
+  /* фрейм 375: лёгкое затемнение к низу (чёрный градиент 20%), чтобы текст читался */
+  .zm-ft { padding: 10px var(--zm-pad) 20px; background-image: linear-gradient(180deg, rgba(0,0,0,0) 25.6%, rgba(0,0,0,.2) 66%), url(../../assets/shell/footer.jpg); }
   .zm-ft__title { font-size: 78px; line-height: 78px; margin-bottom: 0; }
   .zm-ft__addr { font-size: 18px; line-height: 24px; }
   .zm-ft__navtitle { font-size: 24px; }
