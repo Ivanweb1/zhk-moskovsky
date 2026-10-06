@@ -413,11 +413,13 @@
   .zm-news-bar .zm-tab { flex: 1; padding: 16px 12px; }
   .zm-news-bar .zm-select { width: 100%; }
   .zm-news-grid { grid-template-columns: 1fr; gap: 12px; }
-  .zm-pager { flex-direction: column-reverse; align-items: stretch; margin-top: 24px; }
-  .zm-pager .zm-btn { min-height: 49px; padding: 15px 40px; }
-  .zm-pager__pages { justify-content: center; flex-wrap: wrap; }
+  /* фрейм 375: кнопка 174×49 по центру, под ней страницы на всю ширину 351 (кнопки 40 и 43×42) */
+  .zm-pager { flex-direction: column; align-items: center; gap: 16px; margin-top: 24px; }
+  .zm-pager .zm-btn { width: auto; min-height: 49px; padding: 15px 40px; font-size: 14px; }
+  .zm-pager__pages { align-self: stretch; justify-content: space-between; gap: 8px; padding: 0 4px; }
   .zm-pager__pages .zm-arrow { --zm-arrow: 40px; }
-  .zm-pager__num { min-width: 42px; height: 40px; font-size: 14px; }
+  .zm-pager__num { flex: 0 1 43px; min-width: 0; height: 42px; padding: 0; font-size: 14px; border-color: rgba(19,38,64,.5); }
+  .zm-pager__num.is-active { border-color: var(--zm-navy); }
 }
 </style>
 
