@@ -828,8 +828,8 @@ a.zm-doc__dl:hover img { filter: brightness(0) invert(1); }
   var list = root.querySelector('[data-list]');
   var selK = root.querySelector('[data-f="kind"]');
   var selE = root.querySelector('[data-f="ext"]');
-  var DL = '<img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/download.svg" alt="">';
-  var ICONS = { PDF: 'https://ivanweb1.github.io/zhk-moskovsky/assets/icon/doc-pdf.svg', JPG: 'https://ivanweb1.github.io/zhk-moskovsky/assets/icon/doc-jpg.svg', JPEG: 'https://ivanweb1.github.io/zhk-moskovsky/assets/icon/doc-jpeg.svg', PNG: 'https://ivanweb1.github.io/zhk-moskovsky/assets/icon/doc-png.svg' };
+  var DL = '<img src="https://static.tildacdn.com/tild3662-6362-4235-a566-633036666437/zm-icon-download.svg" alt="">';
+  var ICONS = { PDF: 'https://static.tildacdn.com/tild3134-6132-4161-a266-373733643239/zm-icon-doc-pdf.svg', JPG: 'https://static.tildacdn.com/tild3136-3836-4030-a430-363263326332/zm-icon-doc-jpg.svg', JPEG: 'https://static.tildacdn.com/tild6139-3131-4662-b539-353731303163/zm-icon-doc-jpeg.svg', PNG: 'https://static.tildacdn.com/tild3033-3033-4261-a464-376265616431/zm-icon-doc-png.svg' };
 
   function uniq(key) { var a = []; DOCS.forEach(function (d) { if (d[key] && a.indexOf(d[key]) < 0) a.push(d[key]); }); return a; }
   selK.innerHTML = '<option value="">Вид документа</option>' + uniq('kind').map(function (k) { return '<option>' + esc(k) + '</option>'; }).join('');
