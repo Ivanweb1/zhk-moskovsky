@@ -151,10 +151,10 @@
 /* Sverdlovsk подключаем свой: в файле исправлены вертикальные метрики (ascent 696 / descent 200, как в Figma),
    иначе браузер ставит буквы на 0.24em ниже макета, и вёрстка зависит от того, какой файл загружен в Tilda. */
 @font-face { font-family: 'ZM Sverdlovsk'; font-weight: 400; font-style: normal; font-display: swap;
-  src: url(../../assets/fonts/zm-sverdlovsk.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk.woff) format('woff'); }
+  src: url(../../assets/fonts/zm-sverdlovsk.woff) format('woff'); }
 /* тот же шрифт с запасом сверху — для полей ввода: иначе Chrome/Safari срезают верх цифр в input */
 @font-face { font-family: 'ZM Sverdlovsk Field'; font-weight: 400; font-style: normal; font-display: swap;
-  src: url(../../assets/fonts/zm-sverdlovsk-field.woff2) format('woff2'), url(../../assets/fonts/zm-sverdlovsk-field.woff) format('woff'); }
+  src: url(../../assets/fonts/zm-sverdlovsk-field.woff) format('woff'); }
 .zm {
   /* Заголовки — свой Sverdlovsk (см. выше), текст — шрифт из настроек сайта Tilda (--t-text-font); в макете — Manrope */
   --zm-head: 'ZM Sverdlovsk', var(--t-headline-font, 'Sverdlovsk'), 'Fira Sans Extra Condensed', Arial, sans-serif;

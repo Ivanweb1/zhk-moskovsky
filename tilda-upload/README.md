@@ -30,4 +30,4 @@
 | `img/news-2.jpg` | https://static.tildacdn.com/tild6138-6430-4634-a330-313865303336/s_zemli_2_1.jpg |
 | `shell/footer.jpg` | https://static.tildacdn.com/tild3864-3531-4465-b634-333561346165/poluptica_2_2.jpg |
 
-Шрифт заголовков (`fonts/zm-sverdlovsk*.woff2`) и картинки без ссылки берутся с GitHub Pages (`config.json` → `assetBase`), поэтому Pages должен быть включён, пока не все ссылки подставлены.
+Все 39 файлов уже загружены (страница `/images`), ссылки подставлены в `assets-map.json`. Шрифты `zm-sverdlovsk.woff` и `zm-sverdlovsk-field.woff` загружены в Tilda в «Загрузке шрифтов».

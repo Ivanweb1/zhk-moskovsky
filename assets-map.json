@@ -1,7 +1,7 @@
 {
- "fonts/zm-sverdlovsk-field.woff": "",
+ "fonts/zm-sverdlovsk-field.woff": "https://static.tildacdn.com/tild3530-6434-4161-a666-383837323038/zm-sverdlovsk-field.woff",
  "fonts/zm-sverdlovsk-field.woff2": "",
- "fonts/zm-sverdlovsk.woff": "",
+ "fonts/zm-sverdlovsk.woff": "https://static.tildacdn.com/tild3938-6565-4262-b433-393230623938/zm-sverdlovsk.woff",
  "fonts/zm-sverdlovsk.woff2": "",
  "icon/adv-home.svg": "https://static.tildacdn.com/tild3665-3136-4963-b534-393636626434/zm-icon-adv-home.svg",
  "icon/doc-jpeg.svg": "https://static.tildacdn.com/tild6139-3131-4662-b539-353731303163/zm-icon-doc-jpeg.svg",
