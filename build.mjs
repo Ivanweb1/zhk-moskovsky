@@ -92,17 +92,31 @@ for (const b of all) {
   fs.writeFileSync(out, page);
 }
 
-fs.writeFileSync(
-  path.join(root, 'index.html'),
-  `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">
-<title>ЖК «Московский» — новые страницы</title>
-<style>body{font:15px/1.5 Manrope,Arial,sans-serif;background:#f2f2f7;color:#14243d;margin:0;padding:40px 16px}main{max-width:720px;margin:0 auto}
-h1{font-weight:500}a{color:#1f3d6b}li{margin:8px 0}code{background:#e4e6f1;padding:1px 6px;border-radius:4px;font-size:13px}</style></head>
-<body><main><h1>ЖК «Московский» — новые страницы (превью)</h1><ul>
-${index.map((p) => p.part
-  ? `<li>${p.title} — ${p.url} · код для Tilda: <a href="dist/tilda/${p.name}.html">dist/tilda/${p.name}.html</a></li>`
-  : `<li><a href="preview/${p.preview || p.url.replace(/^\/|\/$/g, '')}/">${p.title}</a> — <code>${p.url}</code> · код для Tilda: <a href="dist/tilda/${p.name}.html">dist/tilda/${p.name}.html</a></li>`).join('\n')}
-</ul></main></body></html>\n`
-);
+// пульт переноса: index.html в корне — кнопки «скопировать код», превью, чек-лист
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const kb = (n) => (n / 1024).toFixed(0) + ' КБ';
+const copyBtn = (p, label) => `<button class="btn" type="button" data-copy="dist/tilda/${p.name}.html">${label}</button>`;
+const partButtons = index.filter((p) => p.part).map((p) =>
+  `${copyBtn(p, 'Скопировать: ' + esc(p.title))}<a class="btn btn--ghost" href="dist/tilda/${p.name}.html">Открыть файл · ${kb(p.size)}</a>`).join('');
+const rows = index.filter((p) => !p.part).map((p) => {
+  const prev = 'preview/' + (p.preview || p.url.replace(/^\/|\/$/g, '')) + '/';
+  return `<div class="page">
+      <div><div class="page__name">${esc(p.title)}</div><div class="page__meta">Адрес в Tilda: <code>${esc(p.url)}</code> · ${kb(p.size)}</div></div>
+      <div class="page__btns">${copyBtn(p, 'Скопировать код')}<a class="btn btn--ghost" href="${prev}" target="_blank" rel="noopener">Превью</a></div>
+      <div class="page__checks">
+        <label><input type="checkbox" data-key="p-${p.name}-blocks">шапка, страница и подвал вставлены</label>
+        <label><input type="checkbox" data-key="p-${p.name}-pub">опубликовано</label>
+        <label><input type="checkbox" data-key="p-${p.name}-check">проверено на сайте</label>
+      </div>
+    </div>`;
+}).join('\n    ');
+const formsOk = !!(cfg.tildaFormRec || cfg.webhook);
+fs.writeFileSync(path.join(root, 'index.html'), read('src/pult.html')
+  .replaceAll('{{assetBase}}', cfg.assetBase)
+  .replaceAll('{{policyUrl}}', esc(cfg.policyUrl))
+  .replace('{{formsClass}}', formsOk ? 'ok' : 'warn')
+  .replace('{{formsText}}', formsOk ? 'настроено' : 'не настроено')
+  .replace('{{partButtons}}', partButtons)
+  .replace('{{rows}}', rows));
 
 for (const p of index) console.log(`${p.name.padEnd(28)} ${p.url.padEnd(34)} ${(p.size / 1024).toFixed(1)} KB`);
