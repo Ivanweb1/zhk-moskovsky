@@ -16,7 +16,7 @@
 | `img/buy-6.jpg` | https://static.tildacdn.com/tild3132-6436-4131-b365-663636663566/s_zemli_2_2.jpg |
 | `img/form-building-m.jpg` | https://static.tildacdn.com/tild3339-3862-4239-a637-366437646334/s_zemli_2_3_2.jpg |
 | `img/form-building.jpg` | https://static.tildacdn.com/tild3339-3862-4239-a637-366437646334/s_zemli_2_3_2.jpg |
-| `img/home-about-m.jpg` | https://static.tildacdn.com/tild3564-6535-4739-b032-626338373763/rectangle_39901_1.png |
+| `img/home-about-m.jpg` | https://static.tildacdn.com/tild6136-6431-4033-a364-623963623666/poluptica_2_5.png (та же, что на компьютере: мобильная rectangle_39901_1.png не грузилась) |
 | `img/home-about.jpg` | https://static.tildacdn.com/tild6136-6431-4033-a364-623963623666/poluptica_2_5.png |
 | `img/home-buy-2.jpg` | https://static.tildacdn.com/tild6133-3331-4361-b635-353638383334/s_zemli_2_3.jpg |
 | `img/home-buy.jpg` | https://static.tildacdn.com/tild3132-6436-4131-b365-663636663566/s_zemli_2_2.jpg |
