@@ -645,6 +645,7 @@
 /* «Локация» на сайте (после разбивки на буквы) — в 3 строки: «Локация для / вашего / ритма жизни» */
 .zm-br-live { display: none; }
 @media (min-width: 1200px) { .zm-br-live { display: inline; } }
+@media (min-width: 1200px) and (max-width: 1919px) { .zm-br-m { display: none; } }
 
 /* ===== От 1200px — 1 в 1 с текущей главной сайта (брейкпоинты Zero Block: 1920 / 1440 / 1200) =====
    Базовые линии пересчитаны под наш Sverdlovsk с исправленными метриками. */
@@ -815,90 +816,13 @@
 }
 
 /* ===== Планшет 768–1199 — по фрейму «Главная / 980» (на текущем сайте планшетная версия не доделана) ===== */
+/* Новые блоки (ход строительства, новости) ниже 1200 — по макету Фигмы */
 @media (min-width: 768px) and (max-width: 1199px) {
-  /* 1. Первый экран: фото 465 + карточка 465×388 + фото 465×119, высота 528 */
-  .zm-hh { grid-template-columns: 1fr 1fr; height: 538px; }
-  .zm-hh__right { grid-template-rows: 388fr 119fr; gap: 11px; }
-  .zm-hh__title { margin: 20px 0 0; }
-  .zm-hh__title small { font-size: min(60px, 6.1vw); line-height: 1; margin-bottom: 20px; }
-  .zm-hh__title > span { font-size: min(60px, 6.1vw); line-height: .5; }
-  .zm-hh__text { max-width: 362px; }
-  .zm-hh__card .zm-btn { width: 350px; min-height: 62px; }
-
-  /* 2. О проекте: текст + кнопка в строку, фото 984×782 r50, три карточки 300×414 */
-  .zm-hab { padding-top: 60px; }
-  .zm-hab__grid { grid-template-columns: 1fr; margin-top: 50px; }
-  .zm-hab__intro { flex-direction: row; justify-content: space-between; gap: 20px; }
-  .zm-hab__intro p { max-width: 735px; }
-  .zm-hab__intro .zm-btn { flex: none; min-height: 59px; }
-  .zm-hab__img { min-height: 782px; margin: 0 -22px; }
-  .zm-hab__cards { flex-direction: row; }
-  .zm-hab__card { min-height: 414px; gap: 40px; }
-  .zm-hab__card b, .zm-dev__card b { font-size: min(130px, 13.3vw); }
-
-  /* 3. Локация: заголовок, текст под ним, 4 карточки 228×293 в ряд, карта 940×655 */
-  .zm-hloc { padding-top: 138px; }
-  .zm-loc__head { flex-direction: column; align-items: flex-start; gap: 50px; margin-bottom: 50px; }
-  .zm-loc__head .zm-h2 { flex: none; }
-  .zm-loc__head p { flex: none; max-width: 482px; }
-  .zm-loc { grid-template-columns: 1fr; gap: 20px; }
-  .zm-loc__list { flex-direction: row; gap: 10px; }
-  .zm-loc__item { flex: 1; min-height: 293px; justify-content: flex-start; gap: 48px; }
-  .zm-loc__icon { width: 48px; height: 48px; }
-  .zm-loc__item h3 { font-size: 20px; line-height: 1.24; margin-bottom: 12px; }
-  .zm-loc__map { min-height: 655px; }
-
-  /* 4. Архитектура: карточки 365×593, фото 325×350 */
-  .zm-harch { padding-top: 60px; }
-  .zm-harch .zm-slider__track > * { width: 365px; min-height: 593px; }
-  .zm-arch__card { gap: 43px; }
-  .zm-arch__img { height: 350px; }
-  .zm-arch__row { gap: 30px; }
-
-  /* 5. Планировки: заголовок 120/130, фото 940×455, кнопка 493×70 */
-  .zm-hplans { padding-top: 77px; }
-  #choose .zm-h2 { font-size: calc(var(--zm-h) * 12 / 13); line-height: 1.083; }
-  .zm-plans__box { height: 455px; margin-top: 10px; }
-  .zm-plans__btn { top: 320px; transform: translateX(-50%); width: 493px; min-height: 70px; }
-
-  /* 6. Форма подбора: фото 940×592 сверху, под ним тёмная карточка 940×462 */
-  .zm-hpick { padding-top: 95px; }
-  .zm-pick { grid-template-columns: 1fr; grid-template-rows: 592px auto; min-height: 0; }
-  .zm-pick__box { min-height: 462px; }
-  .zm-pick__title { font-size: 60px; line-height: 60px; }
-  .zm-pick__texts { grid-template-columns: 362fr 362fr; gap: 40px; margin-top: 10px; padding-bottom: 20px; }
-  .zm-pick .zm-form { margin-top: auto; }
-  .zm-pick .zm-form__grid { grid-template-columns: 305fr 305fr 250fr; gap: 15px 20px; }
-  .zm-pick .zm-form__submit { grid-column: auto; }
-  .zm-pick .zm-form__submit .zm-btn { padding: 0 15px; font-size: 16px; white-space: nowrap; }
-
-  /* 7. О застройщике: 01 (500) + фото (420), ниже 02 · 03 · 04 по 300 */
-  .zm-hdev { padding-top: 70px; }
-  .zm-dev { grid-template-columns: 300fr 20fr 180fr 20fr 100fr 20fr 300fr; grid-template-rows: 444px 396px; gap: 20px 0; }
-  .zm-dev__col { display: contents; }
-  .zm-dev__col:nth-child(1) .zm-dev__card { grid-area: 1 / 1 / 2 / 4; }
-  .zm-dev__img { grid-area: 1 / 5 / 2 / 8; height: auto; }
-  .zm-dev__col:nth-child(2) .zm-dev__card { grid-area: 2 / 1 / 3 / 2; }
-  .zm-dev__col:nth-child(3) .zm-dev__card:first-child { grid-area: 2 / 3 / 3 / 6; }
-  .zm-dev__col:nth-child(3) .zm-dev__card:last-child { grid-area: 2 / 7 / 3 / 8; }
-  .zm-dev__card { gap: 48px; justify-content: space-between; }
-
-  /* 8. Способы покупки: карточки 300×359 */
-  .zm-hbuy { margin-top: 100px; padding: 140px 0 100px; }
-  .zm-hbuy__head { align-items: flex-start; }
-  .zm-hbuy__head div { flex: 0 0 258px; padding-top: 57px; }
-  .zm-hbuy .zm-slider { margin-top: 42px; }
-  .zm-hbuy .zm-slider__track > * { width: 300px; min-height: 359px; }
-  .zm-hbuy__bar { margin-bottom: 48px; }
-
-  /* 9. Ход строительства: кнопка под заголовком, 3 колонки 305×290 */
   .zm-hbuild { padding-top: 60px; }
   .zm-hbuild__head { flex-direction: column; align-items: flex-start; gap: 32px; margin-bottom: 32px; }
   .zm-hbuild__grid { gap: 20px 12px; }
   .zm-build-card__img { aspect-ratio: auto; height: 230px; }
   .zm-build-card__foot { font-size: 16px; }
-
-  /* 10. Новости: 2 колонки 464, фото 328 */
   .zm-hnews { padding-top: 80px; }
   .zm-hnews__head { margin-bottom: 32px; }
   .zm-hnews__head { gap: 10px; }
@@ -909,80 +833,12 @@
   .zm-hnews__grid .zm-news-card__body { min-height: 193px; }
   .zm-hnews__grid .zm-news-card__title { font-size: 20px; line-height: 1.24; margin-bottom: 0; }
   .zm-hnews__grid .zm-news-card__text { font-size: 16px; }
-
-  /* 11. FAQ: пункты 950×78 */
-  .zm > section.zm-hfaq { padding: 60px 0 100px; }
-  /* в макете текст стоит справа от второй строки заголовка */
-  .zm-hfaq__head { position: relative; }
-  .zm-hfaq__head .zm-h2 { white-space: nowrap; }
-  .zm-hfaq__head div { position: absolute; right: 0; bottom: 0; width: 398px; }
-  .zm-hfaq .zm-faq { margin: 71px -5px 0; gap: 2px; }
-  .zm-hfaq .zm-faq__q { min-height: 78px; padding: 20px 20px 20px 30px; font-size: 20px; line-height: 27px; }
 }
-@media (min-width: 768px) and (max-width: 959px) { .zm-hnews__head { flex-direction: column; align-items: flex-start; } .zm-hnews__head .zm-h2 { height: auto; line-height: 1; } .zm-hfaq__head { flex-direction: column; align-items: flex-start; } .zm-hfaq__head div { position: static; width: auto; max-width: 398px; } }
+@media (min-width: 768px) and (max-width: 959px) { .zm-hnews__head { flex-direction: column; align-items: flex-start; } .zm-hnews__head .zm-h2 { height: auto; line-height: 1; } }
 @media (max-width: 767px) {
-  .zm-hh { grid-template-columns: 1fr; height: auto; }
-  .zm-hh__img:not(.zm-hh__img--2) { display: none; }
-  .zm-hh__right { grid-template-rows: auto 435px; }
-  .zm-hab__grid { grid-template-columns: 1fr; }
-  .zm-hab__img { min-height: 674px; }
-  .zm-hab__cards { position: absolute; left: 0; right: 0; bottom: 30px; flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 30px; gap: 16px; }
-  .zm-hab__cards::-webkit-scrollbar { display: none; }
-  .zm-hab__card { flex: none; width: 295px; min-height: 349px; scroll-snap-align: center; }
-  .zm-loc__head, .zm-hbuy__head, .zm-hfaq__head { flex-direction: column; align-items: flex-start; }
-  .zm-loc__head p, .zm-hbuy__head div, .zm-hfaq__head div, .zm-hbuy__head .zm-h2 { flex: none; max-width: 520px; }
-  .zm-hbuy__head .zm-h2 { max-width: none; }
-  .zm-loc { grid-template-columns: 1fr; }
-  .zm-loc__list { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0 calc(-1 * var(--zm-pad)); padding: 0 var(--zm-pad); }
-  .zm-loc__list::-webkit-scrollbar { display: none; }
-  .zm-loc__item { flex: none; width: 295px; min-height: 325px; scroll-snap-align: start; }
-  .zm-loc__map { min-height: 655px; }
-  .zm-pick { grid-template-columns: 1fr; }
-  .zm-pick__img { display: none; }
-  .zm-dev { grid-template-columns: 1fr; }
   .zm-hbuild__grid, .zm-hnews__grid { grid-template-columns: 1fr 1fr; }
-  .zm-hbuy .zm-slider { margin-top: 40px; }
 }
 @media (max-width: 640px) {
-  .zm-hh { padding: 10px var(--zm-pad) 0; }
-  .zm-hh__right { grid-template-rows: auto 435px; }
-  .zm-hh__pills li { padding: 7px 10px; font-size: 12px; line-height: 17px; }
-  .zm-hh__title { margin: 30px 0 30px; }
-  .zm-hh__title small { font-size: 30px; margin-bottom: 10px; }
-  .zm-hh__title > span { font-size: 50px; line-height: .5; padding-top: 12px; }
-  .zm-hh__card .zm-btn { width: 100%; min-height: 54px; }
-  .zm-hab { padding-top: 50px; }
-  .zm-hloc, .zm-harch, .zm-hplans, .zm-hpick { padding-top: 64px; }
-  .zm > section.zm-hfaq { padding: 64px 0 64px; }
-  .zm-hfaq .zm-faq { margin: 32px 0 0; }
-  .zm-hbuy { margin-top: 64px; }
-  .zm-hbuy__bar { margin-bottom: 24px; }
-  .zm-hab__grid { margin-top: 20px; }
-  .zm-hab__intro { gap: 20px; }
-  .zm-hab__intro .zm-btn { min-height: 52px; padding: 15px 77px; }
-  .zm-hab__card b, .zm-dev__card b { font-size: 80px; }
-  .zm-loc__item h3 { font-size: 18px; line-height: 24px; }
-  .zm-harch .zm-slider { margin-top: 24px; }
-  .zm-harch .zm-slider__track > * { width: calc(100vw - 2 * var(--zm-pad)); }
-  .zm-arch__img { height: 335px; }
-  .zm-arch__row { gap: 23px; }
-  .zm-arch__row b, .zm-arch__row h3 { font-size: 18px; line-height: 24px; }
-  .zm-plans__box { height: 464px; margin-top: 24px; }
-  #choose .zm-h2 { font-size: 46px; }
-  .zm-plans__btn { width: auto; min-height: 52px; padding: 15px 40px; border-radius: 8px; font-size: 14px; line-height: 22px; font-weight: 500; white-space: nowrap; }
-  .zm-pick__box { padding: 20px; }
-  .zm-pick__title { font-size: 30px; line-height: 30px; }
-  .zm-pick__texts { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; padding-bottom: 24px; }
-  .zm-pick .zm-form__grid { grid-template-columns: 1fr; gap: 12px; }
-  .zm-pick .zm-check { font-size: 11px; line-height: 1.3; }
-  .zm-pick__note { font-size: 12px; }
-  .zm-dev { margin-top: 24px; }
-  .zm-dev__img { height: 220px; }
-  .zm-dev__card h3 { font-size: 18px; line-height: 24px; }
-  .zm-hbuy { padding: 64px 0 40px; }
-  .zm-hbuy .zm-slider { margin-top: 32px; }
-  .zm-hbuy .zm-slider__track > * { width: 86vw; min-height: 480px; }
-  .zm-hbuy__bar .zm-btn { padding: 15px 40px; }
   .zm-hbuild__head, .zm-hnews__head { flex-direction: column; align-items: flex-start; margin-bottom: 24px; }
   .zm-hbuild__grid, .zm-hnews__grid { grid-template-columns: 1fr; gap: 12px; }
   .zm-hbuild__grid > :nth-child(n+4) { display: none; }
@@ -990,92 +846,8 @@
   .zm-hnews__grid .zm-news-card__img { height: 254px; }
   .zm-hnews__grid .zm-news-card__body { min-height: 172px; }
   .zm-hnews__grid .zm-news-card__title { font-size: 16px; line-height: 20px; }
-  .zm-hfaq .zm-faq { margin-top: 32px; gap: 12px; }
-  .zm-hfaq .zm-faq__q { min-height: 82px; padding: 20px; }
 }
-
-/* ===== Мобильная версия — по фрейму «Главная / 375» ===== */
 @media (max-width: 640px) {
-  .zm-hh { gap: 20px; }
-  .zm-hh__right { gap: 20px; grid-template-rows: auto 435px; }
-  .zm-hh__card { min-height: 463px; }
-  .zm-hh__title { margin: 24px 0 0; }
-  .zm-hh__title small { font-size: 30px; line-height: 30px; max-width: 160px; margin-bottom: 0; }
-  .zm-hh__title > span { font-size: 50px; line-height: 25px; padding-top: 30px; position: relative; top: -20px; }
-  .zm-hh__text { margin-top: 50px; }
-
-  .zm-home .zm-hab { padding-top: 50px; }
-  .zm-hab .zm-h2 { font-size: 80px; }
-  .zm-hab__grid { gap: 20px; margin-top: 20px; }
-  .zm-hab__img { min-height: 674px; }
-  .zm-hab__cards { top: 110px; bottom: auto; padding: 0 55px; scroll-padding: 0 55px; gap: 16px; }
-  .zm-hab__card { width: 295px; min-height: 349px; padding: 17px 20px 42px; scroll-snap-align: start; }
-
-  .zm-home .zm-hloc { padding-top: 50px; }
-  .zm-loc__head .zm-h2 { flex: none; }
-  .zm-loc__head p { max-width: 343px; }
-  .zm-hab__intro p { max-width: 342px; }
-  .zm-loc__head { margin-bottom: 52px; gap: 40px; }
-  .zm-loc__map { min-height: 655px; margin-top: 0; }
-  .zm-loc { gap: 20px; }
-  .zm-loc__list { scroll-padding: 0 var(--zm-pad); }
-  .zm-loc__item { justify-content: flex-start; gap: 80px; padding: 20px 20px 23px; }
-  .zm-loc__item > div:last-child { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-  .zm-loc__item h3 { margin: 0; }
-
-  .zm-home .zm-harch { padding-top: 50px; }
-  .zm-harch .zm-slider { margin-top: 52px; }
-  .zm-harch .zm-arrows { display: none; }
-  .zm-harch .zm-slider__track > * { min-height: 563px; }
-
-  .zm-home .zm-hplans { padding-top: 50px; }
-  #choose .zm-h2 { font-size: 55px; line-height: 1; }
-  .zm-plans__box { height: 464px; margin-top: 18px; }
-  .zm-plans__btn { width: 307px; }
-
-  .zm-home .zm-hpick { padding-top: 30px; }
-  .zm-hpick .zm-container { padding: 0 10px; }
-  .zm-pick { min-height: 639px; }
-  .zm-pick__title { font-size: 30px; line-height: 31px; }
-  .zm-pick__texts { margin-top: 8px; padding-bottom: 0; gap: 16px; }
-  .zm-pick .zm-form { margin-top: 40px; }
-  .zm-pick__note { margin-top: 8px; }
-  .zm-pick .zm-check { margin-top: 0; }
-  .zm-pick .zm-form__submit { margin-top: 0; }
-  .zm-pick .zm-form__grid { gap: 12px; }
-  .zm-pick .zm-check { order: 3; margin-top: 8px; }
-  .zm-pick .zm-form__submit { order: 4; margin-top: 12px; }
-  .zm-pick .zm-form__submit .zm-btn { height: 65px; font-size: 12px; }
-
-  .zm-hdev { padding-top: 76px; }
-  .zm-hdev .zm-h2 { font-size: 52px; }
-  .zm-dev { margin-top: 27px; gap: 10px; }
-  .zm-dev__col { gap: 10px; }
-  .zm-dev__col:nth-child(3) { gap: 20px; }
-  .zm-dev__col:nth-child(2) .zm-dev__card { margin-bottom: 10px; }
-  .zm-dev__img { height: 220px; margin: 0 3px; }
-  .zm-dev__card { min-height: 0; flex: none; justify-content: flex-start; gap: 40px; }
-  .zm-dev__card b { font-size: 80px; }
-  .zm-dev__card h3 { margin-bottom: 20px; }
-  .zm-dev__col:nth-child(2) .zm-dev__card h3 { margin-bottom: 16px; }
-  .zm-dev__card p + p { margin-top: 12px; }
-  .zm-dev__card--dark h3 { font-size: 17px; margin-bottom: 15px; }
-  .zm-dev__card--dark p { font-size: 13px; }
-  .zm-dev__card--dark p + p { margin-top: 15px; }
-
-  .zm-home .zm-hbuy { margin-top: 40px; padding: 80px 0 62px; }
-  .zm-hbuy .zm-h2 { font-size: 77px; line-height: 77px; }
-  .zm-hbuy__head { gap: 40px; }
-  .zm-hbuy .zm-slider { margin-top: 24px; }
-  .zm-hbuy__bar { margin-bottom: 65px; }
-  .zm-hbuy__bar .zm-arrows { display: none; }
-  .zm-hbuy__bar .zm-btn { min-height: 49px; padding: 15px 48px; }
-  .zm-hbuy .zm-slider__track { margin: 0 calc(-1 * var(--zm-pad)); padding: 0 15px; scroll-padding: 0 15px; }
-  .zm-hbuy .zm-slider__track > * { width: 290px; min-height: 429px; }
-  .zm-hbuy__card { justify-content: flex-start; gap: 0; }
-  .zm-hbuy__card > div:first-child { min-height: 233px; }
-  .zm-hbuy__card h3 { font-size: 18px; line-height: 24px; }
-
   .zm-hbuild { padding-top: 50px; }
   .zm-hbuild .zm-h2, .zm-hnews .zm-h2 { font-size: 55px; }
   .zm-hbuild__head, .zm-hnews__head { gap: 16px; margin-bottom: 19px; }
@@ -1084,12 +856,434 @@
   .zm-build-card__img { aspect-ratio: 351 / 269; }
   .zm-hnews { padding-top: 40px; }
   .zm-hnews__grid .zm-news-card__img { margin-bottom: -24px; }
+}
 
-  .zm > section.zm-hfaq { padding: 90px 0 64px; }
-  .zm-hfaq .zm-h2 { font-size: 60px; word-spacing: 100vw; }
-  .zm-hfaq__head { gap: 50px; }
-  .zm-hfaq__head p + p { margin-top: 0; }
-  .zm-hfaq .zm-faq { margin-top: 40px; }
+/* ===== Ниже 1200 — старые блоки как на текущем сайте =====
+   Брейкпоинты Tilda: <390 (артборд 320) · 390–479 · 480–639 · 640–959 · 960–1199.
+   Там, где на сайте блок сломан (элемент за краем экрана, пустое место), взят ближайший рабочий вариант. */
+@media (max-width: 1199px) {
+  .zm-home { --zm-pad: 20px; }
+  .zm-home .zm-h2, .zm-hab__card b, .zm-dev__card b, .zm-pick__title { position: relative; top: .237em; letter-spacing: 0; }
+  .zm-hnews .zm-h2 { top: 0; }
+
+  /* 1. Первый экран: карточка, под ней фото */
+  .zm-hh { display: flex; flex-direction: column; height: auto; padding: 13px 20px 10px; }
+  .zm-hh > .zm-hh__img { display: none; }
+  .zm-hh__right { display: flex; flex-direction: column; gap: 10px; }
+  .zm-hh__card { padding: 20px; }
+  .zm-hh__pills li { padding: 7px 10px; font-size: 14px; line-height: 20px; }
+  .zm-hh__title { margin: 20px 0 0; }
+  .zm-hh__title small { position: relative; top: .237em; font-size: 60px; line-height: 60px; margin: 0 0 20px; max-width: none; }
+  .zm-hh__title > span { position: relative; top: .237em; font-size: 60px; line-height: 30px; padding: 0; }
+  .zm-hh__text { max-width: 362px; margin-top: 60px; }
+  .zm-hh__card .zm-btn { width: 350px; max-width: 100%; min-height: 63px; margin-top: 20px; padding: 10px 20px; }
+  .zm-hh__img--2 { flex: none; }
+
+  /* 2. О проекте */
+  .zm-hab__grid { display: block; margin-top: 10px; }
+  .zm-hab__intro { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .zm-hab__intro p { max-width: 482px; }
+  .zm-hab__img { min-height: 0; margin: 20px 0 0; }
+  .zm-hab__cards { position: static; display: flex; flex-direction: column; gap: 20px; margin-top: 20px; padding: 0; overflow: visible; }
+  .zm-hab__card { flex: none; width: auto; min-height: 0; justify-content: flex-start; gap: 73px; padding: 20px 20px 39px; }
+
+  /* 3. Локация */
+  .zm-loc__head { display: block; margin: 0; }
+  .zm-loc__head .zm-h2 { flex: none; white-space: normal; }
+  .zm-loc__head p { max-width: 482px; margin-top: 50px; }
+  .zm-loc { display: block; }
+  .zm-loc__list { display: flex; flex-direction: column; gap: 20px; margin: 50px 0 0; padding: 0; overflow: visible; }
+  .zm-loc__item { flex: none; width: auto; min-height: 270px; justify-content: space-between; gap: 20px; padding: 20px; }
+  .zm-loc__icon { width: 60px; height: 60px; }
+  .zm-loc__item > div:last-child { display: block; flex: none; }
+  .zm-loc__item h3 { font-size: 24px; line-height: 32px; margin: 0 0 20px; }
+  .zm-loc__map { min-height: 655px; margin-top: 20px; }
+
+  /* 4. Архитектура: карточки списком */
+  .zm-harch .zm-h2 { text-align: left; }
+  .zm-harch .zm-slider { margin-top: 50px; }
+  .zm-harch .zm-slider__track { display: flex; flex-direction: column; gap: 20px; overflow: visible; margin: 0; padding: 0; }
+  .zm-harch .zm-slider__track > * { width: auto; }
+  .zm-harch .zm-arrows { display: none; }
+  .zm-arch__card { gap: 30px; padding: 20px; }
+  .zm-arch__img { flex: none; height: 350px; }
+  .zm-arch__row { gap: 30px; }
+  .zm-arch__row b { width: auto; min-width: 24px; font-size: 24px; line-height: 32px; }
+  .zm-arch__row h3 { font-size: 24px; line-height: 32px; margin-bottom: 20px; }
+
+  /* 5. Планировки */
+  #choose .zm-h2 { font-size: var(--zm-h); line-height: 1; }
+  .zm-plans__box { margin-top: 20px; }
+  .zm-home .zm-hpick { padding-top: 95px; }
+  .zm-plans__btn { top: 50%; transform: translate(-50%, -50%); width: 491px; max-width: calc(100% - 40px); min-height: 70px; padding: 15px 20px; border-radius: 30px; font-size: 18px; line-height: 28px; font-weight: 600; white-space: normal; }
+
+  /* 6. Форма подбора: тёмная карточка, под ней фото (на 960 — наоборот) */
+  .zm-hpick .zm-container { padding: 0 10px; }
+  .zm-pick { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+  .zm-pick__img { display: block; order: 2; flex: none; }
+  .zm-pick__box { padding: 20px; min-height: 0; }
+  .zm-pick__title { font-size: 40px; line-height: 40px; }
+  .zm-pick__texts { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 10px; padding-bottom: 0; font-size: 14px; line-height: 20px; font-weight: 400; }
+  .zm-pick .zm-form { margin-top: 24px; }
+  .zm-pick .zm-form__grid { display: flex; flex-direction: column; gap: 0; }
+  .zm-pick .zm-field { width: calc(100% - 20px); margin: 0; }
+  .zm-pick .zm-field input { height: 65px; border-radius: 8px; font-size: 18px; }
+  .zm-pick .zm-check { order: 3; margin: 0; padding-top: 2px; font-size: 14px; line-height: 16.8px; }
+  .zm-pick .zm-form__submit { order: 4; margin: 0; }
+  .zm-pick .zm-form__submit .zm-btn { width: 100%; height: 65px; padding: 0 15px; font-size: 12px; font-weight: 500; }
+  .zm-pick__note { margin-top: 15px; font-size: 13px; }
+
+  /* 7. О застройщике: один столбец — 01, фото, 02, 03, 04 */
+  .zm-dev { display: flex; flex-direction: column; gap: 20px; }
+  .zm-dev__col { display: contents; }
+  .zm-dev__card { flex: none; justify-content: space-between; gap: 20px; min-height: 0; margin: 0; }
+  .zm-dev__card > div { max-width: 460px; }
+  .zm-dev__card h3 { font-size: 24px; line-height: 32px; margin-bottom: 20px; }
+  .zm-dev__card--dark h3 { margin-bottom: 10px; }
+  .zm-dev__col:nth-child(3) .zm-dev__card h3 { margin-bottom: 30px; }
+  .zm-dev__card p { font-size: 14px; line-height: 19px; }
+  .zm-dev__card p + p { margin-top: 19px; }
+  .zm-dev__img { margin: 0; }
+  .zm-home .zm-hdev { padding-bottom: 100px; }
+
+  /* 8. Способы покупки */
+  .zm-home .zm-hbuy { margin-top: 0; }
+  .zm-hbuy__head { display: block; }
+  .zm-hbuy__head .zm-h2 { max-width: none; white-space: nowrap; }
+  .zm-hbuy__head div { max-width: none; padding: 0; margin-top: 40px; }
+  .zm-hbuy__head p + p { margin-top: 19px; }
+  .zm-hbuy .zm-slider { margin-top: 0; gap: 20px; }
+  .zm-hbuy__bar { margin: 24px 0 0; }
+  .zm-hbuy__bar .zm-arrows { display: none; }
+  .zm-hbuy .zm-slider__track { margin: 0 calc(-1 * var(--zm-pad)); padding: 0 var(--zm-pad); scroll-padding: 0 var(--zm-pad); }
+  .zm-hbuy__card { justify-content: space-between; gap: 20px; }
+  .zm-hbuy__card > div:first-child { min-height: 0; }
+  .zm-hbuy__card h3 { margin-top: 20px; font-size: 24px; line-height: 32px; }
+
+  /* 9. Ход строительства — только заголовок со старого сайта */
+  .zm-hbuild .zm-h2 { font-size: var(--zm-h); line-height: 1; }
+
+  /* 11. FAQ — T668 с масштабом Tilda (ширина / брейкпоинт × 0.99) */
+  .zm-hfaq__head { display: block; position: static; }
+  .zm-hfaq__head .zm-h2 { white-space: normal; word-spacing: normal; }
+  .zm-hfaq__head div { position: static; width: auto; max-width: 482px; margin-top: 50px; padding: 0; }
+  .zm-hfaq__head p + p { margin-top: 19px; }
+  .zm-hfaq .zm-faq { margin: calc(45 * var(--k)) calc(21 * var(--k) - var(--zm-pad)) 0; gap: 2px; }
+  .zm-hfaq .zm-faq__q { position: relative; min-height: 0; gap: 0; padding: calc(20 * var(--k)); font-size: calc(18 * var(--k)); line-height: calc(24.3 * var(--k)); font-weight: 600; }
+  .zm-hfaq .zm-faq__q > span { padding-right: calc(30 * var(--k)); }
+  .zm-hfaq .zm-faq__icon { position: absolute; right: calc(8 * var(--k)); top: 50%; width: calc(40 * var(--k)); height: calc(40 * var(--k)); margin: calc(-20 * var(--k)) 0 0; transition: transform .3s; }
+  .zm-hfaq .zm-faq__icon::before, .zm-hfaq .zm-faq__icon::after { left: calc(9 * var(--k)); top: calc(19.5 * var(--k)); width: calc(22 * var(--k)); height: max(1px, var(--k)); background: #222; }
+  .zm-hfaq .zm-faq__item.is-open .zm-faq__icon { transform: rotate(-45deg); }
+  .zm-hfaq .zm-faq__item.is-open .zm-faq__icon::after { transform: rotate(90deg); }
+  .zm-hfaq .zm-faq__a .zm-text { max-width: none; padding: 0 calc(20 * var(--k)) calc(20 * var(--k)); font-size: calc(16 * var(--k)); line-height: 1.45; font-weight: 300; color: #132640; }
+  .zm-hfaq .zm-faq__a .zm-text p + p { margin-top: 1.45em; }
+  .zm > section.zm-hfaq { padding: 0 0 calc(75 * var(--k)); }
+}
+
+/* --- 960–1199 --- */
+@media (min-width: 960px) and (max-width: 1199px) {
+  .zm-home { --zm-h: 130px; }
+  .zm-hh { display: grid; grid-template-columns: 191fr 719fr; gap: 10px; height: 815px; padding-bottom: 0; }
+  .zm-hh > .zm-hh__img { display: block; }
+  .zm-hh__right { display: block; }
+  .zm-hh__img--2 { display: none; }
+  .zm-hh__card { height: 100%; }
+  .zm-hh__title { margin-top: 153px; }
+  .zm-hh__text { margin-top: 192px; }
+  .zm-hh__card .zm-btn { margin-top: auto; }
+
+  .zm-home .zm-hab { padding-top: 60px; }
+  .zm-hab__grid { margin-top: 63px; }
+  .zm-hab__intro { flex-direction: row; justify-content: space-between; }
+  .zm-hab__img { height: 782px; margin: 20px -32px 0; }
+  .zm-hab__cards { flex-direction: row; }
+  .zm-hab__card { flex: 1; height: 433px; justify-content: space-between; }
+  .zm-hab__card b, .zm-dev__card b { font-size: 130px; }
+
+  .zm-home .zm-hloc { padding-top: 140px; }
+  .zm-loc__list { flex-direction: row; }
+  .zm-loc__item { flex: 1; min-height: 397px; }
+
+  .zm-home .zm-harch { padding-top: 60px; }
+  .zm-harch .zm-h2 { text-align: center; }
+  .zm-harch .zm-slider__track { flex-direction: row; gap: 20px; overflow-x: auto; margin: 0 calc(-1 * var(--zm-pad)); padding: 0 var(--zm-pad); scroll-padding: 0 var(--zm-pad); }
+  .zm-harch .zm-slider__track > * { width: 365px; }
+  .zm-arch__img { height: 350px; }
+
+  .zm-home .zm-hplans { padding-top: 60px; }
+  /* на сайте заголовок в одну строку и уходит за край — уменьшаем, чтобы влез */
+  #choose .zm-h2 { font-size: min(130px, calc((100vw - 40px) / 7.85)); line-height: 130px; white-space: nowrap; }
+  .zm-plans__box { height: 455px; }
+
+  .zm-hpick .zm-container { padding: 0 20px; }
+  .zm-pick__img { order: 0; height: 587px; }
+  .zm-pick__title { font-size: 60px; line-height: 60px; }
+  .zm-pick__texts { grid-template-columns: 362px 362px; margin-top: 30px; }
+  .zm-pick .zm-form { margin-top: 64px; }
+  .zm-pick .zm-form__submit .zm-btn { width: 250px; font-size: 16px; }
+
+  .zm-home .zm-hdev { padding-top: 70px; }
+  .zm-dev { margin-top: 50px; }
+  .zm-dev__card { min-height: 369px; }
+  .zm-dev__card--dark { min-height: 758px; }
+  .zm-dev__img { height: 369px; }
+
+  .zm-home .zm-hbuy { padding: 140px 0 20px; }
+  .zm-hbuy__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; }
+  .zm-hbuy__head .zm-h2 { flex: none; }
+  .zm-hbuy__head div { flex: 0 1 239px; margin: 0; }
+  .zm-hbuy .zm-slider__track { padding-left: 40px; scroll-padding-left: 40px; }
+  .zm-hbuy .zm-slider__track > * { width: 300px; min-height: 588px; }
+  .zm-hbuy__bar { margin-top: 30px; }
+  .zm-hbuy .zm-slider { margin-top: 0; }
+
+  .zm-home .zm-hbuild { padding-top: 60px; }
+
+  .zm-hfaq { --k: .103125vw; }
+  .zm > section.zm-hfaq { padding: 60px 0 calc(120 * var(--k)); }
+  .zm-hfaq__head { position: relative; }
+  .zm-hfaq__head .zm-h2 { max-width: 764px; }
+  .zm-hfaq__head div { position: absolute; right: 0; bottom: 0; width: 300px; margin: 0; }
+  .zm-hfaq .zm-faq { max-width: calc(600 * var(--k)); margin: calc(70 * var(--k)) auto 0; }
+  .zm-hfaq .zm-faq__q { padding: calc(25 * var(--k)) calc(18 * var(--k)) calc(25 * var(--k)) calc(30 * var(--k)); font-size: calc(20 * var(--k)); line-height: calc(27 * var(--k)); }
+  .zm-hfaq .zm-faq__a .zm-text { padding: 0 calc(30 * var(--k)) calc(20 * var(--k)); line-height: 1.55; }
+  .zm-hfaq .zm-faq__a .zm-text p + p { margin-top: 1.55em; }
+}
+
+@media (min-width: 480px) and (max-width: 959px) { .zm-hbuy .zm-h2 br { display: none; } }
+/* --- 640–959 --- */
+@media (min-width: 640px) and (max-width: 959px) {
+  .zm-home { --zm-h: 90px; }
+  .zm-hh__img--2 { height: 388px; }
+
+  .zm-home .zm-hab { padding-top: 60px; }
+  .zm-hab .zm-h2 { white-space: nowrap; }
+  .zm-hab__img { height: 987px; }
+  .zm-hab__card b, .zm-dev__card b { font-size: 90px; }
+  .zm-loc__item:nth-child(2) p { max-width: 409px; }
+  .zm-loc__item:nth-child(3) p { max-width: 401px; }
+
+  .zm-home .zm-hloc { padding-top: 160px; }
+
+  .zm-home .zm-harch { padding-top: 60px; }
+
+  .zm-home .zm-hplans { padding-top: 71px; }
+  .zm-plans__box { height: 705px; }
+
+  .zm-hpick .zm-container { padding: 0 20px; }
+  .zm-pick__img { height: 256px; }
+  .zm-pick__title { font-size: 60px; line-height: 60px; }
+  .zm-pick__texts { margin-top: 30px; }
+  .zm-pick .zm-form { margin-top: 24px; }
+  .zm-pick .zm-form__submit .zm-btn { width: 200px; }
+
+  .zm-home .zm-hdev { padding-top: 70px; }
+  .zm-dev__card > div { max-width: none; }
+  .zm-dev__card h3 { max-width: 460px; }
+  .zm-dev { margin-top: 50px; }
+  .zm-dev__card { min-height: 356px; }
+  .zm-dev__card--dark { min-height: 731px; }
+  .zm-dev__img { height: 356px; }
+
+  .zm-home .zm-hbuy { padding: 140px 0 0; }
+  .zm-hbuy__head div { max-width: 345px; }
+  .zm-hbuy .zm-slider__track { flex-direction: column; overflow: visible; margin: 30px 0 0 20px; padding: 0; }
+  .zm-hbuy .zm-slider__track > * { width: auto; min-height: 486px; }
+  .zm-hbuy .zm-slider__track > :is(:nth-child(1), :nth-child(4), :nth-child(7), :nth-child(8)) { min-height: 514px; }
+
+  .zm-home .zm-hbuild { padding-top: 60px; }
+
+  .zm-hfaq { --k: .1546875vw; }
+  .zm > section.zm-hfaq { padding: 60px 0 calc(120 * var(--k)); }
+  .zm-hfaq .zm-faq { max-width: calc(600 * var(--k)); margin: calc(60 * var(--k)) auto 0; }
+  .zm-hfaq .zm-faq__q { font-size: calc(20 * var(--k)); line-height: calc(27 * var(--k)); }
+}
+
+/* --- до 639: карточки «О проекте» поверх фото, слайдеры локации и покупки --- */
+@media (max-width: 639px) {
+  .zm-hab__img { position: relative; }
+  .zm-hab__cards { position: absolute; left: 0; right: 0; top: 100px; flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 0; padding: 0 40px; scroll-padding: 0 40px; }
+  .zm-hab__cards::-webkit-scrollbar { display: none; }
+  .zm-hab__card { flex: none; width: 340px; min-height: 365px; scroll-snap-align: start; }
+  .zm-loc__list { scrollbar-width: none; }
+}
+
+/* --- 480–639 --- */
+@media (min-width: 480px) and (max-width: 639px) {
+  .zm-home { --zm-h: 50px; }
+  .zm-hh__pills { flex-direction: column; align-items: flex-start; }
+  .zm-hh__pills li { width: 175px; text-align: center; white-space: nowrap; }
+  .zm-hh__img--2 { height: 300px; }
+
+  .zm-home .zm-hab { padding-top: 60px; }
+  .zm-hab__img { height: 632px; margin-top: 30px; }
+  .zm-hab__card b { font-size: 50px; }
+  .zm-hab__card { justify-content: space-between; }
+
+  .zm-home .zm-hloc { padding-top: 60px; }
+  .zm-loc__list { margin-top: 210px; }
+  .zm-loc__map { margin-top: 60px; }
+
+  .zm-home .zm-harch { padding-top: 60px; }
+  .zm-arch__card:nth-child(1) .zm-arch__img, .zm-arch__card:nth-child(3) .zm-arch__img { height: 340px; }
+  .zm-arch__card:nth-child(2) .zm-arch__img { height: 372px; }
+  .zm-arch__card:nth-child(4) .zm-arch__img { height: 359px; }
+
+  .zm-home .zm-hplans { padding-top: 60px; }
+  .zm-plans__box { height: 705px; }
+
+  .zm-pick__img { height: 499px; }
+  .zm-pick .zm-form { margin-top: 0; }
+
+  .zm-home .zm-hdev { padding-top: 60px; }
+  .zm-dev { margin-top: 50px; }
+  .zm-dev__card { min-height: 358px; }
+  .zm-dev__card--dark { min-height: 736px; }
+  .zm-dev__img { height: 358px; }
+  .zm-dev__card b { font-size: 50px; }
+
+  .zm-home .zm-hbuy { padding: 140px 0 45px; }
+  .zm-hbuy .zm-slider__track > * { width: 440px; min-height: 537px; }
+
+  .zm-home .zm-hbuild { padding-top: 60px; }
+
+  .zm-hfaq { --k: .20625vw; }
+  .zm > section.zm-hfaq { padding-top: 60px; }
+}
+
+/* --- до 479 (артборды 390 и 320) --- */
+@media (max-width: 479px) {
+  .zm-home { --zm-pad: 15px; }
+  .zm-hh__pills li { font-size: 12px; line-height: 17px; }
+  .zm-hh__card .zm-btn { width: 100%; }
+
+  .zm-hab__img { width: auto; margin-top: 61px; }
+
+  .zm-loc__list { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; margin: 52px calc(-1 * var(--zm-pad)) 0; padding: 0 var(--zm-pad); scroll-padding: 0 var(--zm-pad); }
+  .zm-loc__list::-webkit-scrollbar { display: none; }
+  .zm-loc__item { width: 295px; height: 325px; min-height: 0; justify-content: flex-start; gap: 78px; scroll-snap-align: start; }
+  .zm-loc__item > div:last-child { flex: 1; display: flex; flex-direction: column; }
+  .zm-loc__item h3 { margin: 0; }
+  .zm-loc__item p { margin-top: auto; }
+
+  .zm-harch .zm-h2 { text-align: center; }
+  .zm-harch .zm-slider { margin-top: 90px; }
+  .zm-harch .zm-arch__card { min-height: 582px; }
+  .zm-arch__img { flex: 1; height: auto; min-height: 0; }
+
+  .zm-plans__box { height: 1025px; }
+
+  .zm-hpick .zm-container { padding: 0 10px; }
+
+  .zm-hbuy__head div { margin-top: 40px; }
+  .zm-hbuy .zm-slider__track > * { width: 360px; min-height: 429px; }
+  .zm-hbuy__card { gap: 20px; }
+
+  .zm-hfaq { --k: .309375vw; }
+  .zm > section.zm-hfaq { padding-top: 50px; }
+  .zm-hfaq__head .zm-h2 { max-width: 262px; }
+}
+
+/* --- 390–479 --- */
+@media (min-width: 390px) and (max-width: 479px) {
+  .zm-home { --zm-h: 70px; }
+  .zm-hh__title { margin-top: 44px; }
+  .zm-hh__title small { font-size: 33px; line-height: 33px; }
+  .zm-hh__title > span { font-size: 64px; line-height: 32px; }
+  .zm-hh__text { max-width: none; margin-top: 83px; }
+  .zm-hh__card .zm-btn { min-height: 60px; margin-top: 44px; }
+  .zm-hh__img--2 { height: 508px; }
+
+  .zm-home .zm-hab { padding-top: 50px; }
+  .zm-hab .zm-h2 { font-size: 100px; }
+  .zm-hab__grid { margin-top: 20px; }
+  .zm-hab__img { height: 580px; margin-left: calc(-1 * var(--zm-pad)); margin-right: -5px; }
+  .zm-hab__card b { font-size: 100px; }
+
+  .zm-home .zm-hloc { padding-top: 50px; }
+
+  .zm-home .zm-harch { padding-top: 50px; }
+
+  .zm-home .zm-hplans { padding-top: 50px; }
+  #choose .zm-h2 { font-size: 68px; }
+  .zm-plans__box { margin-top: 24px; }
+
+  .zm-pick__img { height: 413px; } /* на сайте 482, но там форма наезжает на текст — компенсируем */
+
+  .zm-home .zm-hdev { padding-top: 50px; }
+  .zm-hdev .zm-h2 { font-size: 65px; }
+  .zm-dev { margin-top: 85px; }
+  .zm-dev__card { min-height: 436px; }
+  .zm-dev__col:nth-child(2) .zm-dev__card { min-height: 495px; }
+  .zm-dev__card--dark { min-height: 536px; }
+  .zm-dev__img { height: 376px; }
+  .zm-dev__card b { font-size: 100px; }
+  .zm-home .zm-hdev { padding-bottom: 39px; }
+
+  .zm-home .zm-hbuy { padding: 130px 0 127px; }
+  .zm-hbuy .zm-h2 { font-size: 96px; line-height: 96px; }
+
+  .zm-home .zm-hbuild { padding-top: 50px; }
+  .zm-hbuild .zm-h2 { font-size: 68px; }
+}
+
+/* --- до 389 (артборд 320) --- */
+@media (max-width: 389px) {
+  .zm-home { --zm-h: 60px; }
+  .zm-hh { padding-top: 10px; }
+  .zm-hh__title small { font-size: 30px; line-height: 30px; }
+  .zm-hh__title > span { font-size: 50px; line-height: 25px; }
+  .zm-hh__text { max-width: none; }
+  .zm-hh__card .zm-btn { min-height: 54px; }
+  .zm-hh__img--2 { height: 456px; }
+
+  .zm-home .zm-hab { padding-top: 50px; }
+  .zm-hab .zm-h2 { font-size: 80px; }
+  .zm-hab__grid { margin-top: 20px; }
+  .zm-hab__img { height: 583px; margin-left: -17px; margin-right: -13px; } /* на сайте 614, но низ перекрыт следующим блоком */
+  .zm-hab__cards { padding: 0 40px; }
+  .zm-hab__card { width: 280px; min-height: 383px; }
+  .zm-hab__card b { font-size: 80px; }
+
+  .zm-home .zm-hloc { padding-top: 50px; }
+  .zm-loc__item { gap: 80px; }
+  .zm-loc__item h3 { font-size: 18px; line-height: 24px; }
+
+  .zm-home .zm-harch { padding-top: 50px; }
+  .zm-harch .zm-arch__card { min-height: 587px; }
+  .zm-arch__img { flex: none; height: 355px; }
+  .zm-arch__card:first-child .zm-arch__img { height: 335px; }
+  .zm-arch__row b, .zm-arch__row h3 { font-size: 18px; line-height: 24px; }
+
+  .zm-home .zm-hplans { padding-top: 50px; }
+  #choose .zm-h2 { font-size: 55px; }
+  .zm-plans__box { height: 946px; margin-top: 30px; }
+
+  .zm-pick__title { font-size: 30px; line-height: 30px; }
+  .zm-pick__texts { grid-template-columns: 133px 96px; }
+  .zm-pick__box { min-height: 859px; }
+  .zm-pick .zm-form { margin-top: auto; padding-top: 44px; }
+  .zm-pick__img { height: 43px; } /* так на сайте */
+
+  .zm-home .zm-hdev { padding-top: 50px; }
+  .zm-hdev .zm-h2 { font-size: 52px; }
+  .zm-dev { margin-top: 88px; }
+  .zm-dev__card { min-height: 357px; }
+  .zm-dev__col:nth-child(2) .zm-dev__card { min-height: 372px; }
+  .zm-dev__card--dark { min-height: 598px; }
+  .zm-dev__img { height: 220px; margin-bottom: -14px; }
+  .zm-dev__card b { font-size: 80px; }
+  .zm-dev__card h3 { font-size: 18px; line-height: 24px; }
+  .zm-home .zm-hdev { padding-bottom: 40px; }
+
+  .zm-home .zm-hbuy { padding: 130px 0 62px; }
+  .zm-hbuy .zm-h2 { font-size: 77px; line-height: 77px; }
+  .zm-hbuy .zm-slider__track > * { width: 290px; }
+  .zm-hbuy__card h3 { font-size: 18px; line-height: 24px; }
+
+  .zm-home .zm-hbuild { padding-top: 50px; }
+  .zm-hbuild .zm-h2 { font-size: 55px; }
+  .zm-hfaq__head .zm-h2 { max-width: 227px; }
 }
 </style>
 
@@ -1099,9 +1293,9 @@
     <div class="zm-hh__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-hero.jpg" alt="ЖК «Московский»"></div>
     <div class="zm-hh__right">
       <div class="zm-hh__card">
-        <ul class="zm-hh__pills"><li>ипотека от 6%</li><li>сдача дома — II кв. 2028</li><li>от 7 млн / руб</li></ul>
+        <ul class="zm-hh__pills"><li>ипотека от 6%</li><li>сдача дома — II кв.&nbsp;2028</li><li>от 7 млн / руб</li></ul>
         <h1 class="zm-hh__title"><small>Жилой комплекс</small><span>Московский</span></h1>
-        <p class="zm-hh__text">Городская инфраструктура, парк для прогулок, школы и магазины рядом с домом — всё, для удобной жизни в сформированном районе Симферополя.</p>
+        <p class="zm-hh__text">Городская инфраструктура, парк для прогулок, школы и&nbsp;магазины рядом с&nbsp;домом&nbsp;— всё, для удобной жизни в&nbsp;сформированном районе Симферополя.</p>
         <a class="zm-btn zm-btn--white" href="#zm-form" data-scroll-form>Получить консультацию</a>
       </div>
       <div class="zm-hh__img zm-hh__img--2"><picture><source media="(max-width: 767px)" srcset="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-hero-m.jpg"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-hero-2.jpg" alt="Двор ЖК «Московский»"></picture></div>
@@ -1113,16 +1307,16 @@
     <h2 class="zm-h2">О проекте</h2>
     <div class="zm-hab__grid">
       <div class="zm-hab__intro">
-        <p>Проект расположен в развитом районе Симферополя с готовой городской инфраструктурой — всё, что нужно для повседневной жизни и экономии Вашего времени.</p>
+        <p>Проект расположен в&nbsp;развитом районе Симферополя с&nbsp;готовой городской инфраструктурой&nbsp;— всё, что нужно для повседневной жизни и&nbsp;экономии Вашего времени.</p>
         <a class="zm-btn" href="/o-proekte">Узнать больше</a>
       </div>
       <div class="zm-hab__img">
         <picture><source media="(max-width: 767px)" srcset="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-about-m.jpg"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-about.jpg" alt="ЖК «Московский»" loading="lazy"></picture>
       </div>
       <div class="zm-hab__cards" data-about-cards>
-        <div class="zm-hab__card"><b>01</b><p>Продуманная архитектура и понятная организация пространства формируют комфортную городскую среду для жизни. Проект ориентирован на практичность и удобство — без избыточных решений, с фокусом на то, что действительно важно в повседневности.</p></div>
-        <div class="zm-hab__card"><b>02</b><p>Планировки квартир функциональны и легко адаптируются под разные сценарии жизни — для одного человека, пары или семьи. Дополнительное внимание уделено практичности: удобные комнаты, рациональное использование площади, возможность гибко организовать пространство.</p></div>
-        <div class="zm-hab__card"><b>03</b><p>Проект сочетает преимущества городской среды и спокойную атмосферу жилого пространства. Это понятный и комфортный формат жилья для тех, кто ценит стабильность, удобство и продуманную среду для жизни.</p></div>
+        <div class="zm-hab__card"><b>01</b><p>Продуманная архитектура и&nbsp;понятная организация пространства формируют комфортную городскую среду для жизни. Проект ориентирован на&nbsp;практичность и&nbsp;удобство&nbsp;— без избыточных решений, с&nbsp;фокусом на&nbsp;то, что действительно важно в&nbsp;повседневности.</p></div>
+        <div class="zm-hab__card"><b>02</b><p>Планировки квартир функциональны и&nbsp;легко адаптируются под разные сценарии жизни&nbsp;— для одного человека, пары или семьи. Дополнительное внимание уделено практичности: удобные комнаты, рациональное использование площади, возможность гибко организовать пространство.</p></div>
+        <div class="zm-hab__card"><b>03</b><p>Проект сочетает преимущества городской среды и&nbsp;спокойную атмосферу жилого пространства. Это понятный и&nbsp;комфортный формат жилья для тех, кто ценит стабильность, удобство и&nbsp;продуманную среду для жизни.</p></div>
       </div>
     </div>
   </section>
@@ -1132,14 +1326,14 @@
     <div class="zm-container">
       <div class="zm-loc__head">
         <h2 class="zm-h2">Локация для<br class="zm-br-live"> вашего<br>ритма жизни</h2>
-        <p>Проект расположен в сформированном районе Симферополя с готовой городской инфраструктурой. В пешей доступности находятся школы, магазины, медицинские учреждения и парк для прогулок — всё, что нужно для повседневной жизни без лишних поездок по городу.</p>
+        <p>Проект расположен в&nbsp;сформированном районе Симферополя с&nbsp;готовой городской инфраструктурой. В&nbsp;пешей доступности находятся школы, магазины, медицинские учреждения и&nbsp;парк для прогулок&nbsp;— всё, что нужно для повседневной жизни без лишних поездок по&nbsp;городу.</p>
       </div>
       <div class="zm-loc">
         <div class="zm-loc__list">
-          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-sport.svg" alt=""></div><div><h3>Для активного образа жизни</h3><p>Рядом с домом расположены спортивные клубы, фитнес-центры и пространства для тренировок.</p></div></div>
-          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-home.svg" alt=""></div><div><h3>Всё для семьи</h3><p>В районе есть образовательные учреждения и пространства для развития детей.</p></div></div>
-          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-shop.svg" alt=""></div><div><h3>Магазины и сервисы</h3><p>Повседневные покупки, бытовые услуги и полезные сервисы доступны рядом с домом.</p></div></div>
-          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-walk.svg" alt=""></div><div><h3>Прогулки и отдых</h3><p>Зелёные зоны, прогулочные маршруты и места для отдыха создают приятную атмосферу для прогулок, спорта и спокойного досуга на свежем воздухе.</p></div></div>
+          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-sport.svg" alt=""></div><div><h3>Для активного образа жизни</h3><p>Рядом с&nbsp;домом расположены спортивные клубы, фитнес-центры и&nbsp;пространства для тренировок.</p></div></div>
+          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-home.svg" alt=""></div><div><h3>Всё для семьи</h3><p>В&nbsp;районе есть образовательные учреждения и&nbsp;пространства для развития детей.</p></div></div>
+          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-shop.svg" alt=""></div><div><h3>Магазины и&nbsp;сервисы</h3><p>Повседневные покупки, бытовые услуги и&nbsp;полезные сервисы доступны рядом с&nbsp;домом.</p></div></div>
+          <div class="zm-loc__item"><div class="zm-loc__icon"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/icon/loc-walk.svg" alt=""></div><div><h3>Прогулки и&nbsp;отдых</h3><p>Зелёные зоны, прогулочные маршруты и&nbsp;места для отдыха создают приятную атмосферу для прогулок, спорта и&nbsp;спокойного досуга на&nbsp;свежем воздухе.</p></div></div>
         </div>
         <div class="zm-loc__map"><iframe src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%B8%D0%BC%D1%84%D0%B5%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9F%D0%BE%D0%B1%D0%B5%D0%B4%D1%8B%2C%2012&amp;z=16" title="ЖК «Московский» на карте" loading="lazy" allowfullscreen></iframe></div>
       </div>
@@ -1152,9 +1346,9 @@
       <h2 class="zm-h2">Архитектура проекта</h2>
       <div class="zm-slider" data-zm-slider>
         <div class="zm-slider__track">
-          <article class="zm-arch__card"><div class="zm-arch__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/arch-1.jpg" alt="" loading="lazy"></div><div class="zm-arch__row"><b>01</b><div><h3>Современные фасадные решения</h3><p>Архитектура проекта, выполненная из керамогранита, гарантирует долговечность и сочетает сдержанную эстетику.</p></div></div></article>
+          <article class="zm-arch__card"><div class="zm-arch__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/arch-1.jpg" alt="" loading="lazy"></div><div class="zm-arch__row"><b>01</b><div><h3>Современные фасадные решения</h3><p>Архитектура проекта, выполненная из&nbsp;керамогранита, гарантирует долговечность и&nbsp;сочетает сдержанную эстетику.</p></div></div></article>
           <article class="zm-arch__card"><div class="zm-arch__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/arch-2.jpg" alt="" loading="lazy"></div><div class="zm-arch__row"><b>02</b><div><h3>Панорамное остекление</h3><p>Наполняют пространство естественным светом и ощущением свободы. Больше воздуха, уюта и визуального простора в каждой комнате.</p></div></div></article>
-          <article class="zm-arch__card"><div class="zm-arch__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/arch-3.jpg" alt="" loading="lazy"></div><div class="zm-arch__row"><b>03</b><div><h3>Корзины для кондиционеров на фасаде</h3><p>Специальные корзины для кондиционеров сохраняют эстетику фасада и единый архитектурный стиль.</p></div></div></article>
+          <article class="zm-arch__card"><div class="zm-arch__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/arch-3.jpg" alt="" loading="lazy"></div><div class="zm-arch__row"><b>03</b><div><h3>Корзины для кондиционеров на фасаде</h3><p>Специальные корзины для кондиционеров сохраняют эстетику фасада и&nbsp;единый архитектурный стиль.</p></div></div></article>
           <article class="zm-arch__card"><div class="zm-arch__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/buy-6.jpg" alt="" loading="lazy"></div><div class="zm-arch__row"><b>04</b><div><h3>Надёжные технологии строительства</h3><p>Используем современные технологии, надёжные материалы и контролируем каждый этап.</p></div></div></article>
         </div>
         <div class="zm-arrows">
@@ -1180,12 +1374,12 @@
   <section class="zm-hpick" id="zm-form">
     <div class="zm-container">
       <div class="zm-pick">
-        <div class="zm-pick__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/form-building.jpg" alt="ЖК «Московский»" loading="lazy"></div>
+        <div class="zm-pick__img"><picture><source media="(max-width: 1199px)" srcset="https://ivanweb1.github.io/zhk-moskovsky/assets/img/form-building-m.jpg"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/form-building.jpg" alt="ЖК «Московский»" loading="lazy"></picture></div>
         <div class="zm-pick__box">
           <h2 class="zm-pick__title">Подберём квартиру<br>под ваш стиль жизни</h2>
           <div class="zm-pick__texts">
-            <p>Наш специалист поможет подобрать подходящую квартиру, расскажет об инфраструктуре, сроках сдачи и доступных условиях покупки. Без навязчивости — просто ответим на все ваши вопросы.</p>
-            <p>После заявки вы получите подборку подходящих квартир, цены и планировки, а также консультацию менеджера по ипотеке.</p>
+            <p>Наш специалист поможет подобрать подходящую квартиру, расскажет об&nbsp;инфраструктуре, сроках сдачи и&nbsp;доступных условиях покупки. Без навязчивости&nbsp;— просто ответим на&nbsp;все ваши вопросы.</p>
+            <p>После заявки вы&nbsp;получите подборку подходящих квартир, цены и&nbsp;планировки, а&nbsp;также консультацию менеджера по&nbsp;ипотеке.</p>
           </div>
           <form class="zm-form" data-zm-form data-form-name="Главная — подбор квартиры" data-tilda-form="" data-webhook="" data-redirect="">
             <div class="zm-form__grid">
@@ -1208,15 +1402,15 @@
       <h2 class="zm-h2">О застройщике</h2>
       <div class="zm-dev">
         <div class="zm-dev__col">
-          <div class="zm-dev__card zm-dev__card--dark"><b>01</b><div><h3>Мы строим открыто и в строгом соответствии с законодательством РФ.</h3><p>Все этапы реализации проектов ведутся по 214-ФЗ с использованием эскроу-счетов и банковского контроля. Это означает полную финансовую прозрачность, защиту средств дольщиков и минимальные риски.</p><p>Мы берём на себя ответственность за каждый этап, от проектирования до ввода объекта в эксплуатацию, и всегда выполняем обязательства перед клиентами и партнёрами.</p></div></div>
+          <div class="zm-dev__card zm-dev__card--dark"><b>01</b><div><h3>Мы&nbsp;строим открыто и&nbsp;в&nbsp;строгом соответствии с&nbsp;законодательством&nbsp;РФ.</h3><p>Все этапы реализации проектов ведутся по&nbsp;214-ФЗ с&nbsp;использованием эскроу-счетов и&nbsp;банковского контроля. Это означает полную финансовую прозрачность, защиту средств дольщиков и&nbsp;минимальные риски.</p><p>Мы&nbsp;берём на&nbsp;себя ответственность за&nbsp;каждый этап, от&nbsp;проектирования до&nbsp;ввода объекта в&nbsp;эксплуатацию, и&nbsp;всегда выполняем обязательства перед клиентами и&nbsp;партнёрами.</p></div></div>
         </div>
         <div class="zm-dev__col">
           <div class="zm-dev__img"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-dev.jpg" alt="" loading="lazy"></div>
-          <div class="zm-dev__card"><b>02</b><div><h3>Контроль качества строительства</h3><p>Качество — ключевой приоритет нашей работы. Мы используем современные строительные технологии, проверенные инженерные решения и надёжные материалы от сертифицированных поставщиков.</p></div></div>
+          <div class="zm-dev__card"><b>02</b><div><h3>Контроль качества строительства</h3><p>Качество&nbsp;— ключевой приоритет нашей работы. Мы&nbsp;используем современные строительные технологии, проверенные инженерные решения и&nbsp;надёжные материалы от&nbsp;сертифицированных поставщиков.</p></div></div>
         </div>
         <div class="zm-dev__col">
           <div class="zm-dev__card"><b>03</b><div><h3>Собственная команда архитекторов</h3><p>В компании работает собственная команда архитекторов, инженеров и проектировщиков, что позволяет нам разрабатывать комплексные решения без привлечения сторонних подрядчиков.</p></div></div>
-          <div class="zm-dev__card"><b>04</b><div><h3>Тщательное планирование</h3><p>Мы тщательно планируем каждый этап строительства и строго соблюдаем утверждённые графики работ.</p><p>Чёткая организация процессов, контроль сроков и профессиональная команда позволяют нам сдавать объекты точно в срок, без срывов и компромиссов по качеству.</p></div></div>
+          <div class="zm-dev__card"><b>04</b><div><h3>Тщательное планирование</h3><p>Мы&nbsp;тщательно планируем каждый этап строительства и&nbsp;строго соблюдаем утверждённые графики работ.</p><p>Чёткая организация процессов, контроль сроков и&nbsp;профессиональная команда позволяют нам сдавать объекты точно в&nbsp;срок, без срывов и&nbsp;компромиссов по&nbsp;качеству.</p></div></div>
         </div>
       </div>
     </div>
@@ -1226,19 +1420,19 @@
   <section class="zm-hbuy" id="buy">
     <div class="zm-container">
       <div class="zm-hbuy__head">
-        <h2 class="zm-h2">Способы<br>покупки</h2>
-        <div><p>Мы предлагаем несколько вариантов приобретения квартиры — выберите тот, который подойдёт именно вам.</p><p>Все сделки проходят в соответствии с Федеральным законом № 214 и с использованием эскроу-счетов, что гарантирует безопасность ваших средств.</p></div>
+        <h2 class="zm-h2">Способы <br>покупки</h2>
+        <div><p>Мы&nbsp;предлагаем несколько вариантов приобретения квартиры&nbsp;— выберите тот, который подойдёт именно вам.</p><p>Все сделки проходят в&nbsp;соответствии с&nbsp;Федеральным законом № 214 и&nbsp;с&nbsp;использованием эскроу-счетов, что гарантирует безопасность ваших средств.</p></div>
       </div>
       <div class="zm-slider" data-zm-slider>
         <div class="zm-slider__track">
-          <article class="zm-hbuy__card"><div><p>Ипотека от ведущих банков</p><h3>Покупка в ипотеку — просто и выгодно</h3></div><div><p>Подберём банк, рассчитаем платёж и оформим ипотеку под минимальную ставку.</p><ul><li>Ставка от 6%</li><li>Взнос от 30%, семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul></div></article>
-          <article class="zm-hbuy__card"><div><p>Рассрочка от застройщика</p><h3>Платите частями — без переплаты и комиссий</h3></div><div><p>Удобный способ оплаты напрямую от застройщика — без переплат и комиссий.</p><ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До ввода дома в эксплуатацию</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>Ипотека от ведущих банков</p><h3>Покупка в ипотеку — просто и выгодно</h3></div><div><p>Подберём банк, рассчитаем платёж и&nbsp;оформим ипотеку под минимальную ставку.</p><ul><li>Ставка от 6%</li><li>Взнос от 30%, семейная или IT-ипотека</li><li>Заявка онлайн за 1 день</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>Рассрочка от застройщика</p><h3>Платите частями — без переплаты и комиссий</h3></div><div><p>Удобный способ оплаты напрямую от&nbsp;застройщика&nbsp;— без переплат и&nbsp;комиссий.</p><ul><li>Первый взнос от 30%</li><li>Без процентов</li><li>До ввода дома в эксплуатацию</li></ul></div></article>
           <div class="zm-hbuy__photo"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-buy.jpg" alt="" loading="lazy"></div>
-          <article class="zm-hbuy__card"><div><p>100% оплата</p><h3>Максимальная выгода при единовременной оплате</h3></div><div><p>Получите специальную цену и приоритет при выборе квартиры.</p><ul><li>Дополнительная скидка</li><li>Быстрое оформление</li><li>Минимум документов</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>100% оплата</p><h3>Максимальная выгода при единовременной оплате</h3></div><div><p>Получите специальную цену и&nbsp;приоритет при выборе квартиры.</p><ul><li>Дополнительная скидка</li><li>Быстрое оформление</li><li>Минимум документов</li></ul></div></article>
           <article class="zm-hbuy__card"><div><p>Материнский капитал / Сертификаты</p><h3>Используйте государственные программы</h3></div><div><p>Оплатите часть стоимости квартиры маткапиталом или жилищным сертификатом.</p><ul><li>Маткапитал</li><li>Военная ипотека</li><li>Региональные программы</li></ul></div></article>
           <div class="zm-hbuy__photo"><img src="https://ivanweb1.github.io/zhk-moskovsky/assets/img/home-buy-2.jpg" alt="" loading="lazy"></div>
-          <article class="zm-hbuy__card"><div><p>Безопасная сделка под защитой закона</p><h3>Покупка по договору долевого участия (214-ФЗ)</h3></div><div><p>Вы заключаете официальный договор ДДУ — застройщик несёт ответственность по обязательствам.</p><ul><li>Прозрачная сделка</li><li>Юридическая защита</li><li>Государственный контроль</li></ul></div></article>
-          <article class="zm-hbuy__card"><div><p>Эскроу-счета</p><h3>Ваши деньги под защитой до момента передачи квартиры</h3></div><div><p>Деньги хранятся на эскроу-счёте и перечисляются застройщику только после сдачи дома.</p><ul><li>Полная безопасность</li><li>Банковская гарантия</li><li>По стандартам 214-ФЗ</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>Безопасная сделка под защитой закона</p><h3>Покупка по&nbsp;договору долевого участия (214-ФЗ)</h3></div><div><p>Вы&nbsp;заключаете официальный договор ДДУ&nbsp;— застройщик несёт ответственность по&nbsp;обязательствам.</p><ul><li>Прозрачная сделка</li><li>Юридическая защита</li><li>Государственный контроль</li></ul></div></article>
+          <article class="zm-hbuy__card"><div><p>Эскроу-счета</p><h3>Ваши деньги под защитой до&nbsp;момента передачи квартиры</h3></div><div><p>Деньги хранятся на&nbsp;эскроу-счёте и&nbsp;перечисляются застройщику только после сдачи дома.</p><ul><li>Полная безопасность</li><li>Банковская гарантия</li><li>По стандартам 214-ФЗ</li></ul></div></article>
         </div>
         <div class="zm-hbuy__bar">
           <a class="zm-btn" href="/usloviya-pokupki">Подробнее</a>
@@ -1285,7 +1479,7 @@
     <div class="zm-container">
       <div class="zm-hfaq__head">
         <h2 class="zm-h2">Ответы на частые<br>вопросы</h2>
-        <div><p>Мы собрали самые популярные вопросы о покупке квартиры и подготовили простые и понятные ответы.</p><p>Если вы не нашли нужную информацию — свяжитесь с нашим менеджером, и мы подробно расскажем обо всех деталях.</p></div>
+        <div><p>Мы собрали самые популярные вопросы <br class="zm-br-m">о покупке квартиры и подготовили простые <br class="zm-br-m">и понятные ответы.</p><p>Если вы не нашли нужную информацию — свяжитесь с нашим менеджером, и мы подробно расскажем обо всех деталях.</p></div>
       </div>
       <div class="zm-faq">
         <div class="zm-faq__item"><button class="zm-faq__q" type="button"><span>01. Когда планируется сдача дома?</span><i class="zm-faq__icon" aria-hidden="true"></i></button><div class="zm-faq__a"><div><div class="zm-text"><p>Строительство ведётся по графику, утверждённому проектной декларацией.</p><p>Срок сдачи — III квартал 2028 года. Мы регулярно обновляем фото и отчёты о ходе работ в разделе <a href="/hod-stroitelstva">«Ход строительства»</a>.</p></div></div></div></div>
@@ -1673,7 +1867,7 @@
   // карточки 01–03 «О проекте»: на мобильных — поверх фото
   var cards = root.querySelector('[data-about-cards]');
   var img = root.querySelector('.zm-hab__img');
-  var mq = window.matchMedia('(max-width: 767px)');
+  var mq = window.matchMedia('(max-width: 639px)');
   function place() { if (mq.matches) img.appendChild(cards); else img.parentNode.appendChild(cards); }
   place(); if (mq.addEventListener) mq.addEventListener('change', place); else mq.addListener(place);
 
